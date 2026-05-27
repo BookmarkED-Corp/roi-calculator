@@ -590,14 +590,85 @@
     flex-shrink: 0;
   }
 
-  /* Empty chart state */
-  .chart-empty-msg {
-    text-align: center;
-    padding: 20px 0 8px 0;
-    font-size: 12px;
-    color: var(--bm-border-light);
+  /* Librarian note */
+  .librarian-note {
+    margin-top: 16px;
+    padding: 10px 14px;
+    border-left: 3px solid var(--bm-deep-green);
+    background: var(--bm-bg-green-tint);
+    border-radius: 0 6px 6px 0;
+    font-size: 11px;
+    color: var(--bm-secondary-text);
+    line-height: 1.5;
+  }
+
+  .librarian-note strong { color: var(--bm-eigengrau); font-weight: 700; }
+
+  /* Share row */
+  .share-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bm-bg-light);
+    border: 1px solid var(--bm-border-light);
+    border-radius: 8px;
+  }
+
+  .share-label {
+    font-size: 10.5px;
     font-weight: 600;
-    display: none;
+    color: var(--bm-secondary-text);
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .share-label strong { color: var(--bm-eigengrau); font-weight: 700; display: block; font-size: 11px; }
+
+  .btn-share {
+    font-family: var(--bm-font);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bm-white);
+    background: var(--bm-deep-green);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+
+  .btn-share:hover { background: #0D5A52; }
+  .btn-share.copied { background: var(--bm-teal-accent); }
+
+  .btn-reset {
+    font-family: var(--bm-font);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--bm-muted-gray);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .btn-reset:hover { color: var(--bm-secondary-text); }
+
+  /* Print */
+  @media print {
+    .app-header { position: static; background: var(--bm-eigengrau); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding: 20px 28px; }
+    body { background: white; }
+    .share-row { display: none; }
+    .btn-reset { display: none; }
+    .stat-card, .chart-card { box-shadow: none; }
+    .workspace { grid-template-columns: 300px 1fr; gap: 14px; }
   }
 
   /* ===== Closer ===== */
@@ -713,7 +784,7 @@
       <div class="inputs-card">
         <div class="inputs-card-head">
           <span class="inputs-card-title">Your district</span>
-          <span class="inputs-card-hint">Updates live</span>
+          <button class="btn-reset" onclick="resetAll()">Reset</button>
         </div>
         <div class="inputs-card-body">
 
@@ -811,6 +882,16 @@
           </div>
 
         </div>
+
+        <!-- Share row — below stat cards -->
+        <div class="share-row">
+          <div class="share-label">
+            <strong>Share your scenario</strong>
+            Link encodes your inputs — forward to a colleague or superintendent.
+          </div>
+          <button class="btn-share" id="btn-share" onclick="copyShareLink()">Copy link</button>
+        </div>
+
       </div>
 
     </div>
@@ -866,6 +947,10 @@
         <div class="legend-item"><span class="legend-dot" style="background:#CBD5E1;"></span>Ongoing labor (with OnShelf)</div>
         <div class="legend-item"><span class="legend-dot" style="background:var(--bm-teal-accent);"></span>OnShelf subscription</div>
         <div class="legend-item"><span class="legend-dot" style="background:var(--bm-deep-green);"></span>Net back to district</div>
+      </div>
+
+      <div class="librarian-note">
+        OnShelf doesn't replace book-order work — <strong>librarians still curate.</strong> It compresses the overhead around the work so their hours go to judgment calls that actually require a librarian. The time modeled above is returned to the district to repurpose toward instruction.
       </div>
     </div>
 
@@ -1092,7 +1177,95 @@
       bar3Amt.classList.remove('empty');
       bar3Badge.style.display = 'none';
     }
+
+    // Push state to URL silently (no page reload)
+    pushStateToURL();
   }
+
+  // ─── Share / URL state ────────────────────────────────────────
+  function encodeStateToURL() {
+    const p = new URLSearchParams();
+    if (inputHours.value)     p.set('h', inputHours.value);
+    if (inputLibrarians.value) p.set('l', inputLibrarians.value);
+    if (inputRate.value)      p.set('r', inputRate.value);
+    if (inputStudents.value)  p.set('s', inputStudents.value);
+    p.set('m', rateMode === 'daily' ? 'd' : 'hr');
+    p.set('p', inputSaved.value);
+    return window.location.origin + window.location.pathname + '?' + p.toString();
+  }
+
+  function pushStateToURL() {
+    const hasAny = inputHours.value || inputLibrarians.value || inputRate.value || inputStudents.value;
+    if (!hasAny) {
+      history.replaceState(null, '', window.location.pathname);
+      return;
+    }
+    const url = encodeStateToURL();
+    history.replaceState(null, '', url);
+  }
+
+  async function copyShareLink() {
+    const url = encodeStateToURL();
+    const btn = document.getElementById('btn-share');
+    try {
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+    } catch (e) {
+      // Fallback for clipboard API not available
+      prompt('Copy this link:', url);
+    }
+    setTimeout(() => {
+      btn.textContent = 'Copy link';
+      btn.classList.remove('copied');
+    }, 2200);
+  }
+
+  function loadStateFromURL() {
+    const p = new URLSearchParams(window.location.search);
+    if (!p.toString()) return;
+    if (p.has('h')) inputHours.value = p.get('h');
+    if (p.has('l')) inputLibrarians.value = p.get('l');
+    if (p.has('r')) inputRate.value = p.get('r');
+    if (p.has('s')) inputStudents.value = p.get('s');
+    if (p.has('m')) {
+      const mode = p.get('m') === 'hr' ? 'hourly' : 'daily';
+      rateMode = mode;
+      btnDaily.classList.toggle('active', mode === 'daily');
+      btnHourly.classList.toggle('active', mode === 'hourly');
+      inputRate.placeholder = mode === 'daily' ? 'e.g. 380' : 'e.g. 47.50';
+      rateHint.textContent = mode === 'daily'
+        ? 'Daily rate ÷ 8 = hourly equivalent used in the model.'
+        : 'Hourly rate used directly in the model.';
+    }
+    if (p.has('p')) {
+      inputSaved.value = p.get('p');
+      savedDisplay.textContent = inputSaved.value + '%';
+    }
+    updateSliderFill();
+    recalculate();
+  }
+
+  // ─── Reset ───────────────────────────────────────────────────
+  function resetAll() {
+    inputHours.value = '';
+    inputLibrarians.value = '';
+    inputRate.value = '';
+    inputStudents.value = '';
+    rateMode = 'daily';
+    btnDaily.classList.add('active');
+    btnHourly.classList.remove('active');
+    inputRate.placeholder = 'e.g. 380';
+    rateHint.textContent = 'Daily rate ÷ 8 = hourly equivalent used in the model.';
+    inputSaved.value = 50;
+    savedDisplay.textContent = '50%';
+    updateSliderFill();
+    history.replaceState(null, '', window.location.pathname);
+    recalculate();
+  }
+
+  // ─── Init ─────────────────────────────────────────────────────
+  loadStateFromURL();
 </script>
 </body>
 </html>

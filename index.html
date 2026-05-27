@@ -1184,11 +1184,12 @@
     if (!hasAll) {
       setEmpty(outCost); setEmpty(outOnshelf); setEmpty(outNet); setEmpty(outTime);
       outFteNote.textContent = 'Enter your numbers to see the estimate.';
-      // Zero out bars
+      // Zero out bars and reset chart subtitle
       bar1.style.width = '0%'; setEmpty(bar1Amt);
       bar2Labor.style.width = '0%'; bar2Onshelf.style.width = '0%';
       setEmpty(bar2Amt); bar2Badge.style.display = 'none';
       bar3.style.width = '0%'; setEmpty(bar3Amt); bar3Badge.style.display = 'none';
+      document.querySelector('.chart-sub').textContent = 'Bars scale to today\'s estimated cost. Enter district numbers to populate.';
       return;
     }
 
@@ -1273,6 +1274,10 @@
       bar3Amt.classList.remove('empty');
       bar3Badge.style.display = 'none';
     }
+
+    // Update chart subtitle
+    document.querySelector('.chart-sub').textContent =
+      'Bars scale to today\'s estimated cost — ' + fmtDollar(estimatedCost) + '/yr baseline.';
 
     // Push state to URL silently (no page reload)
     pushStateToURL();

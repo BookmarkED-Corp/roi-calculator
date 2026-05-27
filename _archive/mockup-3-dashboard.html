@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked — ROI Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bm-eigengrau: #101828;
+    --bm-deep-green: #107569;
+    --bm-teal-accent: #12A38C;
+    --bm-white: #FFFFFF;
+    --bm-pumpkin: #FF692E;
+    --bm-secondary-text: #475467;
+    --bm-muted-gray: #9CA3AF;
+    --bm-border-light: #E5E7EB;
+    --bm-bg-cool: #F8FAFC;
+    --bm-bg-green-tint: #F8FAF8;
+    --bm-bg-light: #F9FAFB;
+    --bm-bg-warm: #F8F5F0;
+    --bm-font: 'Urbanist', Arial, Helvetica, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: var(--bm-font);
+    color: var(--bm-eigengrau);
+    background: var(--bm-bg-cool);
+    min-height: 100vh;
+  }
+
+  /* ===== App shell ===== */
+  .app-header {
+    background: var(--bm-eigengrau);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    color: var(--bm-white);
+  }
+
+  .logo .mark {
+    width: 22px;
+    height: 22px;
+    background: var(--bm-teal-accent);
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bm-white);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .app-header .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .header-badge {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 100px;
+    background: rgba(18,163,140,0.2);
+    color: var(--bm-teal-accent);
+    border: 1px solid rgba(18,163,140,0.3);
+  }
+
+  /* ===== Page layout ===== */
+  .page-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 32px 40px 32px;
+  }
+
+  .page-title-row {
+    margin-bottom: 24px;
+  }
+
+  .page-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bm-deep-green);
+    margin-bottom: 6px;
+  }
+
+  .page-h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--bm-eigengrau);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .page-sub {
+    font-size: 13px;
+    color: var(--bm-secondary-text);
+    font-weight: 500;
+  }
+
+  /* ===== Two-column workspace ===== */
+  .workspace {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* ===== Inputs panel ===== */
+  .inputs-card {
+    background: var(--bm-white);
+    border: 1px solid var(--bm-border-light);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    overflow: hidden;
+  }
+
+  .inputs-card-head {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--bm-border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bm-bg-light);
+  }
+
+  .inputs-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bm-eigengrau);
+    letter-spacing: 0.02em;
+  }
+
+  .inputs-card-subtitle {
+    font-size: 10px;
+    color: var(--bm-muted-gray);
+  }
+
+  .inputs-card-body {
+    padding: 18px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .input-section-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bm-deep-green);
+    margin-bottom: -8px;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .field-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .field-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bm-eigengrau);
+  }
+
+  .field-value-display {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bm-deep-green);
+    letter-spacing: -0.01em;
+  }
+
+  .field-helper {
+    font-size: 10px;
+    color: var(--bm-muted-gray);
+    margin-bottom: 1px;
+  }
+
+  input[type="number"] {
+    font-family: var(--bm-font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bm-eigengrau);
+    background: var(--bm-bg-cool);
+    border: 1.5px solid var(--bm-border-light);
+    border-radius: 8px;
+    padding: 9px 12px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+  input[type="number"]:focus {
+    border-color: var(--bm-teal-accent);
+    box-shadow: 0 0 0 3px rgba(18,163,140,0.1);
+    background: var(--bm-white);
+  }
+
+  .input-with-suffix {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .input-suffix-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--bm-muted-gray);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .rate-toggle {
+    display: flex;
+    background: var(--bm-bg-cool);
+    border: 1.5px solid var(--bm-border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .rate-toggle button {
+    font-family: var(--bm-font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 9px 12px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: var(--bm-muted-gray);
+    transition: all 0.15s;
+  }
+
+  .rate-toggle button.active {
+    background: var(--bm-eigengrau);
+    color: var(--bm-white);
+    border-radius: 6px;
+  }
+
+  /* Slider */
+  .slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, var(--bm-teal-accent) 50%, var(--bm-border-light) 50%);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--bm-white);
+    border: 2.5px solid var(--bm-teal-accent);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: var(--bm-muted-gray);
+    font-weight: 600;
+  }
+
+  /* Locked pricing */
+  .locked-pricing {
+    padding: 10px 12px;
+    background: var(--bm-bg-green-tint);
+    border: 1px solid rgba(16,117,105,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .locked-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .locked-lbl {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bm-deep-green);
+  }
+
+  .locked-desc {
+    font-size: 10px;
+    color: var(--bm-muted-gray);
+  }
+
+  .locked-val {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--bm-deep-green);
+    letter-spacing: -0.015em;
+  }
+
+  .locked-val span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--bm-muted-gray);
+    margin-left: 2px;
+  }
+
+  /* ===== Outputs area ===== */
+  .outputs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Stat cards: 2x2 grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .stat-card {
+    background: var(--bm-white);
+    border: 1px solid var(--bm-border-light);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .stat-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+  }
+
+  .stat-card.accent {
+    background: var(--bm-bg-green-tint);
+    border-color: rgba(16,117,105,0.2);
+  }
+
+  .stat-card.warning {
+    background: var(--bm-bg-warm);
+    border-color: rgba(255,105,46,0.2);
+  }
+
+  .stat-card .card-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .stat-card.warning .card-icon { background: rgba(255,105,46,0.12); }
+  .stat-card:not(.warning):not(.accent) .card-icon { background: var(--bm-bg-cool); }
+  .stat-card.accent .card-icon { background: rgba(16,117,105,0.1); }
+
+  .stat-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bm-secondary-text);
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--bm-eigengrau);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-card.accent .stat-value { color: var(--bm-deep-green); }
+  .stat-card.warning .stat-value { color: #B14012; }
+
+  .stat-suffix {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bm-muted-gray);
+    margin-left: 3px;
+  }
+
+  .stat-note {
+    font-size: 10.5px;
+    color: var(--bm-secondary-text);
+    line-height: 1.4;
+  }
+
+  /* ===== Chart card ===== */
+  .chart-card {
+    background: var(--bm-white);
+    border: 1px solid var(--bm-border-light);
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .chart-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .chart-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bm-eigengrau);
+    letter-spacing: -0.01em;
+  }
+
+  .chart-card-sub {
+    font-size: 10px;
+    color: var(--bm-muted-gray);
+    font-weight: 500;
+  }
+
+  .chart-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .bar-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--bm-secondary-text);
+    width: 100px;
+    flex-shrink: 0;
+    text-align: right;
+    line-height: 1.25;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 32px;
+    background: var(--bm-bg-cool);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+  }
+
+  .bar-fill-eigengrau {
+    height: 100%;
+    background: var(--bm-eigengrau);
+    border-radius: 6px;
+    transition: width 0.4s ease;
+  }
+
+  .bar-fill-labor {
+    height: 100%;
+    background: #CBD5E1;
+    transition: width 0.4s ease;
+  }
+
+  .bar-fill-onshelf {
+    height: 100%;
+    background: var(--bm-teal-accent);
+    transition: width 0.4s ease;
+  }
+
+  .bar-fill-savings {
+    height: 100%;
+    background: var(--bm-deep-green);
+    border-radius: 6px;
+    transition: width 0.4s ease;
+  }
+
+  .bar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 110px;
+    flex-shrink: 0;
+  }
+
+  .bar-amount {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bm-secondary-text);
+    letter-spacing: -0.01em;
+  }
+
+  .bar-amount.savings { color: var(--bm-deep-green); font-weight: 800; }
+
+  .bar-change {
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .bar-change.negative { background: rgba(255,105,46,0.1); color: #B14012; }
+  .bar-change.positive { background: rgba(16,117,105,0.1); color: var(--bm-deep-green); }
+
+  .chart-legend {
+    display: flex;
+    gap: 14px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--bm-muted-gray);
+    font-weight: 600;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ===== Axis labels above chart ===== */
+  .bar-axis {
+    display: flex;
+    margin-bottom: 8px;
+    padding-left: 112px;
+  }
+
+  .axis-label {
+    font-size: 9px;
+    color: var(--bm-muted-gray);
+    font-weight: 600;
+    text-align: center;
+    flex: 1;
+  }
+
+  /* ===== Closer ===== */
+  .closer-row {
+    background: var(--bm-eigengrau);
+    border-radius: 12px;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .closer-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--bm-white);
+    letter-spacing: -0.01em;
+  }
+
+  .closer-text em {
+    font-style: normal;
+    color: var(--bm-teal-accent);
+  }
+
+  .closer-sub {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    padding: 16px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--bm-border-light);
+    margin-top: 4px;
+  }
+
+  .footer-brand {
+    font-size: 11px;
+    color: var(--bm-secondary-text);
+    line-height: 1.5;
+  }
+
+  .footer-brand strong {
+    color: var(--bm-eigengrau);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .footer-brand .brand-url { color: var(--bm-deep-green); font-weight: 600; }
+
+  .footer-contact {
+    font-size: 10.5px;
+    color: var(--bm-secondary-text);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .footer-contact strong { color: var(--bm-eigengrau); font-weight: 700; }
+  .footer-contact .email { color: var(--bm-deep-green); font-weight: 600; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .page-container { padding: 16px 16px 32px 16px; }
+    .workspace { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .bar-label { width: 72px; font-size: 9px; }
+    .bar-right { width: 90px; }
+    .closer-row { flex-direction: column; align-items: flex-start; }
+    .footer { flex-direction: column; gap: 12px; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- App header -->
+  <header class="app-header">
+    <div class="logo">
+      <span class="mark">B</span>
+      <span>Bookmarked</span>
+    </div>
+    <div class="header-right">
+      <span class="header-title">ROI Calculator</span>
+      <span class="header-badge">Beta</span>
+    </div>
+  </header>
+
+  <div class="page-container">
+
+    <!-- Page title -->
+    <div class="page-title-row">
+      <div class="page-eyebrow">The cost-vs-price question</div>
+      <h1 class="page-h1">What is manual book-order work costing your district?</h1>
+      <p class="page-sub">Enter your numbers. See the math update in real time — calibrated to your scale.</p>
+    </div>
+
+    <!-- Two-column workspace -->
+    <div class="workspace">
+
+      <!-- Left: inputs panel -->
+      <div class="inputs-card">
+        <div class="inputs-card-head">
+          <span class="inputs-card-title">Your district inputs</span>
+          <span class="inputs-card-subtitle">All fields editable</span>
+        </div>
+        <div class="inputs-card-body">
+
+          <div class="input-section-label">District profile</div>
+
+          <div class="field-group">
+            <div class="field-top">
+              <label class="field-label">Hours / librarian / year</label>
+              <span class="field-value-display">240 hrs</span>
+            </div>
+            <div class="field-helper">Total annual hours one librarian spends on book-order work.</div>
+            <input type="range" min="0" max="1000" value="240">
+            <div class="slider-labels"><span>0</span><span>500</span><span>1,000</span></div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Number of librarians</label>
+            <div class="field-helper">District-wide librarian count.</div>
+            <div class="input-with-suffix">
+              <input type="number" value="68" min="1" max="500" placeholder="e.g. 68">
+              <span class="input-suffix-tag">librarians</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Librarian labor cost</label>
+            <div class="field-helper">Loaded rate — salary + benefits.</div>
+            <div class="input-with-suffix">
+              <input type="number" value="47.50" step="0.01" min="0" placeholder="0.00">
+              <div class="rate-toggle">
+                <button>Daily</button>
+                <button class="active">Hourly</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Number of students</label>
+            <div class="field-helper">Used to calculate the OnShelf subscription price.</div>
+            <div class="input-with-suffix">
+              <input type="number" value="50000" min="1" max="500000" placeholder="e.g. 50000">
+              <span class="input-suffix-tag">students</span>
+            </div>
+          </div>
+
+          <div class="input-section-label" style="margin-top: 2px;">Estimate sensitivity</div>
+
+          <div class="field-group">
+            <div class="field-top">
+              <label class="field-label">Labor saved by OnShelf</label>
+              <span class="field-value-display">50%</span>
+            </div>
+            <div class="field-helper">Drag to see how the case holds at different effectiveness levels.</div>
+            <input type="range" min="20" max="90" value="50">
+            <div class="slider-labels"><span>20% conservative</span><span>90% full</span></div>
+          </div>
+
+          <div class="locked-pricing">
+            <div class="locked-left">
+              <div class="locked-lbl">OnShelf price — locked</div>
+              <div class="locked-desc">$3 / student / year — canonical pricing.</div>
+            </div>
+            <div class="locked-val">$3<span>/ student</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: outputs -->
+      <div class="outputs-col">
+
+        <!-- 2x2 stat grid -->
+        <div class="stat-grid">
+
+          <div class="stat-card warning">
+            <div class="card-icon">📋</div>
+            <div class="stat-label">Estimated cost</div>
+            <div class="stat-value">$775,200<span class="stat-suffix">/yr</span></div>
+            <div class="stat-note">Modeled labor across your district.</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="card-icon">💳</div>
+            <div class="stat-label">OnShelf price</div>
+            <div class="stat-value">$150,000<span class="stat-suffix">/yr</span></div>
+            <div class="stat-note">$3 per student per year — a line item on the budget.</div>
+          </div>
+
+          <div class="stat-card accent">
+            <div class="card-icon">↑</div>
+            <div class="stat-label">Estimated net to district</div>
+            <div class="stat-value">$237,600<span class="stat-suffix">/yr</span></div>
+            <div class="stat-note">Potential savings back to instruction.</div>
+          </div>
+
+          <div class="stat-card accent">
+            <div class="card-icon">⏱</div>
+            <div class="stat-label">Time returned</div>
+            <div class="stat-value">8,160<span class="stat-suffix">hrs/yr</span></div>
+            <div class="stat-note">≈ 3.9 full-time equivalents (÷ 2,080) — back to the district.</div>
+          </div>
+
+        </div>
+
+        <!-- Chart card -->
+        <div class="chart-card">
+          <div class="chart-card-head">
+            <div>
+              <div class="chart-card-title">Cost comparison — today vs. with OnShelf</div>
+              <div class="chart-card-sub">Bars scale to today's estimated cost</div>
+            </div>
+          </div>
+
+          <div class="chart-bars">
+
+            <!-- Axis labels -->
+            <div class="bar-axis">
+              <div class="axis-label" style="text-align:left;">$0</div>
+              <div class="axis-label">$388K</div>
+              <div class="axis-label" style="text-align:right;">$775K</div>
+            </div>
+
+            <div class="bar-row">
+              <div class="bar-label">Today's<br>cost</div>
+              <div class="bar-track">
+                <div class="bar-fill-eigengrau" style="width:100%;"></div>
+              </div>
+              <div class="bar-right">
+                <span class="bar-amount">$775,200</span>
+              </div>
+            </div>
+
+            <div class="bar-row">
+              <div class="bar-label">With<br>OnShelf</div>
+              <div class="bar-track">
+                <div class="bar-fill-labor" style="width:50%;"></div>
+                <div class="bar-fill-onshelf" style="width:19.3%;"></div>
+              </div>
+              <div class="bar-right">
+                <span class="bar-amount">$537,600</span>
+                <span class="bar-change negative">−31%</span>
+              </div>
+            </div>
+
+            <div class="bar-row">
+              <div class="bar-label">Net to<br>district</div>
+              <div class="bar-track">
+                <div class="bar-fill-savings" style="width:30.6%;"></div>
+              </div>
+              <div class="bar-right">
+                <span class="bar-amount savings">$237,600</span>
+                <span class="bar-change positive">saved</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="chart-legend">
+            <div class="legend-item"><span class="legend-dot" style="background:var(--bm-eigengrau);"></span>Today's cost</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#CBD5E1;"></span>Ongoing labor</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--bm-teal-accent);"></span>OnShelf subscription</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--bm-deep-green);"></span>Net back to district</div>
+          </div>
+        </div>
+
+        <!-- Closer -->
+        <div class="closer-row">
+          <div>
+            <div class="closer-text"><em>Bookmarked informs.</em> Districts decide.</div>
+            <div class="closer-sub">Inputs are yours. Conclusions are yours. We just show the math.</div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <div class="footer-brand">
+            <strong>The Book Intelligence Company</strong><br>
+            <span class="brand-url">bookmarked.com</span>
+          </div>
+          <div class="footer-contact">
+            <strong>Steve Wandler</strong>, Co-Founder<br>
+            (214) 892-1015 · <span class="email">steve@bookmarked.com</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

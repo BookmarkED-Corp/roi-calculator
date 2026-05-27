@@ -854,6 +854,17 @@
     padding: 0 2px;
   }
 
+  .scenario-pct-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--bm-deep-green);
+    background: rgba(16,117,105,0.08);
+    border-radius: 100px;
+    padding: 2px 7px;
+    white-space: nowrap;
+  }
+
   .btn-clear-pin {
     font-family: var(--bm-font);
     font-size: 9.5px;
@@ -992,13 +1003,13 @@
           <div class="section-divider" style="margin-top:2px;">Estimate sensitivity</div>
 
           <div class="field">
-            <label class="field-label">Time returned by OnShelf</label>
-            <span class="field-helper">What portion of book-order overhead does OnShelf compress? Drag to model conservative, mid-range, and full-return scenarios at your district's scale.</span>
+            <label class="field-label">Workload reduction by OnShelf</label>
+            <span class="field-helper">What percentage of book-order workload does OnShelf reduce? Drag to model the case at different reduction levels.</span>
             <div class="slider-row">
               <input type="range" id="input-saved" min="20" max="90" value="70">
               <span class="slider-val" id="saved-display">70%</span>
             </div>
-            <div class="slider-labels"><span>20% minimal</span><span>90% full return</span></div>
+            <div class="slider-labels"><span>20% conservative</span><span>90% full reduction</span></div>
           </div>
 
           <div class="locked-pricing">
@@ -1018,7 +1029,10 @@
         <!-- Scenario A pinned block -->
         <div class="scenario-block" id="scenario-a-block">
           <div class="scenario-block-head">
-            <span class="scenario-tag">Scenario A &mdash; pinned</span>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="scenario-tag">Scenario A &mdash; pinned</span>
+              <span class="scenario-pct-badge" id="pin-a-pct"></span>
+            </div>
             <button class="btn-clear-pin" onclick="clearPin('a')">&#x2715; Clear</button>
           </div>
           <div class="stat-grid">
@@ -1048,7 +1062,10 @@
         <!-- Scenario B pinned block -->
         <div class="scenario-block" id="scenario-b-block">
           <div class="scenario-block-head">
-            <span class="scenario-tag">Scenario B &mdash; pinned</span>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="scenario-tag">Scenario B &mdash; pinned</span>
+              <span class="scenario-pct-badge" id="pin-b-pct"></span>
+            </div>
             <button class="btn-clear-pin" onclick="clearPin('b')">&#x2715; Clear</button>
           </div>
           <div class="stat-grid">
@@ -1556,7 +1573,7 @@
     const netToDistrict = savedLabor - onshelfPrice;
     const timeReturned  = savedPct * hoursPerYear * librarians;
     const fteReturned   = timeReturned / 2080;
-    return { estimatedCost, onshelfPrice, netToDistrict, timeReturned, fteReturned };
+    return { estimatedCost, onshelfPrice, netToDistrict, timeReturned, fteReturned, savedPct: Math.round(savedPct * 100) };
   }
 
   function fillPinBlock(prefix, snap) {
@@ -1568,6 +1585,7 @@
       : sfx('−' + fmtDollar(Math.abs(snap.netToDistrict)), '/yr');
     document.getElementById('pin-' + prefix + '-time').innerHTML    = sfx(fmtHours(Math.round(snap.timeReturned)), ' hrs/yr');
     document.getElementById('pin-' + prefix + '-fte').textContent   = '≈ ' + snap.fteReturned.toFixed(1) + ' full-time equivalents — back to the district.';
+    document.getElementById('pin-' + prefix + '-pct').textContent   = snap.savedPct + '% workload reduction';
   }
 
   function updatePinUI() {

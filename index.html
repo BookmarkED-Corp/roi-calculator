@@ -206,8 +206,8 @@
 
   .field-helper {
     font-size: 10px;
-    color: var(--bm-muted-gray);
-    line-height: 1.35;
+    color: var(--bm-secondary-text);
+    line-height: 1.4;
   }
 
   .field-row {
@@ -339,8 +339,8 @@
   /* Locked pricing */
   .locked-pricing {
     padding: 10px 12px;
-    background: var(--bm-bg-green-tint);
-    border: 1px solid rgba(16,117,105,0.2);
+    background: transparent;
+    border: 1.5px dashed rgba(16,117,105,0.3);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -355,26 +355,27 @@
 
   .locked-lbl {
     font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.16em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--bm-deep-green);
+    opacity: 0.8;
   }
 
   .locked-desc {
     font-size: 10px;
-    color: var(--bm-muted-gray);
+    color: var(--bm-secondary-text);
   }
 
   .locked-val {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
     color: var(--bm-deep-green);
     letter-spacing: -0.015em;
   }
 
   .locked-val span {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     color: var(--bm-muted-gray);
     margin-left: 2px;
@@ -391,14 +392,14 @@
   .stat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 12px;
   }
 
   .stat-card {
     background: var(--bm-white);
     border: 1px solid var(--bm-border-light);
     border-radius: 12px;
-    padding: 16px 18px;
+    padding: 14px 16px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.04);
     transition: box-shadow 0.2s, transform 0.2s;
   }
@@ -408,14 +409,25 @@
     transform: translateY(-1px);
   }
 
+  /* Secondary cards (OnShelf Price, Time Returned) — quieter */
+  .stat-card.secondary {
+    background: var(--bm-bg-light);
+    border-color: var(--bm-border-light);
+  }
+
+  /* Primary cards (Estimated Cost, Net to District) — hero */
   .stat-card.accent {
     background: var(--bm-bg-green-tint);
-    border-color: rgba(16,117,105,0.2);
+    border-color: rgba(16,117,105,0.25);
+    border-top: 3px solid var(--bm-deep-green);
+    padding-top: 13px;
   }
 
   .stat-card.warning {
     background: var(--bm-bg-warm);
-    border-color: rgba(255,105,46,0.2);
+    border-color: rgba(209,81,30,0.25);
+    border-top: 3px solid #D9582A;
+    padding-top: 13px;
   }
 
   .stat-label {
@@ -424,25 +436,33 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--bm-secondary-text);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .stat-value {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 800;
     letter-spacing: -0.03em;
     color: var(--bm-eigengrau);
     line-height: 1;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     font-variant-numeric: tabular-nums;
   }
 
-  .stat-card.accent .stat-value { color: var(--bm-deep-green); }
-  .stat-card.warning .stat-value { color: #B14012; }
+  /* Primary cards get bigger numbers */
+  .stat-card.accent .stat-value { color: var(--bm-deep-green); font-size: 36px; }
+  .stat-card.warning .stat-value { color: #B14012; font-size: 36px; }
 
   .stat-value.empty {
     color: var(--bm-border-light);
-    font-size: 26px;
+    font-size: 24px;
+  }
+
+  /* Empty state hint inside stat cards */
+  .stat-empty-hint {
+    font-size: 10px;
+    color: var(--bm-border-light);
+    font-style: italic;
   }
 
   @keyframes popIn {
@@ -666,44 +686,51 @@
 
   .librarian-note strong { color: var(--bm-eigengrau); font-weight: 700; }
 
-  /* Share row */
-  .share-row {
+  /* PDF download row */
+  .download-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    background: var(--bm-bg-light);
-    border: 1px solid var(--bm-border-light);
-    border-radius: 8px;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bm-eigengrau);
+    border-radius: 10px;
   }
 
-  .share-label {
+  .download-label {
     font-size: 10.5px;
-    font-weight: 600;
-    color: var(--bm-secondary-text);
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
     flex: 1;
     line-height: 1.4;
   }
 
-  .share-label strong { color: var(--bm-eigengrau); font-weight: 700; display: block; font-size: 11px; }
+  .download-label strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 700;
+    display: block;
+    font-size: 11px;
+    margin-bottom: 1px;
+  }
 
-  .btn-share {
+  .btn-download-pdf {
     font-family: var(--bm-font);
     font-size: 11px;
     font-weight: 700;
-    color: var(--bm-white);
-    background: var(--bm-deep-green);
+    color: var(--bm-eigengrau);
+    background: var(--bm-white);
     border: none;
     border-radius: 6px;
-    padding: 8px 14px;
+    padding: 8px 16px;
     cursor: pointer;
     white-space: nowrap;
-    transition: background 0.15s;
+    transition: background 0.15s, color 0.15s;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  .btn-share:hover { background: #0D5A52; }
-  .btn-share.copied { background: var(--bm-teal-accent); }
+  .btn-download-pdf:hover { background: var(--bm-teal-accent); color: var(--bm-white); }
 
   .btn-reset {
     font-family: var(--bm-font);
@@ -871,34 +898,33 @@
   .pin-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    background: var(--bm-bg-light);
-    border: 1px solid var(--bm-border-light);
-    border-radius: 8px;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 4px 2px;
+    background: transparent;
+    border: none;
   }
 
   .btn-pin {
     font-family: var(--bm-font);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--bm-eigengrau);
-    background: var(--bm-white);
-    border: 1.5px solid var(--bm-border-light);
-    border-radius: 6px;
-    padding: 7px 13px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--bm-muted-gray);
+    background: transparent;
+    border: none;
     cursor: pointer;
     white-space: nowrap;
-    flex-shrink: 0;
-    transition: all 0.15s;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.15s;
   }
 
-  .btn-pin:hover { border-color: var(--bm-eigengrau); }
+  .btn-pin:hover { color: var(--bm-secondary-text); }
 
   .pin-hint {
-    font-size: 10.5px;
+    font-size: 10px;
     color: var(--bm-muted-gray);
-    line-height: 1.4;
   }
 </style>
 </head>
@@ -1091,7 +1117,7 @@
             <div class="stat-value empty" id="out-cost">—</div>
             <div class="stat-note">Modeled labor across your district.</div>
           </div>
-          <div class="stat-card">
+          <div class="stat-card secondary">
             <div class="stat-label">OnShelf price</div>
             <div class="stat-value empty" id="out-onshelf">—</div>
             <div class="stat-note">$3 per student per year — a line item on the budget.</div>
@@ -1101,26 +1127,26 @@
             <div class="stat-value empty" id="out-net">—</div>
             <div class="stat-note">Potential savings back to instruction.</div>
           </div>
-          <div class="stat-card accent">
+          <div class="stat-card secondary">
             <div class="stat-label">Time returned</div>
             <div class="stat-value empty" id="out-time">—</div>
             <div class="stat-note" id="out-fte-note">Enter your numbers to see the estimate.</div>
           </div>
         </div>
 
-        <!-- Pin row -->
+        <!-- Pin row — subtle -->
         <div class="pin-row" id="pin-row">
+          <span class="pin-hint">Compare two scenarios?</span>
           <button class="btn-pin" id="btn-pin" onclick="pinScenario()">Pin as Scenario A</button>
-          <span class="pin-hint">Lock these results to compare against a second scenario.</span>
         </div>
 
-        <!-- Share row -->
-        <div class="share-row">
-          <div class="share-label">
-            <strong>Share your scenario</strong>
-            Link encodes your inputs — forward to a colleague or superintendent.
+        <!-- PDF download row -->
+        <div class="download-row">
+          <div class="download-label">
+            <strong>Download PDF</strong>
+            Export these results as a one-page brief for your team or superintendent.
           </div>
-          <button class="btn-share" id="btn-share" onclick="copyShareLink()">Copy link</button>
+          <button class="btn-download-pdf" onclick="window.print()">&#8595; Download PDF</button>
         </div>
 
       </div>
@@ -1132,7 +1158,7 @@
       <div class="chart-head">
         <div>
           <div class="chart-title">Cost comparison — today vs. with OnShelf</div>
-          <div class="chart-sub">Bars scale to today's estimated cost. Enter district numbers to populate.</div>
+          <div class="chart-sub" id="chart-sub">Enter your numbers above to populate the chart.</div>
         </div>
       </div>
 

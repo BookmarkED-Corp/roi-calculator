@@ -908,7 +908,7 @@
             <label class="field-label" for="input-students">Number of students</label>
             <span class="field-helper">Used to calculate OnShelf's per-student price.</span>
             <div class="field-row">
-              <input type="number" id="input-students" min="1" max="500000" placeholder="e.g. 50000">
+              <input type="number" id="input-students" min="1" max="500000" placeholder="e.g. 45000">
               <span class="input-suffix">students</span>
             </div>
           </div>
@@ -917,12 +917,12 @@
 
           <div class="field">
             <label class="field-label">Labor saved by OnShelf</label>
-            <span class="field-helper">Drag to see how the case holds at different effectiveness levels.</span>
+            <span class="field-helper">Default 70% mirrors the brief's primary model. Drag to stress-test the case.</span>
             <div class="slider-row">
-              <input type="range" id="input-saved" min="20" max="90" value="50">
-              <span class="slider-val" id="saved-display">50%</span>
+              <input type="range" id="input-saved" min="20" max="90" value="70">
+              <span class="slider-val" id="saved-display">70%</span>
             </div>
-            <div class="slider-labels"><span>20% conservative</span><span>90% full</span></div>
+            <div class="slider-labels"><span>20% stress test</span><span>70% brief model</span><span>90% full</span></div>
           </div>
 
           <div class="locked-pricing">
@@ -1043,7 +1043,7 @@
           <div class="method-row"><strong>OnShelf price</strong>$3 per student per year — canonical Bookmarked pricing. This is the subscription line item, not a budget estimate. Applied to enrolled student count.</div>
           <div class="method-row"><strong>Net to district</strong>(Labor saved % × estimated cost) minus OnShelf price. Represents dollars freed from overhead — available to repurpose toward instruction, staffing, or materials.</div>
           <div class="method-row"><strong>Full-time equivalents</strong>Time returned (saved% × total hours) divided by 2,080 — the standard 52-week, 40-hour work year. Represents the equivalent staff capacity freed, not a headcount reduction.</div>
-          <div class="method-row"><strong>Labor saved range</strong>Default is 50% — a conservative mid-range figure. Actual savings depend on district workflow, adoption rate, and order complexity. Drag the slider to see how the case holds at different levels.</div>
+          <div class="method-row"><strong>Labor saved range</strong>Default is 70% — the primary scenario in the Garland ISD cost-vs-price brief. Drag the slider to stress-test the case. At 30%, Garland's upper-end model still nets +$97,560/yr.</div>
           <div class="method-row"><strong>These are modeled figures</strong>All outputs are estimates based on inputs you provide. They are not audited, validated, or guaranteed. Bookmarked informs. Districts decide.</div>
         </div>
       </details>
@@ -1374,8 +1374,8 @@
     btnHourly.classList.remove('active');
     inputRate.placeholder = 'e.g. 380';
     rateHint.textContent = 'Daily rate ÷ 8 = hourly equivalent used in the model.';
-    inputSaved.value = 50;
-    savedDisplay.textContent = '50%';
+    inputSaved.value = 70;
+    savedDisplay.textContent = '70%';
     updateSliderFill();
     history.replaceState(null, '', window.location.pathname);
     recalculate();

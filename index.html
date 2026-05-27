@@ -916,13 +916,14 @@
           <div class="section-divider" style="margin-top:2px;">Estimate sensitivity</div>
 
           <div class="field">
-            <label class="field-label">Labor saved by OnShelf</label>
-            <span class="field-helper">Default 70% mirrors the brief's primary model. Drag to stress-test the case.</span>
+            <label class="field-label">Time returned by OnShelf</label>
+            <span class="field-helper">What portion of book-order overhead does OnShelf compress? Drag to the break-even point — where OnShelf covers its own cost — then above it to see net savings build.</span>
             <div class="slider-row">
               <input type="range" id="input-saved" min="20" max="90" value="70">
               <span class="slider-val" id="saved-display">70%</span>
             </div>
-            <div class="slider-labels"><span>20% stress test</span><span>70% brief model</span><span>90% full</span></div>
+            <div class="slider-labels"><span>20% minimal</span><span>90% full return</span></div>
+            <div id="breakeven-note" style="display:none; margin-top:6px; font-size:10px; line-height:1.4; padding:7px 10px; border-radius:6px; background:var(--bm-bg-green-tint); border:1px solid rgba(16,117,105,0.18); color:var(--bm-secondary-text);"></div>
           </div>
 
           <div class="locked-pricing">
@@ -1093,7 +1094,8 @@
   const outOnshelf  = document.getElementById('out-onshelf');
   const outNet      = document.getElementById('out-net');
   const outTime     = document.getElementById('out-time');
-  const outFteNote  = document.getElementById('out-fte-note');
+  const outFteNote      = document.getElementById('out-fte-note');
+  const breakevenNote   = document.getElementById('breakeven-note');
 
   // Chart elements
   const bar1       = document.getElementById('bar1');
@@ -1197,6 +1199,7 @@
     if (!hasAll) {
       setEmpty(outCost); setEmpty(outOnshelf); setEmpty(outNet); setEmpty(outTime);
       outFteNote.textContent = 'Enter your numbers to see the estimate.';
+      breakevenNote.style.display = 'none';
       // Zero out bars and reset chart subtitle
       bar1.style.width = '0%'; setEmpty(bar1Amt);
       bar2Labor.style.width = '0%'; bar2Onshelf.style.width = '0%';
@@ -1218,6 +1221,30 @@
     const netToDistrict    = savedLabor - onshelfPrice;
     const timeReturned     = savedPct * hoursPerYear * librarians;
     const fteReturned      = timeReturned / 2080;
+
+    // ── Break-even ──
+    const breakEvenPct = estimatedCost > 0 ? Math.ceil((onshelfPrice / estimatedCost) * 100) : null;
+    if (breakEvenPct !== null && breakEvenPct <= 90) {
+      const aboveBreakEven = savedPct * 100 > breakEvenPct;
+      breakevenNote.style.display = 'block';
+      if (aboveBreakEven) {
+        breakevenNote.innerHTML =
+          'OnShelf covers its cost at <strong>' + breakEvenPct + '%</strong> time returned. ' +
+          'At your current setting (' + Math.round(savedPct * 100) + '%), the district nets ' +
+          '<strong>' + fmtDollar(netToDistrict) + '/yr</strong> above that threshold.';
+      } else {
+        breakevenNote.innerHTML =
+          'Break-even at <strong>' + breakEvenPct + '%</strong> time returned — ' +
+          'drag the slider above that point to see net savings build.';
+      }
+    } else if (breakEvenPct !== null && breakEvenPct < 20) {
+      breakevenNote.style.display = 'block';
+      breakevenNote.innerHTML =
+        'OnShelf covers its cost at just <strong>' + breakEvenPct + '%</strong> time returned — ' +
+        'it\'s net positive across the entire slider range.';
+    } else {
+      breakevenNote.style.display = 'none';
+    }
 
     // ── Stat cards ──
     function animateCard(el) {

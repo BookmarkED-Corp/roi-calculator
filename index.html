@@ -824,6 +824,115 @@
     .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
     .footer-contact { text-align: left; }
     .app-header { padding: 0 16px; }
+    .scenario-stats-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ===== Scenario comparison ===== */
+  .scenario-tag {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bm-muted-gray);
+  }
+
+  .scenario-a-band {
+    background: var(--bm-bg-light);
+    border: 1px solid var(--bm-border-light);
+    border-radius: 12px;
+    padding: 13px 16px;
+    display: none;
+  }
+
+  .scenario-band-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .scenario-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .scenario-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .scenario-stat-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bm-muted-gray);
+  }
+
+  .scenario-stat-val {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--bm-secondary-text);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .scenario-stat-val.net-positive { color: var(--bm-deep-green); }
+
+  .btn-clear-pin {
+    font-family: var(--bm-font);
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--bm-muted-gray);
+    background: transparent;
+    border: 1px solid var(--bm-border-light);
+    border-radius: 4px;
+    padding: 3px 9px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-clear-pin:hover { border-color: #CBD5E1; color: var(--bm-secondary-text); }
+
+  .scenario-b-label {
+    display: none;
+    align-items: center;
+  }
+
+  .pin-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bm-bg-light);
+    border: 1px solid var(--bm-border-light);
+    border-radius: 8px;
+  }
+
+  .btn-pin {
+    font-family: var(--bm-font);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bm-eigengrau);
+    background: var(--bm-white);
+    border: 1.5px solid var(--bm-border-light);
+    border-radius: 6px;
+    padding: 7px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+
+  .btn-pin:hover { border-color: var(--bm-eigengrau); }
+
+  .pin-hint {
+    font-size: 10.5px;
+    color: var(--bm-muted-gray);
+    line-height: 1.4;
   }
 </style>
 </head>
@@ -938,6 +1047,37 @@
 
       <!-- Right: 4 stat cards -->
       <div class="outputs-col">
+
+        <!-- Scenario A pinned band -->
+        <div class="scenario-a-band" id="scenario-a-band">
+          <div class="scenario-band-head">
+            <span class="scenario-tag">Scenario A &mdash; pinned</span>
+            <button class="btn-clear-pin" onclick="clearPin()">&#x2715; Clear</button>
+          </div>
+          <div class="scenario-stats-row">
+            <div class="scenario-stat">
+              <span class="scenario-stat-label">Est. cost</span>
+              <span class="scenario-stat-val" id="pin-cost">—</span>
+            </div>
+            <div class="scenario-stat">
+              <span class="scenario-stat-label">OnShelf price</span>
+              <span class="scenario-stat-val" id="pin-onshelf">—</span>
+            </div>
+            <div class="scenario-stat">
+              <span class="scenario-stat-label">Net to district</span>
+              <span class="scenario-stat-val net-positive" id="pin-net">—</span>
+            </div>
+            <div class="scenario-stat">
+              <span class="scenario-stat-label">Time returned</span>
+              <span class="scenario-stat-val" id="pin-time">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-b-label" id="scenario-b-label">
+          <span class="scenario-tag">Scenario B &mdash; live</span>
+        </div>
+
         <div class="stat-grid">
 
           <div class="stat-card warning">
@@ -964,6 +1104,12 @@
             <div class="stat-note" id="out-fte-note">Enter your numbers to see the estimate.</div>
           </div>
 
+        </div>
+
+        <!-- Pin row -->
+        <div class="pin-row" id="pin-row">
+          <button class="btn-pin" onclick="pinScenario()">Pin as Scenario A</button>
+          <span class="pin-hint">Lock these results to compare against a second scenario.</span>
         </div>
 
         <!-- Share row — below stat cards -->
@@ -1379,6 +1525,62 @@
     updateSliderFill();
     history.replaceState(null, '', window.location.pathname);
     recalculate();
+  }
+
+  // ─── Scenario comparison ─────────────────────────────────────
+  let pinnedScenario = null;
+
+  const scenarioABand   = document.getElementById('scenario-a-band');
+  const scenarioBLabel  = document.getElementById('scenario-b-label');
+  const pinRowEl        = document.getElementById('pin-row');
+  const pinCostEl       = document.getElementById('pin-cost');
+  const pinOnshelfEl    = document.getElementById('pin-onshelf');
+  const pinNetEl        = document.getElementById('pin-net');
+  const pinTimeEl       = document.getElementById('pin-time');
+
+  function pinScenario() {
+    const hoursPerOrder = parseFloat(inputHoursPerOrder.value);
+    const ordersPerYear = parseFloat(inputOrdersPerYear.value);
+    const hoursPerYear  = hoursPerOrder * ordersPerYear;
+    const librarians    = parseFloat(inputLibrarians.value);
+    const rateRaw       = parseFloat(inputRate.value);
+    const students      = parseFloat(inputStudents.value);
+    const savedPct      = parseFloat(inputSaved.value) / 100;
+
+    const hasAll = !isNaN(hoursPerOrder) && hoursPerOrder >= 0
+                && !isNaN(ordersPerYear) && ordersPerYear >= 0
+                && !isNaN(librarians) && librarians >= 1
+                && !isNaN(rateRaw) && rateRaw > 0
+                && !isNaN(students) && students >= 1;
+    if (!hasAll) return;
+
+    const hourlyRate    = rateMode === 'daily' ? rateRaw / HOURS_PER_DAY : rateRaw;
+    const estimatedCost = hoursPerYear * librarians * hourlyRate;
+    const onshelfPrice  = students * ONSHELF_PRICE_PER_STUDENT;
+    const savedLabor    = savedPct * estimatedCost;
+    const netToDistrict = savedLabor - onshelfPrice;
+    const timeReturned  = savedPct * hoursPerYear * librarians;
+    const fteReturned   = timeReturned / 2080;
+
+    pinCostEl.textContent    = fmtDollar(estimatedCost) + '/yr';
+    pinOnshelfEl.textContent = fmtDollar(onshelfPrice) + '/yr';
+    pinNetEl.textContent     = (netToDistrict >= 0 ? '' : '−') +
+                               fmtDollar(Math.abs(netToDistrict)) + '/yr';
+    pinNetEl.classList.toggle('net-positive', netToDistrict >= 0);
+    pinTimeEl.textContent    = fmtHours(Math.round(timeReturned)) + ' hrs/yr' +
+                               ' ≈ ' + fteReturned.toFixed(1) + ' FTEs';
+
+    pinnedScenario = true;
+    scenarioABand.style.display  = 'block';
+    scenarioBLabel.style.display = 'flex';
+    pinRowEl.style.display       = 'none';
+  }
+
+  function clearPin() {
+    pinnedScenario = null;
+    scenarioABand.style.display  = 'none';
+    scenarioBLabel.style.display = 'none';
+    pinRowEl.style.display       = 'flex';
   }
 
   // ─── Init ─────────────────────────────────────────────────────

@@ -2,7 +2,7 @@
 
 Interactive ROI calculator for district administrators evaluating OnShelf.
 
-**Live:** https://stevewandler.github.io/bookmarked-roi-calculator/
+**Live:** https://bookmarked-corp.github.io/roi-calculator/
 
 Enter your district's numbers (hours per librarian, librarian count, loaded labor rate, student enrollment) and see the estimated cost of manual book-order operations vs. the OnShelf subscription — live, in real time.
 

@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bookmarked — ROI Calculator</title>
+<meta name="description" content="Estimate the cost of manual book-order work at your district's scale — and see what shifts with OnShelf. Interactive calculator by Bookmarked, The Book Intelligence Company.">
+<meta property="og:title" content="Bookmarked — ROI Calculator">
+<meta property="og:description" content="Enter your district's numbers. See the math. Estimate the cost of manual book-order operations vs. OnShelf — live, at your scale.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bookmarked — ROI Calculator">
+<meta name="twitter:description" content="What is manual book-order work costing your district? Enter your numbers and see the math update in real time.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -450,6 +457,16 @@
     font-size: 26px;
   }
 
+  @keyframes popIn {
+    0%   { opacity: 0.5; transform: scale(0.97); }
+    60%  { transform: scale(1.015); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .stat-value.updated {
+    animation: popIn 0.22s ease-out;
+  }
+
   .stat-suffix {
     font-size: 15px;
     font-weight: 600;
@@ -588,6 +605,63 @@
     height: 8px;
     border-radius: 2px;
     flex-shrink: 0;
+  }
+
+  /* Methodology / assumptions */
+  .methodology {
+    margin-top: 16px;
+    border-top: 1px solid var(--bm-border-light);
+    padding-top: 12px;
+  }
+
+  .methodology summary {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--bm-secondary-text);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+
+  .methodology summary::-webkit-details-marker { display: none; }
+
+  .methodology summary::before {
+    content: '▸';
+    font-size: 9px;
+    color: var(--bm-muted-gray);
+    transition: transform 0.15s;
+  }
+
+  details[open] .methodology summary::before { transform: rotate(90deg); }
+
+  .methodology-body {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+  }
+
+  .method-row {
+    font-size: 10px;
+    color: var(--bm-secondary-text);
+    line-height: 1.45;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--bm-border-light);
+  }
+
+  .method-row:last-child, .method-row:nth-last-child(2) { border-bottom: none; }
+
+  .method-row strong {
+    display: block;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bm-eigengrau);
+    margin-bottom: 2px;
   }
 
   /* Librarian note */
@@ -952,6 +1026,18 @@
       <div class="librarian-note">
         OnShelf doesn't replace book-order work — <strong>librarians still curate.</strong> It compresses the overhead around the work so their hours go to judgment calls that actually require a librarian. The time modeled above is returned to the district to repurpose toward instruction.
       </div>
+
+      <details class="methodology">
+        <summary>Methodology &amp; assumptions</summary>
+        <div class="methodology-body">
+          <div class="method-row"><strong>Estimated cost</strong>Hours × librarians × hourly rate. Labor is treated as a loaded rate (salary + benefits). The model assumes hours entered reflect book-order-specific work, not total librarian hours.</div>
+          <div class="method-row"><strong>OnShelf price</strong>$3 per student per year — canonical Bookmarked pricing. This is the subscription line item, not a budget estimate. Applied to enrolled student count.</div>
+          <div class="method-row"><strong>Net to district</strong>(Labor saved % × estimated cost) minus OnShelf price. Represents dollars freed from overhead — available to repurpose toward instruction, staffing, or materials.</div>
+          <div class="method-row"><strong>Full-time equivalents</strong>Time returned (saved% × total hours) divided by 2,080 — the standard 52-week, 40-hour work year. Represents the equivalent staff capacity freed, not a headcount reduction.</div>
+          <div class="method-row"><strong>Labor saved range</strong>Default is 50% — a conservative mid-range figure. Actual savings depend on district workflow, adoption rate, and order complexity. Drag the slider to see how the case holds at different levels.</div>
+          <div class="method-row"><strong>These are modeled figures</strong>All outputs are estimates based on inputs you provide. They are not audited, validated, or guaranteed. Bookmarked informs. Districts decide.</div>
+        </div>
+      </details>
     </div>
 
     <!-- Closer -->
@@ -1120,19 +1206,29 @@
     const fteReturned      = timeReturned / 2080;
 
     // ── Stat cards ──
+    function animateCard(el) {
+      el.classList.remove('updated');
+      void el.offsetWidth; // reflow to restart animation
+      el.classList.add('updated');
+    }
+
     outCost.innerHTML = sfx(fmtDollar(estimatedCost), '/yr');
     outCost.classList.remove('empty');
+    animateCard(outCost);
 
     outOnshelf.innerHTML = sfx(fmtDollar(onshelfPrice), '/yr');
     outOnshelf.classList.remove('empty');
+    animateCard(outOnshelf);
 
     outNet.innerHTML = netToDistrict >= 0
       ? sfx(fmtDollar(netToDistrict), '/yr')
       : sfx('−' + fmtDollar(Math.abs(netToDistrict)), '/yr');
     outNet.classList.remove('empty');
+    animateCard(outNet);
 
     outTime.innerHTML = sfx(fmtHours(Math.round(timeReturned)), ' hrs/yr');
     outTime.classList.remove('empty');
+    animateCard(outTime);
     outFteNote.textContent = '≈ ' + fteReturned.toFixed(1) + ' full-time equivalents (÷ 2,080) — back to the district.';
 
     // ── Bar chart ──

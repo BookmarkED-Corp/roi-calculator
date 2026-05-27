@@ -248,6 +248,13 @@
     flex-shrink: 0;
   }
 
+  .input-prefix {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bm-secondary-text);
+    flex-shrink: 0;
+  }
+
   /* Rate toggle */
   .rate-toggle {
     display: flex;
@@ -336,50 +343,6 @@
     margin-top: 2px;
   }
 
-  /* Locked pricing */
-  .locked-pricing {
-    padding: 10px 12px;
-    background: transparent;
-    border: 1.5px dashed rgba(16,117,105,0.3);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .locked-left {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .locked-lbl {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--bm-deep-green);
-    opacity: 0.8;
-  }
-
-  .locked-desc {
-    font-size: 10px;
-    color: var(--bm-secondary-text);
-  }
-
-  .locked-val {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--bm-deep-green);
-    letter-spacing: -0.015em;
-  }
-
-  .locked-val span {
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--bm-muted-gray);
-    margin-left: 2px;
-  }
 
   /* ===== Outputs column ===== */
   .outputs-col {
@@ -1028,12 +991,14 @@
             <div class="slider-labels"><span>20% conservative</span><span>90% full reduction</span></div>
           </div>
 
-          <div class="locked-pricing">
-            <div class="locked-left">
-              <div class="locked-lbl">OnShelf price — locked</div>
-              <div class="locked-desc">$3 / student / year — canonical pricing.</div>
+          <div class="field">
+            <label class="field-label" for="input-onshelf-price">OnShelf price per student</label>
+            <span class="field-helper">Annual subscription cost per enrolled student. Default is $3 — adjust if your district has a custom quote.</span>
+            <div class="field-row">
+              <span class="input-prefix">$</span>
+              <input type="number" id="input-onshelf-price" min="0" step="0.01" placeholder="e.g. 3" value="3">
+              <span class="input-suffix">/ student / yr</span>
             </div>
-            <div class="locked-val">$3<span>/ student</span></div>
           </div>
 
         </div>
@@ -1246,7 +1211,7 @@
 
 <script>
   // ─── Constants ───────────────────────────────────────────────
-  const ONSHELF_PRICE_PER_STUDENT = 3;
+  const inputOnshelfPrice = document.getElementById('input-onshelf-price');
   const HOURS_PER_DAY = 8;
 
   // ─── State ───────────────────────────────────────────────────
@@ -1320,7 +1285,7 @@
   updateSliderFill();
 
   // ─── Input event listeners ────────────────────────────────────
-  [inputHoursPerOrder, inputOrdersPerYear, inputLibrarians, inputRate, inputStudents].forEach(el => {
+  [inputHoursPerOrder, inputOrdersPerYear, inputLibrarians, inputRate, inputStudents, inputOnshelfPrice].forEach(el => {
     el.addEventListener('input', recalculate);
   });
 
@@ -1387,7 +1352,7 @@
 
     // Calculations
     const estimatedCost    = hoursPerYear * librarians * hourlyRate;
-    const onshelfPrice     = students * ONSHELF_PRICE_PER_STUDENT;
+    const onshelfPrice     = students * (parseFloat(inputOnshelfPrice.value) || 3);
     const savedLabor       = savedPct * estimatedCost;
     const ongoingLabor     = estimatedCost - savedLabor;          // (1 - saved%) × cost
     const withOnshelfTotal = ongoingLabor + onshelfPrice;
@@ -1480,6 +1445,7 @@
     if (inputLibrarians.value) p.set('l', inputLibrarians.value);
     if (inputRate.value)      p.set('r', inputRate.value);
     if (inputStudents.value)  p.set('s', inputStudents.value);
+    if (inputOnshelfPrice.value && parseFloat(inputOnshelfPrice.value) !== 3) p.set('op', inputOnshelfPrice.value);
     p.set('m', rateMode === 'daily' ? 'd' : 'hr');
     p.set('p', inputSaved.value);
     return window.location.origin + window.location.pathname + '?' + p.toString();
@@ -1520,6 +1486,7 @@
     if (p.has('l')) inputLibrarians.value = p.get('l');
     if (p.has('r')) inputRate.value = p.get('r');
     if (p.has('s')) inputStudents.value = p.get('s');
+    if (p.has('op')) inputOnshelfPrice.value = p.get('op');
     if (p.has('m')) {
       const mode = p.get('m') === 'hr' ? 'hourly' : 'daily';
       rateMode = mode;
@@ -1545,6 +1512,7 @@
     inputLibrarians.value = '';
     inputRate.value = '';
     inputStudents.value = '';
+    inputOnshelfPrice.value = '3';
     rateMode = 'daily';
     btnDaily.classList.add('active');
     btnHourly.classList.remove('active');
@@ -1583,7 +1551,7 @@
     if (!hasAll) return null;
     const hourlyRate    = rateMode === 'daily' ? rateRaw / HOURS_PER_DAY : rateRaw;
     const estimatedCost = hoursPerYear * librarians * hourlyRate;
-    const onshelfPrice  = students * ONSHELF_PRICE_PER_STUDENT;
+    const onshelfPrice  = students * (parseFloat(inputOnshelfPrice.value) || 3);
     const savedLabor    = savedPct * estimatedCost;
     const netToDistrict = savedLabor - onshelfPrice;
     const timeReturned  = savedPct * hoursPerYear * librarians;

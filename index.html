@@ -50,6 +50,16 @@
     position: sticky;
     top: 0;
     z-index: 10;
+    overflow: hidden;
+  }
+
+  .app-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
   }
 
   .logo {
@@ -236,8 +246,13 @@
 
   input[type="number"]:focus {
     border-color: var(--bm-teal-accent);
-    box-shadow: 0 0 0 3px rgba(18,163,140,0.1);
+    box-shadow: 0 0 0 3px rgba(18,163,140,0.12);
     background: var(--bm-white);
+  }
+
+  input[type="number"]:not(:placeholder-shown) {
+    border-color: rgba(18,163,140,0.35);
+    background: rgba(18,163,140,0.02);
   }
 
   .input-suffix {
@@ -428,15 +443,30 @@
     font-style: italic;
   }
 
-  @keyframes popIn {
-    0%   { opacity: 0.5; transform: scale(0.97); }
-    60%  { transform: scale(1.015); }
-    100% { opacity: 1; transform: scale(1); }
+  @keyframes statReveal {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  .stat-value.updated {
-    animation: popIn 0.22s ease-out;
+  .stat-value.revealed {
+    animation: statReveal 0.3s ease-out forwards;
   }
+
+  /* Net to District — positive payoff state */
+  .stat-card.net-positive {
+    background: linear-gradient(145deg, rgba(16,117,105,0.07) 0%, rgba(16,117,105,0.03) 100%);
+    border-color: rgba(16,117,105,0.35);
+    border-top-color: var(--bm-deep-green);
+  }
+
+  .stat-card.net-positive .stat-value { color: var(--bm-deep-green); }
+
+  .stat-card.net-negative {
+    background: var(--bm-bg-warm);
+    border-top-color: #D9582A;
+  }
+
+  .stat-card.net-negative .stat-value { color: #B14012; }
 
   .stat-suffix {
     font-size: 15px;
@@ -1315,8 +1345,47 @@
   }
 
   function setEmpty(el) {
+    if (el._raf) { cancelAnimationFrame(el._raf); el._raf = null; }
+    el._raw = 0;
     el.textContent = '—';
     el.classList.add('empty');
+    el.classList.remove('revealed');
+  }
+
+  function animateStat(el, targetRaw, htmlFn, duration) {
+    duration = duration || 750;
+    const fromRaw = el._raw || 0;
+    const isFirstReveal = !el._raw && el.classList.contains('empty');
+    el._raw = targetRaw;
+    if (el._raf) cancelAnimationFrame(el._raf);
+    const t0 = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - t0) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const cur = fromRaw + (targetRaw - fromRaw) * eased;
+      el.innerHTML = htmlFn(cur);
+      el.classList.remove('empty');
+      if (isFirstReveal) el.classList.add('revealed');
+      if (progress < 1) {
+        el._raf = requestAnimationFrame(step);
+      } else {
+        el._raf = null;
+        el.innerHTML = htmlFn(targetRaw);
+      }
+    }
+    el._raf = requestAnimationFrame(step);
+  }
+
+  function fmtDollarLive(n) {
+    const abs = Math.abs(n);
+    let s;
+    if (abs >= 1_000_000) {
+      s = '$' + (abs / 1_000_000).toFixed(2).replace(/\.?0+$/, '') + 'M';
+    } else {
+      s = '$' + Math.round(abs).toLocaleString('en-US');
+    }
+    return (n < 0 ? '−' : '') + s;
   }
 
   // ─── Core calculation ─────────────────────────────────────────
@@ -1339,6 +1408,9 @@
     if (!hasAll) {
       setEmpty(outCost); setEmpty(outOnshelf); setEmpty(outNet); setEmpty(outTime);
       outFteNote.textContent = 'Enter your numbers to see the estimate.';
+      const netCard = outNet.closest('.stat-card');
+      netCard.classList.remove('net-positive', 'net-negative');
+      netCard.classList.add('accent');
       // Zero out bars and reset chart subtitle
       bar1.style.width = '0%'; setEmpty(bar1Amt);
       bar2Labor.style.width = '0%'; bar2Onshelf.style.width = '0%';
@@ -1362,29 +1434,17 @@
     const fteReturned      = timeReturned / 2080;
 
     // ── Stat cards ──
-    function animateCard(el) {
-      el.classList.remove('updated');
-      void el.offsetWidth; // reflow to restart animation
-      el.classList.add('updated');
-    }
+    animateStat(outCost,    estimatedCost, v => sfx(fmtDollarLive(v), '/yr'));
+    animateStat(outOnshelf, onshelfPrice,  v => sfx(fmtDollarLive(v), '/yr'));
+    animateStat(outNet,     netToDistrict, v => sfx(fmtDollarLive(v), '/yr'));
+    animateStat(outTime,    timeReturned,  v => sfx(Math.round(Math.abs(v)).toLocaleString('en-US'), ' hrs/yr'));
 
-    outCost.innerHTML = sfx(fmtDollar(estimatedCost), '/yr');
-    outCost.classList.remove('empty');
-    animateCard(outCost);
+    // Net to district card state
+    const netCard = outNet.closest('.stat-card');
+    netCard.classList.toggle('net-positive', netToDistrict > 0);
+    netCard.classList.toggle('net-negative', netToDistrict <= 0);
+    netCard.classList.remove('accent');
 
-    outOnshelf.innerHTML = sfx(fmtDollar(onshelfPrice), '/yr');
-    outOnshelf.classList.remove('empty');
-    animateCard(outOnshelf);
-
-    outNet.innerHTML = netToDistrict >= 0
-      ? sfx(fmtDollar(netToDistrict), '/yr')
-      : sfx('−' + fmtDollar(Math.abs(netToDistrict)), '/yr');
-    outNet.classList.remove('empty');
-    animateCard(outNet);
-
-    outTime.innerHTML = sfx(fmtHours(Math.round(timeReturned)), ' hrs/yr');
-    outTime.classList.remove('empty');
-    animateCard(outTime);
     outFteNote.textContent = '≈ ' + fteReturned.toFixed(1) + ' full-time equivalents (÷ 2,080) — back to the district.';
 
     // ── Bar chart ──

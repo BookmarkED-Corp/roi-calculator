@@ -865,11 +865,20 @@
           <div class="section-divider">District profile</div>
 
           <div class="field">
-            <label class="field-label" for="input-hours">Hours per librarian / year</label>
-            <span class="field-helper">Total annual hours one librarian spends on book-order work.</span>
+            <label class="field-label" for="input-hours-per-order">Hours per book order</label>
+            <span class="field-helper">How long one librarian spends on a single book order — from selection to approval.</span>
             <div class="field-row">
-              <input type="number" id="input-hours" min="0" max="1000" placeholder="e.g. 240">
-              <span class="input-suffix">hrs / yr</span>
+              <input type="number" id="input-hours-per-order" min="0" max="1000" placeholder="e.g. 40">
+              <span class="input-suffix">hrs</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="input-orders-per-year">Book orders per year</label>
+            <span class="field-helper">How many separate book orders each librarian runs in a typical year.</span>
+            <div class="field-row">
+              <input type="number" id="input-orders-per-year" min="0" max="52" placeholder="e.g. 6">
+              <span class="input-suffix">orders / yr</span>
             </div>
           </div>
 
@@ -1030,7 +1039,7 @@
       <details class="methodology">
         <summary>Methodology &amp; assumptions</summary>
         <div class="methodology-body">
-          <div class="method-row"><strong>Estimated cost</strong>Hours × librarians × hourly rate. Labor is treated as a loaded rate (salary + benefits). The model assumes hours entered reflect book-order-specific work, not total librarian hours.</div>
+          <div class="method-row"><strong>Estimated cost</strong>(Hours per order × orders per year) × librarians × hourly rate. Labor is treated as a loaded rate (salary + benefits). Hours capture the full cycle per order — selection through approval.</div>
           <div class="method-row"><strong>OnShelf price</strong>$3 per student per year — canonical Bookmarked pricing. This is the subscription line item, not a budget estimate. Applied to enrolled student count.</div>
           <div class="method-row"><strong>Net to district</strong>(Labor saved % × estimated cost) minus OnShelf price. Represents dollars freed from overhead — available to repurpose toward instruction, staffing, or materials.</div>
           <div class="method-row"><strong>Full-time equivalents</strong>Time returned (saved% × total hours) divided by 2,080 — the standard 52-week, 40-hour work year. Represents the equivalent staff capacity freed, not a headcount reduction.</div>
@@ -1068,7 +1077,8 @@
   let rateMode = 'daily'; // 'daily' | 'hourly'
 
   // ─── Elements ────────────────────────────────────────────────
-  const inputHours     = document.getElementById('input-hours');
+  const inputHoursPerOrder  = document.getElementById('input-hours-per-order');
+  const inputOrdersPerYear  = document.getElementById('input-orders-per-year');
   const inputLibrarians = document.getElementById('input-librarians');
   const inputRate      = document.getElementById('input-rate');
   const inputStudents  = document.getElementById('input-students');
@@ -1134,7 +1144,7 @@
   updateSliderFill();
 
   // ─── Input event listeners ────────────────────────────────────
-  [inputHours, inputLibrarians, inputRate, inputStudents].forEach(el => {
+  [inputHoursPerOrder, inputOrdersPerYear, inputLibrarians, inputRate, inputStudents].forEach(el => {
     el.addEventListener('input', recalculate);
   });
 
@@ -1169,14 +1179,17 @@
 
   // ─── Core calculation ─────────────────────────────────────────
   function recalculate() {
-    const hours      = parseFloat(inputHours.value);
+    const hoursPerOrder  = parseFloat(inputHoursPerOrder.value);
+    const ordersPerYear  = parseFloat(inputOrdersPerYear.value);
+    const hoursPerYear   = hoursPerOrder * ordersPerYear;
     const librarians = parseFloat(inputLibrarians.value);
     const rateRaw    = parseFloat(inputRate.value);
     const students   = parseFloat(inputStudents.value);
     const savedPct   = parseFloat(inputSaved.value) / 100;
 
-    // Need all four main inputs to render results
-    const hasAll = !isNaN(hours) && hours >= 0
+    // Need all main inputs to render results
+    const hasAll = !isNaN(hoursPerOrder) && hoursPerOrder >= 0
+                && !isNaN(ordersPerYear) && ordersPerYear >= 0
                 && !isNaN(librarians) && librarians >= 1
                 && !isNaN(rateRaw) && rateRaw > 0
                 && !isNaN(students) && students >= 1;
@@ -1197,13 +1210,13 @@
     const hourlyRate = rateMode === 'daily' ? rateRaw / HOURS_PER_DAY : rateRaw;
 
     // Calculations
-    const estimatedCost    = hours * librarians * hourlyRate;
+    const estimatedCost    = hoursPerYear * librarians * hourlyRate;
     const onshelfPrice     = students * ONSHELF_PRICE_PER_STUDENT;
     const savedLabor       = savedPct * estimatedCost;
     const ongoingLabor     = estimatedCost - savedLabor;          // (1 - saved%) × cost
     const withOnshelfTotal = ongoingLabor + onshelfPrice;
     const netToDistrict    = savedLabor - onshelfPrice;
-    const timeReturned     = savedPct * hours * librarians;
+    const timeReturned     = savedPct * hoursPerYear * librarians;
     const fteReturned      = timeReturned / 2080;
 
     // ── Stat cards ──
@@ -1286,7 +1299,8 @@
   // ─── Share / URL state ────────────────────────────────────────
   function encodeStateToURL() {
     const p = new URLSearchParams();
-    if (inputHours.value)     p.set('h', inputHours.value);
+    if (inputHoursPerOrder.value)  p.set('ho', inputHoursPerOrder.value);
+    if (inputOrdersPerYear.value)  p.set('oy', inputOrdersPerYear.value);
     if (inputLibrarians.value) p.set('l', inputLibrarians.value);
     if (inputRate.value)      p.set('r', inputRate.value);
     if (inputStudents.value)  p.set('s', inputStudents.value);
@@ -1296,7 +1310,7 @@
   }
 
   function pushStateToURL() {
-    const hasAny = inputHours.value || inputLibrarians.value || inputRate.value || inputStudents.value;
+    const hasAny = inputHoursPerOrder.value || inputOrdersPerYear.value || inputLibrarians.value || inputRate.value || inputStudents.value;
     if (!hasAny) {
       history.replaceState(null, '', window.location.pathname);
       return;
@@ -1325,7 +1339,8 @@
   function loadStateFromURL() {
     const p = new URLSearchParams(window.location.search);
     if (!p.toString()) return;
-    if (p.has('h')) inputHours.value = p.get('h');
+    if (p.has('ho')) inputHoursPerOrder.value = p.get('ho');
+    if (p.has('oy')) inputOrdersPerYear.value = p.get('oy');
     if (p.has('l')) inputLibrarians.value = p.get('l');
     if (p.has('r')) inputRate.value = p.get('r');
     if (p.has('s')) inputStudents.value = p.get('s');
@@ -1349,7 +1364,8 @@
 
   // ─── Reset ───────────────────────────────────────────────────
   function resetAll() {
-    inputHours.value = '';
+    inputHoursPerOrder.value = '';
+    inputOrdersPerYear.value = '';
     inputLibrarians.value = '';
     inputRate.value = '';
     inputStudents.value = '';

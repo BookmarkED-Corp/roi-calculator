@@ -55,25 +55,13 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: -0.01em;
-    color: var(--bm-white);
     text-decoration: none;
   }
 
-  .logo .mark {
-    width: 22px;
+  .logo-img {
     height: 22px;
-    background: var(--bm-teal-accent);
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--bm-white);
-    font-size: 12px;
-    font-weight: 800;
+    width: auto;
+    display: block;
     flex-shrink: 0;
   }
 
@@ -919,8 +907,7 @@
   <!-- App header -->
   <header class="app-header">
     <div class="logo">
-      <span class="mark">B</span>
-      <span>Bookmarked</span>
+      <img src="bookmarked-logo.png" alt="Bookmarked" class="logo-img">
     </div>
     <div class="header-right">
       <span class="header-title">ROI Calculator</span>

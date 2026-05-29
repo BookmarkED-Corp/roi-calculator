@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked Inc. — Board Financial Dashboard v3</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#0f1117;--ink-2:#2a2d35;--ink-3:#6b7280;
+    --paper:#f9f7f2;--paper-2:#f0ede5;--paper-3:#e4dfd4;
+    --gold:#c8923a;--gold-light:#e8b86a;
+    --danger:#c0392b;--success:#1a7a4a;--caution:#d97706;
+    --border:rgba(15,17,23,0.1);
+    --mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'DM Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);}
+
+  .header{background:var(--ink);color:var(--paper);padding:26px 48px 22px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:3px solid var(--gold);}
+  .header h1{font-family:var(--serif);font-size:1.9rem;line-height:1;margin-bottom:5px;}
+  .header .sub{font-family:var(--mono);font-size:0.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);}
+  .hdr-r{text-align:right;}
+  .hdr-r .ao{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(249,247,242,.4);margin-bottom:3px;}
+  .hdr-r .dt{font-family:var(--serif);font-size:1.1rem;}
+
+  .nav{background:var(--ink-2);padding:0 48px;display:flex;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.08);}
+  .nt{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(249,247,242,.4);padding:12px 16px 10px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+  .nt:hover{color:rgba(249,247,242,.75);}
+  .nt.active{color:var(--gold-light);border-bottom-color:var(--gold);}
+
+  .content{padding:30px 48px 60px;}
+  .section{display:none;}
+  .section.active{display:block;}
+
+  .slabel{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:9px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+  .slabel::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  .kg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+  .kg3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+  .kg2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;}
+  .kc{background:white;border:1px solid var(--border);padding:18px 16px 14px;position:relative;overflow:hidden;}
+  .kc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+  .kc.g::before{background:var(--success);}
+  .kc.r::before{background:var(--danger);}
+  .kc.o::before{background:var(--gold);}
+  .kc.w::before{background:var(--caution);}
+  .kc.b::before{background:#2563eb;}
+  .klbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px;}
+  .kv{font-family:var(--serif);font-size:1.8rem;line-height:1;color:var(--ink);margin-bottom:5px;}
+  .ks{font-size:.7rem;color:var(--ink-3);line-height:1.4;}
+  .kdelta{font-family:var(--mono);font-size:.63rem;margin-top:5px;}
+  .up{color:var(--success);}.dn{color:var(--danger);}.fl{color:var(--ink-3);}
+
+  .badge{display:inline-block;font-family:var(--mono);font-size:.57rem;letter-spacing:.06em;padding:2px 6px;border-radius:2px;text-transform:uppercase;margin-top:4px;}
+  .br{background:#fde8e6;color:var(--danger);}
+  .bg{background:#e6f4ed;color:var(--success);}
+  .bo{background:#fdf3e6;color:var(--gold);}
+  .bw{background:#fef3e2;color:var(--caution);}
+  .bm{background:var(--paper-2);color:var(--ink-3);}
+  .bb{background:#eff6ff;color:#2563eb;}
+
+  .tc{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+  .tcc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px;}
+  .wn{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+
+  .panel{background:white;border:1px solid var(--border);overflow:hidden;margin-bottom:18px;}
+  .ph{background:var(--paper-2);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+  .pt{font-family:var(--mono);font-size:.61rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:500;}
+  .pb{padding:16px;}
+
+  table{width:100%;border-collapse:collapse;}
+  th{font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:0 8px 8px 0;text-align:left;border-bottom:1px solid var(--border);}
+  td{font-size:.76rem;padding:7px 8px 7px 0;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  .r{text-align:right;}.mn{font-family:var(--mono);font-size:.71rem;}
+  .tdr{color:var(--danger);}.tdg{color:var(--success);}.tdo{color:var(--gold);}.tdm{color:var(--ink-3);font-size:.68rem;}
+  .tr td{font-weight:600;border-top:2px solid var(--border);border-bottom:none;padding-top:9px;background:var(--paper);}
+  .sr td{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);padding-top:12px;background:transparent;border-bottom:none;}
+
+  .chip{display:inline-block;font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;padding:2px 6px;border-radius:2px;text-transform:uppercase;}
+  .cg{background:#e6f4ed;color:var(--success);}
+  .cr{background:#fde8e6;color:var(--danger);}
+  .cw{background:#fef3e2;color:var(--caution);}
+  .cm{background:var(--paper-2);color:var(--ink-3);}
+  .cb{background:#eff6ff;color:#2563eb;}
+  .co{background:#fdf3e6;color:var(--gold);}
+
+  .ca{background:#fdf8f0;border-left:3px solid var(--gold);padding:11px 14px;margin-bottom:16px;font-size:.74rem;line-height:1.6;color:var(--ink-2);}
+  .ca strong{font-weight:600;display:block;margin-bottom:2px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);}
+  .car{background:#fff8f7;border-left-color:var(--danger);}
+  .car strong{color:var(--danger);}
+  .cag{background:#f0faf5;border-left-color:var(--success);}
+  .cag strong{color:var(--success);}
+  .caw{background:#fffbf0;border-left-color:var(--caution);}
+  .caw strong{color:var(--caution);}
+
+  .div{height:1px;background:var(--border);margin:14px 0;}
+
+  .pw{display:flex;align-items:center;gap:8px;}
+  .pt2{flex:1;height:4px;background:var(--paper-3);border-radius:2px;overflow:hidden;}
+  .pf{height:100%;border-radius:2px;}
+  .pg{background:var(--success);}.pr{background:var(--danger);}.po{background:var(--gold);}.pw2{background:var(--caution);}
+  .pp{font-family:var(--mono);font-size:.57rem;color:var(--ink-3);width:30px;text-align:right;}
+
+  .ei{font-size:.69rem;color:var(--ink-2);border:none;background:transparent;width:100%;outline:none;font-family:var(--sans);cursor:text;}
+  .ei:focus{background:#fffdf7;border-bottom:1px solid var(--gold);}
+  .enote{font-family:var(--mono);font-size:.54rem;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;}
+
+  .vp{color:var(--success);font-family:var(--mono);font-size:.71rem;}
+  .vn{color:var(--danger);font-family:var(--mono);font-size:.71rem;}
+
+  .fb{display:flex;align-items:center;gap:9px;margin-bottom:7px;}
+  .fl2{font-size:.7rem;color:var(--ink-2);width:155px;flex-shrink:0;}
+  .ft{flex:1;height:20px;background:var(--paper-3);border-radius:2px;overflow:hidden;position:relative;}
+  .ff{height:100%;border-radius:2px;display:flex;align-items:center;padding-left:7px;}
+  .fa{font-family:var(--mono);font-size:.6rem;color:white;white-space:nowrap;}
+  .fc{font-family:var(--mono);font-size:.58rem;color:var(--ink-3);width:60px;text-align:right;flex-shrink:0;}
+
+  .ai{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,.04);align-items:flex-start;}
+  .ai:last-child{border-bottom:none;}
+  .ao2{font-family:var(--mono);font-size:.57rem;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:2px 6px;border-radius:2px;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+  .at{font-size:.74rem;line-height:1.5;color:var(--ink-2);}
+
+  .footer{margin-top:40px;padding:16px 48px;background:var(--ink);color:rgba(249,247,242,.35);font-family:var(--mono);font-size:.57rem;letter-spacing:.06em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+
+  @media(max-width:1100px){
+    .kg,.kg3{grid-template-columns:repeat(2,1fr);}
+    .tc,.tcc,.wn,.kg2{grid-template-columns:1fr;}
+    .header,.nav,.content,.footer{padding-left:20px;padding-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Bookmarked Inc.</h1>
+    <div class="sub">Board Financial Dashboard · Forecast vs. Actuals · Pipeline Analysis · v3</div>
+  </div>
+  <div class="hdr-r">
+    <div class="ao">Prepared</div>
+    <div class="dt">May 27, 2026</div>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="nt active" onclick="show('summary')">Executive Summary</div>
+  <div class="nt" onclick="show('actuals')">Forecast vs. Actuals</div>
+  <div class="nt" onclick="show('pipeline')">Pipeline &amp; Trends</div>
+  <div class="nt" onclick="show('renewals')">Renewal Tracker</div>
+  <div class="nt" onclick="show('balance')">Balance Sheet</div>
+  <div class="nt" onclick="show('cashflow')">Cash Flow</div>
+  <div class="nt" onclick="show('ap')">A/P Aging</div>
+  <div class="nt" onclick="show('deferred')">Deferred</div>
+  <div class="nt" onclick="show('seed')">Seed Round</div>
+  <div class="nt" onclick="show('actions')">Actions</div>
+</div>
+
+<div class="content">
+
+<!-- ══════ EXECUTIVE SUMMARY ══════ -->
+<div class="section active" id="section-summary">
+  <div class="slabel">Executive Summary — May 27, 2026 · Sources: QBO Actuals + Jan's Renewal Tracker</div>
+
+  <div class="ca caw">
+    <strong>Important Context for Charlie</strong>
+    Revenue figures below are on a <strong>GAAP/accrual (invoiced) basis</strong> per QBO — this is the right measure against the $1M ARR goal. Cash position is separate and lower than forecast due to timing of collections vs. burn. The $203K deferred revenue on the balance sheet represents cash already collected for future service periods — a healthy leading indicator. The gap to $1M ARR is real and the renewal sprint through June is the critical path.
+  </div>
+
+  <div class="kg">
+    <div class="kc o">
+      <div class="klbl">Current Verified ARR</div>
+      <div class="kv">$439,880</div>
+      <div class="ks">64 paid districts · Jan's tracker May 27</div>
+      <span class="badge bo">Source: Renewal Tracker</span>
+    </div>
+    <div class="kc g">
+      <div class="klbl">Revenue Invoiced YTD (Jan–May)</div>
+      <div class="kv">$130,835</div>
+      <div class="ks">GAAP basis · $50,634 renewals + $80,202 new</div>
+      <div class="kdelta up">↑ May: $34,727 · Consistent run rate</div>
+    </div>
+    <div class="kc r">
+      <div class="klbl">Cash Balance (May 31)</div>
+      <div class="kv">$107,773</div>
+      <div class="ks">Stifel operating account · Below forecast</div>
+      <span class="badge br">Critical — Below Plan</span>
+    </div>
+    <div class="kc w">
+      <div class="klbl">Gap to $1M ARR</div>
+      <div class="kv">$295K</div>
+      <div class="ks">Base case renewal forecast: $704,831 by Sep 1</div>
+      <span class="badge bw">Base Case</span>
+    </div>
+  </div>
+
+  <div class="tc">
+    <div class="panel">
+      <div class="ph"><span class="pt">Revenue vs. $1M ARR Goal — Invoiced Basis</span></div>
+      <div class="pb">
+        <div style="margin-bottom:14px;">
+          <div class="klbl" style="margin-bottom:5px;">YTD Invoiced (Jan–May) vs. Full-Year Pace</div>
+          <div class="pw"><div class="pt2" style="height:8px;"><div class="pf pg" style="width:13.1%"></div></div><span class="pp">13%</span></div>
+          <div style="font-size:.66rem;color:var(--ink-3);margin-top:2px;">$130,835 of $1,000,000 target · 5 months in</div>
+        </div>
+        <div class="div"></div>
+        <table>
+          <thead><tr><th>Scenario</th><th class="r">Projected ARR (Sep 1)</th><th class="r">Gap</th></tr></thead>
+          <tbody>
+            <tr><td><span class="chip cr">Conservative</span></td><td class="mn r tdr">$615,046</td><td class="mn r tdr">−$384,954</td></tr>
+            <tr><td><span class="chip cw">Base Case</span></td><td class="mn r">$704,831</td><td class="mn r" style="color:var(--caution)">−$295,169</td></tr>
+            <tr><td><span class="chip cg">Best Case</span></td><td class="mn r tdg">$768,822</td><td class="mn r tdg">−$231,178</td></tr>
+          </tbody>
+        </table>
+        <div class="div"></div>
+        <div style="font-size:.7rem;color:var(--ink-3);line-height:1.6;">All scenarios include Conroe ISD ($206,785 locked 3-yr) + Key Deals ($202,172 — Garland, Pearland, Wimberley, Triumph). The entire gap lives in the 46 "In Progress" districts ($232,880) and free→paid conversions.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><span class="pt">Cash Position — Actual vs. Forecast</span></div>
+      <div class="pb">
+        <div class="ca car" style="margin-bottom:12px;">
+          <strong>Cash Warning</strong>
+          Actual cash (May 31): $107,773 vs. forecast $319,319. The gap reflects seed investment draw-downs funding operations and deferred vendor payments. Deferred Revenue ($203K) is a balance sheet liability but represents cash already in hand.
+        </div>
+        <table>
+          <tbody>
+            <tr><td style="font-size:.72rem;">Cash — Stifel Operating (May 31)</td><td class="mn r tdg">$107,773</td></tr>
+            <tr><td style="font-size:.72rem;">Bill.com Clearing (outgoing)</td><td class="mn r tdr">($5,070)</td></tr>
+            <tr><td style="font-size:.72rem;">Divvy Card Clearing</td><td class="mn r tdr">($10,000)</td></tr>
+            <tr><td style="font-size:.72rem;">Money In Transit</td><td class="mn r tdo">$5,000</td></tr>
+            <tr class="tr"><td>Net Cash Position</td><td class="mn r">$97,703</td></tr>
+            <tr><td style="font-size:.72rem;padding-top:10px;">Deferred Revenue (future service)</td><td class="mn r tdg" style="padding-top:10px;">$203,407</td></tr>
+            <tr><td style="font-size:.72rem;">A/R Outstanding</td><td class="mn r tdg">$322</td></tr>
+            <tr><td style="font-size:.72rem;">Accrued Revenue</td><td class="mn r tdg">$4,409</td></tr>
+          </tbody>
+        </table>
+        <div class="div"></div>
+        <div style="font-size:.68rem;color:var(--ink-3);line-height:1.5;">$312K remaining seed commitment (School Works $200K + Tom Bailey balance $25K + others $87K) is the primary near-term bridge. School Works is the largest single priority.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tcc">
+    <div class="panel">
+      <div class="ph"><span class="pt">🔥 Immediate — June Sprint</span></div>
+      <div class="pb" style="font-size:.74rem;line-height:1.7;color:var(--ink-2);">
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--danger);">Cash Bridge</strong><br>
+        11 "Likely" districts ($73K) are the fastest path to cash. Tara following up on all quote-sent deals. La Grange moving to V2 + quote requested 5/26. Humble ISD ($44K free→paid) needs outreach now.<br><br>
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--caution);">V1 Sunset June 30</strong><br>
+        Auto-migrate all. Non-responsive = warm V2 leads. Patrick + Steve own comms plan.
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">⚠️ Risks</span></div>
+      <div class="pb" style="font-size:.74rem;line-height:1.7;color:var(--ink-2);">
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--danger);">Parked $75K</strong><br>
+        Killeen, Belton, Argyle, Temple — blocked on Flete integration. Not recoverable before Sep.<br><br>
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--danger);">A/P Pressure</strong><br>
+        $210K vendor A/P outstanding. CORE ITS $52.5K (Anil), Scale LLP $33.3K, Jan $18.75K, Techdome $43.1K disputed. Payment plan active but fragile if cash doesn't improve.
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">✅ Progress</span></div>
+      <div class="pb" style="font-size:.74rem;line-height:1.7;color:var(--ink-2);">
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--success);">Cost Reductions</strong><br>
+        DataArt wound down ($14,979 vs. $55K prior). Hosting near zero in May ($32 vs. $13,968 prior — AWS credits). HubSpot renegotiation in progress.<br><br>
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--success);">Deferred Revenue</strong><br>
+        $203K deferred revenue = strong proof of contracted relationships and cash already collected.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ FORECAST VS ACTUALS ══════ -->
+<div class="section" id="section-actuals">
+  <div class="slabel">Forecast vs. Actuals — GAAP/Invoiced Basis · QBO Jan–May 2026</div>
+
+  <div class="ca">
+    <strong>Revenue Measurement Note</strong>
+    All revenue figures on this tab are <strong>GAAP accrual (invoiced)</strong> — the correct measure for ARR progress. The QBO P&amp;L covers Jan 1 – May 31, 2026. May is fully reflected. Commentary fields are editable — click to type before your meeting with Charlie.
+  </div>
+
+  <div class="panel">
+    <div class="ph"><span class="pt">P&amp;L — Forecast vs. Actual · Jan–May 2026</span><span class="chip co">✎ Click commentary to edit</span></div>
+    <div class="pb">
+      <div class="enote">✎ Commentary fields are editable</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Line Item</th>
+            <th class="r">Jan Act.</th>
+            <th class="r">Feb Act.</th>
+            <th class="r">Mar Act.</th>
+            <th class="r">Apr Act.</th>
+            <th class="r">May Act.</th>
+            <th class="r">YTD Actual</th>
+            <th class="r">YTD Forecast</th>
+            <th class="r">Variance</th>
+            <th>Commentary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="10" class="sr">REVENUE (GAAP / INVOICED)</td></tr>
+          <tr>
+            <td>MRR — Annual Renewals</td>
+            <td class="mn r">$9,890</td><td class="mn r">$9,890</td><td class="mn r">$10,082</td><td class="mn r">$10,082</td><td class="mn r tdg">$10,688</td>
+            <td class="mn r tdg">$50,634</td>
+            <td class="mn r tdm">$49,451</td>
+            <td class="vp r">+$1,183</td>
+            <td><input class="ei" value="Slight uptick in May — renewal conversions beginning"></td>
+          </tr>
+          <tr>
+            <td>MRR — New</td>
+            <td class="mn r">$3,951</td><td class="mn r">$4,884</td><td class="mn r">$23,581</td><td class="mn r">$23,746</td><td class="mn r tdg">$24,039</td>
+            <td class="mn r tdg">$80,201</td>
+            <td class="mn r tdm">$37,500</td>
+            <td class="vp r">+$42,701</td>
+            <td><input class="ei" value="Mar spike from Conroe ISD ($17,232/mo) + other new deals closing"></td>
+          </tr>
+          <tr class="tr">
+            <td>Total Revenue</td>
+            <td class="mn r">$13,841</td><td class="mn r">$14,774</td><td class="mn r">$33,664</td><td class="mn r">$33,829</td><td class="mn r tdg">$34,727</td>
+            <td class="mn r tdg">$130,835</td>
+            <td class="mn r tdm">$86,951</td>
+            <td class="vp r">+$43,884</td>
+            <td></td>
+          </tr>
+          <tr><td colspan="10" class="sr">COST OF GOODS SOLD</td></tr>
+          <tr>
+            <td>Hosting</td>
+            <td class="mn r">$12,993</td><td class="mn r">$11,633</td><td class="mn r">$13,968</td><td class="mn r">$13,968</td>
+            <td class="mn r tdg">$32</td>
+            <td class="mn r">$52,594</td>
+            <td class="mn r tdm">$52,000</td>
+            <td class="vp r">−$594</td>
+            <td><input class="ei" value="May near-zero — AWS credits exhausted. Full cost resumes June ~$13,935/mo"></td>
+          </tr>
+          <tr class="tr">
+            <td>Gross Profit</td>
+            <td class="mn r">$848</td><td class="mn r">$3,142</td><td class="mn r">$19,696</td><td class="mn r">$19,861</td>
+            <td class="mn r tdg">$34,694</td>
+            <td class="mn r tdg">$78,242</td>
+            <td class="mn r tdm">$34,951</td>
+            <td class="vp r">+$43,291</td>
+            <td><input class="ei" value="Gross margin improving — May 99.9% gross margin due to zero hosting cost"></td>
+          </tr>
+          <tr><td colspan="10" class="sr">OPERATING EXPENSES</td></tr>
+          <tr>
+            <td>Client Success Labour</td>
+            <td class="mn r">$8,298</td><td class="mn r">$7,933</td><td class="mn r">$7,856</td><td class="mn r">$7,835</td><td class="mn r">$9,712</td>
+            <td class="mn r">$41,634</td>
+            <td class="mn r tdm">$41,668</td>
+            <td class="fl r">−$34</td>
+            <td><input class="ei" value="In line. May slightly up — Patrick salary increase effective May 1"></td>
+          </tr>
+          <tr>
+            <td>R&amp;D Labour + Contractors</td>
+            <td class="mn r tdr">$59,649</td><td class="mn r tdr">$56,782</td><td class="mn r tdr">$52,920</td><td class="mn r">$30,335</td><td class="mn r tdg">$26,531</td>
+            <td class="mn r">$226,217</td>
+            <td class="mn r tdm">$185,000</td>
+            <td class="vn r">+$41,217</td>
+            <td><input class="ei" value="Jan–Mar elevated (DataArt $24K/mo). Apr-May reduced per CHC edits — DataArt winding down to $0"></td>
+          </tr>
+          <tr>
+            <td>Sales &amp; Marketing</td>
+            <td class="mn r">$18,295</td><td class="mn r">$18,631</td><td class="mn r">$29,725</td><td class="mn r">$18,544</td><td class="mn r">$22,066</td>
+            <td class="mn r">$107,261</td>
+            <td class="mn r tdm">$96,668</td>
+            <td class="vn r">+$10,593</td>
+            <td><input class="ei" value="Mar spike: commissions on Conroe ISD close ($10,354). Otherwise in-plan."></td>
+          </tr>
+          <tr>
+            <td>G&amp;A (incl. legal, finance, admin)</td>
+            <td class="mn r">$25,739</td><td class="mn r">$26,297</td><td class="mn r">$24,787</td><td class="mn r">$34,909</td><td class="mn r tdr">$46,309</td>
+            <td class="mn r tdr">$158,042</td>
+            <td class="mn r tdm">$90,000</td>
+            <td class="vn r">+$68,042</td>
+            <td><input class="ei" value="May spike: $10,278 legal + $7,650 professional fees + $4,205 business insurance (annual). Apr elevated: legal $12,030. Review with Michelle."></td>
+          </tr>
+          <tr>
+            <td>ESC Partnerships</td>
+            <td class="mn r">$3,926</td><td class="mn r">$35</td><td class="mn r tdr">$52,877</td><td class="mn r">$695</td><td class="mn r">$365</td>
+            <td class="mn r">$57,899</td>
+            <td class="mn r tdm">$35,000</td>
+            <td class="vn r">+$22,899</td>
+            <td><input class="ei" value="Mar spike: ESC fee payment on Conroe ISD close and Region 16 commission settlements"></td>
+          </tr>
+          <tr class="tr">
+            <td>Total OpEx</td>
+            <td class="mn r">$117,970</td><td class="mn r">$110,314</td><td class="mn r">$168,812</td><td class="mn r">$92,366</td><td class="mn r">$111,167</td>
+            <td class="mn r tdr">$600,629</td>
+            <td class="mn r tdm">$448,336</td>
+            <td class="vn r">+$152,293</td>
+            <td><input class="ei" value="YTD over-budget driven by Jan–Mar R&D contractor costs + legal fees. Trending down Apr-May per plan."></td>
+          </tr>
+          <tr><td colspan="10" class="sr">NET INCOME</td></tr>
+          <tr>
+            <td>Net Operating Income</td>
+            <td class="mn r tdr">($117,122)</td><td class="mn r tdr">($107,173)</td><td class="mn r tdr">($149,115)</td><td class="mn r tdr">($72,505)</td><td class="mn r tdr">($76,472)</td>
+            <td class="mn r tdr">($522,387)</td>
+            <td class="mn r tdm">($413,385)</td>
+            <td class="vn r">+$109,002</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Net Income (after other inc/exp)</td>
+            <td class="mn r tdr">($111,155)</td><td class="mn r tdr">($102,399)</td><td class="mn r tdr">($142,317)</td><td class="mn r tdr">($65,221)</td><td class="mn r tdr">($76,472)</td>
+            <td class="mn r tdr">($497,563)</td>
+            <td class="mn r tdm">—</td>
+            <td class="vn r">—</td>
+            <td><input class="ei" value="Apr–May trend improving: Apr ($65K), May ($76K) vs Jan–Mar avg ($118K/mo). Direction is right."></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tc">
+    <div class="panel">
+      <div class="ph"><span class="pt">Revenue Trend — Monthly Invoiced</span></div>
+      <div class="pb">
+        <table>
+          <thead><tr><th>Month</th><th class="r">Invoiced</th><th class="r">MoM Change</th><th class="r">Run Rate ARR</th></tr></thead>
+          <tbody>
+            <tr><td>January 2026</td><td class="mn r">$13,841</td><td class="mn r tdm">—</td><td class="mn r tdm">$166,092</td></tr>
+            <tr><td>February 2026</td><td class="mn r">$14,774</td><td class="mn r tdg">+6.7%</td><td class="mn r tdm">$177,288</td></tr>
+            <tr><td>March 2026</td><td class="mn r">$33,664</td><td class="mn r tdg">+127.8%</td><td class="mn r tdg">$403,968</td></tr>
+            <tr><td>April 2026</td><td class="mn r">$33,829</td><td class="mn r tdg">+0.5%</td><td class="mn r tdg">$405,948</td></tr>
+            <tr><td>May 2026</td><td class="mn r tdg">$34,727</td><td class="mn r tdg">+2.7%</td><td class="mn r tdg">$416,724</td></tr>
+          </tbody>
+        </table>
+        <div class="div"></div>
+        <div style="font-size:.7rem;color:var(--ink-3);line-height:1.5;">March step-change driven by Conroe ISD ($17,232/mo new MRR). April–May holding steady. Run rate ARR of ~$416K vs. $440K verified ARR — gap is timing of recognition vs. contracted amounts. Both are below the $1M target, confirming the renewal sprint is essential.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">G&amp;A Spike Analysis — May 2026</span></div>
+      <div class="pb">
+        <div class="ca caw">
+          <strong>Charlie Will Ask About This</strong>
+          G&amp;A hit $46,309 in May vs. ~$25K run rate. Breakdown below — one-time items account for the majority.
+        </div>
+        <table>
+          <thead><tr><th>Item</th><th class="r">Amount</th><th>Type</th></tr></thead>
+          <tbody>
+            <tr><td>Legal fees</td><td class="mn r tdr">$10,278</td><td><span class="chip cw">Legal</span></td></tr>
+            <tr><td>Professional fees (new)</td><td class="mn r tdr">$7,650</td><td><span class="chip cw">One-time</span></td></tr>
+            <tr><td>Business insurance</td><td class="mn r tdr">$4,205</td><td><span class="chip cm">Annual renewal</span></td></tr>
+            <tr><td>Staff wages (G&amp;A)</td><td class="mn r">$12,800</td><td><span class="chip cm">Recurring</span></td></tr>
+            <tr><td>Mgmt consulting</td><td class="mn r">$5,000</td><td><span class="chip cm">Recurring</span></td></tr>
+            <tr><td>SaaS + other</td><td class="mn r">$6,376</td><td><span class="chip cm">Recurring</span></td></tr>
+            <tr class="tr"><td>Total</td><td class="mn r tdr">$46,309</td><td></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;font-size:.68rem;color:var(--ink-3);">Normalised G&amp;A run rate ~$26K–$28K/mo. Legal and professional fees are deal/financing related — should reduce once seed closes.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PIPELINE ══════ -->
+<div class="section" id="section-pipeline">
+  <div class="slabel">Pipeline Health &amp; Trends — Renewal Tracker May 27 + HubSpot New Deals</div>
+  <div class="kg">
+    <div class="kc g"><div class="klbl">Total Renewal Pipeline</div><div class="kv">$511K</div><div class="ks">90 districts · 26/27 cycle</div><div class="kdelta fl">↔ Baseline — upload prior for trend</div></div>
+    <div class="kc o"><div class="klbl">Weighted Base Forecast</div><div class="kv">$295K</div><div class="ks">Applied win rates · Renewals only</div></div>
+    <div class="kc r"><div class="klbl">Churn Rate (26/27)</div><div class="kv">23.3%</div><div class="ks">21 of 90 districts · $103K lost ARR</div><div class="kdelta dn">↑ Monitor — largest: Keller $51K</div></div>
+    <div class="kc b"><div class="klbl">27/28 Pipeline (Early)</div><div class="kv">$219K</div><div class="ks">6 deals · Conroe $206K locked</div><div class="kdelta up">↑ Healthy leading indicator</div></div>
+  </div>
+  <div class="tc">
+    <div class="panel">
+      <div class="ph"><span class="pt">26/27 Renewal Funnel — May 27</span><span class="chip cm">Upload prior HubSpot export for period-over-period</span></div>
+      <div class="pb">
+        <div class="fb"><div class="fl2">Renewed / PO Received</div><div class="ft"><div class="ff" style="width:2.9%;background:var(--success);"><span class="fa">$14,766</span></div></div><div class="fc">3 districts</div></div>
+        <div class="fb"><div class="fl2">Likely (Quote Sent)</div><div class="ft"><div class="ff" style="width:14.3%;background:var(--gold);"><span class="fa">$73,156</span></div></div><div class="fc">11 districts</div></div>
+        <div class="fb"><div class="fl2">In Progress</div><div class="ft"><div class="ff" style="width:45.6%;background:#3b82f6;"><span class="fa">$232,880</span></div></div><div class="fc">46 districts</div></div>
+        <div class="fb"><div class="fl2">No Response</div><div class="ft"><div class="ff" style="width:2.3%;background:var(--caution);"><span class="fa">$11,516</span></div></div><div class="fc">5 districts</div></div>
+        <div class="fb"><div class="fl2">Parked (Sep)</div><div class="ft"><div class="ff" style="width:14.8%;background:var(--ink-3);"><span class="fa">$75,458</span></div></div><div class="fc">4 districts</div></div>
+        <div class="fb"><div class="fl2">Churned</div><div class="ft"><div class="ff" style="width:20.3%;background:#fee2e2;"><span class="fa" style="color:var(--danger)">$103,488</span></div></div><div class="fc">21 districts</div></div>
+        <div class="div"></div>
+        <table>
+          <tbody>
+            <tr><td style="font-size:.72rem;">Total Pipeline</td><td class="mn r" style="font-weight:600">$511,263</td></tr>
+            <tr><td style="font-size:.72rem;">Weighted Forecast (base)</td><td class="mn r tdo" style="font-weight:600">$295,874</td></tr>
+            <tr><td style="font-size:.72rem;">ESC Consortium (59 free districts)</td><td class="mn r tdm">Free / ILA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">New Deal Pipeline — Top Opportunities</span></div>
+      <div class="pb">
+        <table>
+          <thead><tr><th>District</th><th>Stage</th><th class="r">Amount</th><th class="r">Close</th></tr></thead>
+          <tbody>
+            <tr><td>Utah State Ed. Agency</td><td><span class="chip cm">Qualifying</span></td><td class="mn r tdg">$1,312,622</td><td class="tdm r">Oct 26</td></tr>
+            <tr><td>Cypress-Fairbanks ISD</td><td><span class="chip cm">Intake</span></td><td class="mn r">$107,190</td><td class="tdm r">May 31</td></tr>
+            <tr><td>Pasadena ISD</td><td><span class="chip cm">Qualifying</span></td><td class="mn r">$54,646</td><td class="tdm r">May 31</td></tr>
+            <tr><td>Northside ISD</td><td><span class="chip cm">Qualifying</span></td><td class="mn r">$25,000</td><td class="tdm r">May 31</td></tr>
+            <tr><td>Liberty Hill ISD</td><td><span class="chip cm">Intake</span></td><td class="mn r">$30,000</td><td class="tdm r">Jul 31</td></tr>
+            <tr><td>Grand Prairie ISD</td><td><span class="chip cm">Intake</span></td><td class="mn r">$23,949</td><td class="tdm r">Jun 30</td></tr>
+            <tr><td>Midlothian ISD</td><td><span class="chip cm">Intake</span></td><td class="mn r">$30,786</td><td class="tdm r">Oct 31</td></tr>
+          </tbody>
+        </table>
+        <div class="div"></div>
+        <div style="font-size:.68rem;color:var(--ink-3);line-height:1.5;">Utah ($1.3M) is transformational but Oct close — doesn't help August liquidity. June focus: Cypress-Fairbanks, Pasadena, Northside. Upload prior HubSpot pipeline export to enable MoM trend view.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ RENEWALS ══════ -->
+<div class="section" id="section-renewals">
+  <div class="slabel">Renewal Tracker — Jan Gilboy · Updated May 27, 2026</div>
+  <div class="kg">
+    <div class="kc g"><div class="klbl">Renewed / PO Received</div><div class="kv">$14,766</div><div class="ks">Red Oak, Mason, Dodd City</div></div>
+    <div class="kc o"><div class="klbl">Likely (Quote Sent)</div><div class="kv">$73,156</div><div class="ks">11 districts · 90% rate · $65,840 weighted</div></div>
+    <div class="kc w"><div class="klbl">In Progress</div><div class="kv">$232,880</div><div class="ks">46 districts · 75% rate · $174,660 weighted</div></div>
+    <div class="kc r"><div class="klbl">At Risk / Churned</div><div class="kv">$114,004</div><div class="ks">No response $11,516 · Churned $103,488</div></div>
+  </div>
+  <div class="tc">
+    <div class="panel">
+      <div class="ph"><span class="pt">Priority Districts — Action Needed Now</span></div>
+      <div class="pb">
+        <table>
+          <thead><tr><th>District</th><th>Status</th><th class="r">Amount</th><th>Owner</th><th>Next Action</th></tr></thead>
+          <tbody>
+            <tr><td>Red Oak ISD</td><td><span class="chip cg">Renewed</span></td><td class="mn r tdg">$12,198</td><td class="tdm">Teela</td><td class="tdm">Done ✓</td></tr>
+            <tr><td>Mason ISD</td><td><span class="chip cg">PO Received</span></td><td class="mn r tdg">$1,962</td><td class="tdm">Teela</td><td style="font-size:.68rem;">Get agreements from Tara ⚡</td></tr>
+            <tr><td>Dodd City ISD</td><td><span class="chip cg">PO Received</span></td><td class="mn r tdg">$606</td><td class="tdm">Teela</td><td class="tdm">PO 5/7 ✓</td></tr>
+            <tr><td>San Marcos CISD</td><td><span class="chip co">Quote Sent</span></td><td class="mn r">$16,100</td><td class="tdm">Teela</td><td style="font-size:.68rem;">PO in July — wait</td></tr>
+            <tr><td>Midland ISD</td><td><span class="chip co">Likely</span></td><td class="mn r">$25,803</td><td class="tdm">Teela</td><td style="font-size:.68rem;">Teela outreach 5/12</td></tr>
+            <tr><td>Humble ISD</td><td><span class="chip cb">In Progress</span></td><td class="mn r">$44,382</td><td class="tdm">Steve</td><td style="font-size:.68rem;color:var(--danger);">Free→paid — outreach NOW ⚡</td></tr>
+            <tr><td>ILTexas</td><td><span class="chip cb">In Progress</span></td><td class="mn r">$42,326</td><td class="tdm">Natasha</td><td style="font-size:.68rem;">Email 5/26</td></tr>
+            <tr><td>Mesquite ISD</td><td><span class="chip cb">In Progress</span></td><td class="mn r">$34,679</td><td class="tdm">Natasha</td><td style="font-size:.68rem;">Email 5/26 Dr. Rivera</td></tr>
+            <tr><td>La Grange ISD</td><td><span class="chip co">Likely</span></td><td class="mn r">$5,550</td><td class="tdm">Jan</td><td style="font-size:.68rem;color:var(--success);">Moving to V2 + quote requested 5/26 ⚡</td></tr>
+            <tr><td>Tornillo ISD</td><td><span class="chip cr">Overdue</span></td><td class="mn r tdr">$1,408</td><td class="tdm">Natasha</td><td style="font-size:.68rem;color:var(--danger);">Contract PAST DUE 🔴 Immediate</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">Parked + Churned Summary</span></div>
+      <div class="pb">
+        <div style="margin-bottom:10px;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);">Parked — Blocked on Flete / V2</div>
+        <table>
+          <thead><tr><th>District</th><th class="r">Amount</th><th>Blocker</th></tr></thead>
+          <tbody>
+            <tr><td>Killeen ISD</td><td class="mn r tdr">$39,073</td><td style="font-size:.68rem;color:var(--ink-3);">V1→V2 migration</td></tr>
+            <tr><td>Belton ISD</td><td class="mn r tdr">$24,982</td><td style="font-size:.68rem;color:var(--ink-3);">V1→V2 + Flete</td></tr>
+            <tr><td>Argyle ISD</td><td class="mn r tdr">$9,444</td><td style="font-size:.68rem;color:var(--ink-3);">V1→V2</td></tr>
+            <tr><td>Temple ISD</td><td class="mn r tdr">$1,959</td><td style="font-size:.68rem;color:var(--ink-3);">V1→V2 · Steve meeting</td></tr>
+          </tbody>
+        </table>
+        <div class="div"></div>
+        <div style="margin-bottom:10px;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--danger);">Churned YTD — $103,488</div>
+        <table>
+          <thead><tr><th>District</th><th class="r">Lost ARR</th></tr></thead>
+          <tbody>
+            <tr><td>Keller ISD</td><td class="mn r tdr">$51,373</td></tr>
+            <tr><td>Anna ISD</td><td class="mn r tdr">$10,080</td></tr>
+            <tr><td>New Braunfels ISD</td><td class="mn r tdr">$8,899</td></tr>
+            <tr><td>Fredericksburg ISD</td><td class="mn r tdr">$6,200</td></tr>
+            <tr><td>Dripping Springs ISD</td><td class="mn r tdr">$15,694</td></tr>
+            <tr><td>Other (16 districts)</td><td class="mn r tdr">$11,242</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ BALANCE SHEET ══════ -->
+<div class="section" id="section-balance">
+  <div class="slabel">Balance Sheet — As of May 31, 2026 · QBO Accrual Basis</div>
+  <div class="ca caw">
+    <strong>Key Balance Sheet Signals for Charlie</strong>
+    (1) Cash is $107,773 — significantly below the $441K forecast assumption due to operations burn. (2) Deferred Revenue of $203,407 is healthy — cash already collected for future periods. (3) Total A/P of $210,429 is the current vendor obligation. (4) Net equity is negative ($390,985) — expected at this stage given cumulative losses of $496K YTD.
+  </div>
+  <div class="tc">
+    <div class="panel">
+      <div class="ph"><span class="pt">Assets — May 31, 2026</span></div>
+      <div class="pb">
+        <table>
+          <thead><tr><th>Asset</th><th class="r">Amount</th></tr></thead>
+          <tbody>
+            <tr><td colspan="2" class="sr">Current Assets</td></tr>
+            <tr><td>Stifel Operating (x16780762)</td><td class="mn r tdg">$107,773</td></tr>
+            <tr><td>Bill.com Clearing</td><td class="mn r tdr">($5,070)</td></tr>
+            <tr><td>Divvy Card Clearing</td><td class="mn r tdr">($10,000)</td></tr>
+            <tr><td class="tdm" style="padding-left:8px;">Other bank accounts</td><td class="mn r tdm">$0</td></tr>
+            <tr class="tr"><td>Total Bank Accounts</td><td class="mn r">$92,703</td></tr>
+            <tr><td>Accounts Receivable</td><td class="mn r">$322</td></tr>
+            <tr><td>Accrued Revenue</td><td class="mn r">$4,409</td></tr>
+            <tr><td>Money In Transit</td><td class="mn r">$5,000</td></tr>
+            <tr><td>Prepaid Expenses</td><td class="mn r">$8,719</td></tr>
+            <tr><td>Professional Services Retainer</td><td class="mn r">$1,392</td></tr>
+            <tr class="tr"><td>Total Current Assets</td><td class="mn r">$112,544</td></tr>
+            <tr><td colspan="2" class="sr">Fixed / Intangible Assets</td></tr>
+            <tr><td>Intangible Assets (net of amortization)</td><td class="mn r">$14,052</td></tr>
+            <tr class="tr"><td>Total Assets</td><td class="mn r tdg">$126,596</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">Liabilities &amp; Equity — May 31, 2026</span></div>
+      <div class="pb">
+        <table>
+          <thead><tr><th>Item</th><th class="r">Amount</th></tr></thead>
+          <tbody>
+            <tr><td colspan="2" class="sr">Current Liabilities</td></tr>
+            <tr><td>Accounts Payable (vendors)</td><td class="mn r tdr">$210,429</td></tr>
+            <tr><td>Deferred Revenue</td><td class="mn r tdo">$203,407</td></tr>
+            <tr><td>Payroll Liabilities (incl. vacation)</td><td class="mn r tdr">$100,461</td></tr>
+            <tr><td>Reimbursement Liability</td><td class="mn r">$4,806</td></tr>
+            <tr><td>Visa #6124 (credit)</td><td class="mn r tdm">($1,522)</td></tr>
+            <tr class="tr"><td>Total Current Liabilities</td><td class="mn r tdr">$517,581</td></tr>
+            <tr><td colspan="2" class="sr">Equity</td></tr>
+            <tr><td>Additional Paid-In Capital</td><td class="mn r tdg">$1,054,741</td></tr>
+            <tr><td>SAFE Convertible Securities</td><td class="mn r tdg">$1,310,000</td></tr>
+            <tr><td>Seed Raise</td><td class="mn r tdg">$2,078,346</td></tr>
+            <tr><td>Retained Earnings</td><td class="mn r tdr">($4,338,034)</td></tr>
+            <tr><td>Net Income YTD</td><td class="mn r tdr">($496,038)</td></tr>
+            <tr class="tr"><td>Total Equity</td><td class="mn r tdr">($390,985)</td></tr>
+            <tr class="tr"><td>Total Liabilities + Equity</td><td class="mn r">$126,596</td></tr>
+          </tbody>
+        </table>
+        <div class="div"></div>
+        <div style="font-size:.68rem;color:var(--ink-3);line-height:1.5;">Deferred Revenue ($203K) is <strong>not a risk</strong> — it's cash already received for future service periods. Payroll liabilities ($100K) include $57,247 accrued payroll, $27,030 vacation payable, and $16,184 payroll clearing.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CASH FLOW ══════ -->
+<div class="section" id="section-cashflow">
+  <div class="slabel">Statement of Cash Flows — Jan 1 to May 31, 2026 · QBO Actual</div>
+  <div class="kg3">
+    <div class="kc r"><div class="klbl">Operating Cash Used YTD</div><div class="kv">($409,972)</div><div class="ks">Jan–May operating activities</div></div>
+    <div class="kc g"><div class="klbl">Financing Cash In YTD</div><div class="kv">$473,942</div><div class="ks">Seed raise $1.9M gross · net of note conversions</div></div>
+    <div class="kc o"><div class="klbl">Net Cash Change YTD</div><div class="kv">+$63,970</div><div class="ks">Jan 1 starting balance + $63,970 = May 31 balance</div></div>
+  </div>
+  <div class="panel">
+    <div class="ph"><span class="pt">Monthly Cash Flow — Operating + Financing · Actual YTD</span></div>
+    <div class="pb">
+      <table>
+        <thead><tr><th>Activity</th><th class="r">Jan</th><th class="r">Feb</th><th class="r">Mar</th><th class="r">Apr</th><th class="r">May</th><th class="r">YTD Total</th></tr></thead>
+        <tbody>
+          <tr><td colspan="7" class="sr">Operating Activities</td></tr>
+          <tr><td>Net Income</td><td class="mn r tdr">($111,155)</td><td class="mn r tdr">($102,399)</td><td class="mn r tdr">($142,317)</td><td class="mn r tdr">($65,221)</td><td class="mn r tdr">($76,472)</td><td class="mn r tdr">($497,563)</td></tr>
+          <tr><td>Working Capital Adjustments (net)</td><td class="mn r tdg">$19,549</td><td class="mn r tdr">($7,580)</td><td class="mn r tdg">$95,004</td><td class="mn r tdg">$584</td><td class="mn r tdr">($19,966)</td><td class="mn r tdg">$87,591</td></tr>
+          <tr class="tr"><td>Net Operating Cash Flow</td><td class="mn r tdr">($91,606)</td><td class="mn r tdr">($109,979)</td><td class="mn r tdr">($47,313)</td><td class="mn r tdr">($64,637)</td><td class="mn r tdr">($96,438)</td><td class="mn r tdr">($409,972)</td></tr>
+          <tr><td colspan="7" class="sr">Financing Activities</td></tr>
+          <tr><td>Seed Raise (cash in)</td><td class="mn r tdg">$65,000</td><td class="mn r tdg">$120,000</td><td class="mn r tdm">—</td><td class="mn r tdg">$1,643,346</td><td class="mn r tdg">$75,000</td><td class="mn r tdg">$1,903,346</td></tr>
+          <tr><td>Convertible note conversions (net)</td><td class="mn r">$6,884</td><td class="mn r">$6,218</td><td class="mn r">$106,884</td><td class="mn r tdr">($1,549,391)</td><td class="mn r tdm">—</td><td class="mn r tdr">($1,429,404)</td></tr>
+          <tr class="tr"><td>Net Financing Cash Flow</td><td class="mn r tdg">$71,884</td><td class="mn r tdg">$126,218</td><td class="mn r tdg">$106,884</td><td class="mn r tdg">$93,955</td><td class="mn r tdg">$75,000</td><td class="mn r tdg">$473,942</td></tr>
+          <tr class="tr"><td>Net Cash Change for Period</td><td class="mn r tdr">($19,721)</td><td class="mn r tdg">$16,239</td><td class="mn r tdg">$59,572</td><td class="mn r tdg">$29,318</td><td class="mn r tdr">($21,438)</td><td class="mn r tdg">$63,970</td></tr>
+        </tbody>
+      </table>
+      <div class="div"></div>
+      <div class="ca" style="margin-bottom:0;">
+        <strong>April Financing Explanation</strong>
+        The large Apr financing inflow ($1.6M) and outflow represents the conversion of convertible notes (MoakCasey $450,972, School Works $900,000, and others totaling ~$100K) into equity as part of the seed round close. This is a non-cash accounting event — the notes converted to equity, reflected in the "Seed Raise" line on the balance sheet ($2,078,346).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ A/P AGING ══════ -->
+<div class="section" id="section-ap">
+  <div class="slabel">A/P Aging Summary — As of May 31, 2026 · QBO</div>
+  <div class="ca caw">
+    <strong>Key Change vs. April</strong>
+    Total A/P reduced from $278,878 (Apr 14) to $210,429 (May 31) — a $68K improvement. DataArt paid down significantly ($55K→$14,979). However CORE ITS (Anil) remains elevated at $52,500 with $37,500 in the 31–90 day buckets, and Techdome ($43,130) remains 91+ days and disputed.
+  </div>
+  <div class="panel">
+    <div class="ph"><span class="pt">Vendor A/P Aging — May 31, 2026</span></div>
+    <div class="pb">
+      <table>
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th class="r">Current</th>
+            <th class="r">1–30 Days</th>
+            <th class="r">31–60 Days</th>
+            <th class="r">61–90 Days</th>
+            <th class="r">91+ Days</th>
+            <th class="r">Total</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>CORE ITS (Anil)</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdr">$7,500</td><td class="mn r tdr">$30,000</td><td class="mn r">$15,000</td><td class="mn r tdr">$52,500</td><td><span class="chip cw">Deferred to Oct</span></td></tr>
+          <tr><td>Techdome LLC</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdr">$43,130</td><td class="mn r tdr">$43,130</td><td><span class="chip cr">Disputing</span></td></tr>
+          <tr><td>Scale LLP</td><td class="mn r">$10,144</td><td class="mn r tdm">—</td><td class="mn r">$2,030</td><td class="mn r">$638</td><td class="mn r">$20,514</td><td class="mn r">$33,325</td><td><span class="chip cw">$2.5K/mo plan</span></td></tr>
+          <tr><td>Raju Dalta</td><td class="mn r tdg">$10,000</td><td class="mn r tdg">$10,000</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r">$20,000</td><td><span class="chip cm">Current</span></td></tr>
+          <tr><td>Jan Gilboy</td><td class="mn r tdm">—</td><td class="mn r">$8,000</td><td class="mn r tdm">—</td><td class="mn r tdr">$10,750</td><td class="mn r tdm">—</td><td class="mn r tdr">$18,750</td><td><span class="chip cw">Deferral hold</span></td></tr>
+          <tr><td>DataArt Solutions</td><td class="mn r tdg">$9,645</td><td class="mn r tdg">$5,334</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdg">$14,979</td><td><span class="chip cg">Winding down</span></td></tr>
+          <tr><td>Visgo Solutions (Ryan)</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r">$19,426</td><td class="mn r">$19,426</td><td><span class="chip cm">Legacy</span></td></tr>
+          <tr><td>Bonnie Besserer</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r">$3,200</td><td class="mn r">$3,200</td><td><span class="chip cm">Legacy</span></td></tr>
+          <tr><td>Christina O'Reilly</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r">$5,083</td><td class="mn r">$5,083</td><td><span class="chip cm">Legacy</span></td></tr>
+          <tr><td>Steve Wandler (expenses)</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r">$36</td><td class="mn r tdm">—</td><td class="mn r tdm">—</td><td class="mn r">$36</td><td><span class="chip cm">Reconciling</span></td></tr>
+          <tr class="tr"><td>Total</td><td class="mn r">$29,789</td><td class="mn r">$23,334</td><td class="mn r">$9,566</td><td class="mn r">$41,388</td><td class="mn r tdr">$106,352</td><td class="mn r tdr">$210,429</td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="div"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+        <div><div class="klbl" style="margin-bottom:4px;">Apr 14 Total</div><div style="font-family:var(--mono);font-size:.9rem;color:var(--danger);">$278,878</div></div>
+        <div><div class="klbl" style="margin-bottom:4px;">May 31 Total</div><div style="font-family:var(--mono);font-size:.9rem;color:var(--caution);">$210,429</div></div>
+        <div><div class="klbl" style="margin-bottom:4px;">Reduction</div><div style="font-family:var(--mono);font-size:.9rem;color:var(--success);">−$68,449</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ DEFERRED ══════ -->
+<div class="section" id="section-deferred">
+  <div class="slabel">Deferred Obligations — Full Picture Including Payroll Deferral</div>
+  <div class="kg3">
+    <div class="kc r"><div class="klbl">Vendor A/P (May 31)</div><div class="kv">$210,429</div><div class="ks">Per QBO A/P aging · Down from $278K Apr</div></div>
+    <div class="kc r"><div class="klbl">Payroll Liabilities</div><div class="kv">$100,461</div><div class="ks">Accrued payroll + $27K vacation + clearing</div></div>
+    <div class="kc o"><div class="klbl">Deferred Revenue</div><div class="kv">$203,407</div><div class="ks">Cash collected · future service owed · NOT a risk</div></div>
+  </div>
+  <div class="tc">
+    <div class="panel">
+      <div class="ph"><span class="pt">Payroll Liabilities Breakdown — May 31</span></div>
+      <div class="pb">
+        <table>
+          <tbody>
+            <tr><td>Accrued Payroll (current period)</td><td class="mn r tdr">$57,247</td></tr>
+            <tr><td>Vacation Payable</td><td class="mn r tdr">$27,030</td></tr>
+            <tr><td>Payroll Clearing (in process)</td><td class="mn r tdr">$16,184</td></tr>
+            <tr class="tr"><td>Total Payroll Liabilities</td><td class="mn r tdr">$100,461</td></tr>
+          </tbody>
+        </table>
+        <div class="div"></div>
+        <div style="font-size:.68rem;color:var(--ink-3);line-height:1.5;">Vacation payable ($27K) is an accrued liability — employees have earned but not yet taken vacation. Payroll clearing ($16K) is timing of payroll processing. Accrued payroll ($57K) reflects current period wages owed.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">Deferred Revenue — Positive Signal</span></div>
+      <div class="pb">
+        <div class="ca cag" style="margin-bottom:12px;">
+          <strong>$203K Deferred Revenue = Cash Already In</strong>
+          This represents cash collected from districts for service periods not yet delivered. It's a liability on the balance sheet but reflects healthy upfront billing. As service is delivered, this converts to recognized revenue in future months.
+        </div>
+        <table>
+          <tbody>
+            <tr><td style="font-size:.72rem;">Deferred Revenue (May 31)</td><td class="mn r tdg">$203,407</td></tr>
+            <tr><td style="font-size:.72rem;">vs. Apr 30 estimate</td><td class="mn r tdm">~$169,000</td></tr>
+            <tr><td style="font-size:.72rem;">Change (approx.)</td><td class="mn r tdg">+$34,407</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;font-size:.68rem;color:var(--ink-3);">Growth in deferred revenue is a positive sign — more districts paying upfront. This will convert to P&amp;L revenue over the coming months.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SEED ══════ -->
+<div class="section" id="section-seed">
+  <div class="slabel">Seed Round — $881,989 Committed · $570K Funded · $312K Remaining</div>
+  <div class="panel">
+    <div class="ph"><span class="pt">Investor Status — May 27, 2026</span></div>
+    <div class="pb">
+      <table>
+        <thead><tr><th>Investor</th><th class="r">Committed</th><th class="r">Funded</th><th class="r">Remaining</th><th>Status</th><th>Progress</th></tr></thead>
+        <tbody>
+          <tr><td>Tim Eades</td><td class="mn r">$75,000</td><td class="mn r tdg">$75,000</td><td class="mn r tdm">—</td><td><span class="chip cg">Closed</span></td><td><div class="pw"><div class="pt2"><div class="pf pg" style="width:100%"></div></div><span class="pp">100%</span></div></td></tr>
+          <tr><td>MoakCasey / TEI</td><td class="mn r">$155,000</td><td class="mn r tdg">$155,000</td><td class="mn r tdm">—</td><td><span class="chip cg">Closed</span></td><td><div class="pw"><div class="pt2"><div class="pf pg" style="width:100%"></div></div><span class="pp">100%</span></div></td></tr>
+          <tr><td>Charles Clines</td><td class="mn r">$115,500</td><td class="mn r tdg">$115,000</td><td class="mn r tdm">$500</td><td><span class="chip cg">~Closed</span></td><td><div class="pw"><div class="pt2"><div class="pf pg" style="width:99%"></div></div><span class="pp">99%</span></div></td></tr>
+          <tr><td>Tom Bailey</td><td class="mn r">$100,000</td><td class="mn r">$25,000</td><td class="mn r tdr">$75,000</td><td><span class="chip co">$75K wire May 5</span></td><td><div class="pw"><div class="pt2"><div class="pf pw2" style="width:25%"></div></div><span class="pp">25%</span></div></td></tr>
+          <tr><td>School Works Software</td><td class="mn r">$400,000</td><td class="mn r">$200,000</td><td class="mn r tdr">$200,000</td><td><span class="chip cw">50% · Priority</span></td><td><div class="pw"><div class="pt2"><div class="pf pw2" style="width:50%"></div></div><span class="pp">50%</span></div></td></tr>
+          <tr><td>Daniel Huberty</td><td class="mn r">$25,000</td><td class="mn r tdm">—</td><td class="mn r tdr">$25,000</td><td><span class="chip cw">Pending</span></td><td><div class="pw"><div class="pt2"><div class="pf pr" style="width:0%"></div></div><span class="pp">0%</span></div></td></tr>
+          <tr><td>Stuart Bowness</td><td class="mn r">$11,489</td><td class="mn r tdm">—</td><td class="mn r tdr">$11,500</td><td><span class="chip cw">Pending</span></td><td><div class="pw"><div class="pt2"><div class="pf pr" style="width:0%"></div></div><span class="pp">0%</span></div></td></tr>
+          <tr class="tr"><td>Total</td><td class="mn r">$881,989</td><td class="mn r tdg">$570,000</td><td class="mn r tdr">$312,000</td><td colspan="2"></td></tr>
+        </tbody>
+      </table>
+      <div class="div"></div>
+      <div class="ca car" style="margin-bottom:0;">
+        <strong>School Works $200K — Highest Priority</strong>
+        The remaining $200K from School Works Software is the single largest open commitment and the most critical near-term cash inflow given the August liquidity risk. This should be a board-level conversation item with Charlie.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ ACTIONS ══════ -->
+<div class="section" id="section-actions">
+  <div class="slabel">Open Actions — May 21 Renewals Sync + Ongoing</div>
+  <div class="tc">
+    <div class="panel">
+      <div class="ph"><span class="pt">Action Items by Owner</span></div>
+      <div class="pb">
+        <div class="ai"><span class="ao2">Michelle</span><div class="at">Post librarian names for ESC16 consortium districts in Slack · Validate client master vs. renewal tracker · Schedule weekly Friday sync with Jan</div></div>
+        <div class="ai"><span class="ao2">Michelle</span><div class="at">Prepare R&amp;D tax credit documentation plan for Raju using Claude skill creator · Submit QBO exports to Dashboard Update Reports folder monthly</div></div>
+        <div class="ai"><span class="ao2">Michelle</span><div class="at">Test Bill.com receipt forwarding · Remove Moxy hotel disputed charges · Transition all staff from Expensify to Bill.com</div></div>
+        <div class="ai"><span class="ao2">Jan</span><div class="at">Add student count data to renewal tracker · Share HTML sales dashboard PDF with Michelle + Steve · Friday EOD HubSpot sync weekly</div></div>
+        <div class="ai"><span class="ao2">Steve</span><div class="at">Reconcile Expensify backlog · Renegotiate HubSpot $2,500→$1,500/mo · Chase School Works $200K remaining commitment · V1 sunset June 30 comms plan with Patrick</div></div>
+        <div class="ai"><span class="ao2">Steve</span><div class="at">Review May G&amp;A spike ($46K): confirm legal + professional fees are one-time · ZoomInfo duplicate subscription — resolve</div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pt">Aligned Decisions</span></div>
+      <div class="pb">
+        <div class="ai"><span class="ao2" style="background:var(--success);">✓</span><div class="at"><strong>V1 sunset June 30</strong> · Auto-migrate all · Non-responsive = V2 warm leads</div></div>
+        <div class="ai"><span class="ao2" style="background:var(--success);">✓</span><div class="at"><strong>HubSpot = source of truth</strong> · Jan weekly sync · Dashboard reads from tracker</div></div>
+        <div class="ai"><span class="ao2" style="background:var(--success);">✓</span><div class="at"><strong>Parked $75K</strong> · Killeen/Belton/Argyle/Temple held until Sep · Flete required</div></div>
+        <div class="ai"><span class="ao2" style="background:var(--success);">✓</span><div class="at"><strong>R&amp;D tax credit</strong> · Proceed via Pilot · Raju + Anneil qualifying</div></div>
+        <div class="ai"><span class="ao2" style="background:var(--success);">✓</span><div class="at"><strong>Expensify → Bill.com</strong> · Steve July 1 · All others immediate</div></div>
+        <div class="ai"><span class="ao2" style="background:var(--success);">✓</span><div class="at"><strong>Ledger onboarding</strong> · Michelle weekly work updates · Agent automation Q3 goal</div></div>
+        <div class="ai"><span class="ao2" style="background:var(--success);">✓</span><div class="at"><strong>HubSpot revamp July</strong> · Full rebuild with Sales + Marketing + CS input</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end content -->
+
+<div class="footer">
+  <span>Bookmarked Inc. · Confidential — Board Use Only · Prepared May 27, 2026</span>
+  <span>Sources: QBO Accrual Basis P&amp;L, Balance Sheet, Cash Flow, A/P Aging (May 31, 2026) · Jan's Renewal Tracker May 27 · Renewals Sync May 21</span>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

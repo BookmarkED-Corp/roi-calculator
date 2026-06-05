@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked — Pipeline Dashboard (Week over Week)</title>
+<style>
+  :root{--ink:#0f1117;--ink2:#2a2d35;--ink3:#6b7280;--paper:#f9f7f2;--paper2:#f0ede5;--gold:#c8923a;--gold-light:#e8b86a;--danger:#c0392b;--success:#1a7a4a;--caution:#d97706;--border:rgba(15,17,23,0.1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);max-width:960px;margin:0 auto;padding:20px}
+  .header{background:var(--ink);color:var(--paper);padding:24px 32px 20px;border-bottom:3px solid var(--gold);margin-bottom:24px}
+  .header h1{font-size:1.6rem;margin-bottom:4px}
+  .header .sub{font-size:0.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light)}
+  .section-title{font-size:0.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+  .card{background:white;border:1px solid var(--border);padding:16px 14px 12px;position:relative;overflow:hidden}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .card.g::before{background:var(--success)}.card.r::before{background:var(--danger)}.card.o::before{background:var(--gold)}.card.w::before{background:var(--caution)}.card.b::before{background:#2563eb}
+  .card-label{font-size:0.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+  .card-value{font-size:1.6rem;font-weight:700;line-height:1;margin-bottom:4px}
+  .card-sub{font-size:0.68rem;color:var(--ink3);line-height:1.4}
+  .delta{font-size:0.65rem;font-weight:600;margin-top:4px}
+  .delta.up{color:var(--success)}.delta.dn{color:var(--danger)}.delta.flat{color:var(--ink3)}
+  table{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);margin-bottom:16px}
+  th{font-size:0.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);background:var(--paper2)}
+  td{font-size:0.75rem;padding:7px 10px;border-bottom:1px solid rgba(0,0,0,0.04)}
+  .r{text-align:right}.mn{font-family:'SF Mono',Menlo,monospace;font-size:0.72rem}
+  .tg{color:var(--success)}.tr2{color:var(--danger)}.to{color:var(--gold)}.tm{color:var(--ink3)}
+  .totrow td{font-weight:600;border-top:2px solid var(--border);background:var(--paper)}
+  .badge{display:inline-block;font-size:0.55rem;letter-spacing:.04em;padding:2px 6px;border-radius:2px;text-transform:uppercase}
+  .bg{background:#e6f4ed;color:var(--success)}.br{background:#fde8e6;color:var(--danger)}.bo{background:#fdf3e6;color:var(--gold)}.bw{background:#fef3e2;color:var(--caution)}.bb{background:#eff6ff;color:#2563eb}
+  .note{font-size:0.68rem;color:var(--ink3);line-height:1.5;margin:8px 0}
+  .footer{margin-top:32px;padding:12px 0;border-top:1px solid var(--border);font-size:0.58rem;color:var(--ink3);display:flex;justify-content:space-between}
+  @media(max-width:700px){.grid4,.grid3{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Bookmarked — Pipeline Dashboard</h1>
+  <div class="sub">Week over Week Tracking — Confidential</div>
+</div>
+
+<div class="section-title">Key Metrics — Week 2 (Jun 5) vs Week 1 (May 29)</div>
+
+<div class="grid4">
+  <div class="card o">
+    <div class="card-label">Verified ARR</div>
+    <div class="card-value">$440K</div>
+    <div class="card-sub">64 paid districts</div>
+    <div class="delta flat">Week 1: $440K — flat</div>
+  </div>
+  <div class="card b">
+    <div class="card-label">Renewal Pipeline (26/27)</div>
+    <div class="card-value">$405K</div>
+    <div class="card-sub">72 deals (active stages)</div>
+    <div class="delta up">Week 1: ~$391K — +$14K</div>
+  </div>
+  <div class="card b">
+    <div class="card-label">Net-New Pipeline (ex-Utah)</div>
+    <div class="card-value">$658K</div>
+    <div class="card-sub">33 deals — 72% early stage</div>
+    <div class="delta up">Week 1: ~$656K — +$2K</div>
+  </div>
+  <div class="card g">
+    <div class="card-label">Paid Ratio</div>
+    <div class="card-value">70%</div>
+    <div class="card-sub">Paid vs total districts</div>
+    <div class="delta up">Week 1: 61% — +9pts</div>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="card g">
+    <div class="card-label">Quotes Sent This Week</div>
+    <div class="card-value">$10,468</div>
+    <div class="card-sub">4 districts</div>
+    <div class="delta flat">Week 1: baseline</div>
+  </div>
+  <div class="card g">
+    <div class="card-label">Won This Week</div>
+    <div class="card-value">$606</div>
+    <div class="card-sub">Dodd City ISD (Teela)</div>
+    <div class="delta flat">Week 1: baseline</div>
+  </div>
+  <div class="card r">
+    <div class="card-label">Lost This Week</div>
+    <div class="card-value">$25,774</div>
+    <div class="card-sub">Anna + Dripping Springs</div>
+    <div class="delta flat">Week 1: baseline</div>
+  </div>
+</div>
+
+<div class="section-title">Sales Activity — Week over Week</div>
+
+<table>
+  <tr>
+    <th>Team Member</th>
+    <th class="r">This Week</th>
+    <th class="r">Prev Week</th>
+    <th class="r">Change</th>
+    <th>Key Activity</th>
+  </tr>
+  <tr>
+    <td>Jan Gilboy</td>
+    <td class="mn r">178</td>
+    <td class="mn r">18</td>
+    <td class="mn r tg">+160</td>
+    <td style="font-size:0.68rem">TX superintendent campaign (1,000+), V2 sequences launched, Alvarado reconnect</td>
+  </tr>
+  <tr>
+    <td>Teela Watson</td>
+    <td class="mn r">25</td>
+    <td class="mn r">30</td>
+    <td class="mn r tr2">-5</td>
+    <td style="font-size:0.68rem">Stafford ISD intro, Farwell confirmed, Glen Rose + Fayetteville + Red Oak renewals, Midland next week</td>
+  </tr>
+  <tr>
+    <td>Natasha Flanders</td>
+    <td class="mn r">6</td>
+    <td class="mn r">29</td>
+    <td class="mn r tr2">-23</td>
+    <td style="font-size:0.68rem">Henrietta ISD quote ($2,691), Elgin renewal meeting</td>
+  </tr>
+  <tr class="totrow">
+    <td>Total</td>
+    <td class="mn r">209</td>
+    <td class="mn r">77</td>
+    <td class="mn r tg">+132</td>
+    <td></td>
+  </tr>
+</table>
+
+<p class="note">Note: Jan's 177 emails = TX superintendent sequence (counted per-recipient). Calls not consistently logged in CRM. Teela's 3 meetings confirmed directly.</p>
+
+<div class="section-title">Pipeline Movement — This Week</div>
+
+<table>
+  <tr><th>Direction</th><th>District</th><th class="r">Amount</th><th>Owner</th></tr>
+  <tr><td><span class="badge bg">Won</span></td><td>Dodd City ISD</td><td class="mn r tg">$606</td><td>Teela</td></tr>
+  <tr><td><span class="badge br">Lost</span></td><td>Anna ISD</td><td class="mn r tr2">$10,080</td><td>Michelle</td></tr>
+  <tr><td><span class="badge br">Lost</span></td><td>Dripping Springs ISD</td><td class="mn r tr2">$15,694</td><td>Jan</td></tr>
+  <tr><td><span class="badge bb">Forward</span></td><td>ILTEXAS</td><td class="mn r">$42,326</td><td></td></tr>
+  <tr><td><span class="badge bb">Forward</span></td><td>Red Oak ISD</td><td class="mn r">$12,198</td><td></td></tr>
+  <tr><td><span class="badge bb">Forward</span></td><td>Wimberley ISD</td><td class="mn r">$7,281</td><td></td></tr>
+  <tr><td><span class="badge bb">Forward</span></td><td>Ferris ISD</td><td class="mn r">$5,746</td><td></td></tr>
+  <tr><td><span class="badge bo">Quote Sent</span></td><td>Farwell ISD</td><td class="mn r">$1,692</td><td>Teela</td></tr>
+  <tr><td><span class="badge bo">Quote Sent</span></td><td>Glen Rose ISD</td><td class="mn r">$4,186</td><td>Teela</td></tr>
+  <tr><td><span class="badge bo">Quote Sent</span></td><td>NTCA</td><td class="mn r">$1,899</td><td>Teela</td></tr>
+  <tr><td><span class="badge bo">Quote Sent</span></td><td>Henrietta ISD</td><td class="mn r">$2,691</td><td>Jan</td></tr>
+</table>
+
+<div class="section-title">Net-New Pipeline by Stage</div>
+
+<table>
+  <tr><th>Stage</th><th class="r">Deals</th><th class="r">Amount</th><th class="r">% of Pipeline</th></tr>
+  <tr><td>Sales Intake</td><td class="mn r">16</td><td class="mn r">$260,152</td><td class="mn r">40%</td></tr>
+  <tr><td>Qualifying</td><td class="mn r">7</td><td class="mn r">$98,043</td><td class="mn r">15%</td></tr>
+  <tr><td>DM Buy-In</td><td class="mn r">4</td><td class="mn r">$212,486</td><td class="mn r">32%</td></tr>
+  <tr><td>Quote Sent</td><td class="mn r">2</td><td class="mn r">$6,192</td><td class="mn r">1%</td></tr>
+  <tr><td>Re-engage (V2)</td><td class="mn r">5</td><td class="mn r">$81,283</td><td class="mn r">12%</td></tr>
+  <tr class="totrow"><td>Total (ex-Utah)</td><td class="mn r">33</td><td class="mn r">$658,156</td><td class="mn r">100%</td></tr>
+  <tr><td class="tm">Utah SEA (separate)</td><td class="mn r tm">1</td><td class="mn r tm">$1,312,622</td><td class="mn r tm">—</td></tr>
+</table>
+
+<p class="note">72% of net-new pipeline is in early stages (Sales Intake + DM Buy-In). This is raw coverage, not weighted forecast. Utah excluded per reconciliation agreement — qualifying stage, Oct close target, not counted in near-term planning.</p>
+
+<div class="section-title">Renewal Pipeline — 26/27 Cycle</div>
+
+<table>
+  <tr><th>Stage</th><th class="r">Deals</th><th class="r">Amount</th></tr>
+  <tr><td>To Be Renewed</td><td class="mn r">54</td><td class="mn r">$277,338</td></tr>
+  <tr><td>V2 Review Scheduled</td><td class="mn r">2</td><td class="mn r">$6,248</td></tr>
+  <tr><td>Ready for Quote</td><td class="mn r">2</td><td class="mn r">$4,186</td></tr>
+  <tr><td>Quote Sent</td><td class="mn r">10</td><td class="mn r">$41,804</td></tr>
+  <tr><td><span class="badge bg">Renewed</span></td><td class="mn r">2</td><td class="mn r">$2,568</td></tr>
+  <tr><td><span class="badge br">Churn</span></td><td class="mn r">3</td><td class="mn r">$24,593</td></tr>
+  <tr><td><span class="badge bw">Revisit After Sept</span></td><td class="mn r">4</td><td class="mn r">$75,458</td></tr>
+  <tr class="totrow"><td>Total 26/27</td><td class="mn r">77</td><td class="mn r">$432,194</td></tr>
+</table>
+
+<div class="section-title">Data Reconciliation Status</div>
+
+<table>
+  <tr><th>Source</th><th>Renewal Total</th><th>Net-New (ex-Utah)</th><th>Status</th></tr>
+  <tr><td>Zig (CRO)</td><td class="mn">$405K (26/27 active)</td><td class="mn">$658,156</td><td><span class="badge bg">Confirmed</span></td></tr>
+  <tr><td>Ledger (CFO)</td><td class="mn">$432K (26/27 all stages)</td><td class="mn">$658,156</td><td><span class="badge bg">Confirmed</span></td></tr>
+  <tr><td>Difference</td><td class="mn" colspan="2">Definition only — Zig excludes churn/revisit/renewed; Ledger includes all stages</td><td><span class="badge bb">Resolved</span></td></tr>
+</table>
+
+<p class="note">Week 1 gap ($391K vs $511K) traced to year-scope and stage-inclusion differences — not a data error. Raw HubSpot data matches across both systems. Definition alignment in progress.</p>
+
+<div class="footer">
+  <span>Bookmarked Inc. — Confidential — Chairman Use Only</span>
+  <span>Sources: HubSpot Live (Jun 4) — Zig + Ledger reconciled | Prepared Jun 5, 2026</span>
+</div>
+
+</body>
+</html>

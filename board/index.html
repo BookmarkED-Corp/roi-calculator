@@ -7,19 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink:#0f1117;--ink-2:#2a2d35;--ink-3:#6b7280;
+    --ink:#101828;--ink-2:#2a2d35;--ink-3:#6b7280;
     --paper:#f9f7f2;--paper-2:#f0ede5;--paper-3:#e4dfd4;
-    --gold:#c8923a;--gold-light:#e8b86a;
-    --danger:#c0392b;--success:#1a7a4a;--caution:#d97706;
-    --border:rgba(15,17,23,0.1);
+    --gold:#12A38C;--gold-light:#4cc3ae;
+    --rust:#B14012;--rust-2:#D9582A;
+    --danger:#c0392b;--success:#107569;--caution:#d97706;
+    --border:rgba(16,24,40,0.1);
     --mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'DM Sans',sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:var(--sans);background:var(--paper);color:var(--ink);}
 
-  .header{background:var(--ink);color:var(--paper);padding:26px 48px 22px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:3px solid var(--gold);}
+  .header{background:var(--ink);color:var(--paper);padding:22px 48px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--rust);}
   .header h1{font-family:var(--serif);font-size:1.9rem;line-height:1;margin-bottom:5px;}
-  .header .sub{font-family:var(--mono);font-size:0.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);}
+  .header .logo-img{height:38px;width:auto;display:block;}
+  .header .sub{font-family:var(--mono);font-size:0.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);margin-top:7px;}
   .hdr-r{text-align:right;}
   .hdr-r .ao{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(249,247,242,.4);margin-bottom:3px;}
   .hdr-r .dt{font-family:var(--serif);font-size:1.1rem;}
@@ -135,17 +137,18 @@
 
 <div class="header">
   <div>
-    <h1>Bookmarked Inc.</h1>
+    <img src="../bookmarked-logo.png" alt="Bookmarked" class="logo-img">
     <div class="sub">Board Financial Dashboard · Forecast vs. Actuals · Pipeline Analysis · v3</div>
   </div>
   <div class="hdr-r">
     <div class="ao">Prepared</div>
-    <div class="dt">May 27, 2026</div>
+    <div class="dt">June 13, 2026</div>
   </div>
 </div>
 
 <div class="nav">
-  <div class="nt active" onclick="show('summary')">Executive Summary</div>
+  <div class="nt active" onclick="show('scorecard')">Company Scorecard</div>
+  <div class="nt" onclick="show('summary')">Executive Summary</div>
   <div class="nt" onclick="show('actuals')">Forecast vs. Actuals</div>
   <div class="nt" onclick="show('pipeline')">Pipeline &amp; Trends</div>
   <div class="nt" onclick="show('renewals')">Renewal Tracker</div>
@@ -159,8 +162,172 @@
 
 <div class="content">
 
+<!-- ══════ COMPANY SCORECARD ══════ -->
+<div class="section active" id="section-scorecard">
+  <div class="slabel">Company Scorecard — As of June 13, 2026 · Single Source of Truth</div>
+
+  <div class="ca">
+    <strong>How to Read This Dashboard</strong>
+    Every number is marked with its source. <strong>Verified</strong> = finance-confirmed (QBO / Michelle). <strong>Reported</strong> = HubSpot or team-reported this week, pending finance verification. We're iterating on this dashboard weekly — if anything is unclear or needs correction, feedback is welcome.
+  </div>
+
+  <!-- SCOREBOARD -->
+  <div class="kg">
+    <div class="kc o">
+      <div class="klbl">Verified ARR</div>
+      <div class="kv">$439,880</div>
+      <div class="ks">64 paid districts · 44% of $1M</div>
+      <span class="badge bo">Verified · May 27</span>
+    </div>
+    <div class="kc w">
+      <div class="klbl">Gap to $1M ARR</div>
+      <div class="kv">$560K</div>
+      <div class="ks">$1M target − $440K verified = $560K remaining</div>
+      <div style="font-size:.64rem;color:var(--ink-3);margin-top:6px;line-height:1.4;">Base case projects approximately $705K by end of Sept (conservative $615K · best $769K). The gap between base case and $1M is $295K — that's the stretch we're closing through net-new pipeline.</div>
+      <span class="badge bw">Verified · May 27</span>
+    </div>
+    <div class="kc b">
+      <div class="klbl">Working Pipeline (Texas)</div>
+      <div class="kv">$1.18M</div>
+      <div class="ks">$652K net-new + $529K renewal · ex-Utah</div>
+      <div class="kdelta fl">↔ WoW comparison starts next week (pipeline cleanup this week)</div>
+      <span class="badge bb">Verified · HubSpot today</span>
+    </div>
+    <div class="kc g">
+      <div class="klbl">Closed This Week</div>
+      <div class="kv">$6,192</div>
+      <div class="ks">Farwell $1,692 + Triumph $4,500</div>
+      
+      <span class="badge bm">Reported · pending finance</span>
+    </div>
+  </div>
+
+  <!-- PROGRESS TO $1M -->
+  <div class="panel" style="margin-bottom:24px;">
+    <div class="pb" style="padding:18px 20px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
+        <span class="klbl" style="margin:0;">Path to $1M ARR by End of September</span>
+        <span style="font-family:var(--mono);font-size:.66rem;color:var(--ink-3);">$439,880 verified &nbsp;·&nbsp; +$240,706 renewals moving &nbsp;·&nbsp; +$212,486 net-new at decision stage</span>
+      </div>
+      <div style="position:relative;height:26px;background:var(--paper-3);border-radius:4px;overflow:hidden;display:flex;">
+        <div style="width:44%;background:var(--gold);height:100%;display:flex;align-items:center;padding-left:10px;color:white;font-family:var(--mono);font-size:.62rem;font-weight:500;">$440K Verified</div>
+        <div style="width:24%;background:var(--rust);height:100%;display:flex;align-items:center;justify-content:center;color:white;font-family:var(--mono);font-size:.6rem;">$241K Moving</div>
+        <div style="width:21%;background:var(--rust-2);height:100%;display:flex;align-items:center;justify-content:center;color:white;font-family:var(--mono);font-size:.6rem;">$212K Net-New</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;font-family:var(--mono);font-size:.58rem;color:var(--ink-3);">
+        <span>$0</span><span style="color:var(--caution);">$560K remaining to $1M · base case projects $705K</span><span>$1M</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA FRESHNESS LEGEND -->
+  <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.6rem;color:var(--ink-3);margin-bottom:22px;padding:10px 14px;background:var(--paper-2);border-radius:4px;">
+    <span><strong style="color:var(--gold);">LIVE (Jun 13)</strong> Pipeline · Renewals · CS · Product</span>
+    <span><strong style="color:var(--caution);">CARRIED (May 27)</strong> Verified ARR · Cash · Financials — refresh pending</span>
+  </div>
+
+  <!-- ENGINE 1: REVENUE + PIPELINE -->
+  <div class="panel">
+    <div class="ph"><span class="pt">Revenue &amp; Pipeline</span><span class="chip cb">Owner: Jan / Zig</span></div>
+    <div class="pb">
+      <div class="tc">
+        <div>
+          <div class="klbl" style="margin-bottom:8px;">Net-New Pipeline by Stage (ex-Utah)</div>
+          <table>
+            <thead><tr><th>Stage</th><th class="r">Deals</th><th class="r">Amount</th></tr></thead>
+            <tbody>
+              <tr><td>1. Sales Intake</td><td class="r">15</td><td class="mn r">$260,149</td></tr>
+              <tr><td>2. Qualifying</td><td class="r">6</td><td class="mn r">$98,043</td></tr>
+              <tr><td>3. Decision Maker Buy-In</td><td class="r">4</td><td class="mn r tdg">$212,486</td></tr>
+              <tr><td>4. Ready for Quote</td><td class="r">0</td><td class="mn r" style="color:var(--ink-3);">$0</td></tr>
+              <tr><td>5. Quote Sent</td><td class="r">0</td><td class="mn r" style="color:var(--ink-3);">$0</td></tr>
+              <tr><td>6. Committed</td><td class="r">0</td><td class="mn r" style="color:var(--ink-3);">$0</td></tr>
+              <tr><td>Re-engage (V2)</td><td class="r">5</td><td class="mn r">$81,283</td></tr>
+              <tr class="tr"><td>Total ex-Utah</td><td class="r">30</td><td class="mn r">$651,961</td></tr>
+            </tbody>
+          </table>
+          <div style="font-size:.66rem;color:var(--ink-3);margin-top:8px;line-height:1.5;">
+            Anchor deal: Garland ISD $140K (Decision Maker Buy-In, Steve engaged). Utah SEA ($1.3M) parked in HubSpot, not in current Texas focus.
+          </div>
+        </div>
+        <div>
+          <div class="klbl" style="margin-bottom:8px;">26/27 Renewal Pipeline by Stage</div>
+          <table>
+            <thead><tr><th>Stage</th><th class="r">Deals</th><th class="r">Amount</th></tr></thead>
+            <tbody>
+              <tr><td>1. To be Renewed</td><td class="r">33</td><td class="mn r" style="color:var(--caution)">$215,652</td></tr>
+              <tr><td>2. V2 Review Scheduled</td><td class="r">5</td><td class="mn r">$86,065</td></tr>
+              <tr><td>3. Ready for Quote</td><td class="r">0</td><td class="mn r" style="color:var(--ink-3);">$0</td></tr>
+              <tr><td>4. Quote Sent</td><td class="r">7</td><td class="mn r">$123,339</td></tr>
+              <tr><td>Committed</td><td class="r">7</td><td class="mn r tdg">$27,119</td></tr>
+              <tr><td>6. PO Received</td><td class="r">0</td><td class="mn r" style="color:var(--ink-3);">$0</td></tr>
+              <tr><td><span class="chip cw">Revisit</span> Revisit After Sept</td><td class="r">4</td><td class="mn r" style="color:var(--caution)">$75,458</td></tr>
+              <tr class="tr"><td>Total 26/27</td><td class="r">56</td><td class="mn r">$527,633</td></tr>
+            </tbody>
+          </table>
+          <div style="font-size:.66rem;color:var(--ink-3);margin-top:8px;line-height:1.5;">
+            Jan completed pipeline cleanup this week — stages now match HubSpot. Top renewals: Midland $77K (Quote Sent), Humble $72K (To be Renewed), Mesquite $57K (V2 Review).
+          </div>
+        </div>
+      </div>
+      <div class="div"></div>
+      <div class="klbl" style="margin-bottom:10px;">Sales Activity — Week over Week</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:10px;">
+        <div style="background:var(--paper-2);padding:12px 14px;border-radius:4px;">
+          <div style="font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">This Week (Jun 11)</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:.72rem;color:var(--ink-2);">Outbound</span><span style="font-family:var(--mono);font-size:.76rem;font-weight:600;">256</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:.72rem;color:var(--ink-2);">Inbound Replies</span><span style="font-family:var(--mono);font-size:.76rem;font-weight:600;color:var(--success);">52</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:.72rem;color:var(--ink-2);">Quotes Sent</span><span style="font-family:var(--mono);font-size:.76rem;font-weight:600;">4</span></div>
+        </div>
+        <div style="background:var(--paper-2);padding:12px 14px;border-radius:4px;">
+          <div style="font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;">Prior Week (May 25–31)</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:.72rem;color:var(--ink-3);">Outbound</span><span style="font-family:var(--mono);font-size:.76rem;color:var(--ink-2);">72</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:.72rem;color:var(--ink-3);">Inbound Replies</span><span style="font-family:var(--mono);font-size:.76rem;color:var(--ink-2);">32</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:.72rem;color:var(--ink-3);">Quotes Sent</span><span style="font-family:var(--mono);font-size:.76rem;color:var(--ink-3);">—</span></div>
+        </div>
+      </div>
+      <div style="font-size:.68rem;color:var(--ink-3);line-height:1.5;">Outbound jumped 3.5x week-over-week (72 → 256), driven by OnShelf V2 launch blast (172 emails) + board-protection outreach (Conroe video to 12 districts). Inbound replies up 63% (32 → 52). Quotes sent not tracked prior week.</div>
+    </div>
+  </div>
+
+  <!-- ENGINE 2: RENEWALS + CUSTOMER SUCCESS -->
+  <div class="panel">
+    <div class="ph"><span class="pt">Renewals &amp; Customer Success</span><span class="chip co">Owner: Patrick / Atlas</span></div>
+    <div class="pb">
+      <div class="kg3">
+        <div class="kc g"><div class="klbl">Open Support Tickets</div><div class="kv">0</div><div class="ks">557 closed total · 63 closed last 7d</div></div>
+        <div class="kc b"><div class="klbl">Active Onboarding</div><div class="kv">26</div><div class="ks">districts in migration pipeline (10 active, 16 scheduled) · 4 at Go-Live</div></div>
+        <div class="kc w"><div class="klbl">Revisit After Sept</div><div class="kv">$75K</div><div class="ks">~$11K genuine risk · $64K parked design-partners</div></div>
+      </div>
+      <div style="font-size:.72rem;color:var(--ink-2);line-height:1.7;">
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);">Migration</strong> &nbsp; 10 active + 1 complete · 4 districts at Go-Live (Dodd City, La Grange, Henrietta, Krum) · 5 in Verification.<br>
+        <span style="color:var(--ink-3);font-size:.68rem;">Support ticket count locked to live HubSpot support stage (prior week's higher count included orphan / auto-closed tickets).</span><br>
+        <span style="color:var(--caution);font-size:.68rem;"><strong style="font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;">Data note</strong> &nbsp; Backend usage data (district logins, engagement) and HubSpot (deal stages, pipeline dollars) show different district counts for migration and onboarding. Reconciliation in progress this week to align on one clean source of truth.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGINE 3: PRODUCT -->
+  <div class="panel">
+    <div class="ph"><span class="pt">Product &amp; Book Intelligence</span><span class="chip cb">Owner: Sarah / Johnny</span></div>
+    <div class="pb">
+      <div class="kg3">
+        <div class="kc g"><div class="klbl">Shipping Velocity</div><div class="kv">22</div><div class="ks">items shipped · 11 in Dev Review</div></div>
+        <div class="kc o"><div class="klbl">BI Titles Enriched (wk)</div><div class="kv">44+</div><div class="ks">+ Summer Reading Sprint (25 titles)</div></div>
+        <div class="kc g"><div class="klbl">Support SLA</div><div class="kv">100%</div><div class="ks">within 4-hour window (Priya)</div></div>
+      </div>
+      <div style="font-size:.72rem;color:var(--ink-2);line-height:1.7;">
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--success);">Headline ship</strong> &nbsp; Book Intelligence is now live inside the Orders flow — librarians see genre, content ratings, age/reading levels, and risk badges at the point of purchase, without leaving the page. Biggest single ship event this quarter.<br>
+        <strong style="font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);">Next horizon</strong> &nbsp; Network Intelligence (Phase 0 data audit running). Google Analytics for V2 needs an owner before school start.
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:.62rem;color:var(--ink-3);font-family:var(--mono);text-align:center;margin-top:20px;letter-spacing:.04em;">Confidential — Board Use Only</div>
+</div>
+
 <!-- ══════ EXECUTIVE SUMMARY ══════ -->
-<div class="section active" id="section-summary">
+<div class="section" id="section-summary">
   <div class="slabel">Executive Summary — May 27, 2026 · Sources: QBO Actuals + Jan's Renewal Tracker</div>
 
   <div class="ca caw">

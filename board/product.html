@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked — Product Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --eigengrau:#101828;
+    --teal:#12A38C;
+    --deep-green:#107569;
+    --pumpkin:#FF692E;
+    --dark-teal:#0D5A52;
+    --secondary-text:#475467;
+    --muted:#9CA3AF;
+    --border:#F0F0F0;
+    --bg-light:#FAFAFA;
+    --success:#12A38C;
+    --danger:#C0392B;
+    --caution:#D97706;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Urbanist',system-ui,-apple-system,sans-serif;background:var(--white);color:var(--eigengrau);max-width:1000px;margin:0 auto;padding:20px}
+
+  /* Header */
+  .header{padding:20px 0 18px;border-bottom:3px solid var(--teal);margin-bottom:28px;display:flex;align-items:center;gap:20px}
+  .header-logo{height:30px;display:block}
+  .header-text h1{font-size:1.35rem;font-weight:700;color:var(--eigengrau);line-height:1.2}
+  .header-text .sub{font-size:0.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:2px}
+
+  /* Data source bar */
+  .data-source{background:var(--bg-light);border:1px solid var(--border);border-radius:4px;padding:8px 14px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center}
+  .data-source span{font-size:0.62rem;color:var(--muted);font-weight:500}
+  .data-source .live{color:var(--teal);font-weight:700}
+
+  /* Section titles */
+  .section-title{font-size:0.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-weight:700}
+
+  /* Grids */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px}
+
+  /* Cards */
+  .card{background:var(--white);border:1px solid var(--border);padding:16px 14px 12px;position:relative;overflow:hidden;border-radius:6px}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:6px 6px 0 0}
+  .card.teal::before{background:var(--teal)}
+  .card.green::before{background:var(--deep-green)}
+  .card.orange::before{background:var(--pumpkin)}
+  .card.dark::before{background:var(--dark-teal)}
+  .card-label{font-size:0.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:700}
+  .card-value{font-size:1.7rem;font-weight:700;line-height:1;margin-bottom:4px;color:var(--eigengrau)}
+  .card-sub{font-size:0.66rem;color:var(--secondary-text);line-height:1.4}
+  .card-delta{font-size:0.62rem;font-weight:600;margin-top:4px}
+  .card-delta.up{color:var(--teal)}
+  .card-delta.dn{color:var(--danger)}
+  .card-delta.flat{color:var(--muted)}
+
+  /* Highlight cards */
+  .highlight-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .highlight-card{background:var(--white);border:1px solid var(--border);padding:14px;border-top:3px solid var(--teal);border-radius:6px}
+  .highlight-card .title{font-size:0.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:8px}
+  .highlight-card .items{font-size:0.7rem;line-height:1.7;color:var(--secondary-text)}
+  .highlight-card .items li{margin-bottom:2px}
+  .highlight-card .items strong{color:var(--eigengrau);font-weight:600}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);margin-bottom:16px;border-radius:6px;overflow:hidden}
+  th{font-size:0.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:10px 10px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg-light);font-weight:700}
+  td{font-size:0.74rem;padding:10px 10px;border-bottom:1px solid var(--border)}
+  tr:last-child td{border-bottom:none}
+  .r{text-align:right}
+  .c{text-align:center}
+
+  /* Progress bar */
+  .progress-wrap{display:flex;align-items:center;gap:8px}
+  .progress-bar{flex:1;height:8px;background:#F3F4F6;border-radius:4px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:4px;transition:width 0.3s}
+  .progress-fill.green{background:var(--teal)}
+  .progress-fill.orange{background:var(--pumpkin)}
+  .progress-fill.gray{background:var(--muted)}
+  .progress-pct{font-size:0.65rem;font-weight:700;color:var(--eigengrau);min-width:32px;text-align:right}
+
+  /* Badges */
+  .badge{display:inline-block;font-size:0.52rem;letter-spacing:.04em;padding:3px 8px;border-radius:3px;text-transform:uppercase;font-weight:700}
+  .b-green{background:#E6F7F3;color:var(--deep-green)}
+  .b-teal{background:#E6F7F3;color:var(--teal)}
+  .b-orange{background:#FFF0EB;color:var(--pumpkin)}
+  .b-red{background:#FDE8E6;color:var(--danger)}
+  .b-blue{background:#EFF6FF;color:#2563EB}
+  .b-gray{background:#F3F4F6;color:var(--muted)}
+
+  /* Epic detail cards */
+  .epic-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:18px;margin-bottom:14px;border-left:4px solid var(--teal)}
+  .epic-card.partial{border-left-color:var(--pumpkin)}
+  .epic-card.not-started{border-left-color:var(--muted)}
+  .epic-card .epic-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+  .epic-card .epic-name{font-size:1rem;font-weight:700;color:var(--eigengrau)}
+  .epic-card .epic-desc{font-size:0.72rem;color:var(--secondary-text);line-height:1.5;margin-bottom:12px}
+  .epic-card .epic-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .epic-card .meta-item{text-align:center}
+  .epic-card .meta-label{font-size:0.52rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
+  .epic-card .meta-value{font-size:1.1rem;font-weight:700;color:var(--eigengrau)}
+  .epic-card .meta-value.placeholder{color:var(--pumpkin);font-size:0.72rem;font-weight:600}
+  .epic-card .meta-value.date{font-size:0.78rem}
+
+  /* Chart area */
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+  .chart-box{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:16px}
+  .chart-box .chart-title{font-size:0.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:12px}
+  .bar-chart{display:flex;flex-direction:column;gap:8px}
+  .bar-row{display:flex;align-items:center;gap:8px}
+  .bar-label{font-size:0.65rem;color:var(--secondary-text);width:110px;text-align:right;font-weight:500}
+  .bar-track{flex:1;height:18px;background:#F3F4F6;border-radius:3px;overflow:hidden;position:relative}
+  .bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:0.55rem;color:white;font-weight:700}
+  .bar-fill.teal{background:var(--teal)}
+  .bar-fill.green{background:var(--deep-green)}
+  .bar-fill.orange{background:var(--pumpkin)}
+  .bar-fill.dark{background:var(--dark-teal)}
+
+  /* Donut chart (CSS only) */
+  .donut-wrap{display:flex;align-items:center;gap:20px}
+  .donut{width:100px;height:100px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center}
+  .donut-center{font-size:1.2rem;font-weight:700;color:var(--eigengrau)}
+  .donut-legend{display:flex;flex-direction:column;gap:6px}
+  .legend-item{display:flex;align-items:center;gap:6px;font-size:0.65rem;color:var(--secondary-text)}
+  .legend-dot{width:8px;height:8px;border-radius:2px}
+
+  /* Callouts */
+  .callout-danger{background:#FDE8E6;border-left:3px solid var(--danger);padding:12px 14px;margin:12px 0;font-size:0.72rem;line-height:1.6;color:var(--secondary-text);border-radius:0 4px 4px 0}
+  .callout-danger strong{color:var(--danger);font-weight:700}
+
+  /* Placeholder */
+  .placeholder{background:var(--bg-light);border:1px dashed var(--border);padding:24px;text-align:center;border-radius:6px;margin-bottom:16px}
+  .placeholder-text{font-size:0.72rem;color:var(--muted);font-weight:500}
+
+  /* Footer */
+  .footer{margin-top:36px;padding:14px 0;border-top:2px solid var(--border);font-size:0.56rem;color:var(--muted);display:flex;justify-content:space-between;font-weight:500}
+
+  @media(max-width:700px){
+    .grid4,.highlight-cards{grid-template-columns:repeat(2,1fr)}
+    .chart-row{grid-template-columns:1fr}
+    .epic-card .epic-meta{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="bookmarked-logo-green.png" alt="Bookmarked" class="header-logo">
+  <div class="header-text">
+    <h1>Product Dashboard</h1>
+    <div class="sub">Weekly Product Tracking — Confidential</div>
+  </div>
+</div>
+
+<!-- DATA SOURCE -->
+<div class="data-source">
+  <span>Data pulled directly from <strong>Jira (BOOK project)</strong> — if anything looks wrong, the fix is in Jira</span>
+  <span class="live">● Live Data</span>
+</div>
+
+<!-- SUMMARY CARDS -->
+<div class="section-title">Summary — Week of June 15, 2026</div>
+
+<div class="grid4">
+  <div class="card teal">
+    <div class="card-label">Active Epics</div>
+    <div class="card-value">3</div>
+    <div class="card-sub">Suitability · Rollout · Rubric</div>
+    <div class="card-delta flat">9 completed epics being closed</div>
+  </div>
+  <div class="card green">
+    <div class="card-label">Tickets Completed</div>
+    <div class="card-value">31</div>
+    <div class="card-sub">Last 3 weeks</div>
+    <div class="card-delta up">↑ Staff Invite, Orders, BI, Migrations</div>
+  </div>
+  <div class="card orange">
+    <div class="card-label">Open Bugs</div>
+    <div class="card-value">5</div>
+    <div class="card-sub">1 critical · 4 high</div>
+    <div class="card-delta dn">Cross-district data leak — top priority</div>
+  </div>
+  <div class="card dark">
+    <div class="card-label">Districts Migrated</div>
+    <div class="card-value">7</div>
+    <div class="card-sub">V1 → V2 (last 3 weeks)</div>
+    <div class="card-delta up">La Grange · Mason · Olney · Krum · Henrietta · Dodd City · Midland</div>
+  </div>
+</div>
+
+<!-- THIS WEEK'S HIGHLIGHTS -->
+<div class="section-title">This Week's Highlights</div>
+
+<div class="highlight-cards">
+  <div class="highlight-card">
+    <div class="title">Features Shipped</div>
+    <div class="items">
+      <strong>Staff Invite — complete</strong>
+      <ul style="margin-left:12px">
+        <li>Bulk invite for all staff</li>
+        <li>Select all across pages</li>
+        <li>Confirmation notifications</li>
+        <li>Invite status tracking</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-card">
+    <div class="title">Book Intelligence</div>
+    <div class="items">
+      <strong>Data quality improvements:</strong>
+      <ul style="margin-left:12px">
+        <li>False positive ban flags fixed</li>
+        <li>Source credibility gating added</li>
+        <li>Flag views unified</li>
+        <li>Deprecated fields cleaned up</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-card">
+    <div class="title">Migrations</div>
+    <div class="items">
+      <strong>7 districts moved to V2:</strong>
+      <ul style="margin-left:12px">
+        <li>Midland ISD (Wave 2)</li>
+        <li>Krum + Henrietta</li>
+        <li>Mason + Olney</li>
+        <li>La Grange + Dodd City</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-card">
+    <div class="title">Security</div>
+    <div class="items">
+      <strong>Tenant isolation — done</strong>
+      <ul style="margin-left:12px">
+        <li>3 epics shipped complete</li>
+        <li>Cross-district bleed eliminated</li>
+      </ul>
+      <div style="margin-top:6px;color:var(--danger);font-weight:600;font-size:0.65rem">⚠ New cross-district bug found</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHARTS -->
+<div class="section-title">Delivery by Product Area (Last 3 Weeks)</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <div class="chart-title">Tickets Completed by Area</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Migrations</div>
+        <div class="bar-track"><div class="bar-fill teal" style="width:58%">8</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Order Workflow</div>
+        <div class="bar-track"><div class="bar-fill green" style="width:50%">7</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Staff Invite</div>
+        <div class="bar-track"><div class="bar-fill teal" style="width:43%">6</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">BI Data Quality</div>
+        <div class="bar-track"><div class="bar-fill dark" style="width:43%">6</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Tenant Isolation</div>
+        <div class="bar-track"><div class="bar-fill green" style="width:22%">3</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Bug Fixes</div>
+        <div class="bar-track"><div class="bar-fill orange" style="width:7%">1</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="chart-box">
+    <div class="chart-title">Epic Completion Status</div>
+    <div class="donut-wrap">
+      <div class="donut" style="background:conic-gradient(var(--teal) 0deg 270deg, var(--pumpkin) 270deg 320deg, #F3F4F6 320deg 360deg)">
+        <div style="width:60px;height:60px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div class="donut-center">12</div>
+        </div>
+      </div>
+      <div class="donut-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div><strong>9</strong> Completed (pending close)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--pumpkin)"></div><strong>2</strong> Shipped Partial</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#F3F4F6;border:1px solid var(--border)"></div><strong>1</strong> Not Started</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:0.65rem;color:var(--muted);line-height:1.5">
+      9 epics show "To Do" but have all tickets done. Being cleaned up this week.
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVE EPICS — DETAILED CARDS -->
+<div class="section-title">Active Epics — Detail View</div>
+
+<!-- Epic 1: Suitability Filter -->
+<div class="epic-card partial">
+  <div class="epic-header">
+    <div class="epic-name">Audience-Level Suitability Filter</div>
+    <span class="badge b-orange">Shipped Partial</span>
+  </div>
+  <div class="epic-desc">
+    Books are being wrongly blocked for K-8 districts because high school age flags apply to all district types. This fix ensures only relevant age and maturity filters apply based on each district's grade tier — a 2.7x improvement in visible suitable books for affected districts like Alba-Golden ISD.
+  </div>
+  <div class="epic-meta">
+    <div class="meta-item">
+      <div class="meta-label">Tickets Completed</div>
+      <div class="meta-value">2</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Tickets Remaining</div>
+      <div class="meta-value placeholder">TBD — needs scoping</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Target Ship Date</div>
+      <div class="meta-value date placeholder">TBD</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Progress</div>
+      <div class="progress-wrap" style="margin-top:4px">
+        <div class="progress-bar"><div class="progress-fill orange" style="width:40%"></div></div>
+        <div class="progress-pct">~40%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Epic 2: V1→V2 Rollout -->
+<div class="epic-card partial">
+  <div class="epic-header">
+    <div class="epic-name">V1 → V2 District Rollout</div>
+    <span class="badge b-orange">Shipped Partial</span>
+  </div>
+  <div class="epic-desc">
+    Migrate all remaining V1 districts to the V2 platform. Each migration includes data migration, role verification, staging UAT, and production cutover. 7 districts completed in the last 3 weeks. Directly tied to renewal revenue — districts on V1 can't access Book Intelligence or new features.
+  </div>
+  <div class="epic-meta">
+    <div class="meta-item">
+      <div class="meta-label">Tickets Completed</div>
+      <div class="meta-value">8</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Tickets Remaining</div>
+      <div class="meta-value placeholder">TBD — depends on remaining districts</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Target Ship Date</div>
+      <div class="meta-value date placeholder">TBD</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Progress</div>
+      <div class="progress-wrap" style="margin-top:4px">
+        <div class="progress-bar"><div class="progress-fill orange" style="width:60%"></div></div>
+        <div class="progress-pct">~60%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Epic 3: Custom District Rubric -->
+<div class="epic-card not-started">
+  <div class="epic-header">
+    <div class="epic-name">Custom District Rubric Upload</div>
+    <span class="badge b-gray">Not Started</span>
+  </div>
+  <div class="epic-desc">
+    Allow districts to upload their own book review rubric so that Book Intelligence scoring reflects their local standards and policies. Built on the SB13 compliance framework. Districts get customized risk assessments instead of one-size-fits-all national flags.
+  </div>
+  <div class="epic-meta">
+    <div class="meta-item">
+      <div class="meta-label">Tickets Completed</div>
+      <div class="meta-value">0</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Tickets Remaining</div>
+      <div class="meta-value placeholder">TBD — needs scoping</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Target Ship Date</div>
+      <div class="meta-value date placeholder">TBD</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Progress</div>
+      <div class="progress-wrap" style="margin-top:4px">
+        <div class="progress-bar"><div class="progress-fill gray" style="width:0%"></div></div>
+        <div class="progress-pct">0%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OPEN BUGS -->
+<div class="section-title">Open Bugs</div>
+
+<div class="callout-danger">
+  <strong>CRITICAL — SECURITY:</strong> Cross-district data leak discovered. Classroom library service falls back to showing all districts' data when a scoped query fails. This is a data privacy issue. Highest priority fix.
+</div>
+
+<table>
+  <tr>
+    <th>Bug</th>
+    <th>Impact</th>
+    <th>Priority</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td style="font-weight:700;color:var(--danger)">Cross-District Data Leak</td>
+    <td style="font-size:0.72rem">Districts may see other districts' classroom library data</td>
+    <td><span class="badge b-red">Critical</span></td>
+    <td><span class="badge b-red">Open</span></td>
+  </tr>
+  <tr>
+    <td style="font-weight:600">Book Intelligence staleness clock</td>
+    <td style="font-size:0.72rem">Refresh Metadata gives false "fresh" signal on cached data</td>
+    <td><span class="badge b-orange">High</span></td>
+    <td><span class="badge b-orange">Open</span></td>
+  </tr>
+  <tr>
+    <td style="font-weight:600">Guardian Restriction report empty</td>
+    <td style="font-size:0.72rem">Librarian restriction reports return no data</td>
+    <td><span class="badge b-orange">High</span></td>
+    <td><span class="badge b-orange">Open</span></td>
+  </tr>
+  <tr>
+    <td style="font-weight:600">ISBN-10 rejected in CSV upload</td>
+    <td style="font-size:0.72rem">Older ISBN formats fail during bulk book upload</td>
+    <td><span class="badge b-orange">High</span></td>
+    <td><span class="badge b-orange">Open</span></td>
+  </tr>
+  <tr>
+    <td style="font-weight:600">Bulk upload — no status feedback</td>
+    <td style="font-size:0.72rem">Librarians see nothing when uploads are processing</td>
+    <td><span class="badge b-orange">High</span></td>
+    <td><span class="badge b-orange">Open</span></td>
+  </tr>
+</table>
+
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>Bookmarked Inc. — Confidential — Do not distribute</span>
+  <span>Last updated: June 15, 2026 · Data source: Jira (BOOK project, live query)</span>
+</div>
+
+</body>
+</html>

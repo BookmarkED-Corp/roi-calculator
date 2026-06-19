@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northy — Founder OS Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#101828;--ink-2:#2a2d35;--ink-3:#6b7280;
+    --paper:#f9f7f2;--paper-2:#f0ede5;--paper-3:#e4dfd4;
+    --gold:#12A38C;--gold-light:#4cc3ae;
+    --rust:#B14012;--rust-2:#D9582A;
+    --danger:#c0392b;--success:#107569;--caution:#d97706;
+    --blue:#2563eb;
+    --border:rgba(16,24,40,0.1);
+    --mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'DM Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);}
+
+  /* HEADER */
+  .header{background:var(--ink);color:var(--paper);padding:22px 48px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold);}
+  .header h1{font-family:var(--serif);font-size:1.9rem;line-height:1;margin-bottom:3px;}
+  .header .logo-img{height:38px;width:auto;display:block;}
+  .header .sub{font-family:var(--mono);font-size:0.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-top:6px;}
+  .hdr-r{text-align:right;}
+  .hdr-r .ao{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(249,247,242,.4);margin-bottom:3px;}
+  .hdr-r .dt{font-family:var(--serif);font-size:1.1rem;}
+  .hdr-r .scan{font-family:var(--mono);font-size:.58rem;color:var(--gold-light);margin-top:4px;}
+
+  /* NAV */
+  .nav{background:var(--ink-2);padding:0 48px;display:flex;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.08);}
+  .nt{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(249,247,242,.4);padding:12px 16px 10px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;}
+  .nt:hover{color:rgba(249,247,242,.75);}
+  .nt.active{color:var(--gold-light);border-bottom-color:var(--gold);}
+  .nt .badge-count{background:var(--danger);color:white;font-size:.52rem;padding:1px 5px;border-radius:10px;line-height:1.4;}
+  .nt .badge-count.yellow{background:var(--caution);}
+  .nt .badge-count.blue{background:var(--blue);}
+  .nt .badge-count.green{background:var(--success);}
+
+  /* CONTENT */
+  .content{padding:30px 48px 60px;}
+  .section{display:none;}
+  .section.active{display:block;}
+
+  /* SECTION LABEL */
+  .slabel{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:9px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+  .slabel::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  /* STRATEGIC HEALTH CARDS */
+  .health-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+  .hcard{background:white;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;}
+  .hcard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+  .hcard.green::before{background:var(--success);}
+  .hcard.yellow::before{background:var(--caution);}
+  .hcard.red::before{background:var(--danger);}
+  .hcard-label{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+  .hcard-status{font-family:var(--serif);font-size:1.4rem;margin-bottom:6px;}
+  .hcard-status.green{color:var(--success);}
+  .hcard-status.yellow{color:var(--caution);}
+  .hcard-status.red{color:var(--danger);}
+  .hcard-note{font-size:.7rem;color:var(--ink-3);line-height:1.5;}
+
+  /* TRIAGE ITEMS */
+  .triage-stack{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+  .titem{background:white;border:1px solid var(--border);overflow:hidden;}
+  .titem-head{padding:12px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer;user-select:none;}
+  .titem-head:hover{background:var(--paper);}
+  .titem-left{display:flex;align-items:flex-start;gap:12px;flex:1;}
+  .titem-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+  .titem-id{font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;color:var(--ink-3);margin-bottom:3px;}
+  .titem-title{font-weight:600;font-size:.85rem;color:var(--ink);line-height:1.3;}
+  .titem-source{font-family:var(--mono);font-size:.57rem;color:var(--ink-3);margin-top:4px;}
+  .titem-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;}
+  .status-badge{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:2px;}
+  .status-badge.needs{background:#fde8e6;color:var(--danger);}
+  .status-badge.intel{background:#eff6ff;color:var(--blue);}
+  .status-badge.watch{background:#fef3e2;color:var(--caution);}
+  .status-badge.done{background:#e6f4ed;color:var(--success);}
+  .titem-body{padding:0 16px 16px 16px;border-top:1px solid var(--border);display:none;}
+  .titem-body.open{display:block;}
+  .titem-detail{font-size:.76rem;line-height:1.7;color:var(--ink-2);margin-top:12px;}
+  .titem-action{background:var(--paper-2);border:1px solid var(--border);padding:10px 14px;margin-top:12px;font-size:.74rem;line-height:1.6;color:var(--ink);}
+  .titem-action strong{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;}
+  .titem-actions-row{display:flex;gap:8px;margin-top:12px;}
+  .btn{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border:none;cursor:pointer;transition:all .15s;}
+  .btn-approve{background:var(--success);color:white;}
+  .btn-approve:hover{background:#0d6057;}
+  .btn-kill{background:var(--paper-3);color:var(--ink-3);}
+  .btn-kill:hover{background:var(--paper-2);color:var(--ink);}
+  .btn-redirect{background:var(--caution);color:white;}
+  .btn-redirect:hover{background:#b45309;}
+  .chevron{font-size:.7rem;color:var(--ink-3);transition:transform .2s;flex-shrink:0;margin-top:2px;}
+  .chevron.open{transform:rotate(180deg);}
+
+  /* INTEL CARDS */
+  .intel-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
+  .icard{background:white;border:1px solid var(--border);padding:18px;position:relative;overflow:hidden;}
+  .icard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);}
+  .icard-source{font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+  .icard-title{font-weight:600;font-size:.85rem;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+  .icard-pattern{font-size:.74rem;line-height:1.6;color:var(--ink-2);margin-bottom:10px;}
+  .icard-apply{font-family:var(--mono);font-size:.63rem;color:var(--gold);margin-bottom:6px;}
+  .icard-apply-text{font-size:.72rem;line-height:1.5;color:var(--ink-3);}
+  .priority-badge{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:2px;display:inline-block;margin-top:10px;}
+  .priority-badge.now{background:#fde8e6;color:var(--danger);}
+  .priority-badge.queue{background:#fef3e2;color:var(--caution);}
+  .priority-badge.file{background:var(--paper-2);color:var(--ink-3);}
+
+  /* EMPTY STATE */
+  .empty{background:white;border:1px solid var(--border);padding:32px;text-align:center;color:var(--ink-3);font-size:.78rem;line-height:1.6;}
+  .empty .em-icon{font-size:2rem;margin-bottom:10px;}
+
+  /* NORTHY BANNER */
+  .northy-banner{background:var(--ink);color:var(--paper);padding:14px 20px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;}
+  .nb-icon{font-size:1.4rem;flex-shrink:0;}
+  .nb-name{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px;}
+  .nb-msg{font-size:.8rem;line-height:1.6;color:rgba(249,247,242,.85);}
+
+  /* RESOLVED */
+  .resolved-item{background:white;border:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+  .resolved-item .ri-id{font-family:var(--mono);font-size:.57rem;color:var(--ink-3);}
+  .resolved-item .ri-title{font-size:.78rem;color:var(--ink-3);flex:1;text-decoration:line-through;}
+  .resolved-item .ri-outcome{font-size:.7rem;color:var(--success);}
+
+  /* PANEL */
+  .panel{background:white;border:1px solid var(--border);overflow:hidden;margin-bottom:18px;}
+  .ph{background:var(--paper-2);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+  .pt{font-family:var(--mono);font-size:.61rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:500;}
+  .pb{padding:16px;}
+
+  /* COMMITMENT TABLE */
+  table{width:100%;border-collapse:collapse;}
+  th{font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:0 8px 8px 0;text-align:left;border-bottom:1px solid var(--border);}
+  td{font-size:.74rem;padding:7px 8px 7px 0;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top;line-height:1.4;}
+  tr:last-child td{border-bottom:none;}
+  .mn{font-family:var(--mono);font-size:.68rem;}
+  .tag-open{display:inline-block;font-family:var(--mono);font-size:.52rem;padding:2px 6px;background:#fde8e6;color:var(--danger);border-radius:2px;}
+  .tag-wait{display:inline-block;font-family:var(--mono);font-size:.52rem;padding:2px 6px;background:#fef3e2;color:var(--caution);border-radius:2px;}
+  .tag-done{display:inline-block;font-family:var(--mono);font-size:.52rem;padding:2px 6px;background:#e6f4ed;color:var(--success);border-radius:2px;}
+
+  /* WHAT AM I MISSING BUTTON */
+  .wamm-bar{background:var(--ink-2);padding:14px 48px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;}
+  .wamm-btn{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:white;border:none;padding:9px 20px;cursor:pointer;transition:all .2s;}
+  .wamm-btn:hover{background:var(--gold-light);}
+  .wamm-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(249,247,242,.35);}
+
+  @media(max-width:900px){
+    .header,.nav,.wamm-bar,.content{padding-left:20px;padding-right:20px;}
+    .health-grid{grid-template-columns:1fr 1fr;}
+    .intel-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <img src="bookmarked-logo.png" class="logo-img" alt="Bookmarked" onerror="this.style.display='none'">
+    <h1>Northy</h1>
+    <div class="sub">N.O.R.T.H.Y. — Never Off, Relentlessly Tracking How You're doing</div>
+  </div>
+  <div class="hdr-r">
+    <div class="ao">Founder OS · Steve Wandler</div>
+    <div class="dt">June 19, 2026</div>
+    <div class="scan">Last scan: Nightly Deep Scan · 9:00pm CDT</div>
+  </div>
+</div>
+
+<!-- WHAT AM I MISSING BAR -->
+<div class="wamm-bar">
+  <div class="wamm-label">Northy is watching everything</div>
+  <button class="wamm-btn" onclick="alert('Triggering live scan — check back in 60 seconds. (Wire to Hermes API to enable.)')">⟳ What am I missing?</button>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nt active" onclick="show('triage',this)">🔴 Act Now <span class="badge-count">3</span></div>
+  <div class="nt" onclick="show('think',this)">🟡 Think About This <span class="badge-count yellow">2</span></div>
+  <div class="nt" onclick="show('intel',this)">🔵 Founder Intel <span class="badge-count blue">2</span></div>
+  <div class="nt" onclick="show('health',this)">⚪ Strategic Health</div>
+  <div class="nt" onclick="show('commitments',this)">📋 Commitments</div>
+  <div class="nt" onclick="show('resolved',this)">✅ Resolved <span class="badge-count green">0</span></div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ACT NOW -->
+  <div id="triage" class="section active">
+    <div class="slabel">Act Now — 3 items need your decision</div>
+
+    <div class="northy-banner">
+      <div class="nb-icon">🧭</div>
+      <div>
+        <div class="nb-name">Northy · First Scan</div>
+        <div class="nb-msg">Three things need you. Two connections worth thinking about. The September cliff is 103 days away and right now the energy is going to systems, not deals. Tomorrow: three calls before you open a terminal.</div>
+      </div>
+    </div>
+
+    <div class="triage-stack">
+
+      <!-- N-001 -->
+      <div class="titem">
+        <div class="titem-head" onclick="toggle('n001')">
+          <div class="titem-left">
+            <div class="titem-icon">🔴</div>
+            <div>
+              <div class="titem-id">N-001 · Opportunity / Risk</div>
+              <div class="titem-title">TALAS Summit — 72 hours, no confirmed plan</div>
+              <div class="titem-source">Source: Knowledge base + calendar</div>
+            </div>
+          </div>
+          <div class="titem-right">
+            <span class="status-badge needs">Needs You</span>
+            <span class="chevron" id="chev-n001">▼</span>
+          </div>
+        </div>
+        <div class="titem-body" id="n001">
+          <div class="titem-detail">June 22-23, Austin, Concordia University. Full statewide board, all 9 chapter presidents, Miguel Cardona speaking. Jennifer who asked for an AI session, Monica, Bryan McCorkle's network — all in that room. No activity confirming whether you're going or whether Michael is attending.</div>
+          <div class="titem-action">
+            <strong>Recommended Action</strong>
+            Text Michael tonight or first thing tomorrow: "Are you going to the Summit Sunday? I'd like to be there with you." If yes, block Sunday-Monday. If no, find out who from NTX is going and decide if it's worth going solo.
+          </div>
+          <div class="titem-actions-row">
+            <button class="btn btn-approve" onclick="resolve('N-001','TALAS — plan confirmed')">✓ Done</button>
+            <button class="btn btn-kill" onclick="resolve('N-001','TALAS — not attending')">✗ Not going</button>
+            <button class="btn btn-redirect" onclick="redirect('N-001')">↩ Redirect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- N-002 -->
+      <div class="titem">
+        <div class="titem-head" onclick="toggle('n002')">
+          <div class="titem-left">
+            <div class="titem-icon">🔴</div>
+            <div>
+              <div class="titem-id">N-002 · Contradiction / Deal Risk</div>
+              <div class="titem-title">Garland ISD — Pricing mismatch, 12 days to June 30</div>
+              <div class="titem-source">Source: Charlie prep + strategy session June 10</div>
+            </div>
+          </div>
+          <div class="titem-right">
+            <span class="status-badge needs">Needs You</span>
+            <span class="chevron" id="chev-n002">▼</span>
+          </div>
+        </div>
+        <div class="titem-body" id="n002">
+          <div class="titem-detail">Charlie prep says "$140K quote sent, June 30 deadline." Strategy session June 10 set $89K founding-partner rate via IMTA. Those are different offers. IMTA email went June 10 — no reply from Michael in 9 days. 12 days left on the deadline.</div>
+          <div class="titem-action">
+            <strong>Recommended Action</strong>
+            Confirm with Jan what the $140K actually includes. Decide: is the ask $89K (founding-partner IMTA) or $140K (full-price)? You can't run both. Then call Michael — not email. A phone call.
+          </div>
+          <div class="titem-actions-row">
+            <button class="btn btn-approve" onclick="resolve('N-002','Garland — pricing aligned, call scheduled')">✓ Called Michael</button>
+            <button class="btn btn-kill" onclick="resolve('N-002','Garland — pushing past June 30')">✗ Extend timeline</button>
+            <button class="btn btn-redirect" onclick="redirect('N-002')">↩ Redirect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- N-003 -->
+      <div class="titem">
+        <div class="titem-head" onclick="toggle('n003')">
+          <div class="titem-left">
+            <div class="titem-icon">🔴</div>
+            <div>
+              <div class="titem-id">N-003 · Drift / ULP</div>
+              <div class="titem-title">Systems-mode trap is active — pipeline needs you selling</div>
+              <div class="titem-source">Source: Today's meetings + knowledge base patterns</div>
+            </div>
+          </div>
+          <div class="titem-right">
+            <span class="status-badge needs">Needs You</span>
+            <span class="chevron" id="chev-n003">▼</span>
+          </div>
+        </div>
+        <div class="titem-body" id="n003">
+          <div class="titem-detail">June 18-19: Northy build, agent fleet architecture, G-Brain team setup, dashboard consolidation, analytics epic. All legitimate. But pipeline is ~$100K, you need $200K+ by September, cash is heading to $178K, and the Mesquite follow-up from Monday's lunch isn't scheduled. That's the pattern from your knowledge base: when the September number needs selling, the retreat goes to building systems.</div>
+          <div class="titem-action">
+            <strong>Recommended Action</strong>
+            Tomorrow, before touching any systems work: (1) Call Michael about Garland, (2) Text Angel about Mesquite, (3) Prep ESC 10 meeting June 23 with a clear revenue ask. Then build whatever you want.
+          </div>
+          <div class="titem-actions-row">
+            <button class="btn btn-approve" onclick="resolve('N-003','Three calls done — back in deal mode')">✓ Made the calls</button>
+            <button class="btn btn-kill" onclick="alert('Northy notes the decision. He will watch.')">✗ Disagree</button>
+            <button class="btn btn-redirect" onclick="redirect('N-003')">↩ Redirect</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- THINK ABOUT THIS -->
+  <div id="think" class="section">
+    <div class="slabel">Think About This — 2 connections worth your attention</div>
+
+    <div class="triage-stack">
+
+      <!-- N-004 -->
+      <div class="titem">
+        <div class="titem-head" onclick="toggle('n004')">
+          <div class="titem-left">
+            <div class="titem-icon">🟡</div>
+            <div>
+              <div class="titem-id">N-004 · Connection</div>
+              <div class="titem-title">Patrick's 11-12 PD sessions = free Play 1 validation lab</div>
+              <div class="titem-source">Source: All-hands June 19 + three-play framework</div>
+            </div>
+          </div>
+          <div class="titem-right">
+            <span class="status-badge watch">Next Week</span>
+            <span class="chevron" id="chev-n004">▼</span>
+          </div>
+        </div>
+        <div class="titem-body" id="n004">
+          <div class="titem-detail">Patrick is planning 11-12 professional development sessions with librarians next month. He's already using Booker, Ellie Iris, and Claude for demo transcripts. He's in the room with your exact target persona — librarians making book decisions. Those PD sessions are a laboratory for validating Play 1 (Network Trust Signal) before you build anything.</div>
+          <div class="titem-action">
+            <strong>One Question to Test</strong>
+            "If I showed you that 50 other Texas districts already have this book in their elementary library, would that change how fast you approve it?" That answer is worth more than a week of product design. Ask Patrick to test it in his next session.
+          </div>
+          <div class="titem-actions-row">
+            <button class="btn btn-approve" onclick="resolve('N-004','Asked Patrick — testing in PD sessions')">✓ Tasked Patrick</button>
+            <button class="btn btn-kill" onclick="resolve('N-004','Not a priority right now')">✗ Not now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- N-005 -->
+      <div class="titem">
+        <div class="titem-head" onclick="toggle('n005')">
+          <div class="titem-left">
+            <div class="titem-icon">🟡</div>
+            <div>
+              <div class="titem-id">N-005 · Urgency / Savings</div>
+              <div class="titem-title">V1 shutdown = $8-9K/month — blocked on one conversation</div>
+              <div class="titem-source">Source: Dev stand June 19 + Charlie prep financials</div>
+            </div>
+          </div>
+          <div class="titem-right">
+            <span class="status-badge watch">This Week</span>
+            <span class="chevron" id="chev-n005">▼</span>
+          </div>
+        </div>
+        <div class="titem-body" id="n005">
+          <div class="titem-detail">Raju is ready to shut down V1 but needs Jackson's guidance on database archival approach. Charlie prep confirms V1 shutdown saves $8-9K/month in hosting costs. At current burn rate that's meaningful runway extension. It's blocked on one conversation that hasn't happened yet.</div>
+          <div class="titem-action">
+            <strong>Recommended Action</strong>
+            Text Raju: "Did you connect with Jackson on the V1 archival approach? That shutdown is worth $9K/month — let's not let it sit."
+          </div>
+          <div class="titem-actions-row">
+            <button class="btn btn-approve" onclick="resolve('N-005','Raju connected with Jackson — V1 shutdown in progress')">✓ Texted Raju</button>
+            <button class="btn btn-kill" onclick="resolve('N-005','V1 shutdown on hold')">✗ On hold</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOUNDER INTEL -->
+  <div id="intel" class="section">
+    <div class="slabel">Founder Intelligence — What the best builders shipped this week</div>
+
+    <div class="intel-grid">
+
+      <div class="icard">
+        <div class="icard-source">Garry Tan · github.com/garrytan/gstack</div>
+        <div class="icard-title">GStack — Sequential Discipline Within Parallel Agents</div>
+        <div class="icard-pattern">23 Claude Code slash commands structured as an AI engineering team. CEO, Eng Manager, Designer, QA Lead, Release Engineer. 70K+ stars in 3 weeks. Conductor Pattern: runs 10-15 parallel sessions. Core insight: "Without a process, ten agents is ten sources of chaos. With a process — think, plan, build, review, test, ship — each agent knows exactly what to do and when to stop."</div>
+        <div class="icard-apply">Applies to your system:</div>
+        <div class="icard-apply-text">Your coordinator-specialist architecture is right. What's missing: each specialist agent needs internal workflow discipline (plan→execute→verify→report), not just a job description. Bake this into Sales, Product, and Team agents when you build them.</div>
+        <span class="priority-badge queue">Queue for next agent build</span>
+      </div>
+
+      <div class="icard">
+        <div class="icard-source">Anthropic Engineering · anthropic.com/engineering/multi-agent-research-system</div>
+        <div class="icard-title">Multi-Agent Research System — 90.2% Improvement Validated</div>
+        <div class="icard-pattern">Orchestrator-worker pattern. Lead agent decomposes queries → spawns 3-5 subagents in parallel, each with isolated context windows → subagents return only relevant findings. Opus lead + Sonnet subagents outperformed single-agent Opus by 90.2% on breadth-first queries. Parallel tool calling cut research time by up to 90%.</div>
+        <div class="icard-apply">Applies to your system:</div>
+        <div class="icard-apply-text">Your architecture is validated by the team that builds the models you run on. Upgrade opportunity: run Northy's five jobs as parallel subagent calls instead of sequential — would cut nightly scan time significantly.</div>
+        <span class="priority-badge file">Validates current architecture</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STRATEGIC HEALTH -->
+  <div id="health" class="section">
+    <div class="slabel">Strategic Health — Science of Scaling + Start With Why</div>
+
+    <div class="health-grid">
+      <div class="hcard yellow">
+        <div class="hcard-label">Frame</div>
+        <div class="hcard-status yellow">🟡 Drifting</div>
+        <div class="hcard-note">Infrastructure work is $10M-level thinking — right direction. But survival need is $200K in 103 days. Frame is correct, execution energy is misallocated.</div>
+      </div>
+      <div class="hcard green">
+        <div class="hcard-label">Floor</div>
+        <div class="hcard-status green">🟢 Aligned</div>
+        <div class="hcard-note">No below-floor deals or distractions visible. Good discipline. No custom implementations, no tiny districts, no off-mission features.</div>
+      </div>
+      <div class="hcard yellow">
+        <div class="hcard-label">Focus</div>
+        <div class="hcard-status yellow">🟡 Drifting</div>
+        <div class="hcard-note">The crux right now is revenue. Energy is going to the interesting problem (systems) not the urgent one (deals). Flip it tomorrow.</div>
+      </div>
+      <div class="hcard yellow">
+        <div class="hcard-label">WHY</div>
+        <div class="hcard-status yellow">🟡 Quiet</div>
+        <div class="hcard-note">Today's meetings: all tech and process. Nobody mentioned kids, books, or literacy. When the internal conversation loses the WHY, the external pitch loses it next.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div class="pt">September Cliff — 103 Days</div></div>
+      <div class="pb">
+        <table>
+          <tr>
+            <th>Metric</th>
+            <th>Current</th>
+            <th>Target</th>
+            <th>Gap</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>Cash</td>
+            <td class="mn">$250K</td>
+            <td class="mn">$178K (Sept 30 proj.)</td>
+            <td class="mn">–$72K burn</td>
+            <td><span class="tag-wait">Watch</span></td>
+          </tr>
+          <tr>
+            <td>Pipeline (new ARR needed)</td>
+            <td class="mn">~$100K</td>
+            <td class="mn">$200K+</td>
+            <td class="mn">–$100K+</td>
+            <td><span class="tag-open">Urgent</span></td>
+          </tr>
+          <tr>
+            <td>Garland ISD</td>
+            <td class="mn">Quote sent</td>
+            <td class="mn">Signed by June 30</td>
+            <td class="mn">12 days</td>
+            <td><span class="tag-open">Act Now</span></td>
+          </tr>
+          <tr>
+            <td>Mesquite ISD (Angel)</td>
+            <td class="mn">Warm — lunch June 18</td>
+            <td class="mn">$150K pilot signed</td>
+            <td class="mn">Follow-up not scheduled</td>
+            <td><span class="tag-open">Act Now</span></td>
+          </tr>
+          <tr>
+            <td>V1 Shutdown Savings</td>
+            <td class="mn">Pending Jackson</td>
+            <td class="mn">$8-9K/mo saved</td>
+            <td class="mn">One conversation</td>
+            <td><span class="tag-wait">This Week</span></td>
+          </tr>
+          <tr>
+            <td>Patrick Reid equity cliff</td>
+            <td class="mn">July 15</td>
+            <td class="mn">Board consent signed</td>
+            <td class="mn">27 days</td>
+            <td><span class="tag-open">Urgent</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMITMENTS -->
+  <div id="commitments" class="section">
+    <div class="slabel">Commitment Tracker — extracted from today's transcripts</div>
+
+    <div class="panel">
+      <div class="ph"><div class="pt">Steve Owes</div></div>
+      <div class="pb">
+        <table>
+          <tr><th>What</th><th>To</th><th>Date</th><th>Status</th></tr>
+          <tr><td>Inspect production order page</td><td>Team</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Refactor UAT skill to shared GitHub repo</td><td>Team</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Research Scout ticket submission</td><td>Team</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Create Google Analytics epic with Sarah</td><td>Sarah</td><td class="mn">Jun 19</td><td><span class="tag-open">Next week</span></td></tr>
+          <tr><td>Review Mabel/RAM data pull strategies</td><td>Team</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Centralize all dashboards into one interface</td><td>Team</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Configure G-Brain for Jan and Teela (after ESC 10)</td><td>Jan / Teela</td><td class="mn">Jun 23+</td><td><span class="tag-wait">After ESC 10</span></td></tr>
+          <tr><td>Mesquite follow-up — text Angel Rivera</td><td>Angel Rivera</td><td class="mn">Jun 18</td><td><span class="tag-open">⚠ Not scheduled</span></td></tr>
+          <tr><td>Call Michael Ruiz — Garland pricing + IMTA</td><td>Michael Ruiz</td><td class="mn">Jun 10</td><td><span class="tag-open">⚠ 9 days no reply</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div class="pt">Team Owes Steve</div></div>
+      <div class="pb">
+        <table>
+          <tr><th>Who</th><th>What</th><th>Date</th><th>Status</th></tr>
+          <tr><td>Jan</td><td>Share all dashboard locations</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Patrick</td><td>Share all dashboard locations</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Teela</td><td>Create Confluence page documenting professional expertise</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Raju</td><td>Kick off data loads, plan weekend loads</td><td class="mn">Jun 19</td><td><span class="tag-wait">In progress</span></td></tr>
+          <tr><td>Raju</td><td>Consult Jackson on V1 archival / shutdown</td><td class="mn">Jun 19</td><td><span class="tag-open">Blocked</span></td></tr>
+          <tr><td>Patrick</td><td>Contact Sara re open order workflow issues</td><td class="mn">Jun 19</td><td><span class="tag-open">Open</span></td></tr>
+          <tr><td>Nahuel</td><td>Manage agent execution tasks for Sprint 130</td><td class="mn">Jun 19</td><td><span class="tag-wait">In progress</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOLVED -->
+  <div id="resolved" class="section">
+    <div class="slabel">Resolved — items Steve acted on</div>
+    <div class="empty">
+      <div class="em-icon">✅</div>
+      First scan — nothing resolved yet. When you approve or kill items above, they'll appear here with the outcome noted.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function show(id, el) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nt').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    el.classList.add('active');
+  }
+
+  function toggle(id) {
+    const body = document.getElementById(id);
+    const chev = document.getElementById('chev-' + id);
+    body.classList.toggle('open');
+    if(chev) chev.classList.toggle('open');
+  }
+
+  function resolve(itemId, outcome) {
+    const resolved = document.getElementById('resolved');
+    const empty = resolved.querySelector('.empty');
+    if(empty) empty.remove();
+
+    const item = document.createElement('div');
+    item.className = 'resolved-item';
+    item.innerHTML = `
+      <span class="ri-id">${itemId}</span>
+      <span class="ri-title">${itemId} resolved</span>
+      <span class="ri-outcome">✓ ${outcome}</span>
+    `;
+    resolved.querySelector('.slabel').after(item);
+
+    // Update badge count
+    const badge = document.querySelector(`.nt .badge-count.green`);
+    if(badge) badge.textContent = parseInt(badge.textContent) + 1;
+
+    alert(`✓ ${itemId} marked as resolved: "${outcome}"\n\nNorthy will update the triage board on the next scan.`);
+  }
+
+  function redirect(itemId) {
+    const note = prompt(`Redirect ${itemId} — what's the real issue or different direction?`);
+    if(note) alert(`Noted. Northy will incorporate this on the next scan:\n"${note}"`);
+  }
+</script>
+
+</body>
+</html>

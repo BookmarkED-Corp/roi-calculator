@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "last_updated": "2026-06-22T09:00:00",
+    "scan_type": "Nightly Deep Scan",
+    "northy_message": "Three calls before you open a terminal. Michael. Angel. ESC 10 prep. Then build whatever you want."
+  },
+  "act_now": [
+    {
+      "id": "N-001",
+      "title": "TALAS Summit — no confirmed plan",
+      "category": "Opportunity / Risk",
+      "detail": "June 22-23 in Austin. Full board, all 9 chapter presidents. Michael hasn't confirmed.",
+      "action": "Text Michael: 'Are you going? I'd like to be there with you.'",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-002",
+      "title": "Garland ISD — pricing mismatch, deadline June 30",
+      "category": "Deal Risk",
+      "detail": "$140K in pipeline vs $89K founding-partner strategy. No reply from Michael in 9+ days.",
+      "action": "Call Michael directly. Not email. Confirm pricing with Jan first.",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-003",
+      "title": "Systems-mode trap active",
+      "category": "Drift / ULP",
+      "detail": "June 18-19 were agent-building days. Legit work, but pipeline ~$100K and cash heading to $178K.",
+      "action": "Three calls before you open a terminal: Michael (Garland), Angel (Mesquite), ESC 10 prep.",
+      "status": "needs-steve"
+    }
+  ],
+  "think_about": [
+    {
+      "id": "N-004",
+      "title": "Patrick's PD sessions = Play 1 validation",
+      "category": "Connection",
+      "urgency": "next-week"
+    },
+    {
+      "id": "N-005",
+      "title": "V1 shutdown saves $9K/month — blocked on Jackson",
+      "category": "Savings",
+      "urgency": "this-week"
+    }
+  ],
+  "health": {
+    "frame": { "status": "yellow", "note": "Right direction, execution energy misallocated" },
+    "floor": { "status": "green", "note": "No below-floor deals or distractions" },
+    "focus": { "status": "yellow", "note": "Energy going to systems, not deals" },
+    "why":   { "status": "yellow", "note": "Meetings heavy on tech. Nobody said 'kids' or 'books'" }
+  },
+  "cliff": [
+    { "metric": "Cash", "value": "$250K", "target": "$178K proj", "gap": "72K burn", "status": "watch" },
+    { "metric": "Pipeline ARR Needed", "value": "~$100K", "target": "$200K+", "gap": "$100K+", "status": "urgent" },
+    { "metric": "Sept 30", "value": "103 days", "target": "$1M ARR", "gap": "—", "status": "urgent" }
+  ],
+  "commitments": {
+    "steve_owes": [
+      { "what": "Mesquite follow-up — text Angel Rivera", "to": "Angel Rivera", "date": "Jun 18", "status": "urgent" },
+      { "what": "Call Michael Ruiz — Garland pricing + IMTA", "to": "Michael Ruiz", "date": "Jun 10", "status": "urgent" },
+      { "what": "ESC 10 meeting prep — revenue ask", "to": "Self", "date": "Jun 23", "status": "open" },
+      { "what": "Centralize all dashboards into one interface", "to": "Team", "date": "Jun 19", "status": "open" },
+      { "what": "Create Google Analytics epic with Sarah", "to": "Sarah", "date": "Next week", "status": "open" },
+      { "what": "Configure G-Brain for Jan and Teela (after ESC 10)", "to": "Jan / Teela", "date": "Jun 23+", "status": "watch" }
+    ],
+    "team_owes": [
+      { "who": "Raju", "what": "Consult Jackson on V1 archival / shutdown", "date": "Jun 19", "status": "open" },
+      { "who": "Jan", "what": "Share all dashboard locations", "date": "Jun 19", "status": "open" },
+      { "who": "Patrick", "what": "Share all dashboard locations", "date": "Jun 19", "status": "open" },
+      { "who": "Patrick", "what": "Contact Sara re open order workflow", "date": "Jun 19", "status": "open" }
+    ]
+  },
+  "quick_access": [
+    { "label": "💰 Financial Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/index.html" },
+    { "label": "📊 Pipeline Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/pipeline.html" },
+    { "label": "🏗️ Product Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/product.html" },
+    { "label": "🏫 District Intelligence", "url": "https://bookmarked-corp.github.io/bookmarked-exports/reports/" },
+    { "label": "🤖 AI Token Spend", "url": "#" },
+    { "label": "🌐 HubSpot Pipeline", "url": "#" },
+    { "label": "📋 Jira Board", "url": "#" }
+  ]
+}

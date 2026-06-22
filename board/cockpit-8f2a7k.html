@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northy — Founder Cockpit</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#101828;--ink-2:#2a2d35;--ink-3:#6b7280;
+    --paper:#f9f7f2;--paper-2:#f0ede5;
+    --gold:#12A38C;--gold-light:#4cc3ae;
+    --danger:#c0392b;--success:#107569;--caution:#d97706;--blue:#2563eb;
+    --border:rgba(16,24,40,0.08);
+    --mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'DM Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);}
+
+  /* HEADER */
+  .header{background:var(--ink);padding:18px 40px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold);}
+  .hdr-l{display:flex;align-items:center;gap:14px;}
+  .hdr-icon{font-size:1.6rem;}
+  .hdr-title{font-family:var(--serif);font-size:1.6rem;color:var(--paper);line-height:1;}
+  .hdr-sub{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);margin-top:3px;}
+  .hdr-r{text-align:right;}
+  .hdr-updated{font-family:var(--mono);font-size:.55rem;color:rgba(249,247,242,.4);text-transform:uppercase;letter-spacing:.08em;}
+  .hdr-time{font-family:var(--serif);font-size:.9rem;color:rgba(249,247,242,.7);margin-top:2px;}
+
+  /* NORTHY BAR */
+  .northy-bar{background:var(--ink-2);padding:14px 40px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .nb-icon{font-size:1.2rem;flex-shrink:0;}
+  .nb-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px;}
+  .nb-msg{font-size:.78rem;line-height:1.5;color:rgba(249,247,242,.85);}
+  .nb-wamm{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;background:var(--gold);color:white;border:none;padding:7px 14px;cursor:pointer;white-space:nowrap;border-radius:2px;margin-left:auto;}
+  .nb-wamm:hover{background:var(--gold-light);}
+
+  /* MAIN GRID */
+  .main{padding:24px 40px 40px;display:grid;grid-template-columns:1fr 340px;gap:20px;}
+
+  /* LEFT COLUMN */
+  .left{display:flex;flex-direction:column;gap:20px;}
+
+  /* RIGHT COLUMN */
+  .right{display:flex;flex-direction:column;gap:20px;}
+
+  /* SECTION PANEL */
+  .panel{background:white;border:1px solid var(--border);overflow:hidden;}
+  .ph{background:var(--paper-2);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+  .pt{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:500;display:flex;align-items:center;gap:8px;}
+  .pt .count{background:var(--danger);color:white;font-size:.52rem;padding:1px 6px;border-radius:10px;}
+  .pb{padding:14px 16px;}
+
+  /* ACT NOW CARDS */
+  .act-card{border-bottom:1px solid var(--border);cursor:pointer;}
+  .act-card:last-child{border-bottom:none;}
+  .act-head{padding:12px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+  .act-head:hover{background:var(--paper);}
+  .act-left{display:flex;align-items:flex-start;gap:10px;flex:1;}
+  .act-dot{width:8px;height:8px;border-radius:50%;background:var(--danger);margin-top:6px;flex-shrink:0;}
+  .act-info{flex:1;}
+  .act-id{font-family:var(--mono);font-size:.53rem;color:var(--ink-3);margin-bottom:2px;}
+  .act-title{font-weight:600;font-size:.8rem;line-height:1.3;color:var(--ink);}
+  .act-cat{font-family:var(--mono);font-size:.52rem;color:var(--gold);margin-top:3px;text-transform:uppercase;letter-spacing:.06em;}
+  .act-chev{font-size:.6rem;color:var(--ink-3);margin-top:3px;}
+  .act-body{display:none;padding:0 16px 14px;border-top:1px solid rgba(0,0,0,.04);}
+  .act-body.open{display:block;}
+  .act-detail{font-size:.72rem;line-height:1.6;color:var(--ink-2);padding-top:10px;}
+  .act-recommended{background:var(--paper-2);padding:10px 12px;margin-top:10px;font-size:.7rem;line-height:1.5;border-left:3px solid var(--gold);}
+  .act-recommended strong{font-family:var(--mono);font-size:.55rem;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:3px;}
+  .act-btns{display:flex;gap:6px;margin-top:10px;}
+  .btn{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border:none;cursor:pointer;border-radius:2px;transition:all .15s;}
+  .btn-approve{background:var(--success);color:white;}
+  .btn-approve:hover{background:#0d6057;}
+  .btn-kill{background:#e4dfd4;color:var(--ink-3);}
+  .btn-kill:hover{background:#d4cec4;color:var(--ink);}
+
+  /* COMMITMENTS */
+  .commit-table{width:100%;border-collapse:collapse;}
+  .commit-table th{font-family:var(--mono);font-size:.53rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:0 6px 6px 0;text-align:left;border-bottom:1px solid var(--border);}
+  .commit-table td{font-size:.7rem;padding:6px 6px 6px 0;border-bottom:1px solid rgba(0,0,0,.03);vertical-align:top;line-height:1.3;}
+  .commit-table tr:last-child td{border-bottom:none;}
+  .tag-u{display:inline-block;font-family:var(--mono);font-size:.5rem;padding:2px 5px;border-radius:2px;background:#fde8e6;color:var(--danger);text-transform:uppercase;}
+  .tag-o{display:inline-block;font-family:var(--mono);font-size:.5rem;padding:2px 5px;border-radius:2px;background:#eff6ff;color:var(--blue);text-transform:uppercase;}
+  .tag-w{display:inline-block;font-family:var(--mono);font-size:.5rem;padding:2px 5px;border-radius:2px;background:#fef3e2;color:var(--caution);text-transform:uppercase;}
+
+  /* METRICS */
+  .metric-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+  .m-row{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--paper);border-left:3px solid var(--border);}
+  .m-row.urgent{border-left-color:var(--danger);}
+  .m-label{font-family:var(--mono);font-size:.53rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);}
+  .m-value{font-family:var(--serif);font-size:1rem;color:var(--ink);text-align:right;}
+  .m-gap{font-family:var(--mono);font-size:.55rem;color:var(--ink-3);text-align:right;margin-top:1px;}
+
+  /* HEALTH */
+  .health-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .h-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;}
+  .h-dot.green{background:var(--success);}
+  .h-dot.yellow{background:var(--caution);}
+  .h-dot.red{background:var(--danger);}
+  .h-item{padding:8px 10px;background:var(--paper);}
+  .h-label{font-family:var(--mono);font-size:.53rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px;}
+  .h-note{font-size:.65rem;line-height:1.4;color:var(--ink-2);}
+
+  /* QUICK ACCESS */
+  .qa-list{display:flex;flex-direction:column;gap:2px;}
+  .qa-link{display:flex;align-items:center;gap:8px;padding:8px 10px;text-decoration:none;color:var(--ink);font-size:.72rem;border-radius:2px;transition:all .15s;}
+  .qa-link:hover{background:var(--paper);color:var(--gold);}
+  .qa-icon{font-size:.9rem;width:22px;text-align:center;flex-shrink:0;}
+
+  /* RESOLVED */
+  .res-item{font-size:.68rem;color:var(--ink-3);padding:6px 8px;display:flex;align-items:center;gap:8px;}
+  .res-dot{color:var(--success);}
+  .res-title{flex:1;text-decoration:line-through;}
+
+  @media(max-width:960px){
+    .main{grid-template-columns:1fr;padding:16px 14px 24px;}
+    .header,.northy-bar{padding-left:14px;padding-right:14px;}
+    .nb-wamm{display:none;}
+    .health-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="hdr-l">
+    <div class="hdr-icon">🧭</div>
+    <div>
+      <div class="hdr-title">Northy</div>
+      <div class="hdr-sub">Founder Cockpit · Steve Wandler</div>
+    </div>
+  </div>
+  <div class="hdr-r">
+    <div class="hdr-updated" id="scanType">LOADING</div>
+    <div class="hdr-time" id="lastUpdated">—</div>
+  </div>
+</div>
+
+<div class="northy-bar" id="northyBar">
+  <div class="nb-icon">💬</div>
+  <div>
+    <div class="nb-label">Northy Says</div>
+    <div class="nb-msg" id="northyMsg">Loading...</div>
+  </div>
+  <button class="nb-wamm" onclick="triggerScan()">⟳ What am I missing?</button>
+</div>
+
+<div class="main">
+  <!-- LEFT COLUMN -->
+  <div class="left">
+    <!-- ACT NOW -->
+    <div class="panel" id="actPanel">
+      <div class="ph"><div class="pt">🔴 Needs Your Decision <span class="count" id="actCount">0</span></div></div>
+      <div id="actNow">Loading...</div>
+    </div>
+
+    <!-- THINK ABOUT -->
+    <div class="panel" id="thinkPanel">
+      <div class="ph"><div class="pt">🟡 Think About This</div></div>
+      <div class="pb" id="thinkAbout">Loading...</div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right">
+    <!-- CLIFF METRICS -->
+    <div class="panel">
+      <div class="ph"><div class="pt">⏳ September Cliff</div></div>
+      <div class="pb"><div class="metric-grid" id="cliffMetrics">Loading...</div></div>
+    </div>
+
+    <!-- STRATEGIC HEALTH -->
+    <div class="panel">
+      <div class="ph"><div class="pt">⚪ Strategic Health</div></div>
+      <div class="pb"><div class="health-grid" id="healthGrid">Loading...</div></div>
+    </div>
+
+    <!-- STEVE OWES -->
+    <div class="panel">
+      <div class="ph"><div class="pt">📋 What You Owe</div></div>
+      <div class="pb" style="max-height:280px;overflow-y:auto;">
+        <table class="commit-table" id="steveOwes"><tr><td>Loading...</td></tr></table>
+      </div>
+    </div>
+
+    <!-- TEAM OWES -->
+    <div class="panel">
+      <div class="ph"><div class="pt">👥 What Team Owes You</div></div>
+      <div class="pb" style="max-height:220px;overflow-y:auto;">
+        <table class="commit-table" id="teamOwes"><tr><td>Loading...</td></tr></table>
+      </div>
+    </div>
+
+    <!-- QUICK ACCESS -->
+    <div class="panel">
+      <div class="ph"><div class="pt">🔗 Quick Access</div></div>
+      <div class="pb"><div class="qa-list" id="quickAccess">Loading...</div></div>
+    </div>
+
+    <!-- RESOLVED -->
+    <div class="panel" id="resolvedPanel" style="display:none;">
+      <div class="ph"><div class="pt">✅ Resolved</div></div>
+      <div class="pb" id="resolvedList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA_URL = 'northy-cockpit.json';
+let data = null;
+let resolved = [];
+
+function init() {
+  fetch(DATA_URL).then(r => r.json()).then(d => {
+    data = d;
+    render();
+  }).catch(() => {
+    document.getElementById('northyMsg').textContent = 'Unable to load data. Northy may not have run yet.';
+  });
+}
+
+function render() {
+  const m = data.meta;
+  document.getElementById('scanType').textContent = m.scan_type;
+  document.getElementById('lastUpdated').textContent = new Date(m.last_updated).toLocaleString('en-US', {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+  document.getElementById('northyMsg').textContent = m.northy_message;
+
+  renderActNow();
+  renderThinkAbout();
+  renderCliff();
+  renderHealth();
+  renderCommitments();
+  renderQuickAccess();
+}
+
+function renderActNow() {
+  const items = (data.act_now || []).filter(i => !resolved.includes(i.id));
+  document.getElementById('actCount').textContent = items.length;
+  if (!items.length) {
+    document.getElementById('actNow').innerHTML = '<div class="pb" style="text-align:center;color:var(--ink-3);font-size:.74rem;">✅ All clear. Nothing needs your decision right now.</div>';
+    return;
+  }
+  let html = '';
+  items.forEach((item, i) => {
+    html += `<div class="act-card" onclick="toggleCard(event, this)">
+      <div class="act-head">
+        <div class="act-left">
+          <div class="act-dot"></div>
+          <div class="act-info">
+            <div class="act-id">${item.id}</div>
+            <div class="act-title">${item.title}</div>
+            <div class="act-cat">${item.category}</div>
+          </div>
+        </div>
+        <div class="act-chev">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="act-detail">${item.detail}</div>
+        <div class="act-recommended"><strong>Recommended</strong>${item.action}</div>
+        <div class="act-btns">
+          <button class="btn btn-approve" onclick="event.stopPropagation();resolveItem('${item.id}','done')">✓ Done</button>
+          <button class="btn btn-kill" onclick="event.stopPropagation();resolveItem('${item.id}','killed')">✗ Not Now</button>
+        </div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('actNow').innerHTML = html;
+}
+
+function renderThinkAbout() {
+  const items = data.think_about || [];
+  if (!items.length) {
+    document.getElementById('thinkAbout').innerHTML = '<div style="text-align:center;color:var(--ink-3);font-size:.72rem;">Nothing flagged.</div>';
+    return;
+  }
+  let html = items.map(i => `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:.74rem;border-bottom:1px solid rgba(0,0,0,.03);">
+    <span style="font-family:var(--mono);font-size:.53rem;color:var(--ink-3);">${i.id}</span>
+    <span style="flex:1;">${i.title}</span>
+    <span style="font-family:var(--mono);font-size:.5rem;text-transform:uppercase;color:var(--caution);">${i.urgency}</span>
+  </div>`).join('');
+  document.getElementById('thinkAbout').innerHTML = html;
+}
+
+function renderCliff() {
+  const items = data.cliff || [];
+  let html = items.map(i => `<div class="m-row ${i.status === 'urgent' ? 'urgent' : ''}">
+    <div>
+      <div class="m-label">${i.metric}</div>
+      <div class="m-gap">${i.gap}</div>
+    </div>
+    <div>
+      <div class="m-value">${i.value}</div>
+      <div class="m-gap">target: ${i.target}</div>
+    </div>
+  </div>`).join('');
+  document.getElementById('cliffMetrics').innerHTML = html;
+}
+
+function renderHealth() {
+  const h = data.health || {};
+  const statusColors = {green:'green',yellow:'yellow',red:'red'};
+  let html = Object.entries(h).map(([k,v]) => {
+    const label = {frame:'Frame',floor:'Floor',focus:'Focus',why:'WHY'}[k] || k;
+    return `<div class="h-item">
+      <div class="h-label"><span class="h-dot ${statusColors[v.status] || 'yellow'}"></span>${label}</div>
+      <div class="h-note">${v.note}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('healthGrid').innerHTML = html;
+}
+
+function renderCommitments() {
+  const steve = (data.commitments && data.commitments.steve_owes) || [];
+  let sh = '<tr><th>What</th><th>Date</th><th>⚡</th></tr>';
+  steve.forEach(c => {
+    const tag = c.status === 'urgent' ? 'tag-u' : c.status === 'watch' ? 'tag-w' : 'tag-o';
+    sh += `<tr><td>${c.what}</td><td style="font-family:var(--mono);font-size:.6rem;">${c.date}</td><td><span class="${tag}">${c.status}</span></td></tr>`;
+  });
+  document.getElementById('steveOwes').innerHTML = sh;
+
+  const team = (data.commitments && data.commitments.team_owes) || [];
+  let th = '<tr><th>Who</th><th>What</th></tr>';
+  team.forEach(c => {
+    th += `<tr><td style="font-family:var(--mono);font-size:.6rem;white-space:nowrap;">${c.who}</td><td>${c.what}</td></tr>`;
+  });
+  document.getElementById('teamOwes').innerHTML = th;
+}
+
+function renderQuickAccess() {
+  const links = data.quick_access || [];
+  let html = links.map(l => `<a class="qa-link" href="${l.url}" target="_blank" rel="noopener">
+    <span class="qa-icon">${l.label.slice(0,2).trim()}</span>
+    <span>${l.label.slice(2).trim()}</span>
+  </a>`).join('');
+  document.getElementById('quickAccess').innerHTML = html;
+}
+
+function toggleCard(e, card) {
+  const body = card.querySelector('.act-body');
+  const chev = card.querySelector('.act-chev');
+  body.classList.toggle('open');
+  chev.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+function resolveItem(id, outcome) {
+  resolved.push(id);
+  document.getElementById('resolvedPanel').style.display = 'block';
+  const list = document.getElementById('resolvedList');
+  const entry = document.createElement('div');
+  entry.className = 'res-item';
+  entry.innerHTML = `<span class="res-dot">✓</span><span class="res-title">${id}</span><span>${outcome === 'done' ? 'Done' : 'Deferred'}</span>`;
+  list.appendChild(entry);
+  renderActNow();
+}
+
+function triggerScan() {
+  const btn = document.querySelector('.nb-wamm');
+  btn.textContent = '⟳ Scanning...';
+  btn.disabled = true;
+  alert('Live scan triggered via Hermes. The page will refresh with new data shortly. (Wire this to the cron trigger API to enable instant refresh.)');
+  btn.textContent = '⟳ What am I missing?';
+  btn.disabled = false;
+}
+
+init();
+</script>
+</body>
+</html>

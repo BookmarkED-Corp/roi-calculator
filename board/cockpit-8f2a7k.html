@@ -161,6 +161,10 @@
 <!-- NAV TABS -->
 <div class="nav-tabs" id="navTabs">
   <div class="nav-tab active" onclick="showTab('home',this)">🧭 Home</div>
+  <div class="nav-tab" onclick="showTab('finance',this)">💰 Finance</div>
+  <div class="nav-tab" onclick="showTab('sales',this)">📊 Sales</div>
+  <div class="nav-tab" onclick="showTab('cs',this)">🤝 CS</div>
+  <div class="nav-tab" onclick="showTab('product',this)">🏗️ Product</div>
   <div class="nav-tab" onclick="showTab('strategy',this)">🎯 Strategy</div>
   <div class="nav-tab" onclick="showTab('intel',this)">🔵 Intel</div>
   <div class="nav-tab" onclick="showTab('tokens',this)">🤖 Tokens</div>
@@ -227,6 +231,55 @@
   </div>
 </div>
 
+<!-- FINANCE TAB -->
+<div class="tab-content" id="tab-finance">
+  <div class="main">
+    <div class="left">
+      <div class="panel"><div class="ph"><div class="pt">Cash & Runway</div></div><div class="pb" id="finCash">Loading...</div></div>
+      <div class="panel"><div class="ph"><div class="pt">Key Metrics</div></div><div class="pb" id="finMetrics">Loading...</div></div>
+    </div>
+    <div class="right">
+      <div class="panel"><div class="ph"><div class="pt">Linked Dashboards</div></div><div class="pb" id="finLinks">Loading...</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SALES TAB -->
+<div class="tab-content" id="tab-sales">
+  <div class="main">
+    <div class="left">
+      <div class="panel"><div class="ph"><div class="pt">Pipeline Summary</div></div><div class="pb" id="salesSummary">Loading...</div></div>
+    </div>
+    <div class="right">
+      <div class="panel"><div class="ph"><div class="pt">Sales Links & Reports</div></div><div class="pb" id="salesLinks">Loading...</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CS TAB -->
+<div class="tab-content" id="tab-cs">
+  <div class="main">
+    <div class="left">
+      <div class="panel"><div class="ph"><div class="pt">Customer Success Summary</div></div><div class="pb" id="csSummary">Loading...</div></div>
+    </div>
+    <div class="right">
+      <div class="panel"><div class="ph"><div class="pt">CS Links & Reports</div></div><div class="pb" id="csLinks">Loading...</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT TAB -->
+<div class="tab-content" id="tab-product">
+  <div class="main">
+    <div class="left">
+      <div class="panel"><div class="ph"><div class="pt">Product Summary</div></div><div class="pb" id="prodSummary">Loading...</div></div>
+    </div>
+    <div class="right">
+      <div class="panel"><div class="ph"><div class="pt">Product Links & Reports</div></div><div class="pb" id="prodLinks">Loading...</div></div>
+    </div>
+  </div>
+</div>
+
 <script>
 const DATA_URL = 'northy-cockpit.json';
 let data = null;
@@ -274,6 +327,10 @@ function render() {
   renderStrategy();
   renderIntel();
   renderTokens();
+  renderFinance();
+  renderSales();
+  renderCS();
+  renderProduct();
 }
 
 // === HOME RENDER ===
@@ -368,6 +425,41 @@ function renderTokens() {
   document.getElementById('tokenTotal').innerHTML = '<div style="padding:14px;text-align:center;"><div class="m-label">This Month</div><div style="font-family:var(--serif);font-size:2rem;color:var(--ink);margin:6px 0;">' + (total.month ? '$' + total.month : '—') + '</div><div class="m-gap">last month: ' + (total.last_month ? '$' + total.last_month : '—') + '</div></div>';
 
   document.getElementById('tokenTrend').innerHTML = '<div style="padding:14px;text-align:center;color:var(--ink-3);font-size:.7rem;">Daily trend chart will render once API data flows in.<br><br>Wire cron: pull Anthropic + OpenRouter → write to northy-cockpit.json → auto-deploy.</div>';
+}
+
+// === DOMAIN TABS ===
+function renderFinance() {
+  const f = data.finance || {};
+  const s = f.summary || {};
+  document.getElementById('finCash').innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="text-align:center;padding:8px;"><div class="m-label">Cash Today</div><div style="font-family:var(--serif);font-size:1.5rem;color:var(--ink);">' + (s.cash || '—') + '</div></div><div style="text-align:center;padding:8px;"><div class="m-label">Projected Sept 30</div><div style="font-family:var(--serif);font-size:1.5rem;color:var(--danger);">' + (s.september_projection || '—') + '</div></div><div style="text-align:center;padding:8px;"><div class="m-label">Monthly Burn</div><div style="font-family:var(--serif);font-size:1.5rem;color:var(--ink);">' + (s.current_burn_monthly || '—') + '</div></div><div style="text-align:center;padding:8px;"><div class="m-label">V1 Savings</div><div style="font-family:var(--serif);font-size:1.5rem;color:var(--success);">' + (s.v1_savings_monthly || '—') + '</div></div></div><div style="margin-top:10px;font-size:.65rem;color:var(--ink-3);text-align:center;">Deferred comp: ' + (s.deferred_comp_weekly || '—') + '/wk · Repayment Oct: ' + (s.deferral_repayment_october || '—') + '</div>';
+  const m = f.metrics || [];
+  document.getElementById('finMetrics').innerHTML = m.map(function(r) { var c = r.trend === 'down' ? 'var(--danger)' : r.trend === 'warning' ? 'var(--caution)' : 'var(--success)'; return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;border-bottom:1px solid rgba(0,0,0,.03);"><span style="font-size:.7rem;">' + r.label + '</span><span style="font-family:var(--mono);font-size:.65rem;color:' + c + ';">' + r.value + '</span></div>'; }).join('');
+  const d = f.dashboards || [];
+  document.getElementById('finLinks').innerHTML = d.map(function(l) { return '<a href="' + l.url + '" target="_blank" rel="noopener" style="display:block;padding:6px 8px;font-size:.7rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.03);">' + l.label + ' →</a>'; }).join('');
+}
+
+function renderSales() {
+  const sl = data.sales || {};
+  const s = sl.summary || {};
+  document.getElementById('salesSummary').innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px;"><div style="text-align:center;"><div class="m-label">Active Pipeline</div><div style="font-family:var(--serif);font-size:1.3rem;color:var(--danger);">' + (s.active_pipeline || '—') + '</div></div><div style="text-align:center;"><div class="m-label">Closing This Month</div><div style="font-size:.8rem;color:var(--ink);margin-top:4px;">' + (s.deals_closing_this_month || '—') + '</div></div><div style="text-align:center;"><div class="m-label">Stalled Deals</div><div style="font-size:.8rem;color:var(--caution);margin-top:4px;">' + (s.stalled_deals || '—') + '</div></div><div style="text-align:center;"><div class="m-label">IMTA Districts</div><div style="font-size:.8rem;color:var(--ink);margin-top:4px;">' + (s.imta_districts || '—') + '</div></div></div>' + (sl.note ? '<div style="font-size:.6rem;color:var(--ink-3);text-align:center;margin-top:6px;">' + sl.note + '</div>' : '');
+  const links = sl.links || [];
+  document.getElementById('salesLinks').innerHTML = links.map(function(l) { return '<a href="' + l.url + '" target="_blank" rel="noopener" style="display:block;padding:8px;font-size:.7rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.03);">' + l.label + ' →</a>'; }).join('');
+}
+
+function renderCS() {
+  const c = data.cs || {};
+  const s = c.summary || {};
+  document.getElementById('csSummary').innerHTML = '<div style="padding:8px;">' + Object.entries(s).map(function(e) { return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.03);"><span style="font-size:.7rem;color:var(--ink-3);">' + e[0].replace(/_/g,' ') + '</span><span style="font-size:.7rem;color:var(--ink);">' + e[1] + '</span></div>'; }).join('') + (c.note ? '<div style="font-size:.6rem;color:var(--ink-3);text-align:center;margin-top:8px;">' + c.note + '</div>' : '') + '</div>';
+  const links = c.links || [];
+  document.getElementById('csLinks').innerHTML = links.map(function(l) { return '<a href="' + l.url + '" target="_blank" rel="noopener" style="display:block;padding:8px;font-size:.7rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.03);">' + l.label + ' →</a>'; }).join('');
+}
+
+function renderProduct() {
+  const p = data.product || {};
+  const s = p.summary || {};
+  document.getElementById('prodSummary').innerHTML = '<div style="padding:8px;">' + Object.entries(s).map(function(e) { return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.03);"><span style="font-size:.7rem;color:var(--ink-3);">' + e[0].replace(/_/g,' ') + '</span><span style="font-size:.7rem;color:var(--ink);">' + e[1] + '</span></div>'; }).join('') + (p.note ? '<div style="font-size:.6rem;color:var(--ink-3);text-align:center;margin-top:8px;">' + p.note + '</div>' : '') + '</div>';
+  const links = p.links || [];
+  document.getElementById('prodLinks').innerHTML = links.map(function(l) { return '<a href="' + l.url + '" target="_blank" rel="noopener" style="display:block;padding:8px;font-size:.7rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.03);">' + l.label + ' →</a>'; }).join('');
 }
 
 function toggleCard(e, card) {

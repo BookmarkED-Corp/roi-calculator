@@ -1,152 +1,94 @@
 {
   "meta": {
-    "last_updated": "2026-06-22T10:30:00",
-    "scan_type": "Domain Tabs Build",
-    "northy_message": "Sales, CS, Product, Finance tabs now live. Strategy, Intel, Tokens built. Cockpit has 8 tabs. Jan's URLs pending for Sales enrichment."
+    "last_updated": "2026-06-22T21:00:00-05:00",
+    "scan_type": "Nightly Deep Scan",
+    "northy_message": "Midland ISD changed the math — $75K at full price, pipeline at ~$175K. ESC 10 is tomorrow. Two gates still unconfirmed: RAM dump status and ESC 16 exclusivity. Heather was today — hold both rooms. Don't let the thermostat show up the night before a big meeting."
   },
   "act_now": [
-    { "id": "N-001", "title": "TALAS Summit — no confirmed plan", "category": "Opportunity / Risk", "detail": "June 22-23 in Austin. Miguel Cardona speaking. Michael hasn't confirmed.", "action": "Text Michael: 'Are you going? I'd like to be there with you.'", "status": "needs-steve" },
-    { "id": "N-002", "title": "Garland ISD — pricing mismatch, deadline June 30", "category": "Deal Risk", "detail": "$140K in pipeline vs $89K founding-partner. No reply in 9+ days. 8 days to deadline.", "action": "Call Michael. Confirm pricing with Jan first.", "status": "needs-steve" },
-    { "id": "N-003", "title": "Systems-mode trap active", "category": "Drift / ULP", "detail": "Pipeline ~$100K. Cash heading to $178K. Mesquite follow-up not scheduled.", "action": "Three calls: Michael (Garland), Angel (Mesquite), ESC 10 prep.", "status": "needs-steve" }
+    {
+      "id": "N-014",
+      "title": "ESC 10 Deck + Mabel Demo — TOMORROW",
+      "category": "Critical Path",
+      "detail": "Tuesday June 23 meeting with ESC 10 (Angela). Two critical-path gates: RAM data dump status and ESC 16 exclusivity answer. Neither confirmed resolved as of tonight. Midland ISD $75K PO = social proof for deck.",
+      "action": "Confirm RAM dump landed. Confirm ESC 16 agreement reviewed. Finalize 5-7 slides + Mabel demo. Add Midland ISD as proof point.",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-015",
+      "title": "ESC 16 Exclusivity — Still Unanswered",
+      "category": "Legal / Blocker",
+      "detail": "Does ESC 16 agreement contain exclusivity clause? Nobody pulled it as of 11:45am. Gates entire ESC 10 regional carve-out strategy.",
+      "action": "Find agreement tonight or first thing tomorrow. Read exclusivity clause. Check exit language. Do not walk into ESC 10 without this answer.",
+      "status": "needs-steve"
+    }
   ],
   "think_about": [
-    { "id": "N-004", "title": "Patrick's PD sessions = Play 1 validation", "category": "Connection", "urgency": "next-week" },
-    { "id": "N-005", "title": "V1 shutdown saves $9K/month — blocked on Jackson", "category": "Savings", "urgency": "this-week" }
+    {
+      "id": "N-023",
+      "title": "Midland ISD $75K PO — Pipeline at ~$175K",
+      "category": "Win / Metric Update",
+      "detail": "$75K full-price purchase order. Pipeline jumped from ~$100K to ~$175K. September gap narrowed to ~$25K.",
+      "urgency": "today"
+    },
+    {
+      "id": "N-016",
+      "title": "Patrick Reid Equity Cliff — 22 Days",
+      "category": "People / Governance",
+      "detail": "July 15 deadline. Board consent must be signed. Patrick out this week.",
+      "urgency": "this-week"
+    },
+    {
+      "id": "N-017",
+      "title": "Mabel Sales Demo Pattern — Productize After Tuesday",
+      "category": "Connection / Product",
+      "detail": "After ESC 10 Mabel demo: template the 5-slide district brief. 2-hour turnaround.",
+      "urgency": "next-week"
+    }
   ],
   "health": {
-    "frame": { "status": "yellow", "note": "Infrastructure is $10M thinking. Survival need is $200K. Right direction, misallocated energy." },
+    "frame": { "status": "green", "note": "ESC 10 as procurement rail is $10M thinking. Midland ISD at full price validates product." },
     "floor": { "status": "green", "note": "No below-floor deals or distractions." },
-    "focus": { "status": "yellow", "note": "Energy going to systems, not deals." },
-    "why": { "status": "yellow", "note": "Meetings heavy on tech. 'Kids' and 'books' not appearing." }
+    "focus": { "status": "yellow", "note": "ESC 10 deck is right focus. Gated on RAM dump + ESC 16 answer. Tomorrow is showtime." },
+    "why": { "status": "yellow", "note": "Today's meetings were all technical — migration, agents, data. Re-center WHY before ESC 10. Lead with WHY." }
   },
   "cliff": [
     { "metric": "Cash", "value": "$250K", "target": "$178K proj", "gap": "72K burn", "status": "watch" },
-    { "metric": "Pipeline ARR Needed", "value": "~$100K", "target": "$200K+", "gap": "$100K+", "status": "urgent" },
-    { "metric": "Sept 30", "value": "101 days", "target": "$1M ARR", "gap": "—", "status": "urgent" }
+    { "metric": "Pipeline ARR (with Midland)", "value": "~$175K", "target": "$200K+", "gap": "$25K", "status": "watch" },
+    { "metric": "Sept 30", "value": "99 days", "target": "$1M ARR", "gap": "—", "status": "urgent" }
   ],
   "commitments": {
     "steve_owes": [
-      { "what": "Mesquite follow-up — text Angel Rivera", "to": "Angel Rivera", "date": "Jun 18", "status": "urgent" },
-      { "what": "Call Michael Ruiz — Garland pricing + IMTA", "to": "Michael Ruiz", "date": "Jun 10", "status": "urgent" },
-      { "what": "ESC 10 meeting prep — revenue ask", "to": "Self", "date": "Jun 23", "status": "open" },
-      { "what": "Centralize all dashboards into one interface", "to": "Team", "date": "Jun 19", "status": "open" },
-      { "what": "Configure G-Brain for Jan and Teela (after ESC 10)", "to": "Jan / Teela", "date": "Jun 23+", "status": "watch" }
+      { "what": "ESC 10 deck + Mabel demo prep", "to": "Self", "date": "Jun 23 (TOMORROW)", "status": "urgent" },
+      { "what": "ESC 16 agreement review — exclusivity clause", "to": "Self", "date": "Before ESC 10 meeting", "status": "urgent" },
+      { "what": "Mesquite follow-up — text Angel Rivera", "to": "Angel Rivera", "date": "Jun 18", "status": "overdue" },
+      { "what": "Call Michael Ruiz — Garland pricing + IMTA", "to": "Michael Ruiz", "date": "Jun 10", "status": "overdue" },
+      { "what": "Update pipeline dashboard with Midland ISD $75K", "to": "Self / Jan", "date": "Today", "status": "open" },
+      { "what": "Configure G-Brain for Jan and Teela", "to": "Jan / Teela", "date": "After ESC 10", "status": "watch" },
+      { "what": "Create Google Analytics epic with Sarah", "to": "Sarah", "date": "This week", "status": "open" }
     ],
     "team_owes": [
+      { "who": "Raju", "what": "Complete V2 data migration (aiming Wednesday)", "date": "Jun 25", "status": "open" },
+      { "who": "Raju", "what": "Centralize GRI for Hermes agents", "date": "This week", "status": "open" },
       { "who": "Raju", "what": "Consult Jackson on V1 archival / shutdown", "date": "Jun 19", "status": "open" },
-      { "who": "Jan", "what": "Share all dashboard locations", "date": "Jun 19", "status": "open" },
-      { "who": "Patrick", "what": "Share all dashboard locations", "date": "Jun 19", "status": "open" },
-      { "who": "Patrick", "what": "Contact Sara re open order workflow", "date": "Jun 19", "status": "open" }
+      { "who": "Patrick", "what": "Send migration wave summary to Raju", "date": "Before noon today", "status": "overdue" },
+      { "who": "Patrick", "what": "Coordinate V1 transition verbiage with Zara", "date": "Today", "status": "open" },
+      { "who": "Nahuel", "what": "Test Lee for sprint process improvement", "date": "Tomorrow", "status": "open" }
     ]
   },
   "quick_access": [
-    { "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/index.html", "icon": "💰" },
-    { "label": "Pipeline Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/pipeline.html", "icon": "📊" },
-    { "label": "Product Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/product.html", "icon": "🏗️" },
-    { "label": "District Intelligence", "url": "https://bookmarked-corp.github.io/bookmarked-exports/reports/", "icon": "🏫" }
+    { "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/index.html" },
+    { "label": "Pipeline Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/pipeline.html" },
+    { "label": "Product Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/product.html" }
   ],
-  "finance": {
-    "summary": {
-      "cash": "$250K",
-      "september_projection": "$178K",
-      "v1_savings_monthly": "$8-9K",
-      "deferred_comp_weekly": "$5,800",
-      "deferral_repayment_october": "$65K",
-      "current_burn_monthly": "~$72K"
-    },
-    "metrics": [
-      { "label": "Cash Today", "value": "$250K", "trend": "down" },
-      { "label": "Projected Sept 30", "value": "$178K", "trend": "down" },
-      { "label": "Monthly Burn", "value": "~$72K", "trend": "steady" },
-      { "label": "V1 Shutdown Savings", "value": "$8-9K/mo", "trend": "pending" },
-      { "label": "Deferred Comp Weekly", "value": "$5,800", "trend": "steady" },
-      { "label": "Deferral Repayment Oct", "value": "$65K", "trend": "warning" }
-    ],
-    "dashboards": [
-      { "label": "Full Financial Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/index.html" },
-      { "label": "Pipeline Dashboard", "url": "https://bookmarked-corp.github.io/roi-calculator/board/pipeline.html" }
-    ]
-  },
-  "sales": {
-    "summary": {
-      "active_pipeline": "~$100K",
-      "deals_closing_this_month": "2 (Garland, Mesquite pending)",
-      "stalled_deals": "Garland (no reply 9 days)",
-      "imta_districts": "287 under TEA spending pressure"
-    },
-    "links": [
-      { "label": "Jan's Confluence Sales Hub Reports", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH" },
-      { "label": "Pipeline Dashboard (GitHub Pages)", "url": "https://bookmarked-corp.github.io/roi-calculator/board/pipeline.html" },
-      { "label": "HubSpot CRM", "url": "https://app.hubspot.com/contacts/39855019" }
-    ],
-    "note": "Jan's reporting URLs pending. Will enrich with her links when received."
-  },
-  "cs": {
-    "summary": {
-      "migration_status": "Green — 2 districts completed V1 Sunset this week",
-      "waves_active": "Waves 3–8, sub-waves A/B restructuring (Jun 18)",
-      "total_districts": "49 districts in Waves 3–8",
-      "pd_sessions": "11-12 planned for next month"
-    },
-    "links": [
-      { "label": "CS Portfolio Health Report (Jun 15–19)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/CS/pages/154042369" },
-      { "label": "Migration Tracking Matrix (Live)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SD/pages/101711875" },
-      { "label": "V2 Spot Check Tracker", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/CS/pages/116883459" }
-    ],
-    "note": "Data pulled from Confluence CS Hub and SD space. Updated weekly by Patrick."
-  },
-  "product": {
-    "summary": {
-      "epics_shipped": "See product dashboard for current sprint",
-      "blocked_epics": "Check Jira for blockers",
-      "sprint": "Active"
-    },
-    "links": [
-      { "label": "Product Dashboard (GitHub Pages)", "url": "https://bookmarked-corp.github.io/roi-calculator/board/product.html" },
-      { "label": "Product Hub (Confluence)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/PROD" },
-      { "label": "Reporting & Analytics", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/PROD/pages/153223186" }
-    ],
-    "note": "Sarah's reporting URLs pending. Product dashboard exists at GitHub Pages. Will enrich."
-  },
-  "strategy_decisions": [
-    { "id": "D-001", "title": "Claude (Opus) as strategy advisor model", "status": "locked" },
-    { "id": "D-002", "title": "Steve owns strategic frame; agents at gates only", "status": "locked" },
-    { "id": "D-003", "title": "Private repo: BookmarkED-Corp/bookmarked-strategy", "status": "locked" },
-    { "id": "D-004", "title": "PLG + Crossing the Chasm diagnostic frameworks", "status": "locked" },
-    { "id": "D-005", "title": "Texas legal stack from primary sources (SB 13 live, SB 412 pending, HB 900 enjoined)", "status": "locked" },
-    { "id": "D-006", "title": "Network intelligence = statutory method (13 TAC §4.2 Method #2)", "status": "locked" },
-    { "id": "D-007", "title": "Multi-state: National Intelligence, Local Compliance", "status": "locked" },
-    { "id": "D-008", "title": "Defensibility Engine = core positioning; inward-facing only", "status": "locked" },
-    { "id": "D-009", "title": "Request circulation (check-in/out) data on upload", "status": "locked" },
-    { "id": "D-010", "title": "Multiple entry points via book-order spreadsheet", "status": "locked" },
-    { "id": "D-011", "title": "Ship Network Intelligence first; Book-Review Network fast-follow", "status": "locked" }
-  ],
-  "strategy_open": [
-    { "id": "O-001", "question": "Lead GTM wedge persona — which title first?", "state": "Analysis done June 8. Jan/Teela likely have working title." },
-    { "id": "O-002", "question": "Pricing model — per-student broken. Replace?", "state": "After O-003. Candidates: per-user/per-campus, feature-tiered." },
-    { "id": "O-003", "question": "Conversion trigger — what moment turns 'try' into 'budget'?", "state": "Core unresolved PLG question." },
-    { "id": "O-004", "question": "Book-Review Network design — anonymity, incentive, legal line", "state": "Resolve before build." },
-    { "id": "O-005", "question": "ESC channel role — under-executing", "state": "Separate thread. Not yet addressed." }
-  ],
-  "strategy_plays": [
-    { "title": "Play 1 — Network Trust Signal", "status": "Available now. 100+ districts. '47 Texas districts have this book.'" },
-    { "title": "Play 2 — Collection Benchmarking", "status": "Available now. Demographic-aware. Existing data." },
-    { "title": "Play 3 — Literacy Measurement", "status": "Gated. Mesquite pilot = proof case. Angel Rivera pitch pending." }
-  ],
-  "strategy_frame": { "statement": "\"We're not replacing your LMS. We're making it useful.\" Follett Destiny = filing cabinet. Bookmarked = intelligence engine." },
-  "strategy_why": { "status": "drifting", "statement": "Faith handed Steve the right book: 'Dad, the only reason you don't read more is because you haven't found the right book.' Every kid deserves that moment. Recent meetings: tech and process dominant. 'Kids' and 'books' not appearing in transcripts." },
   "intel": [
-    { "source": "Garry Tan · GStack", "title": "Sequential Discipline Within Parallel Agents", "pattern": "23 slash commands as AI team. Conductor Pattern: 10-15 sessions. 70K+ stars.", "priority": "Queue" },
-    { "source": "Anthropic Engineering · Jun 2025", "title": "Multi-Agent — 90.2% Improvement", "pattern": "Orchestrator-worker validated. Parallel subagent calls cut time by 90%.", "priority": "Validates architecture" },
-    { "source": "Shopify / First Round", "title": "Context Engineering > Prompt Engineering", "pattern": "AI agent auto-writes weekly updates from PRs, docs, Slack. Internal LLM proxy.", "priority": "Apply to Team Agent" }
+    { "id": "N-024", "source": "Garry Tan", "title": "Senses & Reflexes — Integration Architecture for GBrain", "pattern": "Recipe format (YAML + markdown). Senses = data inputs. Reflexes = brain state-change triggers. 'Agents ARE the runtime' — recipes ARE the installer.", "applies_to": "Hermes skill ecosystem — formalizes what Northy does as shareable recipes", "priority": "Queue for review" },
+    { "id": "N-025", "source": "Shopify Engineering", "title": "Two-Stage LLM Pipeline — Propose then Critique", "pattern": "Stage 1 proposes clusters. Stage 2 critiques/corrects. Dynamic schemas per chunk enforce completeness. Precision-first.", "applies_to": "Mabel book intelligence / district benchmarking pipeline", "priority": "Queue for review" },
+    { "id": "N-022", "source": "Garry Tan", "title": "Skillify — Meta-Extraction Pattern", "pattern": "100+ skills. One command extracts repeatable workflows into reusable skills.", "applies_to": "Hermes skill system", "priority": "Queue for review" }
   ],
-  "intel_watchlist": [
-    { "name": "Garry Tan", "why": "YC CEO, meta-meta-prompting, personal AI OS" },
-    { "name": "Tobi Lutke", "why": "Shopify CEO, AI-first mandate" },
-    { "name": "Wade Foster", "why": "Zapier CEO, 100+ AI scripts" },
-    { "name": "Anthropic", "why": "Multi-agent patterns, Claude capabilities" }
-  ],
-  "tokens_models": [],
-  "tokens_total": { "month": null, "last_month": null },
-  "resolved": []
+  "resolved": [
+    { "id": "N-001", "outcome": "TALAS Summit window closed. June 22-23, no confirmed attendance.", "when": "2026-06-21" },
+    { "id": "N-003", "outcome": "Systems-mode self-corrected within 24h. Steve moved to deal-mode unprompted.", "when": "2026-06-20" },
+    { "id": "N-013", "outcome": "TALAS Summit window closed.", "when": "2026-06-21" },
+    { "id": "N-002", "outcome": "Garland pricing mismatch absorbed into ESC 10 procurement rail motion.", "when": "2026-06-22" }
+  ]
 }

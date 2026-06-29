@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "last_updated": "2026-06-29T08:00:00Z",
+    "scan_type": "Nightly Deep Scan",
+    "northy_message": "Sunday morning. G-Brain is back. Same five urgent items — but Monday is tomorrow. Garland closes in 1 day. mcp.publish_skills still false (5th scan). 60 seconds, Steve."
+  },
+  "act_now": [
+    {
+      "id": "N-041",
+      "title": "Zig Pipeline BLOCKED — mcp.publish_skills still false. 5th scan.",
+      "category": "Infrastructure",
+      "detail": "Merge granted but root MCP access blocked. HubSpot active Saturday. Two June closed-won deals ($6,192).",
+      "action": "gbrain config set mcp.publish_skills true",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-031",
+      "title": "Garland $140K — Monday tomorrow. Moak Casey lever unpulled.",
+      "category": "Deal",
+      "detail": "1 day. No activity since Thursday. Jodi intro not sent.",
+      "action": "DM Jodi Duron today",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-037",
+      "title": "Target contradiction: $1.5M vs $1M. 5th scan. Resolve before Monday.",
+      "category": "Contradiction",
+      "detail": "Zig runs Monday weekly against wrong number.",
+      "action": "Post canonical target in #sales_revenue-ninjas",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-033",
+      "title": "ESC-10 proposal — 2 days overdue. No confirmation.",
+      "category": "Critical Path",
+      "detail": "Deadline was Friday. Send or confirm sent.",
+      "action": "Send today or confirm sent Friday",
+      "status": "needs-steve"
+    }
+  ],
+  "think_about": [
+    { "id": "N-036", "title": "Atlas HubSpot token — 6th ask. Sentinel RED.", "category": "Admin", "urgency": "2 min" },
+    { "id": "N-042", "title": "Lubbock ISD — 21K students, SB 13 trigger. Not in pipeline.", "category": "Opportunity", "urgency": "this-week" },
+    { "id": "N-032", "title": "Patrick equity cliff — July 15. 16 days.", "category": "Governance", "urgency": "urgent" },
+    { "id": "N-043", "title": "ESC consortium engine firing on 3 fronts. Distribution model working.", "category": "Strategy", "urgency": "track-weekly" }
+  ],
+  "health": {
+    "frame": { "status": "green", "note": "Three ESC channels = $10M distribution architecture." },
+    "floor": { "status": "red", "note": "mcp.publish_skills false is below the floor." },
+    "focus": { "status": "yellow", "note": "Systems-mode trap active. Weekend is the test." },
+    "why": { "status": "green", "note": "Jan's District Insights Layer is WHY-first." }
+  },
+  "cliff": [
+    { "metric": "Garland", "value": "Tomorrow", "target": "Close $140K", "gap": "1 day", "status": "urgent" },
+    { "metric": "mcp.publish_skills", "value": "false", "target": "true", "gap": "1 command", "status": "urgent" },
+    { "metric": "ESC-10", "value": "2 days overdue", "target": "Sent", "gap": "unconfirmed", "status": "urgent" },
+    { "metric": "Target", "value": "Contradiction", "target": "Aligned", "gap": "5th scan", "status": "urgent" },
+    { "metric": "Patrick Equity", "value": "July 15", "target": "Drafted", "gap": "16 days", "status": "urgent" },
+    { "metric": "Atlas Token", "value": "6th ask", "target": "Approved", "gap": "6 asks", "status": "urgent" },
+    { "metric": "Cash", "value": "~$250K", "target": "Runway", "gap": "~$72K/mo", "status": "watch" }
+  ],
+  "commitments": {
+    "steve_owes": [
+      { "what": "Run: gbrain config set mcp.publish_skills true", "to": "Fleet", "date": "Now", "status": "urgent" },
+      { "what": "DM Jodi: Garland Dr. Lopez intro", "to": "Jodi Duron", "date": "Before Monday", "status": "urgent" },
+      { "what": "Clarify target in #sales_revenue-ninjas", "to": "Zig / Jan", "date": "Before Monday", "status": "urgent" },
+      { "what": "ESC-10 proposal — send or confirm", "to": "ESC-10", "date": "Jun 27", "status": "urgent" },
+      { "what": "Scale Firm — Patrick board consent", "to": "Scale Firm", "date": "Before July 15", "status": "urgent" },
+      { "what": "Say 'yes' to Atlas HubSpot token", "to": "Dewey", "date": "2 min", "status": "urgent" },
+      { "what": "Answer Ram enrollment banding Q", "to": "Ram", "date": "ASAP", "status": "urgent" }
+    ],
+    "team_owes": [
+      { "who": "Jan", "what": "ESC-10 proposal", "date": "Jun 27", "status": "overdue" },
+      { "who": "Teela", "what": "Lubbock ISD → HubSpot", "date": "ASAP", "status": "new" },
+      { "who": "Johnny", "what": "Review Play 2 spec before July 7 L10", "date": "Before July 7", "status": "open" },
+      { "who": "Jan", "what": "Methodology to Confluence + GitHub", "date": "Jun 24", "status": "done" }
+    ]
+  },
+  "quick_access": [
+    { "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
+    { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
+    { "label": "Jan's Methodology", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017" },
+    { "label": "Garry Tan gstack", "url": "https://github.com/garrytan/gstack" }
+  ],
+  "finance": {
+    "summary": { "cash": "~$250K", "september_projection": "TBD", "current_burn_monthly": "~$115K", "v1_savings_monthly": "$8-9K", "deferred_comp_weekly": "$100K", "deferral_repayment_october": "$106K" },
+    "metrics": [
+      { "label": "ARR Banked", "value": "~$440K", "trend": "up" },
+      { "label": "$1M Progress", "value": "~44%", "trend": "up" },
+      { "label": "June Closed-Won", "value": "$6,192", "trend": "up" },
+      { "label": "A/P Aging", "value": "$210,429", "trend": "down" }
+    ],
+    "dashboards": [{ "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" }]
+  },
+  "sales": {
+    "summary": {
+      "active_pipeline": "TX ~$565K + Renewals $400K+. ESC9/10/16 active. Saturday activity: Holliday, Port Arthur, Santa Anna.",
+      "deals_closing_this_month": "Garland $140K (1 day), Fayetteville $810, Erath $170, Eastland $1,936. Lubbock ISD NOT in CRM.",
+      "stalled_deals": "Utah SEA ($1.3M FY27). Garland unreachable since June 10.",
+      "imta_districts": "Mesquite, Garland, ESC consortium. Midland $77K."
+    },
+    "note": "⚠️ Zig BLOCKED — mcp.publish_skills false (5th scan). June closed-won: $6,192. Target contradiction active.",
+    "links": [
+      { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
+      { "label": "Jan's Methodology", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017" }
+    ]
+  },
+  "cs": { "summary": { "note": "Sentinel RED: Atlas 401, Bryan blank logs, Houston dormant. 6th ask for HubSpot token." } },
+  "product": { "summary": { "note": "Scout: 3 epics done. Jan's District Insights Layer = Play 2 spec. Johnny review before July 7 L10." } },
+  "strategy_decisions": [
+    { "id": "D-ESC10", "title": "ESC-10 partnership greenlit June 23", "status": "active" },
+    { "id": "D-JULY", "title": "July AI architecture sprint. L10 July 7.", "status": "active" },
+    { "id": "D-INDIA", "title": "India hire: $3-4K/mo + 30-day eval", "status": "active" },
+    { "id": "D-ZIG-MERGE", "title": "Zig merge_or_release granted June 27", "status": "done" },
+    { "id": "D-JAN-ZIG", "title": "Jan methodology → Zig. Weights canonical.", "status": "done" }
+  ],
+  "strategy_open": [
+    { "id": "O-ZIG-PIPELINE", "title": "⚠️ Zig BLOCKED — mcp.publish_skills false", "status": "urgent" },
+    { "id": "O-TARGET", "title": "⚠️ $1.5M vs $1M contradiction. 5th scan.", "status": "urgent" },
+    { "id": "O-GARLAND", "title": "Garland $140K — Monday. 1 day.", "status": "urgent" },
+    { "id": "O-PATRICK", "title": "Patrick equity July 15 — 16 days.", "status": "urgent" },
+    { "id": "O-ESC10", "title": "ESC-10 proposal 2 days overdue.", "status": "urgent" },
+    { "id": "O-LUBBOCK", "title": "Lubbock ISD — not in HubSpot.", "status": "new" },
+    { "id": "O-ATLAS", "title": "Atlas HubSpot token — 6th ask.", "status": "urgent" }
+  ],
+  "tokens_total": { "month": "1,440", "last_month": "2,670", "or_balance": "107", "combined_daily": "206", "or_daily": "113", "ant_daily": "93" },
+  "tokens_models": [
+    { "model": "claude-sonnet-4.6", "cost": 179.46, "label": "Off-Policy" },
+    { "model": "claude-opus-4.6", "cost": 178.49, "label": "Personal" },
+    { "model": "deepseek-v4-pro", "cost": 157.81, "label": "Fleet" },
+    { "model": "claude-opus-4.8-fast", "cost": 128.47, "label": "Off-Policy" },
+    { "model": "gpt-5.5", "cost": 58.86, "label": "Off-Policy" }
+  ],
+  "tokens_dashboard_url": "https://bookmarked-corp.github.io/bookmarked-token-dashboard/",
+  "district_intel": { "dashboards": [
+    { "label": "Board Minutes", "description": "Texas school board policy signals", "repo_path": "bookmarked-district-intelligence/output/board-minutes-dashboard.html" },
+    { "label": "Media Intelligence", "description": "District media coverage + sentiment", "repo_path": "bookmarked-district-intelligence/output/media-intelligence-dashboard.html" },
+    { "label": "Superintendent Movement", "description": "Superintendent job changes", "repo_path": "bookmarked-district-intelligence/output/supt-movement-dashboard.html" },
+    { "label": "IMTA Intelligence", "description": "Unspent district funds", "repo_path": "bookmarked-district-intelligence/output/imta-intelligence-dashboard.html" }
+  ]},
+  "intel": [
+    { "id": "N-035", "source": "Garry Tan", "title": "gstack — 23 specialist agents", "pattern": "Omni-bot dead. Thin harness + fat skills = ships.", "applies_to": "July AI sprint", "priority": "Queue for July 7 L10" },
+    { "id": "N-040", "source": "SBOE June 2026", "title": "HB 1605 amendment failed", "pattern": "Clear policy runway for Play 1 + Play 2.", "applies_to": "SB 13 + Benchmarking", "priority": "Monitor" },
+    { "id": "N-038", "source": "Jan Gilboy", "title": "District Insights Layer = Play 2 spec", "pattern": "Five-score scorecard + peer benchmarking.", "applies_to": "Play 2", "priority": "Queue for review" }
+  ],
+  "resolved": [
+    { "id": "N-044", "outcome": "G-Brain back online. Nightly scan running.", "when": "2026-06-29" },
+    { "id": "D-ZIG-MERGE", "outcome": "Zig merge_or_release granted.", "when": "2026-06-27" },
+    { "id": "JUNE-CLOSED-WON", "outcome": "Triumph $4,500 + Farwell $1,692 = $6,192 banked.", "when": "2026-06-29" },
+    { "id": "N-023", "outcome": "Midland ISD $77K PO confirmed.", "when": "2026-06-22" }
+  ]
+}

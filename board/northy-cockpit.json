@@ -1,77 +1,77 @@
 {
   "meta": {
-    "last_updated": "2026-06-29T08:00:00Z",
+    "last_updated": "2026-06-30T03:00:00Z",
     "scan_type": "Nightly Deep Scan",
-    "northy_message": "Sunday morning. G-Brain is back. Same five urgent items — but Monday is tomorrow. Garland closes in 1 day. mcp.publish_skills still false (5th scan). 60 seconds, Steve."
+    "northy_message": "Monday night. Zig's numbers are in: $489K committed+quote, $259K banked. Gap to $1.39M still. Target contradiction 6th scan. Garland moved to July 31 — breathing room. But the lever's still unpulled."
   },
   "act_now": [
     {
-      "id": "N-041",
-      "title": "Zig Pipeline BLOCKED — mcp.publish_skills still false. 5th scan.",
-      "category": "Infrastructure",
-      "detail": "Merge granted but root MCP access blocked. HubSpot active Saturday. Two June closed-won deals ($6,192).",
-      "action": "gbrain config set mcp.publish_skills true",
+      "id": "N-037",
+      "title": "Target contradiction: $1.5M vs $1M. 6th scan. Zig's report implies $1.39M.",
+      "category": "Contradiction",
+      "detail": "Zig's Monday weekly: Gap $902,756 vs committed+quote $489,116 = ~$1.39M target. Jan's Confluence page (April 1): $1.5M by Aug 1. Steve's canonical: $1M by Sept 1. Three different numbers live in the system. Zig's June 22 report explicitly said '$1.5M Commit by Aug 1.' He's drifting between targets because nobody clarified.",
+      "action": "Post ONE message in #sales_revenue-ninjas: 'Canonical target is $1M ARR by Sept 1. Every deal classification flows from that.'",
       "status": "needs-steve"
     },
     {
       "id": "N-031",
-      "title": "Garland $140K — Monday tomorrow. Moak Casey lever unpulled.",
+      "title": "Garland $140K — close date moved to July 31. Jodi lever still unpulled.",
       "category": "Deal",
-      "detail": "1 day. No activity since Thursday. Jodi intro not sent.",
-      "action": "DM Jodi Duron today",
-      "status": "needs-steve"
-    },
-    {
-      "id": "N-037",
-      "title": "Target contradiction: $1.5M vs $1M. 5th scan. Resolve before Monday.",
-      "category": "Contradiction",
-      "detail": "Zig runs Monday weekly against wrong number.",
-      "action": "Post canonical target in #sales_revenue-ninjas",
+      "detail": "Deal updated June 29: close date pushed from June 30 to July 31. Still at 'contractsent.' Still no evidence the Jodi Duron Moak Casey email to Dr. Lopez was ever sent. The urgency shifted from 'tomorrow' to 'this month' — but the single highest-leverage action is still the same: one DM to Jodi.",
+      "action": "DM Jodi Duron: 'Jodi — any update on the Dr. Lopez intro for Garland ISD? Close date is July 31 and I want to make sure we're positioned.'",
       "status": "needs-steve"
     },
     {
       "id": "N-033",
-      "title": "ESC-10 proposal — 2 days overdue. No confirmation.",
+      "title": "ESC-10 proposal — 4 days overdue. Deadline was Friday June 27.",
       "category": "Critical Path",
-      "detail": "Deadline was Friday. Send or confirm sent.",
-      "action": "Send today or confirm sent Friday",
+      "detail": "Last confirmed status: 'Nero has everything loaded. Go build it' (June 25). No confirmation sent. No transcript. No Slack update. If it went out, kill this. If it didn't, this is now 4 days late against a consortium relationship.",
+      "action": "Send today or confirm it was sent Friday.",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-045",
+      "title": "Pipeline hygiene: top 5 renewal deals ($285K) missing next steps.",
+      "category": "Pipeline Health",
+      "detail": "Zig's hygiene check: 85% of deals missing hs_next_step. Top 5 by value: Midland $77K, Humble $72K, Mesquite $57K, ILTEXAS $42K, Killeen $39K — all renewals, all without a next step. That's $285K in committed+quote deals nobody has a plan for.",
+      "action": "Ask Jan/Teela in #sales_revenue-ninjas to add next steps to top 5 renewal deals this week.",
       "status": "needs-steve"
     }
   ],
   "think_about": [
-    { "id": "N-036", "title": "Atlas HubSpot token — 6th ask. Sentinel RED.", "category": "Admin", "urgency": "2 min" },
-    { "id": "N-042", "title": "Lubbock ISD — 21K students, SB 13 trigger. Not in pipeline.", "category": "Opportunity", "urgency": "this-week" },
-    { "id": "N-032", "title": "Patrick equity cliff — July 15. 16 days.", "category": "Governance", "urgency": "urgent" },
-    { "id": "N-043", "title": "ESC consortium engine firing on 3 fronts. Distribution model working.", "category": "Strategy", "urgency": "track-weekly" }
+    { "id": "N-042", "title": "Lubbock ISD — 21K students, SB 13 trigger. Teela reached out. Not in HubSpot.", "category": "Opportunity", "urgency": "this-week" },
+    { "id": "N-032", "title": "Patrick equity cliff — July 15. 15 days.", "category": "Governance", "urgency": "urgent" },
+    { "id": "N-036", "title": "Atlas HubSpot token — 7th ask. Media→CRM pipeline waits.", "category": "Admin", "urgency": "2 min" },
+    { "id": "N-046", "title": "ESC consortium engine firing on 3 fronts. 57 inbound replies last week.", "category": "Strategy", "urgency": "track-weekly" }
   ],
   "health": {
-    "frame": { "status": "green", "note": "Three ESC channels = $10M distribution architecture." },
-    "floor": { "status": "red", "note": "mcp.publish_skills false is below the floor." },
-    "focus": { "status": "yellow", "note": "Systems-mode trap active. Weekend is the test." },
-    "why": { "status": "green", "note": "Jan's District Insights Layer is WHY-first." }
+    "frame": { "status": "green", "note": "ESC distribution model = $10M architecture. Three channels active." },
+    "floor": { "status": "yellow", "note": "mcp.publish_skills false. But Zig is posting to Slack anyway — blocking HubSpot MCP specifically." },
+    "focus": { "status": "yellow", "note": "Monday night scan. Target confusion + Garland lever unpulled = energy leaks." },
+    "why": { "status": "green", "note": "Midland $77K free→paid. Elgin $18K. Faith's book is working." }
   },
   "cliff": [
-    { "metric": "Garland", "value": "Tomorrow", "target": "Close $140K", "gap": "1 day", "status": "urgent" },
-    { "metric": "mcp.publish_skills", "value": "false", "target": "true", "gap": "1 command", "status": "urgent" },
-    { "metric": "ESC-10", "value": "2 days overdue", "target": "Sent", "gap": "unconfirmed", "status": "urgent" },
-    { "metric": "Target", "value": "Contradiction", "target": "Aligned", "gap": "5th scan", "status": "urgent" },
-    { "metric": "Patrick Equity", "value": "July 15", "target": "Drafted", "gap": "16 days", "status": "urgent" },
-    { "metric": "Atlas Token", "value": "6th ask", "target": "Approved", "gap": "6 asks", "status": "urgent" },
-    { "metric": "Cash", "value": "~$250K", "target": "Runway", "gap": "~$72K/mo", "status": "watch" }
+    { "metric": "Target", "value": "Three numbers live", "target": "One number", "gap": "6th scan", "status": "urgent" },
+    { "metric": "ESC-10", "value": "4 days overdue", "target": "Sent", "gap": "unconfirmed", "status": "urgent" },
+    { "metric": "Garland", "value": "July 31", "target": "Close $140K", "gap": "Jodi DM unsent", "status": "urgent" },
+    { "metric": "Pipeline Next Steps", "value": "85% missing", "target": "100%", "gap": "$285K unplanned", "status": "urgent" },
+    { "metric": "Patrick Equity", "value": "July 15", "target": "Drafted", "gap": "15 days", "status": "urgent" },
+    { "metric": "Atlas Token", "value": "7th ask", "target": "Approved", "gap": "7 asks", "status": "urgent" },
+    { "metric": "Cash", "value": "~$250K", "target": "Runway", "gap": "~$72K/mo burn", "status": "watch" }
   ],
   "commitments": {
     "steve_owes": [
-      { "what": "Run: gbrain config set mcp.publish_skills true", "to": "Fleet", "date": "Now", "status": "urgent" },
-      { "what": "DM Jodi: Garland Dr. Lopez intro", "to": "Jodi Duron", "date": "Before Monday", "status": "urgent" },
-      { "what": "Clarify target in #sales_revenue-ninjas", "to": "Zig / Jan", "date": "Before Monday", "status": "urgent" },
-      { "what": "ESC-10 proposal — send or confirm", "to": "ESC-10", "date": "Jun 27", "status": "urgent" },
+      { "what": "Clarify canonical target in #sales_revenue-ninjas", "to": "Zig / Jan / Teela", "date": "Tuesday morning", "status": "urgent" },
+      { "what": "DM Jodi: Garland Dr. Lopez intro", "to": "Jodi Duron", "date": "Tuesday", "status": "urgent" },
+      { "what": "ESC-10 proposal — send or confirm sent", "to": "ESC-10", "date": "Jun 27", "status": "overdue" },
       { "what": "Scale Firm — Patrick board consent", "to": "Scale Firm", "date": "Before July 15", "status": "urgent" },
       { "what": "Say 'yes' to Atlas HubSpot token", "to": "Dewey", "date": "2 min", "status": "urgent" },
-      { "what": "Answer Ram enrollment banding Q", "to": "Ram", "date": "ASAP", "status": "urgent" }
+      { "what": "Ask Jan/Teela for next steps on top 5 renewals", "to": "Jan / Teela", "date": "Tuesday", "status": "new" }
     ],
     "team_owes": [
       { "who": "Jan", "what": "ESC-10 proposal", "date": "Jun 27", "status": "overdue" },
-      { "who": "Teela", "what": "Lubbock ISD → HubSpot", "date": "ASAP", "status": "new" },
+      { "who": "Teela", "what": "Lubbock ISD → HubSpot. Meeting booked.", "date": "ASAP", "status": "new" },
+      { "who": "Jan / Teela", "what": "Add hs_next_step to top 5 renewals", "date": "This week", "status": "new" },
       { "who": "Johnny", "what": "Review Play 2 spec before July 7 L10", "date": "Before July 7", "status": "open" },
       { "who": "Jan", "what": "Methodology to Confluence + GitHub", "date": "Jun 24", "status": "done" }
     ]
@@ -80,7 +80,8 @@
     { "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
     { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
     { "label": "Jan's Methodology", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017" },
-    { "label": "Garry Tan gstack", "url": "https://github.com/garrytan/gstack" }
+    { "label": "Garland Proposal", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/123961345" },
+    { "label": "Garry Tan gbrain", "url": "https://github.com/garrytan/gbrain" }
   ],
   "finance": {
     "summary": { "cash": "~$250K", "september_projection": "TBD", "current_burn_monthly": "~$115K", "v1_savings_monthly": "$8-9K", "deferred_comp_weekly": "$100K", "deferral_repayment_october": "$106K" },
@@ -94,18 +95,18 @@
   },
   "sales": {
     "summary": {
-      "active_pipeline": "TX ~$565K + Renewals $400K+. ESC9/10/16 active. Saturday activity: Holliday, Port Arthur, Santa Anna.",
-      "deals_closing_this_month": "Garland $140K (1 day), Fayetteville $810, Erath $170, Eastland $1,936. Lubbock ISD NOT in CRM.",
-      "stalled_deals": "Utah SEA ($1.3M FY27). Garland unreachable since June 10.",
-      "imta_districts": "Mesquite, Garland, ESC consortium. Midland $77K."
+      "active_pipeline": "Zig: $489K committed+quote, $259K banked, $902K gap. 146 open deals across 8 pipelines.",
+      "deals_closing_this_month": "Midland $77K (Jul 15), Elgin $18K (Jul 31), La Grange $5.5K (Jul 31). July wave: $125K across 6 deals.",
+      "stalled_deals": "Garland $140K (close date moved to Jul 31 — active, not stalled). Cy-Fair $107K (418d since last engagement). Utah SEA parked.",
+      "imta_districts": "Mesquite, Garland, ESC consortium. ESC9 + ESC16 actively coordinating district rosters."
     },
-    "note": "⚠️ Zig BLOCKED — mcp.publish_skills false (5th scan). June closed-won: $6,192. Target contradiction active.",
+    "note": "Target contradiction: Zig runs ~$1.39M. Jan's page says $1.5M. Canonical is $1M by Sept 1. 6th scan flagging. Pipeline hygiene: 85% deals missing next steps. Zig posting reports to #sales_revenue-ninjas — mcp.publish_skills may not block Slack MCP.",
     "links": [
       { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
       { "label": "Jan's Methodology", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017" }
     ]
   },
-  "cs": { "summary": { "note": "Sentinel RED: Atlas 401, Bryan blank logs, Houston dormant. 6th ask for HubSpot token." } },
+  "cs": { "summary": { "note": "Atlas HubSpot token: 7th ask. Media→CRM pipeline blocked. Patrick equity cliff July 15 (15 days)." } },
   "product": { "summary": { "note": "Scout: 3 epics done. Jan's District Insights Layer = Play 2 spec. Johnny review before July 7 L10." } },
   "strategy_decisions": [
     { "id": "D-ESC10", "title": "ESC-10 partnership greenlit June 23", "status": "active" },
@@ -115,13 +116,13 @@
     { "id": "D-JAN-ZIG", "title": "Jan methodology → Zig. Weights canonical.", "status": "done" }
   ],
   "strategy_open": [
-    { "id": "O-ZIG-PIPELINE", "title": "⚠️ Zig BLOCKED — mcp.publish_skills false", "status": "urgent" },
-    { "id": "O-TARGET", "title": "⚠️ $1.5M vs $1M contradiction. 5th scan.", "status": "urgent" },
-    { "id": "O-GARLAND", "title": "Garland $140K — Monday. 1 day.", "status": "urgent" },
-    { "id": "O-PATRICK", "title": "Patrick equity July 15 — 16 days.", "status": "urgent" },
-    { "id": "O-ESC10", "title": "ESC-10 proposal 2 days overdue.", "status": "urgent" },
-    { "id": "O-LUBBOCK", "title": "Lubbock ISD — not in HubSpot.", "status": "new" },
-    { "id": "O-ATLAS", "title": "Atlas HubSpot token — 6th ask.", "status": "urgent" }
+    { "id": "O-TARGET", "title": "⚠️ $1.5M vs $1M vs $1.39M. 6th scan.", "status": "urgent" },
+    { "id": "O-GARLAND", "title": "Garland $140K — July 31. Jodi DM unsent.", "status": "urgent" },
+    { "id": "O-ESC10", "title": "ESC-10 proposal 4 days overdue.", "status": "urgent" },
+    { "id": "O-PATRICK", "title": "Patrick equity July 15 — 15 days.", "status": "urgent" },
+    { "id": "O-LUBBOCK", "title": "Lubbock ISD — Teela reached out. Not in HubSpot.", "status": "new" },
+    { "id": "O-ATLAS", "title": "Atlas HubSpot token — 7th ask.", "status": "urgent" },
+    { "id": "O-PIPELINE-HYGIENE", "title": "85% deals missing next steps.", "status": "new" }
   ],
   "tokens_total": { "month": "1,440", "last_month": "2,670", "or_balance": "107", "combined_daily": "206", "or_daily": "113", "ant_daily": "93" },
   "tokens_models": [
@@ -139,14 +140,16 @@
     { "label": "IMTA Intelligence", "description": "Unspent district funds", "repo_path": "bookmarked-district-intelligence/output/imta-intelligence-dashboard.html" }
   ]},
   "intel": [
-    { "id": "N-035", "source": "Garry Tan", "title": "gstack — 23 specialist agents", "pattern": "Omni-bot dead. Thin harness + fat skills = ships.", "applies_to": "July AI sprint", "priority": "Queue for July 7 L10" },
-    { "id": "N-040", "source": "SBOE June 2026", "title": "HB 1605 amendment failed", "pattern": "Clear policy runway for Play 1 + Play 2.", "applies_to": "SB 13 + Benchmarking", "priority": "Monitor" },
+    { "id": "N-047", "source": "Garry Tan (X, June 21)", "title": "Personal context is the real AGI unlock", "pattern": "AGI gives intelligence. Personal context gives leverage. GBrain = moat.", "applies_to": "G-Brain strategy. Validate Steve's bet on agent memory.", "priority": "Queue for review" },
+    { "id": "N-048", "source": "Shopify Engineering (June 2026)", "title": "River agent: 60K sessions, 5K channels, 7K people", "pattern": "Substrate > agent. Durable sessions = the constraint. 'Cells die, sandboxes die. The conversation doesn't.'", "applies_to": "Hermes infrastructure. Session durability = Northy's reliability.", "priority": "Queue for July 7 L10" },
     { "id": "N-038", "source": "Jan Gilboy", "title": "District Insights Layer = Play 2 spec", "pattern": "Five-score scorecard + peer benchmarking.", "applies_to": "Play 2", "priority": "Queue for review" }
   ],
   "resolved": [
     { "id": "N-044", "outcome": "G-Brain back online. Nightly scan running.", "when": "2026-06-29" },
     { "id": "D-ZIG-MERGE", "outcome": "Zig merge_or_release granted.", "when": "2026-06-27" },
     { "id": "JUNE-CLOSED-WON", "outcome": "Triumph $4,500 + Farwell $1,692 = $6,192 banked.", "when": "2026-06-29" },
-    { "id": "N-023", "outcome": "Midland ISD $77K PO confirmed.", "when": "2026-06-22" }
+    { "id": "N-023", "outcome": "Midland ISD $77K PO confirmed.", "when": "2026-06-22" },
+    { "id": "ELGIN-CLOSED", "outcome": "Elgin ISD $18,402 committed. $2→$3/student + 1,000 more students.", "when": "2026-06-24" },
+    { "id": "D-JAN-ZIG", "outcome": "Jan methodology fully documented to Confluence + GitHub. Weights canonical.", "when": "2026-06-24" }
   ]
 }

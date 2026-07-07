@@ -1,84 +1,85 @@
 {
   "meta": {
-    "last_updated": "2026-07-06T03:00:00Z",
+    "last_updated": "2026-07-07T03:00:00Z",
     "scan_type": "Nightly Deep Scan",
-    "northy_message": "Holiday weekend. Nothing moved — which is fine. But Monday morning the clock resumes: Garland is 5 days past deadline, CFB ISD uses the same unpulled Moak Casey lever ($162K on one call), and Lubbock ISD (21K students) is a new SB 13 lead Teela surfaced. Pipeline: $478K live in HubSpot — data exists, just doesn't reach anyone. 52 days blind."
+    "northy_message": "Sunday night. Zig's Monday report dropped early — $503K near-term closeable. But Garland's close date was deferred to July 31, the $1.5M target is still Zig's anchor, and Steve's asking Dewey for a Gbrain doctor instead of calling Jodi Duron. Systems-mode trap active. 57 days. Three calls before opening a terminal: Jodi, Lori Aden, revenue target to Zig."
   },
   "act_now": [
     {
-      "id": "N-049",
-      "title": "Garland + CFB ISD — One Call to Jodi Duron = $162K. 5 Days Past Deadline.",
-      "category": "Revenue Risk / Commitment Gap",
-      "detail": "Garland ISD ($140,391) — June 30 deadline. 5 days past. HubSpot: Contract Sent, next step 'Strategic outreach to Garland.' CFB ISD ($22,082) has SAME next step: 'Steve to get Jodi from Moak Casey to connect with Wendy-Sup.' One phone call covers both. Neither lever pulled.",
-      "action": "Call Jodi Duron Monday morning. 'Jodi — can you email Dr. Lopez at Garland AND Wendy at CFB? What do you need from me?' One call. Two deals.",
+      "id": "N-065",
+      "title": "Garland $140K — Close Date DEFERRED to July 31. Jodi Duron Lever Still Unpulled. $162K on One Call.",
+      "category": "Revenue Risk / Deferred Without Action",
+      "detail": "Zig's July 6 report: Garland close date moved from June 30 to July 31. Not progress — quiet concession. Jodi Duron call covers BOTH Garland ($140K) AND CFB ($22K) = $162K. Neither lever pulled. The date moved; the action didn't.",
+      "action": "Call Jodi Duron Monday. 'Jodi — can you email Dr. Lopez at Garland AND Wendy at CFB? What do you need from me?' One call. Two deals.",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-059",
+      "title": "Revenue Target Contradiction — Now Structural. Zig's July 6 Report Anchors on $1.5M by Aug 1.",
+      "category": "Contradiction / Strategic Drift",
+      "detail": "Zig's July 6 Monday update: 'Gap to Commit ($1.5M by Aug 1): $1,240,845.' Canonical target is $1M by Sept 1. Zig is computing against a number $500K higher and one month sooner. Active distortion — team thinks they're $1.24M behind instead of ~$560K.",
+      "action": "ONE Slack to #sales_revenue-ninjas Monday: 'Canonical target is $1M ARR by Sept 1. Every deal classification, forecast, update flows from that.' 30 seconds.",
       "status": "needs-steve"
     },
     {
       "id": "N-055",
-      "title": "Pipeline Blind — 52 Days Stale. Live HubSpot Shows $478K Active TX Deals.",
+      "title": "Pipeline Blind — 53 Days Stale. Zig Shows $503K Near-Term, 152 Deals, $2.6M Pipeline.",
       "category": "Data Integrity / Infrastructure Gap",
-      "detail": "Fresh HubSpot pull: 20+ active TX deals ~$478K. Top 5: Garland ($140K, Contract Sent), Cy-Fair ($107K, Presentation Scheduled), Pearland ($50K, DM Buy-In), Grand Prairie ($24K), CFB ($22K). Zig confirmed July 3: HubSpot → G-Brain ingestion never built. Allowlist ready. 1-day build. Known since June 26.",
-      "action": "Forge/Raju: build HubSpot → G-Brain ingestion script. Steve: approve if needed. Blocking entire strategy data layer.",
+      "detail": "Zig's July 6 report: $340,786 Renewals Committed + $162,597 Quote Sent = $503,383. 152 deals, $2.6M open. YTD Closed Won: $259,155. But HubSpot → G-Brain ingestion never built. 1-day build. Known since June 26.",
+      "action": "Forge/Raju: build HubSpot → G-Brain ingestion. Allowlist ready. Steve: approve if needed.",
       "status": "needs-steve"
     },
     {
       "id": "N-056",
       "title": "Security — dev-dca.bookmarked.com Subdomain Takeover. Still Unaddressed.",
       "category": "Security / Infrastructure",
-      "detail": "Zig flagged July 3. Still untriaged Sunday night. Subdomain takeovers = phishing, credential harvesting, brand damage risk. Should be triaged immediately, not queued for 'next week.'",
-      "action": "Patrick or Raju: triage dev-dca Monday morning. Remove dangling DNS record or reclaim resource. 15-minute fix.",
-      "status": "needs-steve"
-    },
-    {
-      "id": "N-059",
-      "title": "Revenue Target Contradiction — 10th Scan. Three Numbers, Zero Resolution.",
-      "category": "Contradiction / Strategic Drift",
-      "detail": "L10: 5-10M ambition. Jan/Steve July 1: '$1M by Sept 1.' Zig: $1.39M gap computation. Three different targets across three conversations. Team classifies deals against different goals. July reset was supposed to fix this.",
-      "action": "ONE Slack to #sales_revenue-ninjas Monday: 'Canonical target is $1M by Sept 1. Every deal classification, every forecast, every Monday update — flows from that.'",
+      "detail": "Zig flagged July 3. Still untriaged. Subdomain takeovers = phishing, credential harvesting, brand damage risk.",
+      "action": "Patrick or Raju: triage dev-dca Monday morning. Remove dangling DNS or reclaim resource. 15-minute fix.",
       "status": "needs-steve"
     },
     {
       "id": "N-036",
-      "title": "Atlas HubSpot Token — 10th Scan. 24 ISDs in Media Tracker, Zero CRM Touchpoints.",
+      "title": "Atlas HubSpot Token — 11th Scan. 24 ISDs in Media Tracker, Zero CRM Touchpoints.",
       "category": "Decision Bottleneck",
-      "detail": "Dewey asked 7+ times. Steve told Dewey to route directly June 27. July 2 meeting confirmed it's THE one item. Token still not injected. One admin approval unlocks media→CRM pipeline.",
+      "detail": "Dewey asked 7+ times. July 2 meeting confirmed it's THE one infrastructure item. Token still not injected.",
       "action": "Approve BRIDGE.md HubSpot token injection for Atlas. Reply in #ai-ceo-team.",
       "status": "needs-steve"
     }
   ],
   "think_about": [
-    { "id": "N-064", "title": "NEW: Lubbock ISD — Teela SB 13 Lead. 21,000 Students. Potential $63K Deal.", "category": "Opportunity / New Lead", "urgency": "this-week" },
+    { "id": "N-066", "title": "NEW: Systems-Mode Trap Active — Steve Asking for Gbrain Doctor While $162K Sits Uncalled.", "category": "Strategic Drift / Systems-Mode Trap", "urgency": "this-week" },
+    { "id": "N-064", "title": "Lubbock ISD — Teela SB 13 Lead. 21,000 Students. Potential $31-63K Deal.", "category": "Opportunity / New Lead", "urgency": "this-week" },
     { "id": "N-033", "title": "ESC Momentum — All 4 ESCs Engaged. Follow Up Before Holiday Thread Goes Cold.", "category": "Status Change / Opportunity", "urgency": "this-week" },
-    { "id": "N-032", "title": "Patrick Equity Cliff — July 15. 10 Days. Scale Firm Status Unknown.", "category": "Deadline", "urgency": "urgent" },
-    { "id": "N-050", "title": "Outbound Velocity Up (43 emails, 23 replies). $0 Closed-Won. Pipeline Blind Prevents Verification.", "category": "Revenue / Data Gap", "urgency": "this-week" },
-    { "id": "N-057", "title": "Supt Alerter Cron Failed — Model Config Drift. Super Movement Blind.", "category": "Infrastructure", "urgency": "this-week" },
-    { "id": "N-051", "title": "July Reset — Steve Asked for Commitment Audit. Nero Compiled 30 from 14 Meetings.", "category": "Dot Connection", "urgency": "this-week" }
+    { "id": "N-032", "title": "Patrick Equity Cliff — July 15. 9 Days. Scale Firm Status Unknown.", "category": "Deadline", "urgency": "urgent" },
+    { "id": "N-067", "title": "NEW: La Grange PO Confirmed — $5,550. Small Positive Signal.", "category": "Closed Won / Positive", "urgency": "fyi" },
+    { "id": "N-050", "title": "Outbound Velocity Up (85 Touchpoints). SB 13 Outreach at Zero for Third Week.", "category": "Revenue / Execution Gap", "urgency": "this-week" }
   ],
   "health": {
-    "frame": { "status": "yellow", "note": "ESC partnerships engaged. July reset framework in place. BUT: three revenue targets circulating, pipeline blind 52 days, infrastructure failures accumulating." },
-    "floor": { "status": "red", "note": "Pipeline blind 52 days. dev-dca subdomain unfixed. Supt Alerter cron failing. 85% deals missing next steps. Four avoidable failures, all known, none fixed." },
-    "focus": { "status": "red", "note": "Garland 5 days past deadline. CFB uses same unpulled lever ($162K on one call). SB 13 outreach at zero for third straight week. Monday: call Jodi or watch $162K drift further." },
-    "why": { "status": "green", "note": "No drift. Lubbock ISD lead (21K students, SB 13 angle) — exactly the mission." }
+    "frame": { "status": "yellow", "note": "ESC partnerships engaged. Zig shows $503K near-term closeable. BUT: three revenue targets circulating, Garland deferred without action, pipeline blind 53 days. Frame is right — execution isn't matching it." },
+    "floor": { "status": "red", "note": "Pipeline blind 53 days. dev-dca unfixed. Google OAuth expired. Supt Alerter cron failing. 85% deals missing next steps. Five failures, all known, none fixed." },
+    "focus": { "status": "red", "note": "SYSTEMS-MODE TRAP ACTIVE. Steve asking for Gbrain doctor while $162K sits with unpulled phone lever. 57 days to Sept 1. $560K gap. Three calls before opening a terminal: Jodi Duron, Lori Aden, revenue target to Zig." },
+    "why": { "status": "green", "note": "Lubbock ISD lead. La Grange PO confirmed. Faith's story still the north star." }
   },
   "cliff": [
     { "metric": "Days to Sept 1", "value": "57", "target": "$1M ARR", "gap": "~$560K", "status": "urgent" },
-    { "metric": "Garland ISD", "value": "-5 days past June 30", "target": "Close by July", "gap": "$140K + CFB $22K = $162K on one call", "status": "urgent" },
-    { "metric": "Data Pipeline Health", "value": "52 days stale", "target": "Daily HubSpot ingestion", "gap": "Known since June 26. 1-day build.", "status": "urgent" },
-    { "metric": "Patrick Equity", "value": "10 days to July 15", "target": "Scale Firm resolution", "gap": "Status unknown", "status": "watch" }
+    { "metric": "Garland ISD", "value": "Date DEFERRED to July 31", "target": "$140K + CFB $22K = $162K one call", "gap": "Jodi Duron lever unpulled", "status": "urgent" },
+    { "metric": "Revenue Target Alignment", "value": "Zig anchors on $1.5M by Aug 1", "target": "$1M by Sept 1", "gap": "$500K + 1 month distortion", "status": "urgent" },
+    { "metric": "Data Pipeline Health", "value": "53 days stale", "target": "Daily HubSpot ingestion", "gap": "Known since June 26. 1-day build.", "status": "urgent" },
+    { "metric": "Patrick Equity", "value": "9 days to July 15", "target": "Scale Firm resolution", "gap": "Status unknown", "status": "watch" }
   ],
   "commitments": {
     "steve_owes": [
-      { "what": "Garland + CFB ISD — Call Jodi Duron. 5 DAYS PAST.", "to": "Jodi Duron", "date": "2026-06-30", "status": "urgent" },
-      { "what": "Clarify canonical revenue target", "to": "#sales_revenue-ninjas", "date": "2026-07-03", "status": "urgent" },
-      { "what": "Approve Atlas HubSpot token", "to": "Dewey/Raju", "date": "2026-07-03", "status": "urgent" },
-      { "what": "Triage dev-dca subdomain", "to": "Patrick/Raju", "date": "2026-07-04", "status": "urgent" },
+      { "what": "Garland + CFB ISD — Call Jodi Duron. Date DEFERRED to July 31.", "to": "Jodi Duron", "date": "2026-07-07", "status": "urgent" },
+      { "what": "Clarify canonical revenue target — Zig still using $1.5M", "to": "#sales_revenue-ninjas", "date": "2026-07-07", "status": "urgent" },
+      { "what": "Approve Atlas HubSpot token", "to": "Dewey/Raju", "date": "2026-07-07", "status": "urgent" },
+      { "what": "Triage dev-dca subdomain", "to": "Patrick/Raju", "date": "2026-07-07", "status": "urgent" },
       { "what": "ESC-10 follow up with Lori Aden", "to": "Lori Aden", "date": "2026-07-07", "status": "open" },
       { "what": "Patrick equity cliff resolution", "to": "Scale Firm / Board", "date": "2026-07-15", "status": "open" }
     ],
     "team_owes": [
       { "who": "Teela Watson", "what": "Follow up Lubbock ISD. Lock ESC 9/15/16 meetings.", "date": "2026-07-07", "status": "open" },
       { "who": "Jan Gilboy", "what": "ESC pricing + activation + ESC 9 consortium lists", "date": "2026-07-07", "status": "open" },
-      { "who": "Zig", "what": "Weekly pipeline report + Monday sales update", "date": "2026-07-06", "status": "open" },
+      { "who": "Zig", "what": "Weekly pipeline report + align to $1M canonical target", "date": "2026-07-06", "status": "open" },
       { "who": "Raju Datla", "what": "dev-dca triage + HubSpot → G-Brain ingestion", "date": "2026-07-07", "status": "urgent" },
       { "who": "Forge", "what": "Fix Supt Alerter cron + HubSpot ingestion", "date": "2026-07-07", "status": "open" }
     ]
@@ -101,7 +102,7 @@
   },
   "resolved": [
     { "id": "N-046", "outcome": "ESC-10 engaged — Lori Aden replied July 1", "when": "2026-07-03" },
-    { "id": "N-045", "outcome": "Systems-Mode Trap downgraded", "when": "2026-07-04" }
+    { "id": "N-045", "outcome": "Systems-Mode Trap downgraded; now re-escalated as N-066 with fresh evidence", "when": "2026-07-07" }
   ],
   "finance": {
     "summary": {
@@ -119,14 +120,15 @@
   },
   "sales": {
     "summary": {
-      "active_pipeline": "$478K TX — LIVE HubSpot pull July 5",
-      "deals_closing_this_month": "Garland ($140K), Pearland ($50K), CFB ($22K), Harlingen ($15K)",
-      "stalled_deals": "Garland 5 days past, CFB same lever unpulled",
+      "active_pipeline": "$503K near-term ($341K committed + $163K quote sent) — Zig July 6",
+      "deals_closing_this_month": "Garland ($140K, deferred to Jul 31), Midland Renewal ($77K, Jul 15), Pearland ($50K), CFB ($22K)",
+      "stalled_deals": "Garland close date deferred to July 31 — no Jodi Duron action",
       "imta_districts": "Mesquite, Garland"
     },
-    "note": "ESC all 4 engaged. NEW: Lubbock ISD lead (21K students). SB 13 outreach at ZERO. dev-dca unfixed.",
+    "note": "La Grange PO confirmed $5,550. Lubbock ISD lead (21K students). ESC all 4 engaged. SB 13 outreach at ZERO third week. dev-dca unfixed. Google OAuth expired. Zig anchoring on WRONG target ($1.5M).",
     "links": [
-      { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" }
+      { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
+      { "label": "Zig Weekly Update (July 6)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/164364289/" }
     ]
   },
   "cs": { "summary": { "note": "Atlas HubSpot token pending. Priya running product feedback." } },
@@ -136,8 +138,8 @@
     { "id": "D-008", "title": "$1M ARR by Sept 1", "status": "active" }
   ],
   "strategy_open": [
-    { "id": "O-TARGET", "title": "Clarify canonical target — 3 numbers circulating", "status": "urgent" },
-    { "id": "O-GARLAND", "title": "Garland $140K + CFB $22K — one Jodi Duron call = $162K", "status": "urgent" }
+    { "id": "O-TARGET", "title": "Clarify canonical target — Zig still anchoring on $1.5M. NOW STRUCTURAL.", "status": "urgent" },
+    { "id": "O-GARLAND", "title": "Garland $140K deferred to July 31. Jodi Duron lever unpulled.", "status": "urgent" }
   ],
   "tokens_total": {
     "month": "—",

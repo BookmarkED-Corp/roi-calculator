@@ -1,195 +1,135 @@
 {
   "meta": {
-    "last_updated": "2026-07-11T03:00:00Z",
-    "scan_type": "Nightly Deep Scan",
-    "northy_message": "52 days. $247K behind one phone call. You've been building agent architecture for 4 days. The architecture will be there Monday. Jodi Duron might not be. Call her."
+    "last_updated": "2026-07-11T22:00:00-05:00",
+    "scan_type": "Nightly Deep Scan (Saturday)",
+    "northy_message": "Friday was all infrastructure. You archived the renewal channel. You trained your CMO. You designed UI review processes. All real work. None of it closes Garland. Three calls before you open a terminal on Monday, Steve."
   },
   "act_now": [
     {
-      "id": "N-065",
-      "title": "Systems-Mode Trap — DAY 4. Garland at Risk. $247K Behind One Call. 52 Days.",
-      "category": "revenue",
-      "detail": "Fourth consecutive day of agent architecture + infrastructure work. Zero revenue calls since weekend. Garland $140K: Michael Ruiz ghosting, reset email unsent. CFB $107K: still Qualifying. Jodi Duron covers both districts. HB 1605 discovery validated the product — now sell it.",
-      "action": "Three calls before any terminal Friday: Jodi Duron (Garland+CFB $247K), send Garland reset email, Zig revenue target correction. Then build systems.",
+      "id": "N-084",
+      "title": "Systems-Mode Trap: Day 4+ — $247K Unpulled",
+      "category": "Strategic Drift",
+      "detail": "Friday was 100% infrastructure. CMO training (175 replies), UI review (65 replies), BI audit assignments. Zero revenue activity. Cash $97.7K at $115K/mo burn. 51 days to Sept 1.",
+      "action": "Three calls before you open a terminal on Monday. Jodi Duron (Garland + CFB = $247K). Then highest-urgency renewal.",
       "status": "needs-steve"
     },
     {
       "id": "N-059",
-      "title": "Revenue Target Contradiction — 9 Days. Zig Still Computing Against $1.5M.",
-      "category": "contradiction",
-      "detail": "Zig's Pipeline Priorities page uses $1M context but his weekly reports compute against $1.5M. 9 days since first flagged. Every uncorrected day erodes trust in the pipeline numbers.",
-      "action": "ONE Slack message in #sales_revenue-ninjas: 'Canonical target: $1M ARR by Sept 1. All deal classification, pipeline math, and gap analysis flows from that number.' 30 seconds.",
-      "status": "needs-steve"
-    },
-    {
-      "id": "N-078",
-      "title": "HB 1605 — Mandatory Book Lists. Product Justification Arrived.",
-      "category": "opportunity",
-      "detail": "Texas SBOE adopted literary works lists under HB 1605 (June 26). ~200 specific books per grade K-12 with required ISBN. Every Texas district now has mandatory reading lists. Bookmarked is the compliance platform for this. ESC webinars are the distribution channel.",
-      "action": "Jan/Teela: position Bookmarked as THE HB 1605 compliance platform. Draft 1-pager by Friday so it's ready for ESC conversations next week.",
+      "title": "Revenue Target: 13 Days Uncorrected",
+      "category": "Contradiction",
+      "detail": "Zig at $1.5M (Jul 6). Steve at $1M. L10 at 5-10M. Renewal channel archived but target not resolved. 66 replies in Revenue Goals thread debating against wrong number.",
+      "action": "One Slack message: 'Zig, target is $1M by Sept 1. Recompute against that number.'",
       "status": "needs-steve"
     },
     {
       "id": "N-080",
-      "title": "Patrick Equity Cliff — 5 Days to July 15. No Visible Movement.",
-      "category": "people",
-      "detail": "Scale Firm call logged as commitment since July 9. Now 5 days to cliff. If Patrick leaves, product engineering loses its lead during the librarian return window.",
-      "action": "Call Scale Firm Friday morning. Do not let this slide into the weekend.",
+      "title": "Natasha Renewals: 54 Days, Channel Retired, Still Unassigned",
+      "category": "Risk",
+      "detail": "6+ renewals (ILTexas $42K, Splendora $9K, NEISD, CCISD, SEISD, BRISD) ownerless since May. Renewal channel archived but nobody was assigned.",
+      "action": "Assign these renewals Monday. Teela or Jan. Channel archiving is not a handoff.",
       "status": "needs-steve"
     },
     {
-      "id": "N-073",
-      "title": "Infrastructure Compound Risk — PgBouncer + Autopilot + Cron + Git. Still Degrading.",
-      "category": "infrastructure",
-      "detail": "PgBouncer in SESSION mode confirmed across multiple watchdog cycles. Causes connection exhaustion → autopilot crashes → G-Brain blind. District Intel Supt Alerter cron FAILED (model drift). gbrain-personal: 219+ uncommitted changes. YouTube discovery Tier 1 script MISSING from filesystem.",
-      "action": "Forge: PgBouncer fix (session→transaction) — 2 min. Fix Supt Alerter. Commit gbrain-personal. Create youtube-discovery-tier1.sh or deprecate the cron.",
-      "status": "needs-forge"
-    },
-    {
-      "id": "N-055",
-      "title": "Pipeline Blind — 56 Days. HubSpot-to-GBrain Not Built.",
-      "category": "infrastructure",
-      "detail": "G-Brain is the agent fleet's memory. No pipeline data ingested since May 13. Northy can't cross-reference deals against meeting transcripts. Zig's reports are a separate universe.",
-      "action": "Forge/Raju: build HubSpot → G-Brain ingestion pipeline. 1-day build.",
-      "status": "needs-forge"
-    },
-    {
-      "id": "N-056",
-      "title": "Security — dev-dca.bookmarked.com Subdomain Takeover. 7 Days Unaddressed.",
-      "category": "security",
-      "detail": "15-minute fix. Flagged July 3.",
-      "action": "Patrick or Raju: triage today.",
-      "status": "needs-team"
+      "id": "N-032",
+      "title": "Patrick Equity Cliff: July 15 — 4 Days",
+      "category": "Commitment",
+      "detail": "Flagged since June 19. No visible movement. Patrick is your most reliable operator.",
+      "action": "Decision by Monday. Cliff, extend, or restructure. He deserves clarity before the date passes.",
+      "status": "needs-steve"
     }
   ],
   "think_about": [
     {
-      "id": "N-079",
-      "title": "Agent Knowledge Transfer Architecture — Garry Tan Just Shipped the Pattern",
-      "category": "strategy",
-      "urgency": "this-week"
+      "id": "N-085",
+      "title": "Product Trust: FERPA Breach + BI Credibility Compounding",
+      "category": "Connection",
+      "urgency": "This week"
     },
     {
-      "id": "N-074",
-      "title": "Sarah Product Operating Model — Product Still Broken. Librarians Return Next Week.",
-      "category": "product",
-      "urgency": "urgent"
-    },
-    {
-      "id": "N-033",
-      "title": "ESC Momentum — All 4 Engaged. HB 1605 Adds Fuel.",
-      "category": "revenue",
-      "urgency": "this-week"
-    },
-    {
-      "id": "N-081",
-      "title": "Anthropic Multi-Agent Patterns — Orchestrator-Worker, Subagent File Output, Context Management",
-      "category": "strategy",
-      "urgency": "whenever"
-    },
-    {
-      "id": "N-036",
-      "title": "Atlas HubSpot Token — Still Pending. Blocks Media-to-CRM Pipeline.",
-      "category": "infrastructure",
-      "urgency": "this-week"
+      "id": "N-086",
+      "title": "MA Library Bill: Compliance Tailwind Pattern (153-3 bipartisan)",
+      "category": "Intel",
+      "urgency": "Whenever"
     }
   ],
   "health": {
-    "frame": {"status": "yellow", "note": "HB 1605 creates massive positioning opportunity. ESC active. Frame is correct — the WHY is stronger than ever. But $1M target still contested by Zig's $1.5M math. 9 days uncorrected."},
-    "floor": {"status": "red", "note": "Infrastructure DEGRADING: PgBouncer wrong mode, autopilot crashes, cron failures (youtube-discovery-tier1 MISSING), stale git. Product broken. dev-dca unpatched 7 days. Pipeline blind 56 days. This is now 4 infrastructure items in 'Act Now.'"},
-    "focus": {"status": "red", "note": "SYSTEMS-MODE TRAP — DAY 4. Tuesday+Wednesday: agent methodology + SBOE research. Thursday: agent architecture. Zero revenue calls all week. $247K behind one phone lever. 52 days to Sept 1. The building feels productive. It doesn't close deals."},
-    "why": {"status": "green", "note": "HB 1605 = legislative tailwind for the mission. Every kid deserves their book — and now Texas law requires specific books with ISBNs. ESC partnerships growing. Faith's story still the north star."}
+    "frame": {"status": "yellow", "note": "Building CMO training and BI audit infrastructure when $1M isn't secured. $10M activities, $1M reality."},
+    "floor": {"status": "yellow", "note": "Friday had zero revenue. Systems-mode trap active. Revenue before infrastructure."},
+    "focus": {"status": "red", "note": "51 days to Sept 1. $247K unpulled. Day 4+ building instead of selling. The crux is Garland + renewals."},
+    "why": {"status": "green", "note": "BI audit work is mission-aligned. BI is the heartbeat. Just needs to be sequenced behind revenue."}
   },
   "cliff": [
-    {"metric": "Days to Sept 1", "value": "52", "target": "$1M ARR", "gap": "~$741K", "status": "urgent"},
-    {"metric": "Near-term Closeable", "value": "$503,383", "target": "Pipeline velocity", "gap": "56d stale", "status": "watch"},
-    {"metric": "YTD Closed Won", "value": "$259,155", "target": "$1M by Sept 1", "gap": "$740,845", "status": "urgent"},
-    {"metric": "Patrick Equity Cliff", "value": "5 days", "target": "Resolution before July 15", "gap": "No visible movement", "status": "urgent"}
+    {"metric": "Cash on hand", "value": "$97.7K", "target": "Survive to Sept 1", "gap": "~$115K/mo burn = 25 days runway", "status": "urgent"},
+    {"metric": "Days to Sept 1", "value": "51", "target": "$1M ARR", "gap": "$740K", "status": "urgent"},
+    {"metric": "Garland + CFB lever", "value": "$247K", "target": "Close", "gap": "11 days past deadline", "status": "urgent"}
   ],
   "commitments": {
     "steve_owes": [
-      {"what": "Three calls before terminal: Jodi Duron ($247K Garland+CFB), Garland reset email, Zig target correction", "to": "Self", "date": "2026-07-11", "status": "urgent"},
-      {"what": "Call Scale Firm re: Patrick equity cliff (July 15)", "to": "Self", "date": "2026-07-11", "status": "urgent"},
-      {"what": "Product push: Book Intelligence into order workflow before ESC webinars", "to": "Self", "date": "2026-07-11", "status": "urgent"},
-      {"what": "Send Garland reset email (Michael Ruiz)", "to": "Self", "date": "2026-07-11", "status": "urgent"}
+      {"what": "Jodi Duron call (Garland $140K + CFB $107K)", "to": "Self", "date": "2026-06-30", "status": "urgent"},
+      {"what": "One Slack message: correct Zig's revenue target", "to": "Zig", "date": "ASAP", "status": "urgent"},
+      {"what": "Assign Natasha's 6 renewals", "to": "Teela/Jan", "date": "2026-07-13", "status": "urgent"},
+      {"what": "Patrick equity cliff decision", "to": "Patrick", "date": "2026-07-15", "status": "urgent"},
+      {"what": "Product fix before Jan webinars", "to": "Self", "date": "2026-07-07", "status": "open"},
+      {"what": "HubSpot token for Atlas", "to": "Raju", "date": "Ongoing", "status": "open"}
     ],
     "team_owes": [
-      {"who": "Forge", "what": "PgBouncer config fix (session→transaction)", "date": "2026-07-11", "status": "urgent"},
-      {"who": "Forge", "what": "Fix District Intel Supt Alerter cron model config", "date": "2026-07-11", "status": "urgent"},
-      {"who": "Forge", "what": "Create or deprecate youtube-discovery-tier1.sh (script missing)", "date": "2026-07-14", "status": "open"},
-      {"who": "Forge/Raju", "what": "HubSpot → G-Brain ingestion pipeline", "date": "2026-07-14", "status": "open"},
-      {"who": "Patrick/Raju", "what": "dev-dca subdomain takeover fix", "date": "2026-07-11", "status": "urgent"},
-      {"who": "Jan/Teela", "what": "ESC webinars prep + HB 1605 1-pager", "date": "2026-07-11", "status": "open"},
-      {"who": "Teela", "what": "Lubbock ISD follow-up", "date": "2026-07-09", "status": "open"}
+      {"who": "Zig", "what": "Recompute pipeline against $1M target", "date": "After Steve correction", "status": "open"},
+      {"who": "Raju", "what": "HubSpot token injection for Atlas", "date": "Ongoing", "status": "open"},
+      {"who": "Booker", "what": "BI Pipeline: Current-State G-Brain page", "date": "2026-07-10", "status": "open"},
+      {"who": "Seth", "what": "BI Marketing & Positioning: Current-State G-Brain page", "date": "2026-07-10", "status": "open"}
     ]
   },
   "quick_access": [
-    {"label": "Pipeline Priorities (team board)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/166264834"},
-    {"label": "Strategy Agent Triage (Confluence)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/160497665"},
-    {"label": "Garland ISD HubSpot Deal", "url": "https://app-na2.hubspot.com/contacts/39855019/record/0-3/15630980701"},
-    {"label": "Agent Knowledge Transfer Thread", "url": "https://bookmarked-inc.slack.com/archives/C0BD606AXPC/p1783527832475569"}
+    {"label": "Founder Cockpit", "url": "https://founder-cockpit-personal.vercel.app/"},
+    {"label": "HubSpot Deals", "url": "https://app.hubspot.com/contacts/39855019/objects/0-3/views/all/list"},
+    {"label": "Jan's Methodology (Confluence)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017"},
+    {"label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/"},
+    {"label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/"}
   ],
   "resolved": [
-    {"id": "N-067", "outcome": "La Grange PO confirmed $5,550. Positive signal.", "when": "2026-07-07"},
-    {"id": "N-046", "outcome": "ESC-10 engaged. Lori Aden replied July 1.", "when": "2026-07-01"}
+    {"id": "N-073", "outcome": "Autopilot PgBouncer outage fixed", "when": "2026-07-08"},
+    {"id": "OpenRouter", "outcome": "Spend incident closed. Codex reconciled all model routing.", "when": "2026-07-09"},
+    {"id": "La Grange PO", "outcome": "$5,550 PO confirmed. Relationship intact enough to transact.", "when": "2026-07-10"}
   ],
   "intel": [
     {
-      "id": "INT-003",
-      "source": "Garry Tan GBrain v0.43.0.0 (PR #2172, shipped Jul 2026)",
-      "title": "MEMORY_VERBS v1 — Frozen Five-Verb Memory Protocol + Conformance Kit",
-      "pattern": "Garry froze a five-verb memory protocol (the way Postgres speaks one wire protocol to every client). Any MCP harness points at gbrain serve --surface verbs and sees exactly five self-describing tools. Contract is additive-forever: v1 field names and meanings never change. 23/23 CONFORMANT tests. This is the pattern for N-079 (Agent Knowledge Transfer Architecture): freeze the contract, let implementations conform.",
-      "applies_to": "Agent Knowledge Transfer Architecture (N-079), multi-agent fleet design, cross-agent memory protocol",
-      "priority": "implement-now"
+      "id": "N-086",
+      "source": "Seth via Slack #ai-ceo-team",
+      "title": "MA Library Anti-Book-Ban Bill: 153-3 Bipartisan",
+      "pattern": "Compliance tailwind — legislation creates burden → districts need tooling → Bookmarked positioned. Same pattern as HB 1605.",
+      "applies_to": "Expansion-state watchlist. MA + TX show this is a repeatable model.",
+      "priority": "Queue for review"
     },
     {
-      "id": "INT-004",
-      "source": "Anthropic Engineering Blog (Jun 2025, retrieved Jul 10 2026)",
-      "title": "Multi-Agent Research System — Orchestrator-Worker, Subagent File Output, Context Management",
-      "pattern": "Three patterns: (1) Subagent output to filesystem to avoid 'game of telephone' — bypass coordinator for structured outputs, pass lightweight references. (2) Long-horizon context management — agents summarize completed phases, store to external memory, spawn fresh subagents with clean contexts. (3) Prompt engineering for delegation — teach the orchestrator to give subagents clear objectives, output formats, tool guidance, and task boundaries.",
-      "applies_to": "Agent Knowledge Transfer (N-079), product operating model, cross-agent coordination",
-      "priority": "queue-for-review"
-    },
-    {
-      "id": "INT-002",
-      "source": "SBOE June 2026 Meeting (via Nero research Jul 8)",
-      "title": "HB 1605 Literary Works Lists — ~200 mandatory books per grade K-12",
-      "pattern": "Every Texas district now has state-mandated reading lists with specific ISBNs. Bookmarked's compliance → data → network play just got legislative fuel.",
-      "applies_to": "Product positioning, sales messaging, ESC partnership pitches",
-      "priority": "implement-now"
-    },
-    {
-      "id": "INT-001",
-      "source": "Dewey deployment (Jul 7)",
-      "title": "Product Brief Standard + Scout SOUL Patch deployed",
-      "pattern": "Guardrails for agent intake quality",
-      "applies_to": "Product operating model",
-      "priority": "implemented"
+      "id": "N-082",
+      "source": "Zig, dev standup Jul 9",
+      "title": "HB 1605 / SBOE Literary Works Lists",
+      "pattern": "200 mandatory ISBNs. 1,200+ Texas districts must comply by 2030-31.",
+      "applies_to": "Sales door-opener. Dan loading ISBNs into OnShelf.",
+      "priority": "Implement now"
     }
   ],
   "district_intel": {
     "dashboards": [
-      {"label": "Board Minutes Intelligence", "description": "School board meeting tracking across Texas ISDs", "repo_path": "bookmarked-district-intelligence/output/board-minutes-dashboard.html"},
-      {"label": "Superintendent Movement", "description": "Track superintendent transitions and departures", "repo_path": "bookmarked-district-intelligence/output/supt-movement-dashboard.html"},
-      {"label": "IMTA Intelligence", "description": "TEA IMTA funding allotments by district", "repo_path": "bookmarked-district-intelligence/output/imta-intelligence-dashboard.html"},
-      {"label": "Media Intelligence", "description": "Media sentiment tracking for Texas ISDs", "repo_path": "bookmarked-district-intelligence/output/media-intelligence-dashboard.html"},
-      {"label": "District Profiles", "description": "Individual district profile deep-dives", "repo_path": "bookmarked-district-intelligence/output/district-profile.html"}
+      {"label": "Board Minutes", "description": "School district board meeting intelligence", "repo_path": "bookmarked-district-intelligence"},
+      {"label": "Superintendent Movement", "description": "Track superintendent changes across Texas", "repo_path": "bookmarked-district-intelligence"},
+      {"label": "IMTA Intelligence", "description": "IMTA allotment funding dashboard", "repo_path": "bookmarked-district-intelligence"},
+      {"label": "Media Intelligence", "description": "Media sentiment tracking for Texas ISDs", "repo_path": "bookmarked-district-intelligence"},
+      {"label": "District Profiles", "description": "Individual district profile viewer", "repo_path": "bookmarked-district-intelligence"}
     ]
   },
   "finance": {
     "summary": {
       "cash": "$97.7K",
       "september_projection": "TBD",
-      "current_burn_monthly": "~$122K (was $115K; AWS $18.6K vs $11K budgeted)",
+      "current_burn_monthly": "~$115K",
       "v1_savings_monthly": "$8-9K",
       "deferred_comp_weekly": "$100K",
       "deferral_repayment_october": "$106K"
     },
     "metrics": [
-      {"label": "Cash on hand", "value": "$97.7K", "trend": "down"},
-      {"label": "Monthly burn", "value": "~$122K", "trend": "warning"},
-      {"label": "AWS July bill", "value": "$18.6K (budget $11K)", "trend": "warning"},
-      {"label": "Runway (weeks)", "value": "~3", "trend": "urgent"}
+      {"label": "Runway at current burn", "value": "~25 days", "trend": "warning"},
+      {"label": "AWS bill (June)", "value": "$18,627", "trend": "warning"}
     ],
     "dashboards": [
       {"label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/"}
@@ -197,46 +137,41 @@
   },
   "sales": {
     "summary": {
-      "active_pipeline": "$546K TX + $516K Renewal",
-      "deals_closing_this_month": "25 TX new + 53 renewal",
-      "stalled_deals": "Utah SEA ($1.3M FY27), Garland deferred to Jul 31 (reset email unsent), CFB stuck in Qualifying",
-      "imta_districts": "Mesquite, Garland, CFB"
+      "active_pipeline": "$508K renewals + $546K TX new",
+      "deals_closing_this_month": "Midland ISD ($77K, July 15), San Marcos ($16K, July 17), Bruceville-Eddy ($1.6K, July 10)",
+      "stalled_deals": "Garland $140K (11 days past deadline), CFB $107K (same Moak Casey lever)",
+      "imta_districts": "Mesquite, Garland"
     },
-    "note": "Zig published team Pipeline Priorities page. Garland $140K at risk — Michael Ruiz ghosting. Midland $77K PO in July budget window. Zig STILL computing against $1.5M. 9 days uncorrected. Pipeline blind 56 days.",
+    "note": "Zig's HubSpot skill is broken — using cached data from July 9. Zig reporting against $1.5M target (wrong). ESC 10 follow-up July 29.",
     "links": [
-      {"label": "Pipeline Priorities (team)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/166264834"},
       {"label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/"},
-      {"label": "Jan's Methodology (Confluence)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017"}
+      {"label": "Jan's Methodology", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017"}
     ]
   },
   "cs": {
     "summary": {
-      "la_grange_crisis": "24,732 books affected — trust breach incident under investigation",
-      "atlas_hubspot_token": "Still pending — blocked",
-      "status": "Critical incident at La Grange"
+      "active_issues": "Red Oak FERPA breach (11 junk accounts, 9 districts), OneRoster importer bug (Granger ISD blocked), Lapsed-invite double-lockdown (San Saba ISD)",
+      "onboarding": "Houston cohort dormant (flagged July 9, unverified)"
     }
   },
   "product": {
     "summary": {
-      "crisis": "Book order, book intelligence, 30-day posting all broken. Jan demoing Lovable prototype. Librarians return next week.",
-      "sarah_audit": "Dewey/Ford/Johnny deep-dive underway. Product Brief Standard deployed.",
-      "multi_level_review": "Priority: Patrick + Jan + Sara review before webinars. Pipeline Priorities page: 'Product push this week.'"
+      "active": "BI credibility audit (Patrick/Booker), BI marketing audit (Seth), HB 1605 compliance module, UI review pilot (Sarah/Johnny), Sprint 148 in UAT",
+      "broken": "FERPA cross-district visibility (root cause confirmed, V2KAN-179 ticketed), OneRoster CSV header parsing, Lapsed-invite account recovery"
     }
   },
   "strategy_decisions": [
-    {"id": "D-001", "title": "$1M ARR by Sept 1 2026", "status": "active"},
-    {"id": "D-002", "title": "Three-Play Framework (Compliance → Data → Network)", "status": "active"},
-    {"id": "D-003", "title": "ESC Partnership Model", "status": "active"},
-    {"id": "D-004", "title": "$3/student pricing target", "status": "active"},
-    {"id": "D-005", "title": "Agent Knowledge Transfer Architecture", "status": "active"}
+    {"id": "D-001", "title": "Three-play framework (Network Trust, Collection Benchmarking, Literacy Measurement)", "status": "active"},
+    {"id": "D-002", "title": "$1M ARR by Sept 1", "status": "active"},
+    {"id": "D-003", "title": "ESC consortium strategy (9/10/15/16)", "status": "active"},
+    {"id": "Target", "title": "Revenue target clarification needed — $1M vs $1.5M vs 5-10M", "status": "urgent"}
   ],
   "strategy_open": [
-    {"id": "O-001", "title": "Revenue target: $1M vs $1.5M — 9 days uncorrected", "status": "urgent"},
-    {"id": "O-002", "title": "Amcolab Vietnam dev firm contract terms", "status": "in-review"},
-    {"id": "O-003", "title": "TEA RFP fit/no-fit determination", "status": "in-review"},
-    {"id": "O-004", "title": "ESC 10 tiered pricing model", "status": "active"},
-    {"id": "O-005", "title": "Sarah product operating model redesign", "status": "in-review"},
-    {"id": "O-006", "title": "HB 1605 compliance positioning strategy", "status": "new"}
+    {"id": "O-GARLAND", "title": "Garland $140K + CFB $107K — Jodi Duron call", "status": "urgent"},
+    {"id": "O-NATASHA", "title": "6+ renewals unowned (54 days)", "status": "urgent"},
+    {"id": "O-TARGET", "title": "Revenue target alignment — Zig at $1.5M, Steve at $1M", "status": "urgent"},
+    {"id": "O-PATRICK", "title": "Patrick equity cliff July 15", "status": "urgent"},
+    {"id": "O-ATLAS", "title": "HubSpot token for Atlas", "status": "open"}
   ],
   "tokens_total": {
     "month": "1,440",

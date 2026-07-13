@@ -1,79 +1,85 @@
 {
   "meta": {
-    "last_updated": "2026-07-11T22:00:00-05:00",
-    "scan_type": "Nightly Deep Scan (Saturday)",
-    "northy_message": "Friday was all infrastructure. You archived the renewal channel. You trained your CMO. You designed UI review processes. All real work. None of it closes Garland. Three calls before you open a terminal on Monday, Steve."
+    "last_updated": "2026-07-12T22:30:00-05:00",
+    "scan_type": "Nightly Deep Scan (Sunday)",
+    "northy_message": "Sunday was BI strategy, not agent building. That's better, Steve. But Garland's close date got pushed to July 31 last night — date moved, money didn't. Three calls before you open a terminal on Monday. 50 days. $97.7K cash."
   },
   "act_now": [
     {
       "id": "N-084",
-      "title": "Systems-Mode Trap: Day 4+ — $247K Unpulled",
+      "title": "Systems-Mode Improving: BI Sunday, But $247K Unpulled",
       "category": "Strategic Drift",
-      "detail": "Friday was 100% infrastructure. CMO training (175 replies), UI review (65 replies), BI audit assignments. Zero revenue activity. Cash $97.7K at $115K/mo burn. 51 days to Sept 1.",
-      "action": "Three calls before you open a terminal on Monday. Jodi Duron (Garland + CFB = $247K). Then highest-urgency renewal.",
+      "detail": "Sunday was BI strategy (70+ replies with Johnny, Serper API deep-dive). Better than Friday's infrastructure binge. But Garland close date pushed to July 31 overnight. Date moved, money didn't. 50 days to Sept 1. Cash $97.7K = 25 days runway.",
+      "action": "Monday litmus: three calls before terminal. Jodi Duron (Garland + CFB = $247K). Then highest-urgency renewal.",
       "status": "needs-steve"
     },
     {
       "id": "N-059",
-      "title": "Revenue Target: 13 Days Uncorrected",
+      "title": "Revenue Target: 14 Days Uncorrected, 66 Replies at Wrong Number",
       "category": "Contradiction",
-      "detail": "Zig at $1.5M (Jul 6). Steve at $1M. L10 at 5-10M. Renewal channel archived but target not resolved. 66 replies in Revenue Goals thread debating against wrong number.",
+      "detail": "Zig still at $1.5M. 66 replies in Revenue Goals doc debating against wrong target. Renewal channel archived without resolution.",
       "action": "One Slack message: 'Zig, target is $1M by Sept 1. Recompute against that number.'",
       "status": "needs-steve"
     },
     {
       "id": "N-080",
-      "title": "Natasha Renewals: 54 Days, Channel Retired, Still Unassigned",
+      "title": "Natasha Renewals: 55 Days, Channel Retired, Unassigned",
       "category": "Risk",
-      "detail": "6+ renewals (ILTexas $42K, Splendora $9K, NEISD, CCISD, SEISD, BRISD) ownerless since May. Renewal channel archived but nobody was assigned.",
-      "action": "Assign these renewals Monday. Teela or Jan. Channel archiving is not a handoff.",
+      "detail": "ILTexas $42K, Splendora $9K, NEISD, CCISD, SEISD, BRISD still ownerless. Channel archiving is not a handoff.",
+      "action": "Assign Monday. Teela or Jan.",
       "status": "needs-steve"
     },
     {
       "id": "N-032",
-      "title": "Patrick Equity Cliff: July 15 — 4 Days",
+      "title": "Patrick Equity Cliff: July 15 — 3 Days",
       "category": "Commitment",
-      "detail": "Flagged since June 19. No visible movement. Patrick is your most reliable operator.",
-      "action": "Decision by Monday. Cliff, extend, or restructure. He deserves clarity before the date passes.",
+      "detail": "Flagged since June 19. No movement. He deserves clarity before the date, not on it.",
+      "action": "Decision Monday. Cliff, extend, restructure.",
       "status": "needs-steve"
     }
   ],
   "think_about": [
     {
+      "id": "N-087",
+      "title": "HubSpot Token: One Gate, Two Revenue Workflows",
+      "category": "Connection",
+      "urgency": "This week"
+    },
+    {
       "id": "N-085",
-      "title": "Product Trust: FERPA Breach + BI Credibility Compounding",
+      "title": "Product Trust: BI Remediation + FERPA Converging",
       "category": "Connection",
       "urgency": "This week"
     },
     {
       "id": "N-086",
-      "title": "MA Library Bill: Compliance Tailwind Pattern (153-3 bipartisan)",
+      "title": "MA Library Bill: 153-3 Bipartisan — Compliance Tailwind",
       "category": "Intel",
       "urgency": "Whenever"
     }
   ],
   "health": {
-    "frame": {"status": "yellow", "note": "Building CMO training and BI audit infrastructure when $1M isn't secured. $10M activities, $1M reality."},
-    "floor": {"status": "yellow", "note": "Friday had zero revenue. Systems-mode trap active. Revenue before infrastructure."},
-    "focus": {"status": "red", "note": "51 days to Sept 1. $247K unpulled. Day 4+ building instead of selling. The crux is Garland + renewals."},
-    "why": {"status": "green", "note": "BI audit work is mission-aligned. BI is the heartbeat. Just needs to be sequenced behind revenue."}
+    "frame": {"status": "yellow", "note": "BI Sunday = right direction. But full week still has more $10M prep than $1M execution. CMO training, UI reviews, agent optimization."},
+    "floor": {"status": "green", "note": "Sunday is Steve's time. No floor violation."},
+    "focus": {"status": "yellow", "note": "Better than Friday. BI is core. But Jodi Duron call — $247K, single highest-leverage move — is still unmade. Monday is the test."},
+    "why": {"status": "green", "note": "BI strategy IS the mission. Two-tier flags = Switzerland posture. Patrick and Johnny converging on same answer."}
   },
   "cliff": [
     {"metric": "Cash on hand", "value": "$97.7K", "target": "Survive to Sept 1", "gap": "~$115K/mo burn = 25 days runway", "status": "urgent"},
-    {"metric": "Days to Sept 1", "value": "51", "target": "$1M ARR", "gap": "$740K", "status": "urgent"},
-    {"metric": "Garland + CFB lever", "value": "$247K", "target": "Close", "gap": "11 days past deadline", "status": "urgent"}
+    {"metric": "Days to Sept 1", "value": "50", "target": "$1M ARR", "gap": "$740K", "status": "urgent"},
+    {"metric": "Garland + CFB lever", "value": "$247K", "target": "Close", "gap": "12 days past original deadline. Garland pushed to July 31.", "status": "urgent"}
   ],
   "commitments": {
     "steve_owes": [
-      {"what": "Jodi Duron call (Garland $140K + CFB $107K)", "to": "Self", "date": "2026-06-30", "status": "urgent"},
-      {"what": "One Slack message: correct Zig's revenue target", "to": "Zig", "date": "ASAP", "status": "urgent"},
+      {"what": "Jodi Duron call (Garland $140K + CFB $107K)", "to": "Self", "date": "2026-07-13", "status": "urgent"},
+      {"what": "One Slack message: correct Zig's revenue target to $1M", "to": "Zig", "date": "2026-07-13", "status": "urgent"},
       {"what": "Assign Natasha's 6 renewals", "to": "Teela/Jan", "date": "2026-07-13", "status": "urgent"},
       {"what": "Patrick equity cliff decision", "to": "Patrick", "date": "2026-07-15", "status": "urgent"},
-      {"what": "Product fix before Jan webinars", "to": "Self", "date": "2026-07-07", "status": "open"},
-      {"what": "HubSpot token for Atlas", "to": "Raju", "date": "Ongoing", "status": "open"}
+      {"what": "HubSpot token injection for Atlas (unlocks Zig + Atlas workflows)", "to": "Raju", "date": "2026-07-13", "status": "open"},
+      {"what": "Product fix before Jan webinars", "to": "Self", "date": "2026-07-07", "status": "open"}
     ],
     "team_owes": [
-      {"who": "Zig", "what": "Recompute pipeline against $1M target", "date": "After Steve correction", "status": "open"},
+      {"who": "Zig", "what": "Recompute pipeline against $1M target (HubSpot skill still broken)", "date": "After Steve correction", "status": "open"},
       {"who": "Raju", "what": "HubSpot token injection for Atlas", "date": "Ongoing", "status": "open"},
       {"who": "Booker", "what": "BI Pipeline: Current-State G-Brain page", "date": "2026-07-10", "status": "open"},
       {"who": "Seth", "what": "BI Marketing & Positioning: Current-State G-Brain page", "date": "2026-07-10", "status": "open"}
@@ -97,15 +103,23 @@
       "source": "Seth via Slack #ai-ceo-team",
       "title": "MA Library Anti-Book-Ban Bill: 153-3 Bipartisan",
       "pattern": "Compliance tailwind — legislation creates burden → districts need tooling → Bookmarked positioned. Same pattern as HB 1605.",
-      "applies_to": "Expansion-state watchlist. MA + TX show this is a repeatable model.",
+      "applies_to": "Expansion-state watchlist. MA + TX = repeatable model.",
       "priority": "Queue for review"
     },
     {
       "id": "N-082",
       "source": "Zig, dev standup Jul 9",
-      "title": "HB 1605 / SBOE Literary Works Lists",
-      "pattern": "200 mandatory ISBNs. 1,200+ Texas districts must comply by 2030-31.",
-      "applies_to": "Sales door-opener. Dan loading ISBNs into OnShelf.",
+      "title": "HB 1605 / SBOE Literary Works Lists — 200 mandatory ISBNs",
+      "pattern": "1,200+ Texas districts must comply by 2030-31. Dan loading ISBNs into OnShelf.",
+      "applies_to": "Sales door-opener. Every Texas district is a qualified lead on compliance grounds.",
+      "priority": "Implement now"
+    },
+    {
+      "id": "N-087",
+      "source": "Dewey via Slack #ai-ceo-team Jul 12",
+      "title": "Media-Ranked Outreach: 5 Districts Ready Today — Zero Build Required",
+      "pattern": "New Braunfels, Leander, Killeen, White Oak, Hays CISD — crisis districts with active media coverage. Warm leads, not cold calls.",
+      "applies_to": "Zig's outreach list (once HubSpot is live). Jan/Teela can start calls immediately.",
       "priority": "Implement now"
     }
   ],
@@ -139,10 +153,10 @@
     "summary": {
       "active_pipeline": "$508K renewals + $546K TX new",
       "deals_closing_this_month": "Midland ISD ($77K, July 15), San Marcos ($16K, July 17), Bruceville-Eddy ($1.6K, July 10)",
-      "stalled_deals": "Garland $140K (11 days past deadline), CFB $107K (same Moak Casey lever)",
+      "stalled_deals": "Garland $140K (close date pushed to July 31 overnight), CFB $107K (same Moak Casey lever)",
       "imta_districts": "Mesquite, Garland"
     },
-    "note": "Zig's HubSpot skill is broken — using cached data from July 9. Zig reporting against $1.5M target (wrong). ESC 10 follow-up July 29.",
+    "note": "Zig's HubSpot skill still broken — using 3-day-old cached data. Reporting against $1.5M target (incorrect). HubSpot token injection unlocks Zig + Atlas simultaneously. ESC 10 follow-up July 29.",
     "links": [
       {"label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/"},
       {"label": "Jan's Methodology", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017"}
@@ -150,28 +164,28 @@
   },
   "cs": {
     "summary": {
-      "active_issues": "Red Oak FERPA breach (11 junk accounts, 9 districts), OneRoster importer bug (Granger ISD blocked), Lapsed-invite double-lockdown (San Saba ISD)",
+      "active_issues": "Red Oak FERPA breach (11 junk accounts, 9 districts, manual cleanup 2.5hr/account), OneRoster importer bug (Granger ISD blocked at go-live), Lapsed-invite double-lockdown (San Saba ISD)",
       "onboarding": "Houston cohort dormant (flagged July 9, unverified)"
     }
   },
   "product": {
     "summary": {
-      "active": "BI credibility audit (Patrick/Booker), BI marketing audit (Seth), HB 1605 compliance module, UI review pilot (Sarah/Johnny), Sprint 148 in UAT",
-      "broken": "FERPA cross-district visibility (root cause confirmed, V2KAN-179 ticketed), OneRoster CSV header parsing, Lapsed-invite account recovery"
+      "active": "BI credibility audit (Patrick/Booker), BI move-forward plan (Steve/Johnny, 70+ replies Sunday), BI marketing audit (Seth), HB 1605 compliance module, UI review pilot (Sarah/Johnny), Serper API deep-dive (Steve/Johnny, 43+ replies Sunday), Sprint 148 in UAT",
+      "broken": "FERPA cross-district visibility (V2KAN-179 ticketed, root cause confirmed), OneRoster CSV header parsing, Lapsed-invite account recovery"
     }
   },
   "strategy_decisions": [
     {"id": "D-001", "title": "Three-play framework (Network Trust, Collection Benchmarking, Literacy Measurement)", "status": "active"},
     {"id": "D-002", "title": "$1M ARR by Sept 1", "status": "active"},
     {"id": "D-003", "title": "ESC consortium strategy (9/10/15/16)", "status": "active"},
-    {"id": "Target", "title": "Revenue target clarification needed — $1M vs $1.5M vs 5-10M", "status": "urgent"}
+    {"id": "Target", "title": "Revenue target clarification needed — $1M vs $1.5M vs 5-10M (14 days uncorrected)", "status": "urgent"}
   ],
   "strategy_open": [
-    {"id": "O-GARLAND", "title": "Garland $140K + CFB $107K — Jodi Duron call", "status": "urgent"},
-    {"id": "O-NATASHA", "title": "6+ renewals unowned (54 days)", "status": "urgent"},
+    {"id": "O-GARLAND", "title": "Garland $140K + CFB $107K — Jodi Duron call. Close date pushed to July 31.", "status": "urgent"},
+    {"id": "O-NATASHA", "title": "6+ renewals unowned (55 days)", "status": "urgent"},
     {"id": "O-TARGET", "title": "Revenue target alignment — Zig at $1.5M, Steve at $1M", "status": "urgent"},
-    {"id": "O-PATRICK", "title": "Patrick equity cliff July 15", "status": "urgent"},
-    {"id": "O-ATLAS", "title": "HubSpot token for Atlas", "status": "open"}
+    {"id": "O-PATRICK", "title": "Patrick equity cliff July 15 (3 days)", "status": "urgent"},
+    {"id": "O-ATLAS", "title": "HubSpot token for Atlas — unlocks Zig live reports + Atlas media-to-CRM simultaneously", "status": "open"}
   ],
   "tokens_total": {
     "month": "1,440",

@@ -1,259 +1,198 @@
 {
   "meta": {
-    "last_updated": "2026-07-15T23:30:00-05:00",
-    "scan_type": "Nightly Deep Scan (Wednesday)",
-    "northy_message": "July 15 passed. Patrick cliff = overdue. Three days zero revenue. You built a leadership framework today that diagnoses exactly this avoidance pattern. Use it on yourself tomorrow."
+    "last_updated": "2026-08-04T04:00:00Z",
+    "scan_type": "Nightly Deep Scan",
+    "northy_message": "BSH-2026 went live today. Board meeting is Thursday. MSI call may have happened. The weekend commitment to Tim is still broken — but the path to redemption is clear. Three things before Thursday: close the bank gate, confirm the MSI outcome, tell the people being cut."
   },
   "act_now": [
     {
-      "id": "N-032",
-      "title": "Patrick Equity Cliff: OVERDUE",
-      "category": "Commitment (Escalated)",
-      "detail": "July 15 passed. Only meeting with Patrick was Ahsan hiring prep. Zero mention of equity. Flagged June 19 — 26 days of lag time. The Crucial Conversations framework you built today calls this out explicitly: short lag = healthy, long lag = rotting.",
-      "action": "Call Patrick tomorrow. Use STATE: Share facts → Tell your story → Ask for his path. The framework says you can be 100% honest AND 100% respectful.",
+      "id": "N-114",
+      "title": "Board Meeting Aug 7 — Weekend Commitment to Tim Broken",
+      "category": "Existential — Governance",
+      "detail": "Board meeting now scheduled for Thursday Aug 7. Board package generated via BSH-2026. Three gates still open: bank/QBO cash verification, governance proof, partner outcome refresh. Tim was told 'this weekend' — it didn't happen. Don't let him find out through a calendar invite.",
+      "action": "Close the three gates by Wednesday. Call Tim directly — own the miss, present the package. Send board materials after partner outcomes are refreshed.",
       "status": "needs-steve"
     },
     {
-      "id": "N-084",
-      "title": "Systems-Mode Trap DAY 8: Three Days Zero Revenue",
-      "category": "Strategic Drift (Focus)",
-      "detail": "Wednesday: product process, hiring prep, leadership framework, SBOE compliance. All quality. None revenue. $247K still unpulled. 47 days to Sept 1. Cash $97.7K.",
-      "action": "Thursday: three revenue actions before noon. Text Jodi. Call one superintendent. Review one pipeline deal.",
+      "id": "N-137",
+      "title": "Cuts Concrete But Uncommunicated",
+      "category": "Existential — Team",
+      "detail": "5-person team specified. Cut: Jan ($10K), Michelle ($5K), Charlie ($3K), S. America contractor ($7.2K). No evidence cuts were communicated. These people deserve to hear it from Steve.",
+      "action": "Confirm whether communicated Friday. If not, schedule individual conversations before Thursday's board meeting.",
       "status": "needs-steve"
     },
     {
-      "id": "N-059",
-      "title": "Revenue Target: 17 Days Wrong",
-      "category": "Contradiction",
-      "detail": "Zig's pipeline at $1.5M. Target is $1M. 17 days uncorrected. 66+ replies at wrong number.",
-      "action": "Slack Zig: 'Target is $1M by Sept 1. Recompute against that.' 10 seconds.",
+      "id": "N-141",
+      "title": "MSI/Scott Crawford: Did the Call Happen?",
+      "category": "Strategic — Distribution",
+      "detail": "Scott Crawford deep dive requested this morning. Meeting scheduled 3:00 PM CDT. Outcome unverified. This is the warmest distribution door: MSI owns 50% of book review space, SB13 hurting JLG renewals.",
+      "action": "Confirm MSI call outcome. If positive, refresh board package partner section. If postponed, get new date this week.",
       "status": "needs-steve"
     },
     {
-      "id": "N-080",
-      "title": "Natasha Renewals: 59 Days Unassigned",
-      "category": "Risk",
-      "detail": "ILTexas $42K + 5 others. Ownerless. Channel archived.",
-      "action": "Assign to Teela or Jan tomorrow.",
+      "id": "N-143",
+      "title": "Follett Titlewave: Other Distribution Door Warming",
+      "category": "Strategic — Distribution",
+      "detail": "Contact is Tara Morrow, Product Manager at Follett Titlewave. Tim Eades has warm Francisco Partners connection. 370K+ titles, no compliance capability. Parallel path to MSI.",
+      "action": "Ask Tim for Follett intro this week. Don't wait until after board meeting.",
       "status": "needs-steve"
     }
   ],
   "think_about": [
     {
-      "id": "N-091",
-      "title": "The Irony Item: You Built the Diagnosis",
-      "category": "Connection",
-      "urgency": "Today"
+      "id": "N-130",
+      "title": "ARR Definition: $384K vs $700K — Settle Before Partner Conversations",
+      "category": "Credibility Risk",
+      "urgency": "This Week"
     },
     {
-      "id": "N-089",
-      "title": "Moak Casey: 7-Month Events, No Follow-Up",
-      "category": "Opportunity",
-      "urgency": "This week"
+      "id": "N-144",
+      "title": "Equity Design Atoms: ARR Double-Reward Risk Surfaced",
+      "category": "Strategic — Org Design",
+      "urgency": "FYI"
     },
     {
-      "id": "N-090",
-      "title": "Garry Tan GStack: Browser Daemon Architecture",
-      "category": "Founder Intelligence",
-      "urgency": "Queue for review"
-    },
-    {
-      "id": "N-087",
-      "title": "HubSpot Token: Still Blocking Zig + Atlas",
-      "category": "Connection",
-      "urgency": "This week"
+      "id": "N-140",
+      "title": "Garland $140K: Board Communication Asymmetry",
+      "category": "Board Risk",
+      "urgency": "Before Thursday"
     }
   ],
   "health": {
-    "frame": {
-      "status": "yellow",
-      "note": "Leadership framework and product work serves the mission. But frame needs revenue urgency — 47 days to Sept 1."
-    },
-    "floor": {
-      "status": "green",
-      "note": "No floor violations today."
-    },
-    "focus": {
-      "status": "red",
-      "note": "DAY 8 systems-mode. Three days zero revenue. Focus is on product/process/self-development — all legitimate, none revenue. $247K unpulled."
-    },
-    "why": {
-      "status": "green",
-      "note": "SBOE update is good news for the mission. Moak Casey partnership expands reach."
-    }
+    "frame": { "status": "yellow", "note": "BSH-2026 operationalized, board meeting Aug 7, but weekend commitment to Tim broken" },
+    "floor": { "status": "green", "note": "No new floor violations" },
+    "focus": { "status": "yellow", "note": "MSI call outcome is today's critical unknown; heavy OS-building today but it's strategic, not avoidance" },
+    "why": { "status": "yellow", "note": "128 districts, 452K students, mission intact, business model in rebuild" }
   },
   "cliff": [
-    {
-      "metric": "Cash",
-      "value": "$97.7K",
-      "target": "Positive",
-      "gap": "~25 days runway",
-      "status": "urgent"
-    },
-    {
-      "metric": "Revenue to $1M",
-      "value": "$439.9K ARR",
-      "target": "$1M by Sept 1",
-      "gap": "$560K",
-      "status": "urgent"
-    },
-    {
-      "metric": "Days to Sept 1",
-      "value": "47",
-      "target": "0",
-      "gap": "47 days",
-      "status": "urgent"
-    }
+    { "metric": "Cash", "value": "$97.2K", "target": "> $0", "gap": "Zero cash early December 2026", "status": "urgent" },
+    { "metric": "Days to Board Meeting", "value": "3", "target": "0", "gap": "Thursday Aug 7", "status": "urgent" },
+    { "metric": "Days to Sept 1", "value": "28", "target": "$1M ARR", "gap": "$616K", "status": "watch" },
+    { "metric": "MSI Call", "value": "Unknown", "target": "Completed", "gap": "Outcome unverified", "status": "urgent" }
   ],
   "commitments": {
     "steve_owes": [
-      {
-        "what": "Patrick equity conversation",
-        "to": "Patrick Reid",
-        "date": "July 15 (OVERDUE)",
-        "status": "urgent"
-      },
-      {
-        "what": "Jodi follow-up (Garland + CFB)",
-        "to": "Jodi Duron",
-        "date": "July 16",
-        "status": "urgent"
-      },
-      {
-        "what": "Correct Zig revenue target to $1M",
-        "to": "Zig (CRO Agent)",
-        "date": "ASAP — 17 days overdue",
-        "status": "urgent"
-      },
-      {
-        "what": "Assign Natasha renewals",
-        "to": "Teela or Jan",
-        "date": "July 16",
-        "status": "urgent"
-      },
-      {
-        "what": "Update Pixel LLM for screenshot analysis",
-        "to": "Sarah / Product",
-        "date": "July 15 (from daily check-in)",
-        "status": "open"
-      }
+      { "what": "Call Tim Eades — own the broken weekend commitment, present Aug 7 board package", "to": "Tim Eades", "date": "Monday Aug 3 (today)", "status": "urgent" },
+      { "what": "Confirm MSI/Scott Crawford call outcome", "to": "Self", "date": "Monday Aug 3 (today)", "status": "urgent" },
+      { "what": "Communicate cuts to Jan, Michelle, Charlie, S. America contractor", "to": "Team", "date": "Before Thursday Aug 7", "status": "urgent" },
+      { "what": "Close bank/QBO cash verification + Michelle reconciliation", "to": "Board", "date": "Wednesday Aug 6", "status": "open" },
+      { "what": "Verify Garland + Midland status before board package freeze", "to": "Board", "date": "Wednesday Aug 6", "status": "open" }
     ],
     "team_owes": [
-      {
-        "who": "Sarah",
-        "what": "Review order modules mockup + veracity check",
-        "date": "July 16",
-        "status": "open"
-      },
-      {
-        "who": "Raju",
-        "what": "Inject HubSpot token for Zig + Atlas",
-        "date": "Overdue",
-        "status": "open"
-      },
-      {
-        "who": "Forge",
-        "what": "Evaluate GStack Playwright daemon model",
-        "date": "Queue for review",
-        "status": "open"
-      }
+      { "who": "Forge", "what": "GitHub Pages exposure follow-ups: cache check, credential rotation, password rotation", "date": "This week", "status": "open" },
+      { "who": "Michelle", "what": "Provide signed financial reconciliation for board package", "date": "Wednesday Aug 6", "status": "open" }
     ]
   },
   "quick_access": [
     { "label": "Founder Cockpit", "url": "https://founder-cockpit-personal.vercel.app/" },
-    { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
-    { "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
-    { "label": "Northy Triage (G-Brain)", "url": "ops/northy-triage" },
-    { "label": "SBOE Status", "url": "compliance/sboe-literary-works-status-july-15-2026" },
-    { "label": "Leadership OS v2", "url": "frameworks/leadership-operating-system" }
+    { "label": "BSH-2026 Board Package", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS2/pages/187564162" },
+    { "label": "Financial Plan Revised (Aug 2)", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
+    { "label": "Strategic Pivot Research Brief", "url": "https://github.com/stevewandler/bookmarked-strategic-home" },
+    { "label": "Sales Metrics", "url": "https://bookmarked-board-reports.vercel.app/" }
   ],
   "resolved": [
-    { "id": "N-073", "outcome": "Autopilot PgBouncer outage resolved", "when": "July 8" },
-    { "id": "OR-Spend", "outcome": "OpenRouter spend incident resolved. Codex reconciled model routing", "when": "July 9" },
-    { "id": "La-Grange-PO", "outcome": "$5,550 confirmed. Relationship intact.", "when": "July 10" }
+    { "id": "N-135", "outcome": "5-person team specified. Financial plan complete. Zero cash Dec 2026.", "when": "2026-08-02" },
+    { "id": "N-133", "outcome": "Tim Eades call completed. Distribution pivot surfaced. Warm Follett door.", "when": "2026-08-01" },
+    { "id": "N-129", "outcome": "All three acquisition parties passed or deferred.", "when": "2026-07-31" },
+    { "id": "N-127", "outcome": "Growth Street Partners — deferred. Six to twelve months.", "when": "2026-07-31" },
+    { "id": "N-128", "outcome": "Level Equity — deferred. No imminent opportunity.", "when": "2026-07-30" },
+    { "id": "N-123", "outcome": "Harris Computers — passed in writing. Door open if capital resolves.", "when": "2026-07-30" },
+    { "id": "TECHDOME", "outcome": "$10,000 retainer paid to Scale Firm by Michelle. TechDome unblocked. AAA invoice still pending.", "when": "2026-08-03" }
   ],
   "intel": [
     {
-      "id": "N-090",
-      "source": "Garry Tan — github.com/garrytan/gstack",
-      "title": "GStack: Browser Daemon + Multi-Agent Architecture",
-      "pattern": "Long-lived Chromium daemon, sub-second commands, Bun-compiled 58MB binaries, ref system, 10-15 parallel sessions via Conductor. Explicitly rejects Chrome MCP browser.",
-      "applies_to": "Agent fleet browser interaction. Daemon model replaces Chrome MCP with persistent, sub-second browers. Bun compilation = zero-dependency deployment.",
-      "priority": "Queue for review"
+      "id": "FI-028",
+      "source": "G-Brain atom — nero-brain-trust-charter",
+      "title": "Steve Self-Benchmarking: YC Companies Are Already Doing This",
+      "pattern": "Explicit YC benchmarking as ambition-setting: 'YC companies are already doing these things. Use YC as the portal to find acceleration patterns.'",
+      "applies_to": "Founder OS ambition level, team performance standards",
+      "priority": "FYI"
     }
   ],
   "district_intel": {
     "dashboards": [
-      { "label": "Board Minutes Intelligence", "description": "School district board meeting analysis", "repo_path": "BookmarkED-Corp/bookmarked-district-intelligence" },
-      { "label": "Superintendent Movement", "description": "Superintendent transitions tracking", "repo_path": "BookmarkED-Corp/bookmarked-district-intelligence" },
-      { "label": "IMTA Allotment Funding", "description": "IMTA funding dashboard", "repo_path": "BookmarkED-Corp/bookmarked-district-intelligence" },
-      { "label": "Media Sentiment Intelligence", "description": "District media coverage analysis", "repo_path": "BookmarkED-Corp/bookmarked-district-intelligence" },
-      { "label": "District Profile Viewer", "description": "Individual district profiles", "repo_path": "BookmarkED-Corp/bookmarked-district-intelligence" }
+      { "label": "Board Minutes Intelligence", "description": "School board meeting analysis across Texas districts", "repo_path": "bookmarked-district-intelligence.vercel.app/board-minutes" },
+      { "label": "Superintendent Movement", "description": "Track superintendent changes across Texas", "repo_path": "bookmarked-district-intelligence.vercel.app/supt-movement" },
+      { "label": "IMTA Funding", "description": "Instructional Materials and Technology Allotment", "repo_path": "bookmarked-district-intelligence.vercel.app/imta-intelligence" },
+      { "label": "Media Intelligence", "description": "Media coverage of school book issues", "repo_path": "bookmarked-district-intelligence.vercel.app/media-intelligence" },
+      { "label": "District Profiles", "description": "Individual district deep-dive profiles", "repo_path": "bookmarked-district-intelligence.vercel.app/district-profile" }
     ]
   },
   "finance": {
     "summary": {
-      "cash": "$97.7K",
-      "september_projection": "TBD — $560K gap to $1M",
-      "current_burn_monthly": "~$115K",
+      "cash": "$97.2K",
+      "september_projection": "Cash positive in August ($1.4K net), negative $31.8K in September",
+      "current_burn_monthly": "~$53K-$73K (post-cuts)",
       "v1_savings_monthly": "$8-9K",
       "deferred_comp_weekly": "$100K",
       "deferral_repayment_october": "$106K"
     },
     "metrics": [
-      { "label": "Cash on hand", "value": "$97.7K", "trend": "down" },
-      { "label": "Runway (days)", "value": "~25", "trend": "warning" },
-      { "label": "Verified ARR", "value": "$439.9K", "trend": "up" },
-      { "label": "Gap to $1M", "value": "$560K", "trend": "warning" },
-      { "label": "Monthly Burn", "value": "$115K", "trend": "down" }
+      { "label": "Monthly Labour (5-person team)", "value": "$32,333", "trend": "down" },
+      { "label": "Monthly Non-Labour", "value": "$15,350", "trend": "down" },
+      { "label": "Zero Cash Date", "value": "Early Dec 2026", "trend": "warning" },
+      { "label": "Run-rate ARR", "value": "$383,795", "trend": "warning" }
     ],
     "dashboards": [
-      { "label": "Full Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" }
+      { "label": "Financial Dashboard (Board)", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
+      { "label": "CFO Detailed", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/cfo/detailed.html" },
+      { "label": "CFO Summary", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/cfo/summary.html" }
     ]
   },
   "sales": {
     "summary": {
-      "active_pipeline": "~$546K TX + $516K Renewal",
-      "deals_closing_this_month": "Pipeline stale — Zig HubSpot skill broken (day 7+)",
-      "stalled_deals": "Utah SEA ($1.3M FY27 parked), Garland ($140K), CFB ($107K)",
+      "active_pipeline": "$546K TX + $516K Renewal",
+      "deals_closing_this_month": "25 TX new + 53 renewal",
+      "stalled_deals": "Utah SEA ($1.3M FY27, parked)",
       "imta_districts": "Mesquite, Garland"
     },
-    "note": "Zig's HubSpot skill broken day 7+. HubSpot token needed from Raju. Revenue target still at wrong number ($1.5M vs $1M). Jodi follow-up for Garland/CFB not yet sent (3 days post-meeting).",
+    "note": "Zig handles daily HubSpot pull. Garland $140K contract sent — follow-up with Jodi Duron pending.",
     "links": [
-      { "label": "Team Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
+      { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
+      { "label": "Board Sales Metrics", "url": "https://bookmarked-board-reports.vercel.app/" },
       { "label": "Jan's Methodology (Confluence)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017" }
     ]
   },
   "cs": {
     "summary": {
-      "note": "Atlas (CCSO Agent) in development. HubSpot token needed for media-to-CRM pipeline. Renewals (Natasha batch) still unassigned."
+      "active_districts": "128",
+      "total_students": "452K",
+      "renewals_open": "$262,618 (94% to close)",
+      "renewals_closed": "$606"
     }
   },
   "product": {
     "summary": {
-      "note": "Visual spec addendum process established (July 15). AI orchestration: Johnny → Pixel. Product hub restructuring in progress. Order modules mockup awaiting verification. Jan demoing prototype (N-077). BI two-tier flags converging (Steve + Johnny + Patrick)."
+      "book_intelligence": "Skunkworks phase — Steve + Patrick building parallel BI pipeline with Fable",
+      "product_feedback": "New workflow established: Priya → Johnny → spec doc → Scout (tickets)",
+      "strategic_home": "BSH-2026 sprint active through Sept 15"
     }
   },
   "strategy_decisions": [
-    { "id": "D-001", "title": "Three-play framework (Network Trust + Collection Benchmarking)", "status": "active" },
-    { "id": "D-004", "title": "Moak Casey distribution channel — 7-month regional series", "status": "active" },
-    { "id": "N-032", "title": "Patrick equity cliff", "status": "overdue" }
+    { "id": "D-001", "title": "Partner order: MSI → Follett → Harris → NGT", "status": "active" },
+    { "id": "D-002", "title": "No headcount through Sept 15", "status": "active" },
+    { "id": "D-003", "title": "No bridge capital in base case", "status": "active" },
+    { "id": "D-004", "title": "5-person team: Steve, Patrick, Raju, Teela, Vietnam", "status": "active" },
+    { "id": "D-005", "title": "Two engines: ESC16/renewals for cash + strategic partners for proof", "status": "active" }
   ],
   "strategy_open": [
-    { "id": "O-TARGET", "title": "Zig at $1.5M vs Steve at $1M — 17 days uncorrected", "status": "critical" },
-    { "id": "O-GARLAND", "title": "Jodi partnership meeting done July 13 — $247K follow-up needed", "status": "active" },
-    { "id": "O-NATASHA", "title": "6+ renewals unowned, 59 days", "status": "critical" },
-    { "id": "O-PATRICK", "title": "Patrick equity cliff — July 15 passed", "status": "overdue" },
-    { "id": "O-PRODUCT", "title": "Product readiness — Jan webinars. Two-tier BI flags converging.", "status": "active" }
+    { "id": "O-001", "title": "MSI/Scott Crawford call outcome — did it happen?", "status": "urgent" },
+    { "id": "O-002", "title": "Cuts communication — have Jan, Michelle, Charlie been told?", "status": "urgent" },
+    { "id": "O-003", "title": "ARR definition — $384K run-rate vs $700K pipeline-inclusive", "status": "open" },
+    { "id": "O-004", "title": "Follett Titlewave introduction via Tim Eades", "status": "open" }
   ],
   "tokens_total": {
-    "month": "— Supabase live",
-    "last_month": "— Supabase live",
-    "or_balance": "— Supabase live",
-    "combined_daily": "— Supabase live",
-    "or_daily": "— Supabase live",
-    "ant_daily": "— Supabase live"
+    "month": "1,440",
+    "last_month": "2,670",
+    "or_balance": "107",
+    "combined_daily": "206",
+    "or_daily": "113",
+    "ant_daily": "93"
   },
-  "tokens_models": [],
+  "tokens_models": [
+    { "model": "claude-sonnet-4.6", "cost": 179.46, "label": "Off-Policy" },
+    { "model": "claude-opus-4.6", "cost": 178.49, "label": "Personal" },
+    { "model": "deepseek-v4-pro", "cost": 157.81, "label": "Fleet" }
+  ],
   "tokens_dashboard_url": "https://bookmarked-corp.github.io/bookmarked-token-dashboard/"
 }

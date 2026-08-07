@@ -1,127 +1,150 @@
 {
   "meta": {
-    "last_updated": "2026-08-06T04:45:00-05:00",
+    "last_updated": "2026-08-07T04:00:00Z",
     "scan_type": "Nightly Deep Scan",
-    "northy_message": "Tomorrow is the board meeting. The architecture is done — partner playbook, financial plan, HIG intel. What's missing: three calls. Tim. Scott. Johnny. Ten minutes each. Make them before you make any more plans."
+    "northy_message": "Two strategic conversations happened today — Charlie (partner AND cash) and continuity coaching. The Conroe demo went out. Johnny shipped 50 tickets in 30 days. But four decisions that each take under five minutes are still sitting open. Tomorrow: Johnny, Scott, Tim, board date. In that order."
   },
   "act_now": [
     {
-      "id": "N-114",
-      "title": "Tomorrow is the board meeting. Tim still doesn't know.",
-      "category": "Commitment Broken",
-      "detail": "You told Tim 'this weekend.' It's Wednesday night. The meeting is tomorrow. Dewey's EOD report still flags it unscheduled. Tim opened the Follett distribution door — don't let him find out through a calendar invite.",
-      "action": "Text or call Tim tonight. Own the miss. 'Board meeting tomorrow. I should have called earlier. Your input still matters.'",
+      "id": "N-145",
+      "title": "Conroe Demo Happened Today — Johnny's Scope Decision: Close It",
+      "category": "Product — Engineering Priority",
+      "detail": "Conroe demo was today. ~70 librarians. The founder talk was ready. Johnny's Option A recommendation (finish current V2KAN-267 scope, fast-follow FB-104-106) was waiting on Steve. Either you approved it during the call and it just didn't get logged, or Johnny made the call himself. Either way — it's done.",
+      "action": "Confirm in #ai-ceo-team: 'Option A. Close it. How'd the demo go?'",
       "status": "needs-steve"
     },
     {
       "id": "N-143",
-      "title": "MSI Scott package unsent. Monday call unverified for third consecutive scan.",
+      "title": "MSI Scott Package Unsent — Charlie Call Made This MORE Urgent",
       "category": "Strategic — Distribution",
-      "detail": "Scott Crawford page reconciled Aug 5: 'The Scott collaboration package is complete as an internal draft and has not been sent.' No mention of Monday's scheduled call in any source. The package exists. The door is warm. Nothing has moved.",
-      "action": "One Slack message to Scott: 'Hey Scott — checking in. I've got the Collection Intelligence writeup ready to send. Want me to fire it over?'",
+      "detail": "Fourth scan with no evidence of sending. Charlie call today reframed to 'partner AND cash, not partner OR cash.' The transaction narrative (BSH-ACT-20260806-003) needs MSI, MGT, and Follett overlays. MSI is the #1 path. Package exists. Send it.",
+      "action": "One Slack to Scott: 'Hey Scott — checking in. Did we connect Monday? I've got the Collection Intelligence writeup ready to send — want me to fire it over?'",
       "status": "needs-steve"
     },
     {
-      "id": "N-145",
-      "title": "Johnny is still waiting for the FERPA vs Conroe demo decision",
-      "category": "Decision — Product",
-      "detail": "Dewey 5pm EOD: 'Day closed with the FERPA-vs-Conroe-demo priority call still open.' Johnny: 'Does the Conroe demo urgency justify bypassing P0 and P1?' Conroe demo is tomorrow (~70 librarians). After that, engineering capacity frees up — Johnny needs to know where to point it.",
-      "action": "10-minute call with Johnny before the demo. Pick: (a) Demo priority through Thursday, FERPA starts Friday. (b) Post-demo split — FERPA + P1 onboarding in parallel.",
+      "id": "N-153",
+      "title": "Checkout Enforcement Gap Is Live — Restricted Books Bypass Checkout",
+      "category": "Product — Board-Level Risk",
+      "detail": "Priya's Thursday synthesis (highest volume week on record — 14 new entries, $422K+ revenue context). FB-110 documented: 'checkout never consults access status.' 5 bugs across the full Book Access lifecycle (Set → Save → Propagate → Enforce → Persist). If this surfaces in a board meeting or partner diligence call, it's a trust problem.",
+      "action": "Johnny: confirm FB-110 is created and prioritized. If not in V2KAN-389 scope, it needs its own epic. This is P0 adjacent.",
+      "status": "needs-steve"
+    },
+    {
+      "id": "N-152",
+      "title": "Board Meeting Date: Charlie Call Happened. Still No Date.",
+      "category": "Governance — Existential",
+      "detail": "Dewey's Aug 6 5pm brief confirms still unscheduled. Charlie strategy call happened today — board meeting presumably came up. If a date was set, no system reflects it. Tim still doesn't know. Cuts still uncommunicated.",
+      "action": "Pick a date. Even if it's next week. Send the invite. Tell Tim. Update Dewey and all agents.",
       "status": "needs-steve"
     },
     {
       "id": "N-137",
-      "title": "Cuts specified but uncommunicated — board meeting tomorrow",
+      "title": "Cuts Specified But Uncommunicated — Board Meeting Still Unresolved",
       "category": "Existential — Team",
-      "detail": "5-person team: Steve, Patrick, Raju, Teela, Vietnam contractor. Cuts: Jan ($10K), Michelle ($5K), Charlie ($3K), S. America contractor ($7.2K). Conversations should happen. Charlie is the chairman — his conversation and the board meeting are separate things.",
-      "action": "Charlie conversation separately from the board meeting. Jan and Michelle after the board. Don't let the board deck be the way anyone finds out.",
+      "detail": "5-person team: Steve, Patrick, Raju, Teela, Vietnam. Cuts: Jan ($10K), Michelle ($5K), Charlie ($3K), S. America ($7.2K). No evidence anyone has been told. People are finding out through board decks and agent scans.",
+      "action": "Individual conversations. Charlie separate from the board meeting — he's still chairman. Jan and Michelle after governance is aligned.",
       "status": "needs-steve"
     }
   ],
   "think_about": [
     {
-      "id": "N-150",
-      "title": "PW named the SB 13 vendor landscape. Bookmarked isn't in it — insertion opportunity.",
-      "category": "Competitive Intel",
+      "id": "N-154",
+      "title": "Johnny Shipped 50 Tickets in 30 Days — That's a Story for Every Partner Conversation",
+      "category": "Connection — Strategic Asset",
+      "urgency": "This Week"
+    },
+    {
+      "id": "N-155",
+      "title": "Charlie Call Frame Shift: 'Partner AND Cash' — Transaction Narrative Now Critical Path",
+      "category": "Strategy — Frame Alignment",
       "urgency": "This Week"
     },
     {
       "id": "N-146",
-      "title": "HIG Capital intel → MSI pitch must lead with revenue, not mission",
-      "category": "Intel / Strategy",
+      "title": "HIG Capital → MSI Pitch Must Lead With Revenue, Not Mission",
+      "category": "Strategic — Distribution",
       "urgency": "Before Sending Scott Package"
     },
     {
-      "id": "N-151",
-      "title": "Partner playbook: 96 validations, zero activated candidates. Pattern worth watching.",
-      "category": "Drift Awareness",
-      "urgency": "FYI — Don't let planning replace outreach"
+      "id": "N-150",
+      "title": "PW Article: Bookmarked Absent from SB 13 Vendor Landscape — Insertion Opportunity",
+      "category": "Opportunity / Competitive Intel",
+      "urgency": "This Week"
     },
     {
       "id": "N-130",
-      "title": "ARR Definition: $384K vs $700K — settle before partner conversations",
+      "title": "ARR Definition: $384K vs $700K — Settle Before Partner Conversations",
       "category": "Credibility Risk",
       "urgency": "This Week"
+    },
+    {
+      "id": "N-156",
+      "title": "Sentinel Failing (Day 2) + Ford Audit Blind (Week 4) — Fleet Health Degrading",
+      "category": "Systems — Fleet Health",
+      "urgency": "Watch"
+    },
+    {
+      "id": "N-151",
+      "title": "Partner Playbook: 96 Validations, Zero Activated Candidates",
+      "category": "Drift / Pattern",
+      "urgency": "Watch"
     }
   ],
   "health": {
-    "frame": { "status": "green", "note": "BSH-2026 operational. Partner playbook, MSI workstream, board dashboard at draft 005. Right altitude." },
-    "floor": { "status": "yellow", "note": "The 'beautiful plan, no outreach' pattern is the floor risk. Playbook has 96 validations, zero activated candidates. FERPA decision is below the floor — Johnny should own it." },
-    "focus": { "status": "yellow", "note": "Tomorrow is the board meeting. Three calls — Tim, Scott, Johnny — in that order. Don't let Dewey cleanup or partner research eat the morning." },
-    "why": { "status": "green", "note": "Distribution pivot serves the mission. MSI/Follett doors getting Book Intelligence to every kid." }
+    "frame": { "status": "green", "note": "Charlie call delivered the right frame: 'partner AND cash, not partner OR cash.' Transaction narrative is the right next deliverable. Frame is appropriate for the moment." },
+    "floor": { "status": "yellow", "note": "Board meeting unresolved = governance floor violation. Four decisions waiting on Steve (Johnny, Scott, Tim, board date) — each one under five minutes." },
+    "focus": { "status": "yellow", "note": "Strategic conversations (Charlie, continuity coaching) were necessary and productive. But tactical execution decisions are stacking up. Systems-mode watch: Alive Project Task Protocol updated at midnight after a day of heavy strategy." },
+    "why": { "status": "green", "note": "The Conroe demo delivered Faith's moment to 70 librarians today. The mission is alive. The transaction narrative needs to carry that energy into partner conversations." }
   },
   "cliff": [
     { "metric": "Cash", "value": "$97.2K", "target": "> $0", "gap": "Zero cash early December 2026", "status": "urgent" },
-    { "metric": "Days to Board Meeting", "value": "1", "target": "0", "gap": "Tomorrow — Thursday Aug 7", "status": "urgent" },
-    { "metric": "Days to Sept 1", "value": "27", "target": "$1M ARR", "gap": "$616K", "status": "watch" },
-    { "metric": "MSI Scott Package", "value": "Draft — unsent", "target": "Sent", "gap": "Third scan with no forward motion", "status": "urgent" }
+    { "metric": "Days to Sept 1", "value": "25", "target": "$1M ARR", "gap": "~$616K", "status": "watch" },
+    { "metric": "Board Meeting Date", "value": "Unresolved", "target": "Scheduled + communicated", "gap": "Charlie call happened today. Still no date. Tim still not told.", "status": "urgent" },
+    { "metric": "MSI Scott Package", "value": "Draft — unsent", "target": "Sent", "gap": "Fourth scan. Charlie call makes this MORE urgent.", "status": "urgent" },
+    { "metric": "Checkout Enforcement", "value": "Live bug", "target": "Ticketed + prioritized", "gap": "FB-110: Restricted books bypass checkout. Board-level risk.", "status": "urgent" },
+    { "metric": "Execution Stacking", "value": "4 decisions open 3+ days", "target": "0", "gap": "Johnny, Scott, Tim, board date — each <5 min", "status": "watch" }
   ],
   "commitments": {
     "steve_owes": [
-      { "what": "Text or call Tim Eades — he doesn't know the board meeting is tomorrow", "to": "Tim Eades", "date": "Tonight", "status": "urgent" },
-      { "what": "Send Scott Crawford the Collection Intelligence package OR confirm Monday call happened", "to": "Scott Crawford", "date": "Tonight or tomorrow morning", "status": "urgent" },
-      { "what": "Call Johnny — confirm FERPA vs Conroe demo priority", "to": "Johnny", "date": "Before Conroe demo tomorrow", "status": "urgent" },
-      { "what": "Communicate cuts to Jan, Michelle, Charlie (Charlie separately from board)", "to": "Team", "date": "Thursday/Friday", "status": "urgent" },
-      { "what": "Close bank/QBO cash verification for board package", "to": "Board", "date": "Thursday Aug 7", "status": "open" }
+      { "what": "Confirm Johnny's Option A + ask how Conroe demo went", "to": "Johnny", "date": "Tomorrow morning", "status": "urgent" },
+      { "what": "Send Scott Crawford the Collection Intelligence package", "to": "Scott Crawford", "date": "Tomorrow", "status": "urgent" },
+      { "what": "Resolve board meeting date — pick a day, send invite, tell Tim", "to": "Tim Eades + Charlie Clines + team", "date": "Tomorrow", "status": "urgent" },
+      { "what": "Communicate cuts to Jan, Michelle, Charlie (Charlie separately)", "to": "Team", "date": "This week", "status": "urgent" },
+      { "what": "Draft BSH-ACT-20260806-003 — five-part transaction narrative + MSI/MGT/Follett overlays", "to": "Self (BSH-2026)", "date": "This week", "status": "open" },
+      { "what": "Rank continuity priorities (mission, product, expertise, relationships, team, role, upside)", "to": "Self (private)", "date": "This week", "status": "open" }
     ],
     "team_owes": [
-      { "who": "Forge", "what": "GitHub Pages exposure follow-ups: cache check, credential rotation, password rotation", "date": "This week", "status": "open" },
-      { "who": "Michelle", "what": "Provide signed financial reconciliation for board package", "date": "Thursday Aug 7", "status": "open" }
+      { "who": "Johnny", "what": "Confirm FB-110 (checkout enforcement) ticket exists and is prioritized", "date": "This week", "status": "open" },
+      { "who": "Forge", "what": "GitHub Pages exposure follow-ups: cache check, credential rotation", "date": "This week", "status": "open" },
+      { "who": "Woz/Raju", "what": "Diagnose Sentinel model output failure (2nd consecutive day empty)", "date": "This week", "status": "open" },
+      { "who": "Forge/Woz", "what": "Invite Ford bot to #product channel (4th week blind)", "date": "This week", "status": "open" }
     ]
   },
   "quick_access": [
     { "label": "Founder Cockpit", "url": "https://founder-cockpit-personal.vercel.app/" },
-    { "label": "BSH-2026 Board Package", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS2/pages/187564162" },
-    { "label": "Financial Dashboard (Board)", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
-    { "label": "Strategic Partner Playbook (Alive)", "url": "https://bookmarked-alive-dashboards.vercel.app/partners" },
-    { "label": "Board Sales Metrics", "url": "https://bookmarked-board-reports.vercel.app/" }
+    { "label": "BSH-2026 Board Dashboard (Draft)", "url": "https://bookmarked-alive-dashboards.vercel.app/board" },
+    { "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
+    { "label": "Strategic Home (BSH-2026)", "url": "https://github.com/stevewandler/bookmarked-strategic-home" },
+    { "label": "Sales Metrics (Board)", "url": "https://bookmarked-board-reports.vercel.app/" }
   ],
   "resolved": [
+    { "id": "BSH-2026", "outcome": "Charlie strategy call completed. Partner AND cash frame. MGT label reconciled. Five-part transaction narrative pending.", "when": "2026-08-06" },
+    { "id": "Investor-Metrics", "outcome": "Baseline approved: 6.7M books, 1.24M ISBNs, 241K BI records, 102 districts, 559K students.", "when": "2026-08-06" },
+    { "id": "Nassau-Street", "outcome": "Closed. Dan Huberty forwarded cold outreach. $45K upfront fee model. Steve passed.", "when": "2026-08-06" },
     { "id": "N-135", "outcome": "5-person team specified. Financial plan complete. Zero cash Dec 2026.", "when": "2026-08-02" },
-    { "id": "N-133", "outcome": "Tim Eades call completed Aug 1. Distribution pivot surfaced. Warm Follett door.", "when": "2026-08-01" },
-    { "id": "N-129", "outcome": "All three acquisition parties passed or deferred.", "when": "2026-07-31" },
+    { "id": "N-133", "outcome": "Tim Eades call completed. Distribution pivot surfaced. Warm Follett door.", "when": "2026-08-01" },
+    { "id": "N-141", "outcome": "Merged into N-143. MSI/HIG research completed.", "when": "2026-08-04" },
     { "id": "N-127", "outcome": "Growth Street Partners — deferred. Six to twelve months.", "when": "2026-07-31" },
-    { "id": "N-128", "outcome": "Level Equity — deferred. No imminent opportunity.", "when": "2026-07-30" },
-    { "id": "N-123", "outcome": "Harris Computers — passed in writing. Door open if capital resolves.", "when": "2026-07-30" },
-    { "id": "TECHDOME", "outcome": "$10,000 retainer paid to Scale Firm by Michelle. TechDome unblocked. AAA invoice still pending.", "when": "2026-08-03" },
-    { "id": "N-141", "outcome": "Merged into N-143 — MSI Scott call remains unverified, Scott package unsent.", "when": "2026-08-05" }
+    { "id": "TECHDOME", "outcome": "$10,000 retainer paid to Scale Firm by Michelle. TechDome unblocked.", "when": "2026-08-03" }
   ],
   "intel": [
     {
       "id": "FI-029",
-      "source": "Publishers Weekly — Shannon Maughan, July 31, 2026",
-      "title": "PW named the SB 13 vendor landscape: Libraria, Mackin, Follett. Bookmarked absent.",
-      "pattern": "Most complete published picture of vendor ecosystem. Bookmarked insertion opportunity — trade narrative doesn't include Book Intelligence yet. Libraria is closest positioning threat. Mackin is BSH-2026 research candidate #1 and favorably profiled.",
-      "applies_to": "Partner pitches, competitive positioning, board deck partner section",
-      "priority": "This Week"
-    },
-    {
-      "id": "FI-028",
-      "source": "G-Brain atom — nero-brain-trust-charter",
-      "title": "Steve Self-Benchmarking: YC Companies Are Already Doing This",
-      "pattern": "Explicit YC benchmarking as ambition-setting",
-      "applies_to": "Founder OS ambition level, team performance standards",
-      "priority": "FYI"
+      "source": "Nero research — HIG Capital via SEC filing + hig.com",
+      "title": "HIG Capital Owns MSI — $75B AUM, 5-Year Hold, Tech Investment Promised",
+      "pattern": "Traditional PE playbook. Pitch to Bob Gopal must lead with revenue, not mission.",
+      "applies_to": "MSI/Scott Crawford distribution path",
+      "priority": "Implement Now"
     }
   ],
   "district_intel": {
@@ -149,9 +172,7 @@
       { "label": "Run-rate ARR", "value": "$383,795", "trend": "warning" }
     ],
     "dashboards": [
-      { "label": "Financial Dashboard (Board)", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
-      { "label": "CFO Detailed", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/cfo/detailed.html" },
-      { "label": "CFO Summary", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/cfo/summary.html" }
+      { "label": "Financial Dashboard (Board)", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" }
     ]
   },
   "sales": {
@@ -161,7 +182,7 @@
       "stalled_deals": "Utah SEA ($1.3M FY27, parked)",
       "imta_districts": "Mesquite, Garland"
     },
-    "note": "Zig handles daily HubSpot pull. Both sales channels archived in Slack. No live sales data flowing since July 10.",
+    "note": "Zig handles daily HubSpot pull. No live sales data in Slack since July 10.",
     "links": [
       { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
       { "label": "Board Sales Metrics", "url": "https://bookmarked-board-reports.vercel.app/" },
@@ -178,24 +199,29 @@
   },
   "product": {
     "summary": {
-      "book_intelligence": "P3 BI Pipeline on track — 3 of 6 children complete. PEN America capability shipped.",
-      "product_quality": "Checkout enforcement gap (restricted books bypass). P0 FERPA (V2KAN-280) stalled 7 days. P1 Onboarding stalled.",
-      "conroe_demo": "Tomorrow — ~70 librarians. V2KAN-384 (15 children) in Dev In Review.",
-      "product_feedback": "New workflow established: feedback → Priya → Johnny → spec doc → Scout."
+      "velocity": "50 shipped in last 30 days — Johnny's Aug 6 roadmap sync. Major shift from June's 72-open-zero-motion.",
+      "active_in_review": "33 tickets in Dev In Review — FERPA (6), Book Orders (16), BI Architecture (2), Conroe Onboarding (5), Orders v15",
+      "conroe_demo": "Completed today. ~70 librarians. Founder talk delivered.",
+      "checkout_enforcement": "FB-110: Restricted books bypass checkout. P0 adjacent. Needs ticket confirmation.",
+      "strategic_home": "BSH-2026 sprint active through Sept 15"
     }
   },
   "strategy_decisions": [
-    { "id": "D-001", "title": "Partner order: MSI → Follett → Harris → NGT", "status": "active" },
+    { "id": "D-001", "title": "Partner order: MSI → MGT → Follett", "status": "active" },
     { "id": "D-002", "title": "No headcount through Sept 15", "status": "active" },
     { "id": "D-003", "title": "No bridge capital in base case", "status": "active" },
     { "id": "D-004", "title": "5-person team: Steve, Patrick, Raju, Teela, Vietnam", "status": "active" },
-    { "id": "D-005", "title": "Two engines: ESC16/renewals for cash + strategic partners for proof", "status": "active" }
+    { "id": "D-005", "title": "Two engines: ESC16/renewals for cash + strategic partners for proof", "status": "active" },
+    { "id": "D-006", "title": "Partner AND cash, not partner OR cash (Charlie call Aug 6)", "status": "new" }
   ],
   "strategy_open": [
-    { "id": "O-001", "title": "MSI/Scott Crawford: Did Monday's call happen? Scott package unsent.", "status": "urgent" },
-    { "id": "O-002", "title": "Cuts communication — have Jan, Michelle, Charlie been told? Board meeting tomorrow.", "status": "urgent" },
+    { "id": "O-001", "title": "MSI/Scott Crawford outreach — package exists, unsent", "status": "urgent" },
+    { "id": "O-002", "title": "Cuts communication — have Jan, Michelle, Charlie been told?", "status": "urgent" },
     { "id": "O-003", "title": "ARR definition — $384K run-rate vs $700K pipeline-inclusive", "status": "open" },
-    { "id": "O-004", "title": "FERPA vs Conroe demo priority — Johnny waiting on decision", "status": "urgent" }
+    { "id": "O-004", "title": "Follett Titlewave introduction via Tim Eades", "status": "open" },
+    { "id": "O-005", "title": "Board meeting date — Charlie call happened, still unscheduled", "status": "urgent" },
+    { "id": "O-006", "title": "BSH-ACT-20260806-003 — five-part transaction narrative + MSI/MGT/Follett overlays", "status": "open" },
+    { "id": "O-007", "title": "Continuity priorities ranking — mission, product, expertise, relationships, team, role, upside", "status": "open" }
   ],
   "tokens_total": {
     "month": "1,440",

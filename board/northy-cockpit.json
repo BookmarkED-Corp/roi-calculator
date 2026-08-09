@@ -1,74 +1,72 @@
 {
   "meta": {
-    "last_updated": "2026-08-07T04:00:00Z",
+    "last_updated": "2026-08-09T01:45:00Z",
     "scan_type": "Nightly Deep Scan",
-    "northy_message": "Two strategic conversations happened today — Charlie (partner AND cash) and continuity coaching. The Conroe demo went out. Johnny shipped 50 tickets in 30 days. But four decisions that each take under five minutes are still sitting open. Tomorrow: Johnny, Scott, Tim, board date. In that order."
+    "northy_message": "Board aligned Aug 7: dual track, 60-90 days, partner + acquisition. The agent fleet is executing — Dewey dispatched Ford, Ford dispatched Zig. Cash is $55K (corrected). Capstone M&A channel is live. MSI package confirmed sent Aug 6. The cockpit has been 24 hours stale — reflected pre-board-meeting reality. Fixed. Steve: you walked into that board room having done the work. Now the fleet executes while you work the Capstone overview and Charlie works MGT. Monday is critical: Region 16 $40K, Jan's decision, Scott's reply, Capstone package."
   },
   "act_now": [
     {
-      "id": "N-145",
-      "title": "Conroe Demo Happened Today — Johnny's Scope Decision: Close It",
-      "category": "Product — Engineering Priority",
-      "detail": "Conroe demo was today. ~70 librarians. The founder talk was ready. Johnny's Option A recommendation (finish current V2KAN-267 scope, fast-follow FB-104-106) was waiting on Steve. Either you approved it during the call and it just didn't get logged, or Johnny made the call himself. Either way — it's done.",
-      "action": "Confirm in #ai-ceo-team: 'Option A. Close it. How'd the demo go?'",
+      "id": "N-161",
+      "title": "🆕 Board Aligned Aug 7 — Dual Track: Partner + Acquisition, 60-90 Days",
+      "category": "Strategic — Existential",
+      "detail": "Board meeting Aug 7 produced alignment: find a strategic partner or acquirer in 60-90 days. MSI (Scott Crawford) is top partnership target. Capstone Partners (Justin O'Malley) is the live M&A channel. Harris Computers is a live inbound. MGT (Nick, Charlie calling Monday) is in play. Standing priorities updated correctly.",
+      "action": "1) Capstone overview to Justin — deadline Sunday/Monday (Northy owns on kanban). 2) Charlie calls Nick (MGT) Monday. 3) Monitor Scott's reply to MSI package. 4) Harris Computers response needed.",
       "status": "needs-steve"
     },
     {
-      "id": "N-143",
-      "title": "MSI Scott Package Unsent — Charlie Call Made This MORE Urgent",
-      "category": "Strategic — Distribution",
-      "detail": "Fourth scan with no evidence of sending. Charlie call today reframed to 'partner AND cash, not partner OR cash.' The transaction narrative (BSH-ACT-20260806-003) needs MSI, MGT, and Follett overlays. MSI is the #1 path. Package exists. Send it.",
-      "action": "One Slack to Scott: 'Hey Scott — checking in. Did we connect Monday? I've got the Collection Intelligence writeup ready to send — want me to fire it over?'",
+      "id": "N-157",
+      "title": "Cash Is $55K — Cockpit Was Wrong ($97.2K). Region 16 $40K Is Zig's Monday EOD (Payroll-Critical)",
+      "category": "Financial — Existential",
+      "detail": "Reconciled: $55K cash in bank (after AWS). $56-59K/mo burn. Runway to mid-September, through October only if $181K committed deals close. Standing priorities now correct. Cockpit was showing stale $97.2K. Region 16 $40K is now assigned to Zig with Monday EOD deadline — Tara Lineman at ESC16 on the email thread. Elgin $13K invoice assigned to Zig (Tuesday).",
+      "action": "1) Cockpit JSON now shows $55K. 2) Monitor Zig on Region 16 — Monday EOD status regardless of outcome. 3) Elgin invoice by Tuesday. 4) Conroe renewal strategy (53.9% ARR) due Friday for next board meeting Aug 14.",
       "status": "needs-steve"
     },
     {
-      "id": "N-153",
-      "title": "Checkout Enforcement Gap Is Live — Restricted Books Bypass Checkout",
-      "category": "Product — Board-Level Risk",
-      "detail": "Priya's Thursday synthesis (highest volume week on record — 14 new entries, $422K+ revenue context). FB-110 documented: 'checkout never consults access status.' 5 bugs across the full Book Access lifecycle (Set → Save → Propagate → Enforce → Persist). If this surfaces in a board meeting or partner diligence call, it's a trust problem.",
-      "action": "Johnny: confirm FB-110 is created and prioritized. If not in V2KAN-389 scope, it needs its own epic. This is P0 adjacent.",
+      "id": "N-158",
+      "title": "Jan — Commission-Only Offer Made. Decision Pending. Confidentiality Risk Still Active.",
+      "category": "People — Legal & Trust Risk",
+      "detail": "Jan was given a commission-only survival option — must close deals to get paid. She and Teela are discussing. Specific offer, not ambiguous employment. But: she hasn't accepted. The confidentiality risk from cross-told terminations (Sarah) still exists. If Jan declines, that opens a gap — no pipeline owner ahead of the next board meeting.",
+      "action": "Get Jan's decision by Monday. If yes: commission-only structure formalized. If no: need a plan for pipeline coverage before Friday's board meeting.",
       "status": "needs-steve"
     },
     {
-      "id": "N-152",
-      "title": "Board Meeting Date: Charlie Call Happened. Still No Date.",
-      "category": "Governance — Existential",
-      "detail": "Dewey's Aug 6 5pm brief confirms still unscheduled. Charlie strategy call happened today — board meeting presumably came up. If a date was set, no system reflects it. Tim still doesn't know. Cuts still uncommunicated.",
-      "action": "Pick a date. Even if it's next week. Send the invite. Tell Tim. Update Dewey and all agents.",
-      "status": "needs-steve"
-    },
-    {
-      "id": "N-137",
-      "title": "Cuts Specified But Uncommunicated — Board Meeting Still Unresolved",
-      "category": "Existential — Team",
-      "detail": "5-person team: Steve, Patrick, Raju, Teela, Vietnam. Cuts: Jan ($10K), Michelle ($5K), Charlie ($3K), S. America ($7.2K). No evidence anyone has been told. People are finding out through board decks and agent scans.",
-      "action": "Individual conversations. Charlie separate from the board meeting — he's still chairman. Jan and Michelle after governance is aligned.",
+      "id": "N-164",
+      "title": "🆕 Next Board Meeting: Friday Aug 14 — Six Items Due, Three Are Payroll-Critical",
+      "category": "Governance — Board Prep",
+      "detail": "Dewey dispatched Ford with 6 board-week items. Ford dispatched Zig with 3 payroll-critical: Region 16 $40K (Mon EOD), Elgin $13K invoice (Tue), Conroe renewal strategy (Fri). Plus: Google token root cause, AWS Fargate retirement (Thu), JIRA V2KAN-397 reassignment (Wed). Conroe = 53.9% ARR — renewal strategy doubles as acquisition diligence.",
+      "action": "Monitor fleet execution this week. Region 16 status by Monday EOD is non-negotiable. Conroe strategy needs to frame for both renewal AND acquisition context. Verify Ford ACK'd the dispatch (bot-to-bot filtering risk noted).",
       "status": "needs-steve"
     }
   ],
   "think_about": [
     {
-      "id": "N-154",
-      "title": "Johnny Shipped 50 Tickets in 30 Days — That's a Story for Every Partner Conversation",
-      "category": "Connection — Strategic Asset",
-      "urgency": "This Week"
+      "id": "N-143",
+      "title": "✅ CORRECTED: MSI Package WAS Sent Aug 6, 2:08 PM PDT. Awaiting Scott's Reply. No Follow-up Needed Yet.",
+      "category": "Strategic — Distribution",
+      "urgency": "Watch"
     },
     {
       "id": "N-155",
-      "title": "Charlie Call Frame Shift: 'Partner AND Cash' — Transaction Narrative Now Critical Path",
-      "category": "Strategy — Frame Alignment",
+      "title": "Charlie Frame 'Partner AND Cash' Now Operational — Ford/Zig Executing Dual Track",
+      "category": "Strategy — Frame",
       "urgency": "This Week"
     },
     {
-      "id": "N-146",
-      "title": "HIG Capital → MSI Pitch Must Lead With Revenue, Not Mission",
-      "category": "Strategic — Distribution",
-      "urgency": "Before Sending Scott Package"
+      "id": "N-153",
+      "title": "Checkout Enforcement Gap (FB-110) — Still Board-Level Product Risk for Any Acquirer Diligence",
+      "category": "Product — Risk",
+      "urgency": "This Week"
     },
     {
-      "id": "N-150",
-      "title": "PW Article: Bookmarked Absent from SB 13 Vendor Landscape — Insertion Opportunity",
-      "category": "Opportunity / Competitive Intel",
+      "id": "N-165",
+      "title": "🆕 Conroe Renewal Strategy Doubles as Acquisition Diligence — 53.9% ARR Concentration",
+      "category": "Connection — Strategic Overlap",
+      "urgency": "This Week"
+    },
+    {
+      "id": "N-166",
+      "title": "🆕 Harris Computers Is a Live Inbound — Needs Research and a Response",
+      "category": "Opportunity — M&A",
       "urgency": "This Week"
     },
     {
@@ -76,66 +74,145 @@
       "title": "ARR Definition: $384K vs $700K — Settle Before Partner Conversations",
       "category": "Credibility Risk",
       "urgency": "This Week"
-    },
-    {
-      "id": "N-156",
-      "title": "Sentinel Failing (Day 2) + Ford Audit Blind (Week 4) — Fleet Health Degrading",
-      "category": "Systems — Fleet Health",
-      "urgency": "Watch"
-    },
-    {
-      "id": "N-151",
-      "title": "Partner Playbook: 96 Validations, Zero Activated Candidates",
-      "category": "Drift / Pattern",
-      "urgency": "Watch"
     }
   ],
   "health": {
-    "frame": { "status": "green", "note": "Charlie call delivered the right frame: 'partner AND cash, not partner OR cash.' Transaction narrative is the right next deliverable. Frame is appropriate for the moment." },
-    "floor": { "status": "yellow", "note": "Board meeting unresolved = governance floor violation. Four decisions waiting on Steve (Johnny, Scott, Tim, board date) — each one under five minutes." },
-    "focus": { "status": "yellow", "note": "Strategic conversations (Charlie, continuity coaching) were necessary and productive. But tactical execution decisions are stacking up. Systems-mode watch: Alive Project Task Protocol updated at midnight after a day of heavy strategy." },
-    "why": { "status": "green", "note": "The Conroe demo delivered Faith's moment to 70 librarians today. The mission is alive. The transaction narrative needs to carry that energy into partner conversations." }
+    "frame": {
+      "status": "green",
+      "note": "Board aligned Aug 7 on dual track: partner + acquisition, 60-90 days. MSI, Capstone, Harris, MGT all in play. Frame is clear and shared."
+    },
+    "floor": {
+      "status": "yellow",
+      "note": "Cash number corrected to $55K in standing priorities. Cockpit JSON now matches. Region 16 $40K is the floor violation — must land Monday. Operating without it is below the survival floor."
+    },
+    "focus": {
+      "status": "green",
+      "note": "Dual track operationalized. Agent fleet executing. Dewey → Ford → Zig chain running. Steve working Capstone overview. No systems-mode trap detected — the kanban asks were architecture rebuild for efficiency, not avoidance. The litmus test passes: three calls (Capstone, Region 16, Jan) are in motion alongside the agent work."
+    },
+    "why": {
+      "status": "green",
+      "note": "Conroe demo happened. 70 librarians. Faith's moment holds. Whatever the financial outcome, the work matters. The WHY needs to be in every partner conversation this week."
+    }
   },
   "cliff": [
-    { "metric": "Cash", "value": "$97.2K", "target": "> $0", "gap": "Zero cash early December 2026", "status": "urgent" },
-    { "metric": "Days to Sept 1", "value": "25", "target": "$1M ARR", "gap": "~$616K", "status": "watch" },
-    { "metric": "Board Meeting Date", "value": "Unresolved", "target": "Scheduled + communicated", "gap": "Charlie call happened today. Still no date. Tim still not told.", "status": "urgent" },
-    { "metric": "MSI Scott Package", "value": "Draft — unsent", "target": "Sent", "gap": "Fourth scan. Charlie call makes this MORE urgent.", "status": "urgent" },
-    { "metric": "Checkout Enforcement", "value": "Live bug", "target": "Ticketed + prioritized", "gap": "FB-110: Restricted books bypass checkout. Board-level risk.", "status": "urgent" },
-    { "metric": "Execution Stacking", "value": "4 decisions open 3+ days", "target": "0", "gap": "Johnny, Scott, Tim, board date — each <5 min", "status": "watch" }
+    {
+      "metric": "Cash",
+      "value": "$55K",
+      "target": "> $0",
+      "gap": "Mid-September runway. Through October only if $181K committed deals close. $40K Region 16 stuck (Zig, Mon EOD). $13K Elgin not invoiced (Zig, Tue).",
+      "status": "urgent"
+    },
+    {
+      "metric": "Days to Sept 1",
+      "value": "23",
+      "target": "$1M ARR",
+      "gap": "~$616K. Sept 1 target is off the table — 60-90 day partner/acquirer search is the active timeline.",
+      "status": "watch"
+    },
+    {
+      "metric": "Next Board Meeting",
+      "value": "Friday Aug 14",
+      "target": "6 items dispatched, 3 payroll-critical",
+      "gap": "Region 16 $40K status needed Mon EOD. Conroe renewal strategy needed Fri. Must show progress on dual track.",
+      "status": "urgent"
+    },
+    {
+      "metric": "Region 16 $40K",
+      "value": "Zig assigned, Mon EOD deadline",
+      "target": "Payment received or commitment date",
+      "gap": "Tara Lineman at ESC16 on email thread. Michelle chasing. Payroll-critical.",
+      "status": "urgent"
+    },
+    {
+      "metric": "Capstone Overview",
+      "value": "Due Sunday/Monday",
+      "target": "Package sent to Justin O'Malley",
+      "gap": "Codex prompt built. Northy owns on kanban. Gate to M&A conversations.",
+      "status": "urgent"
+    }
   ],
   "commitments": {
     "steve_owes": [
-      { "what": "Confirm Johnny's Option A + ask how Conroe demo went", "to": "Johnny", "date": "Tomorrow morning", "status": "urgent" },
-      { "what": "Send Scott Crawford the Collection Intelligence package", "to": "Scott Crawford", "date": "Tomorrow", "status": "urgent" },
-      { "what": "Resolve board meeting date — pick a day, send invite, tell Tim", "to": "Tim Eades + Charlie Clines + team", "date": "Tomorrow", "status": "urgent" },
-      { "what": "Communicate cuts to Jan, Michelle, Charlie (Charlie separately)", "to": "Team", "date": "This week", "status": "urgent" },
-      { "what": "Draft BSH-ACT-20260806-003 — five-part transaction narrative + MSI/MGT/Follett overlays", "to": "Self (BSH-2026)", "date": "This week", "status": "open" },
-      { "what": "Rank continuity priorities (mission, product, expertise, relationships, team, role, upside)", "to": "Self (private)", "date": "This week", "status": "open" }
+      {
+        "what": "Capstone overview package to Justin O'Malley — description, revenue, EBITDA",
+        "to": "Justin O'Malley (Capstone Partners)",
+        "date": "Sunday/Monday Aug 9-10",
+        "status": "urgent"
+      },
+      {
+        "what": "Monitor Zig on Region 16 $40K — escalation path if blocked (Ford → Dewey → Steve)",
+        "to": "Self",
+        "date": "Monday Aug 10 EOD",
+        "status": "urgent"
+      },
+      {
+        "what": "Get Jan's decision on commission-only offer",
+        "to": "Jan Gilboy",
+        "date": "Monday Aug 10",
+        "status": "urgent"
+      },
+      {
+        "what": "Harris Computers response — live inbound, needs engagement",
+        "to": "Harris Computers",
+        "date": "This week",
+        "status": "open"
+      }
     ],
     "team_owes": [
-      { "who": "Johnny", "what": "Confirm FB-110 (checkout enforcement) ticket exists and is prioritized", "date": "This week", "status": "open" },
-      { "who": "Forge", "what": "GitHub Pages exposure follow-ups: cache check, credential rotation", "date": "This week", "status": "open" },
-      { "who": "Woz/Raju", "what": "Diagnose Sentinel model output failure (2nd consecutive day empty)", "date": "This week", "status": "open" },
-      { "who": "Forge/Woz", "what": "Invite Ford bot to #product channel (4th week blind)", "date": "This week", "status": "open" }
+      {
+        "who": "Zig (dispatched by Ford)",
+        "what": "Region 16 $40K — escalate to Tara Lineman at ESC16. Payment received OR commitment date.",
+        "date": "Monday Aug 11 EOD",
+        "status": "urgent"
+      },
+      {
+        "who": "Zig (dispatched by Ford)",
+        "what": "Invoice Elgin ISD $13K — coordinate with Michelle Rogers",
+        "date": "Tuesday Aug 12",
+        "status": "open"
+      },
+      {
+        "who": "Zig + Teela (dispatched by Ford)",
+        "what": "Conroe renewal strategy — budget posture post-SB13, pricing scenarios, risk mitigation",
+        "date": "Friday Aug 14",
+        "status": "open"
+      },
+      {
+        "who": "Johnny (dispatched by Dewey/Ford)",
+        "what": "Reassign JIRA V2KAN-397 campus assignment bug from Steve to named owner",
+        "date": "Wednesday Aug 14",
+        "status": "open"
+      },
+      {
+        "who": "Forge / Raju (routing TBD)",
+        "what": "Google Workspace token root cause investigation — permanent fix, not re-auth cycle",
+        "date": "Friday Aug 14",
+        "status": "open"
+      },
+      {
+        "who": "Forge / Raju (routing TBD)",
+        "what": "AWS Fargate retirement — complete migration or confirm path before Aug 14",
+        "date": "Thursday Aug 13",
+        "status": "open"
+      }
     ]
   },
   "quick_access": [
     { "label": "Founder Cockpit", "url": "https://founder-cockpit-personal.vercel.app/" },
-    { "label": "BSH-2026 Board Dashboard (Draft)", "url": "https://bookmarked-alive-dashboards.vercel.app/board" },
     { "label": "Financial Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-financial-dashboard/" },
-    { "label": "Strategic Home (BSH-2026)", "url": "https://github.com/stevewandler/bookmarked-strategic-home" },
-    { "label": "Sales Metrics (Board)", "url": "https://bookmarked-board-reports.vercel.app/" }
+    { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
+    { "label": "Jan's Methodology (Confluence)", "url": "https://bookmarked-team.atlassian.net/wiki/spaces/SH/pages/155222017" },
+    { "label": "Company Cockpit", "url": "https://bookmarked-company-cockpit.vercel.app/" }
   ],
   "resolved": [
-    { "id": "BSH-2026", "outcome": "Charlie strategy call completed. Partner AND cash frame. MGT label reconciled. Five-part transaction narrative pending.", "when": "2026-08-06" },
-    { "id": "Investor-Metrics", "outcome": "Baseline approved: 6.7M books, 1.24M ISBNs, 241K BI records, 102 districts, 559K students.", "when": "2026-08-06" },
-    { "id": "Nassau-Street", "outcome": "Closed. Dan Huberty forwarded cold outreach. $45K upfront fee model. Steve passed.", "when": "2026-08-06" },
-    { "id": "N-135", "outcome": "5-person team specified. Financial plan complete. Zero cash Dec 2026.", "when": "2026-08-02" },
-    { "id": "N-133", "outcome": "Tim Eades call completed. Distribution pivot surfaced. Warm Follett door.", "when": "2026-08-01" },
-    { "id": "N-141", "outcome": "Merged into N-143. MSI/HIG research completed.", "when": "2026-08-04" },
-    { "id": "N-127", "outcome": "Growth Street Partners — deferred. Six to twelve months.", "when": "2026-07-31" },
-    { "id": "TECHDOME", "outcome": "$10,000 retainer paid to Scale Firm by Michelle. TechDome unblocked.", "when": "2026-08-03" }
+    { "id": "N-137", "outcome": "Layoffs executed Aug 7. Sarah: terminated with knowledge transfer. Jan: commission-only offer pending decision.", "when": "2026-08-07" },
+    { "id": "N-145", "outcome": "Conroe demo completed Aug 6. ~70 librarians. Founder talk delivered.", "when": "2026-08-06" },
+    { "id": "N-143", "outcome": "CORRECTED: MSI package WAS sent Aug 6 at 2:08 PM PDT. Confirmed by Gmail (message 19fd8e794c09350f). Thread forwarded to Tim.", "when": "2026-08-06" },
+    { "id": "BSH-2026-Call", "outcome": "Charlie strategy call Aug 7. Partner AND cash frame. Three options: partnership, acquisition, bankruptcy. Board meeting Aug 7 aligned on dual track: partner + acquisition, 60-90 days.", "when": "2026-08-07" },
+    { "id": "N-152", "outcome": "Board meeting completed Aug 7. Board aligned on dual track 60-90 day partner/acquirer search. MSI top target. Capstone M&A channel live. Harris inbound. MGT in play.", "when": "2026-08-07" },
+    { "id": "N-157-cash-contradiction", "outcome": "Contradiction resolved. Actual cash is $55K (after AWS). Standing priorities updated. Cockpit JSON corrected. $40K Region 16 stuck, $13K Elgin not invoiced.", "when": "2026-08-07" },
+    { "id": "N-159", "outcome": "Capstone Partners M&A channel opened via Chuck Kraus (Scale LLP). Justin O'Malley responded same day. Overview package due Sunday/Monday.", "when": "2026-08-07" },
+    { "id": "N-160", "outcome": "Board meeting outcome surfaced: dual track partner + acquisition, 60-90 days. MSI, Capstone, Harris, MGT all live channels.", "when": "2026-08-07" }
   ],
   "intel": [
     {
@@ -145,6 +222,14 @@
       "pattern": "Traditional PE playbook. Pitch to Bob Gopal must lead with revenue, not mission.",
       "applies_to": "MSI/Scott Crawford distribution path",
       "priority": "Implement Now"
+    },
+    {
+      "id": "FI-030",
+      "source": "Dewey skill cleanup (Aug 8) — fleet-wide metrics",
+      "title": "Agent Fleet Efficiency: 152→85 skills, 41MB→3.9MB, 44% reduction pattern reusable",
+      "pattern": "Ghost directories, off-role categories, and archived skills are the biggest waste vectors. Shared bookmarked/ directory would eliminate 53 duplicate skill copies across 7+ profiles.",
+      "applies_to": "Hermes fleet operations — Woz dispatched for shared directory + SOUL reduction",
+      "priority": "Queue for Review"
     }
   ],
   "district_intel": {
@@ -158,17 +243,17 @@
   },
   "finance": {
     "summary": {
-      "cash": "$97.2K",
-      "september_projection": "Cash positive in August ($1.4K net), negative $31.8K in September",
-      "current_burn_monthly": "~$53K-$73K (post-cuts)",
+      "cash": "$55K",
+      "september_projection": "Mid-September payroll with slim margin. Through October only if $181K committed deals close. $40K Region 16 stuck (Zig, Mon EOD). $13K Elgin not invoiced (Zig, Tue).",
+      "current_burn_monthly": "$56-59K (post-layoffs)",
       "v1_savings_monthly": "$8-9K",
       "deferred_comp_weekly": "$100K",
       "deferral_repayment_october": "$106K"
     },
     "metrics": [
-      { "label": "Monthly Labour (5-person team)", "value": "$32,333", "trend": "down" },
-      { "label": "Monthly Non-Labour", "value": "$15,350", "trend": "down" },
-      { "label": "Zero Cash Date", "value": "Early Dec 2026", "trend": "warning" },
+      { "label": "Team Size (post-layoffs)", "value": "6 — Steve, Patrick, Raju, Teela, Vietnam + Jan (commission-only pending)", "trend": "down" },
+      { "label": "Monthly Burn", "value": "$56-59K", "trend": "down" },
+      { "label": "Actual Cash Runway", "value": "Mid-September 2026", "trend": "warning" },
       { "label": "Run-rate ARR", "value": "$383,795", "trend": "warning" }
     ],
     "dashboards": [
@@ -182,7 +267,7 @@
       "stalled_deals": "Utah SEA ($1.3M FY27, parked)",
       "imta_districts": "Mesquite, Garland"
     },
-    "note": "Zig handles daily HubSpot pull. No live sales data in Slack since July 10.",
+    "note": "Zig handles daily HubSpot pull. Dispatched by Ford for 3 board-week items: Region 16 $40K (Mon), Elgin $13K (Tue), Conroe renewal (Fri).",
     "links": [
       { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
       { "label": "Board Sales Metrics", "url": "https://bookmarked-board-reports.vercel.app/" },
@@ -194,34 +279,32 @@
       "active_districts": "128",
       "total_students": "452K",
       "renewals_open": "$262,618 (94% to close)",
-      "renewals_closed": "$606"
+      "renewals_closed": "$606",
+      "conroe_concentration": "53.9% of ARR — renewal strategy due Friday Aug 14"
     }
   },
   "product": {
     "summary": {
-      "velocity": "50 shipped in last 30 days — Johnny's Aug 6 roadmap sync. Major shift from June's 72-open-zero-motion.",
-      "active_in_review": "33 tickets in Dev In Review — FERPA (6), Book Orders (16), BI Architecture (2), Conroe Onboarding (5), Orders v15",
-      "conroe_demo": "Completed today. ~70 librarians. Founder talk delivered.",
-      "checkout_enforcement": "FB-110: Restricted books bypass checkout. P0 adjacent. Needs ticket confirmation.",
-      "strategic_home": "BSH-2026 sprint active through Sept 15"
+      "velocity": "50 shipped in last 30 days",
+      "active_in_review": "33 tickets in Dev In Review",
+      "conroe_demo": "Completed Aug 6. ~70 librarians.",
+      "checkout_enforcement": "FB-110: Restricted books bypass checkout. Board-level risk for any acquirer diligence.",
+      "jira_reassign": "V2KAN-397 campus assignment bug — assigned to Steve, Johnny reassigning to named owner (Wed Aug 14)"
     }
   },
   "strategy_decisions": [
-    { "id": "D-001", "title": "Partner order: MSI → MGT → Follett", "status": "active" },
-    { "id": "D-002", "title": "No headcount through Sept 15", "status": "active" },
+    { "id": "D-001", "title": "Dual track: partnership + acquisition, 60-90 days. MSI (partner), Capstone (M&A).", "status": "active" },
+    { "id": "D-002", "title": "Team: 6 post-layoffs (Steve, Patrick, Raju, Teela, Vietnam contractor + Jan commission-only pending)", "status": "updated" },
     { "id": "D-003", "title": "No bridge capital in base case", "status": "active" },
-    { "id": "D-004", "title": "5-person team: Steve, Patrick, Raju, Teela, Vietnam", "status": "active" },
-    { "id": "D-005", "title": "Two engines: ESC16/renewals for cash + strategic partners for proof", "status": "active" },
-    { "id": "D-006", "title": "Partner AND cash, not partner OR cash (Charlie call Aug 6)", "status": "new" }
+    { "id": "D-007", "title": "MSI top partnership target. Capstone M&A channel. Harris inbound. MGT in play (Charlie calls Mon).", "status": "active" }
   ],
   "strategy_open": [
-    { "id": "O-001", "title": "MSI/Scott Crawford outreach — package exists, unsent", "status": "urgent" },
-    { "id": "O-002", "title": "Cuts communication — have Jan, Michelle, Charlie been told?", "status": "urgent" },
-    { "id": "O-003", "title": "ARR definition — $384K run-rate vs $700K pipeline-inclusive", "status": "open" },
+    { "id": "O-001", "title": "MSI/Scott Crawford — package sent Aug 6. Awaiting reply. No follow-up needed yet.", "status": "active" },
+    { "id": "O-002", "title": "Jan commission-only decision — due Monday Aug 10", "status": "urgent" },
+    { "id": "O-009", "title": "Capstone overview to Justin O'Malley — due Sunday/Monday", "status": "urgent" },
+    { "id": "O-003", "title": "ARR definition — $384K run-rate vs $700K pipeline-inclusive. Settle before partner conversations.", "status": "open" },
     { "id": "O-004", "title": "Follett Titlewave introduction via Tim Eades", "status": "open" },
-    { "id": "O-005", "title": "Board meeting date — Charlie call happened, still unscheduled", "status": "urgent" },
-    { "id": "O-006", "title": "BSH-ACT-20260806-003 — five-part transaction narrative + MSI/MGT/Follett overlays", "status": "open" },
-    { "id": "O-007", "title": "Continuity priorities ranking — mission, product, expertise, relationships, team, role, upside", "status": "open" }
+    { "id": "O-010", "title": "Harris Computers response — live inbound, needs engagement this week", "status": "open" }
   ],
   "tokens_total": {
     "month": "1,440",

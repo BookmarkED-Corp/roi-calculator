@@ -1,52 +1,42 @@
 {
   "meta": {
-    "last_updated": "2026-08-10T02:00:00Z",
-    "scan_type": "Nightly Deep Scan (Sunday)",
-    "northy_message": "Sunday night wrap. Capstone SENT — all three options + revisions to Chuck Kraus. Harris email SENT to Jennifer Murer — call proposed this week. MSI page recovered from G-Brain regression. Elgin invoiced ($18,402 confirmed). Mark Murray still needs call. ESC 16 agreement review is the #1 thing that could blow up Monday. Five channels live. The week starts now."
+    "last_updated": "2026-08-10T17:30:00Z",
+    "scan_type": "Business Hours Scan (Monday)",
+    "northy_message": "Monday morning scan. Scott Crawford REPLIED — two MSI emails. This is the inflection point. ESC 16 interlocal moving — Derek Criswell and Lori Aden both replied, Steve already responded. Mark Murray replied too. Jan meeting happened. The week that determines whether the dual-track strategy has legs is officially underway."
   },
   "act_now": [
     {
+      "id": "N-174",
+      "title": "Scott Crawford (MSI) Replied Monday Morning — TWO Emails — Strategic Inflection Point 🔴 NEW",
+      "category": "Strategic — Distribution / M&A",
+      "detail": "Scott Crawford replied to the MSI package sent Aug 6. Two emails: RE to original thread and separate 'Bookmarked & MSI'. This is the next proof point — what he corrects, which ideas he explores, what MSI can move fastest on, whether a next conversation is warranted. The dual-track strategy's top channel just lit up.",
+      "action": "Steve reviews Scott's emails NOW. Categorize: positive signal / polite deferral / redirection. Response cadence matters. Do not let this sit.",
+      "status": "needs-steve"
+    },
+    {
       "id": "N-167",
-      "title": "ESC 16 Sent Agreement Changes Friday — $40K Deal Needs Review Before Monday",
+      "title": "ESC 16 Interlocal Moving — Derek Criswell Replied, Steve Already Responded — Track Next Steps",
       "category": "Financial — Payroll-Critical",
-      "detail": "Tara Lineman at ESC16 sent agreement changes on Friday. $40K deal is payroll-critical. Steve asked for review at end of Jan call. Any term changes could delay or kill the deal.",
-      "action": "Review ESC 16 agreement changes tonight. Identify deal-killing terms vs minor changes. Prepare counter-proposal if needed before Monday engagement.",
-      "status": "needs-steve"
-    },
-    {
-      "id": "N-157",
-      "title": "Cash $55K ($73K with Elgin Invoiced). Region 16 $40K = Zig's Monday EOD.",
-      "category": "Financial — Existential",
-      "detail": "Elgin ISD $18,402 CONFIRMED INVOICED by Michelle. Cash: $55K bank + $18,402 Elgin receivable + $40K Region 16 (if unlocked) = $113K potential. Burn $56-59K/mo. Scale LLP TechDome invoice arrived tonight. BILL Divvy Card near credit limit.",
-      "action": "1) Review ESC 16 agreement changes TONIGHT (N-167). 2) Zig confirms Region 16 status by Monday EOD. 3) Track Elgin payment arrival.",
-      "status": "needs-steve"
-    },
-    {
-      "id": "N-170",
-      "title": "Harris Computers Email Sent Tonight. Response Tracking Begins.",
-      "category": "Strategic — M&A — Active Deal",
-      "detail": "Steve sent Jennifer Murer email tonight proposing call this week. Framed as 'finding the right home' not distressed sale. Hinted at strategic conversations. Jennifer's terms: full acquisition only, ~1x or under. Connected-deal architecture: MSI partnership makes Bookmarked MORE valuable to Harris.",
-      "action": "Check for Jennifer's reply daily. No reply by Wednesday EOD → gentle follow-up Thursday AM. Prep call materials: numbers cold, MSI narrative, structure flexibility, walk-away point.",
-      "status": "needs-steve"
+      "detail": "Derek Criswell (ESC 16) replied on amendment. Lori Aden (Region 10) also emailed. Steve already replied. The $40K Region 16 deal is now active. Verify Steve's reply was adequate — does it accept or counter? If terms acceptable, trigger Zig to invoice.",
+      "action": "Verify Steve's reply content. If acceptable terms → Zig converts to invoice. Track Derek/Lori response. Don't let this slip.",
+      "status": "in-motion"
     },
     {
       "id": "N-169",
-      "title": "Mark Murray Follow-Up Overdue Since Aug 7 — Fifth Acquisition Channel",
+      "title": "Mark Murray Replied Today — Board Update Acknowledged — Call Still Needed for Fifth Channel",
       "category": "Strategic — Board / Acquisition Channel",
-      "detail": "Board member with undisclosed Texas Ed contact. Emailed Aug 7 asking for call — missed board meeting, wants summary and has 'another angle.' Steve hasn't called. Potential fifth acquisition/partner channel alongside MSI, Capstone, Harris, MGT.",
-      "action": "Call Mark Murray Monday morning. Board meeting summary. Ask about his Texas Ed contact. Don't let this sit cold.",
-      "status": "needs-steve"
-    },
-    {
-      "id": "N-164",
-      "title": "Next Board Meeting: Friday Aug 14 — Six Items Dispatched, Three Payroll-Critical",
-      "category": "Governance — Board Prep",
-      "detail": "Dewey dispatched Ford with 6 board-week items. Ford dispatched Zig with 3 payroll-critical: Region 16 $40K (Mon EOD, now with ESC 16 urgency), Elgin invoice (Tue, confirmed tonight), Conroe renewal strategy (Fri). Conroe = 53.9% ARR — renewal strategy doubles as acquisition diligence.",
-      "action": "Monitor fleet execution. Region 16 now has added urgency of agreement changes review (N-167). Conroe strategy needs to frame for both renewal AND acquisition context.",
-      "status": "needs-steve"
+      "detail": "Mark Murray replied to board update email today. He has undisclosed Texas Ed contact — potential fifth acquisition channel. Email reply is good, but call is still needed to brief him on board outcome and explore his contact.",
+      "action": "Call Mark today or Tuesday. Brief on dual track (5 channels now live). Explore Texas Ed contact. Reply to his email even if call scheduled.",
+      "status": "updated"
     }
   ],
   "think_about": [
+    {
+      "id": "N-158",
+      "title": "Jan Commission-Only Decision — Meeting Happened at 9:18 AM Today",
+      "category": "Team / Capacity",
+      "urgency": "This Week"
+    },
     {
       "id": "N-171",
       "title": "Elgin ISD Data Loop Failure — Systemic Agent Verification Gap",
@@ -55,63 +45,45 @@
     },
     {
       "id": "N-173",
-      "title": "G-Brain Shared Writer Regression — MSI Pages Recovered, Guardrails Needed",
+      "title": "G-Brain Shared Writer Regression — MSI Pages Recovered, Nero Forensic Report Due",
       "category": "System — Data Integrity",
       "urgency": "This Week"
     },
     {
-      "id": "N-143",
-      "title": "MSI Package Sent Aug 6. Awaiting Scott's Reply. No Follow-up Needed Yet.",
-      "category": "Strategic — Distribution",
-      "urgency": "Watch"
-    },
-    {
       "id": "N-153",
-      "title": "Checkout Enforcement Gap (FB-110) — Board-Level Product Risk for Any Acquirer Diligence",
+      "title": "Checkout Enforcement Gap (FB-110) — Acquirer Diligence Risk",
       "category": "Product — Risk",
       "urgency": "This Week"
     },
     {
-      "id": "N-165",
-      "title": "Conroe Renewal Strategy Doubles as Acquisition Diligence — 53.9% ARR Concentration",
-      "category": "Connection — Strategic Overlap",
-      "urgency": "This Week"
+      "id": "FD-WATCHDOG",
+      "title": "Nero Gateway at 237/256 File Descriptors (93%) — Monitor",
+      "category": "System Health",
+      "urgency": "Watch"
     },
     {
       "id": "N-130",
       "title": "ARR Definition: $384K vs $700K — Settle Before Partner Conversations",
       "category": "Credibility Risk",
       "urgency": "This Week"
-    },
-    {
-      "id": "BI-SPEC-SUNDAY",
-      "title": "Book Intelligence Spec Doc Due Tonight — Raju Waiting for Canonical Source",
-      "category": "Commitment Risk — Product",
-      "urgency": "Today"
-    },
-    {
-      "id": "SAN-SABA-BLOCKER",
-      "title": "San Saba Blocker — Can't Sync Student Data, School Starts Monday",
-      "category": "Customer Blocker",
-      "urgency": "This Week"
     }
   ],
   "health": {
     "frame": {
       "status": "green",
-      "note": "Five channels live, board aligned Aug 7, dual track active. Capstone package SENT tonight. Harris email SENT tonight. MSI sent Aug 6. MGT (Charlie calls Mon). Mark Murray contact pending."
+      "note": "Five channels live. MSI replied today — the top channel just lit up. ESC 16 moving. Mark Murray replied. Capstone sent. Harris tracking. Board aligned. Monday is delivering."
     },
     "floor": {
       "status": "yellow",
-      "note": "Cash $55K bank + $18K Elgin receivable + $40K Region 16 pending. Three payroll-critical items for Friday's board. ESC 16 agreement changes could delay or kill Region 16. Scale LLP TechDome invoice + BILL Divvy near limit."
+      "note": "Cash $55K bank + $18K Elgin receivable + $40K Region 16 now active. Scale LLP TechDome invoice + BILL near limit. Region 16 must close this week."
     },
     "focus": {
       "status": "green",
-      "note": "Capstone sent. Harris sent. MSI page correct. Mark Murray still needs call. Systems-mode trap: NOT active — calls being made, packages sent, conversations happening alongside infra work."
+      "note": "Monday morning calls done (Jan, Raju, standups). MSI reply is the critical item. ESC 16 moving. Systems-mode trap: NOT active."
     },
     "why": {
       "status": "green",
-      "note": "Mission holds. Conroe demo showed product to 70 librarians. Jan's professionalism under pressure reflects culture. San Saba blocker needs attention — school starts Monday."
+      "note": "Mark O'Donnell (EOS) emailed: 'The goal outlived its purpose.' The $1M goal did its job — forced the strategic pivot. New goal: find the right strategic home. Same mission, evolved frame."
     }
   },
   "cliff": [
@@ -119,76 +91,69 @@
       "metric": "Cash",
       "value": "$55K bank (+ $18K Elgin invoiced, + $40K Region 16 pending = $113K potential)",
       "target": "Through October payroll",
-      "gap": "$181K committed deals needed. Region 16 $40K stuck on ESC 16 agreement changes (N-167). Elgin $18,402 invoiced but not yet received.",
+      "gap": "Region 16 $40K now active — Derek Criswell/ESC 16 replied today, Steve responded. Elgin $18,402 invoiced but not yet received. Scale LLP invoice + BILL near limit.",
       "status": "urgent"
     },
     {
-      "metric": "Days to Sept 1",
-      "value": "22",
-      "target": "$1M ARR",
-      "gap": "~$616K. Sept 1 target off the table — 60-90 day partner/acquirer search is active timeline.",
-      "status": "watch"
-    },
-    {
-      "metric": "Next Board Meeting",
-      "value": "Friday Aug 14",
-      "target": "6 items dispatched, 3 payroll-critical",
-      "gap": "Region 16 $40K status needed Mon EOD. Conroe renewal strategy needed Fri. Must show progress on dual track.",
+      "metric": "MSI / Scott Crawford",
+      "value": "REPLIED — two emails today",
+      "target": "Scott's response: corrections, priorities, next conversation",
+      "gap": "Package sent Aug 6. Scott replied Monday. Steve must review immediately. Response tells us whether MSI is real or polite.",
       "status": "urgent"
     },
     {
       "metric": "Region 16 $40K",
-      "value": "ESC 16 sent agreement changes Friday — needs review tonight",
-      "target": "Payment received or commitment date",
-      "gap": "Tara Lineman at ESC16. Agreement changes could delay or kill deal. Payroll-critical.",
+      "value": "ESC 16 / Region 10 interlocal moving — Derek + Lori replied, Steve responded",
+      "target": "Agreement finalized → invoice → payment",
+      "gap": "Steve's reply must be verified as adequate. If terms are acceptable, Zig triggers invoice immediately.",
       "status": "urgent"
     },
     {
-      "metric": "Capstone Overview",
-      "value": "SENT — All three options + revisions to Chuck Kraus",
-      "target": "Justin O'Malley reviews, responds",
-      "gap": "Package sent. Now waiting on Capstone's read and initial reaction.",
+      "metric": "Days to Sept 1",
+      "value": "21",
+      "target": "$1M ARR (original)",
+      "gap": "Target evolved. Dual-track partner/acquisition search is active timeline. 60-90 day window from Aug 7.",
       "status": "watch"
     },
     {
-      "metric": "Mark Murray Follow-up",
-      "value": "Overdue since Aug 7",
-      "target": "Call completed, Texas Ed contact explored",
-      "gap": "Board member with undisclosed Texas Ed contact. Potential acquisition channel sitting cold since Thursday.",
-      "status": "urgent"
+      "metric": "Capstone Overview",
+      "value": "SENT — all three options + revisions to Chuck Kraus",
+      "target": "Justin O'Malley reviews, responds",
+      "gap": "Package sent Sunday night. Watching for response.",
+      "status": "watch"
     },
     {
       "metric": "Harris Computers",
-      "value": "Email sent tonight — call proposed this week",
+      "value": "Email sent Sunday night — call proposed this week",
       "target": "Jennifer's reply, call scheduled",
-      "gap": "Second chance after Jul 30 pass. Monitor daily.",
+      "gap": "Track daily. No reply by Wed → follow-up Thu.",
       "status": "watch"
     }
   ],
   "commitments": {
     "steve_owes": [
       {
-        "what": "Review ESC 16 agreement changes email — identify deal-killing terms before Monday engagement",
-        "to": "Self / Zig",
-        "date": "Tonight (Sunday Aug 10)",
-        "status": "urgent"
-      },
-      {
-        "what": "Call Mark Murray — board meeting summary + explore his Texas Ed contact",
-        "to": "Mark Murray",
-        "date": "Monday Aug 11 morning",
-        "status": "urgent"
-      },
-      {
-        "what": "Monitor Zig on Region 16 $40K — escalation path if blocked (Ford → Dewey → Steve)",
+        "what": "Review Scott Crawford's two MSI emails — categorize signal, plan response",
         "to": "Self",
-        "date": "Monday Aug 11 EOD",
+        "date": "Today (Monday Aug 11)",
         "status": "urgent"
       },
       {
-        "what": "Get Jan's decision on commission-only offer",
+        "what": "Verify ESC 16 reply was adequate — trigger Zig to invoice if terms acceptable",
+        "to": "Self / Zig",
+        "date": "Today (Monday Aug 11)",
+        "status": "urgent"
+      },
+      {
+        "what": "Call Mark Murray — board meeting summary + explore Texas Ed contact. Reply to his email.",
+        "to": "Mark Murray",
+        "date": "Today or Tuesday",
+        "status": "urgent"
+      },
+      {
+        "what": "Get Jan's commission-only decision outcome from this morning's meeting",
         "to": "Jan Gilboy",
-        "date": "Monday Aug 11",
+        "date": "Today (Monday Aug 11)",
         "status": "urgent"
       },
       {
@@ -196,49 +161,19 @@
         "to": "Self",
         "date": "This week",
         "status": "open"
-      },
-      {
-        "what": "Monitor MSI/Scott Crawford reply to package sent Aug 6",
-        "to": "Self",
-        "date": "Ongoing",
-        "status": "open"
       }
     ],
     "team_owes": [
       {
-        "who": "Zig (dispatched by Ford)",
-        "what": "Region 16 $40K — escalate to Tara Lineman at ESC16. Payment received OR commitment date.",
+        "who": "Zig",
+        "what": "Region 16 $40K — now active. Convert to invoice once Steve confirms ESC 16 reply is adequate.",
         "date": "Monday Aug 11 EOD",
         "status": "urgent"
       },
       {
-        "who": "Zig (dispatched by Ford)",
-        "what": "Invoice Elgin ISD — CONFIRMED DONE by Michelle. Track payment arrival.",
-        "date": "Done — tracking payment",
-        "status": "open"
-      },
-      {
-        "who": "Zig + Teela (dispatched by Ford)",
+        "who": "Zig + Teela",
         "what": "Conroe renewal strategy — budget posture post-SB13, pricing scenarios, risk mitigation",
         "date": "Friday Aug 14",
-        "status": "open"
-      },
-      {
-        "who": "Johnny (dispatched by Dewey/Ford)",
-        "what": "Reassign JIRA V2KAN-397 campus assignment bug from Steve to named owner",
-        "date": "Wednesday Aug 13",
-        "status": "open"
-      },
-      {
-        "who": "Forge / Raju",
-        "what": "Google Workspace token root cause investigation — permanent fix, not re-auth cycle",
-        "date": "Friday Aug 14",
-        "status": "open"
-      },
-      {
-        "who": "Forge / Raju",
-        "what": "AWS Fargate retirement — complete migration or confirm path before Aug 14",
-        "date": "Thursday Aug 13",
         "status": "open"
       },
       {
@@ -264,18 +199,30 @@
     { "label": "Company Cockpit", "url": "https://bookmarked-company-cockpit.vercel.app/" }
   ],
   "resolved": [
-    { "id": "N-137", "outcome": "Layoffs executed Aug 7. Sarah: terminated with knowledge transfer. Jan: commission-only offer pending decision.", "when": "2026-08-07" },
-    { "id": "N-145", "outcome": "Conroe demo completed Aug 6. ~70 librarians. Founder talk delivered.", "when": "2026-08-06" },
-    { "id": "N-143", "outcome": "MSI package WAS sent Aug 6 at 2:08 PM PDT. Confirmed by Gmail. Awaiting Scott's reply.", "when": "2026-08-06" },
-    { "id": "BSH-2026-Call", "outcome": "Charlie strategy call Aug 7. Partner AND cash frame. Board aligned Aug 7: dual track partner + acquisition.", "when": "2026-08-07" },
-    { "id": "N-152", "outcome": "Board meeting completed Aug 7. Board aligned on dual track 60-90 day partner/acquirer search.", "when": "2026-08-07" },
-    { "id": "N-157-cash-contradiction", "outcome": "Contradiction resolved. Actual cash is $55K (after AWS). Elgin $18,402 now confirmed invoiced.", "when": "2026-08-07" },
-    { "id": "N-159", "outcome": "Capstone Partners M&A channel opened via Chuck Kraus. Justin O'Malley responded same day.", "when": "2026-08-07" },
-    { "id": "N-160", "outcome": "Board meeting outcome surfaced: dual track partner + acquisition, 60-90 days.", "when": "2026-08-07" },
-    { "id": "N-168", "outcome": "Capstone package SENT tonight. All three options (A/B/C) + revised versions emailed to Chuck Kraus. Drive assets complete.", "when": "2026-08-09" },
-    { "id": "N-166", "outcome": "Harris Computers research complete. Email sent to Jennifer Murer tonight proposing call this week. Active tracking begins.", "when": "2026-08-09" }
+    { "id": "N-137", "outcome": "Layoffs executed Aug 7. Sarah: terminated. Jan: commission-only pending — meeting today.", "when": "2026-08-07" },
+    { "id": "N-145", "outcome": "Conroe demo completed Aug 6. ~70 librarians.", "when": "2026-08-06" },
+    { "id": "N-143", "outcome": "MSI package sent Aug 6. Scott Crawford REPLIED today (Aug 11) — two emails. See N-174.", "when": "2026-08-06" },
+    { "id": "N-152", "outcome": "Board meeting completed Aug 7. Dual track partner + acquisition confirmed.", "when": "2026-08-07" },
+    { "id": "N-168", "outcome": "Capstone package SENT. All three options + revisions to Chuck Kraus.", "when": "2026-08-09" },
+    { "id": "N-166", "outcome": "Harris Computers research complete. Email sent to Jennifer Murer. Active tracking.", "when": "2026-08-09" }
   ],
   "intel": [
+    {
+      "id": "FI-031",
+      "source": "Mark O'Donnell (EOS) — email today",
+      "title": "'The goal outlived its purpose' — EOS Goal Re-examination",
+      "pattern": "When the goal has been achieved or the landscape changed, the goal itself must be re-examined — not just the tactics. $1M-by-Sept-1 did its job — forced the strategic pivot. Now it's about finding the right home.",
+      "applies_to": "Steve's mental model. Board aligned Aug 7. Five channels live. Evolve the goal.",
+      "priority": "Queue for Review"
+    },
+    {
+      "id": "FI-032",
+      "source": "OpenRouter — email today",
+      "title": "OpenRouter Webinar: Cut Your AI Bill Without Cutting Quality",
+      "pattern": "Agent fleet spends ~$157-179/model/month. Combined daily ~$206. This is real money at $55K cash. Model routing strategies could reduce burn.",
+      "applies_to": "Agent fleet cost management",
+      "priority": "Queue for Review"
+    },
     {
       "id": "FI-029",
       "source": "Nero research — HIG Capital via SEC filing + hig.com",
@@ -283,14 +230,6 @@
       "pattern": "Traditional PE playbook. Pitch to Bob Gopal must lead with revenue, not mission.",
       "applies_to": "MSI/Scott Crawford distribution path",
       "priority": "Implement Now"
-    },
-    {
-      "id": "FI-030",
-      "source": "Dewey skill cleanup (Aug 8)",
-      "title": "Agent Fleet Efficiency: 152→85 skills, 41MB→3.9MB, 44% reduction",
-      "pattern": "Ghost directories and off-role categories are biggest waste vectors.",
-      "applies_to": "Hermes fleet operations",
-      "priority": "Queue for Review"
     }
   ],
   "district_intel": {
@@ -304,15 +243,15 @@
   },
   "finance": {
     "summary": {
-      "cash": "$55K bank (+ $18,402 Elgin invoiced, + $40K Region 16 pending = $113K potential)",
-      "september_projection": "Mid-September payroll with slim margin. Through October only if $181K committed deals close. Region 16 $40K stuck (ESC 16 agreement changes — N-167). Elgin $18,402 invoiced — tracking payment.",
+      "cash": "$55K bank (+ $18K Elgin invoiced, + $40K Region 16 now active = $113K potential)",
+      "september_projection": "Mid-September payroll with slim margin. Through October only if $181K committed deals close. Region 16 $40K now active — Derek Criswell replied today, Steve responded. Track next response.",
       "current_burn_monthly": "$56-59K (post-layoffs)",
       "v1_savings_monthly": "$8-9K",
       "deferred_comp_weekly": "$100K",
       "deferral_repayment_october": "$106K"
     },
     "metrics": [
-      { "label": "Team Size (post-layoffs)", "value": "6 — Steve, Patrick, Raju, Teela, Vietnam + Jan (commission-only pending)", "trend": "down" },
+      { "label": "Team Size (post-layoffs)", "value": "6 — Steve, Patrick, Raju, Teela, Vietnam + Jan (commission-only — meeting today)", "trend": "down" },
       { "label": "Monthly Burn", "value": "$56-59K", "trend": "down" },
       { "label": "Actual Cash Runway", "value": "Mid-September 2026", "trend": "warning" },
       { "label": "Run-rate ARR", "value": "$383,795", "trend": "warning" }
@@ -328,7 +267,7 @@
       "stalled_deals": "Utah SEA ($1.3M FY27, parked)",
       "imta_districts": "Mesquite, Garland"
     },
-    "note": "Elgin $18,402 invoiced (confirmed by Michelle). Region 16 $40K stuck on ESC 16 agreement changes (N-167). Jan working Alvarado/Brock renewals (~$10K each) + ESC 10 draft. Harris email sent tonight. Capstone package sent tonight.",
+    "note": "Region 16 $40K now active — ESC 16/Region 10 interlocal moving. Elgin $18,402 invoiced. Jan working Alvarado/Brock (~$10K each) + ESC 10 draft. Capstone sent. Harris sent. MSI replied today.",
     "links": [
       { "label": "Sales Dashboard", "url": "https://bookmarked-corp.github.io/bookmarked-sales-dashboard/" },
       { "label": "Board Sales Metrics", "url": "https://bookmarked-board-reports.vercel.app/" },
@@ -350,26 +289,24 @@
       "active_in_review": "33 tickets in Dev In Review",
       "conroe_demo": "Completed Aug 6. ~70 librarians.",
       "checkout_enforcement": "FB-110: Restricted books bypass checkout. Board-level risk for any acquirer diligence.",
-      "jira_reassign": "V2KAN-397 campus assignment bug — assigned to Steve, Johnny reassigning Wed Aug 13",
-      "san_saba_blocker": "V2KAN-398: SIS staff records without campus tie — school starts Monday",
-      "large_district_sftp": "V2KAN-399: Large-district SFTP roster imports — silent student drops (FB-109)",
-      "bi_spec_doc": "Book Intelligence spec doc due tonight — Raju expects canonical source by Sunday night"
+      "san_saba_blocker": "V2KAN-398: SIS staff records without campus tie — school starts TODAY",
+      "large_district_sftp": "V2KAN-399: Large-district SFTP roster imports — silent student drops (FB-109)"
     }
   },
   "strategy_decisions": [
-    { "id": "D-001", "title": "Dual track: partnership + acquisition, 60-90 days. Five channels: MSI (partner), Capstone (M&A, SENT), Harris (M&A, EMAIL SENT), MGT (Charlie calls Mon), Mark Murray contact (pending call).", "status": "active" },
-    { "id": "D-002", "title": "Team: 6 post-layoffs (Steve, Patrick, Raju, Teela, Vietnam contractor + Jan commission-only pending)", "status": "updated" },
+    { "id": "D-001", "title": "Dual track: partnership + acquisition, 60-90 days. Five channels: MSI (Scott REPLIED today), Capstone (SENT), Harris (EMAIL SENT), MGT (Charlie calling), Mark Murray contact (REPLIED today — call needed).", "status": "active" },
+    { "id": "D-002", "title": "Team: 6 post-layoffs (Steve, Patrick, Raju, Teela, Vietnam + Jan — meeting today on commission-only)", "status": "updated" },
     { "id": "D-003", "title": "No bridge capital in base case", "status": "active" },
-    { "id": "D-007", "title": "Capstone package SENT tonight — all three options + revisions to Chuck Kraus.", "status": "resolved" }
+    { "id": "D-007", "title": "Capstone package SENT. All three options + revisions to Chuck Kraus.", "status": "resolved" }
   ],
   "strategy_open": [
-    { "id": "O-001", "title": "MSI/Scott Crawford — package sent Aug 6. Awaiting reply. No follow-up needed yet.", "status": "active" },
-    { "id": "O-002", "title": "Jan commission-only decision — due Monday Aug 11", "status": "urgent" },
-    { "id": "O-009", "title": "Capstone to Justin O'Malley — PACKAGE SENT tonight. Awaiting response.", "status": "resolved" },
-    { "id": "O-011", "title": "Mark Murray follow-up — board member with Texas Ed contact, overdue since Aug 7", "status": "urgent" },
+    { "id": "O-001", "title": "MSI/Scott Crawford — package sent Aug 6, Scott REPLIED today (two emails). N-174: review immediately.", "status": "urgent" },
+    { "id": "O-002", "title": "Jan commission-only decision — meeting at 9:18 AM today. Awaiting outcome.", "status": "urgent" },
+    { "id": "O-011", "title": "Mark Murray — replied to board update today. Call still needed for Texas Ed contact.", "status": "urgent" },
+    { "id": "O-012", "title": "ESC 16/Region 16 $40K interlocal — Derek + Lori replied, Steve responded. Track to invoice.", "status": "urgent" },
     { "id": "O-003", "title": "ARR definition — $384K run-rate vs $700K pipeline-inclusive. Settle before partner conversations.", "status": "open" },
     { "id": "O-004", "title": "Follett Titlewave introduction via Tim Eades", "status": "open" },
-    { "id": "O-010", "title": "Harris Computers — email SENT tonight. Tracking response.", "status": "active" }
+    { "id": "O-010", "title": "Harris Computers — email SENT Sunday night. Tracking response.", "status": "active" }
   ],
   "tokens_total": {
     "month": "1,440",
